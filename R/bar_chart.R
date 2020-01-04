@@ -14,6 +14,7 @@
 #'
 #' @examples
 #'
+#' library(dplyr)
 #' data(biomedicalrevenue)
 #' biomedicalrevenue %>%
 #'   filter(year == 2018) %>%
