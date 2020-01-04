@@ -4,6 +4,7 @@
 #'
 #' @importFrom ggplot2 ggplot aes geom_point geom_segment theme theme_minimal
 #'             coord_flip element_blank
+#' @importFrom magrittr %>%
 #' @export
 lollipop_chart <- function(data, x, y, ..., line_size = 0.75,
                            line_color = "#1F77B4", point_size = 4,

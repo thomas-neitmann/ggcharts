@@ -21,6 +21,7 @@
 #'
 #' @importFrom ggplot2 ggplot aes geom_col theme theme_minimal coord_flip
 #'             element_blank element_text margin scale_fill_manual
+#' @importFrom magrittr %>%
 #' @export
 bar_chart <- function(data, x, y, ..., bar_color = "#1F77B4", sort = TRUE,
                       horizontal = TRUE, limit = NULL) {

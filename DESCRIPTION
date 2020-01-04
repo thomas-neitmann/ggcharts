@@ -9,6 +9,7 @@ Description: More about what it does (maybe more than one line)
 Imports:
     dplyr,
     ggplot2,
+    magrittr,
     rlang
 License: What license is it under?
 Encoding: UTF-8
