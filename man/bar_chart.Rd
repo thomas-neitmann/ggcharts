@@ -9,10 +9,10 @@ bar_chart(
   x,
   y,
   ...,
+  bar_color = "#1F77B4",
   sort = TRUE,
   horizontal = TRUE,
-  limit = NULL,
-  bar_color = "steelblue"
+  limit = NULL
 )
 }
 \arguments{

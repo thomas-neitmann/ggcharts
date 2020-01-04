@@ -10,7 +10,7 @@ lollipop_chart(
   y,
   ...,
   line_size = 0.75,
-  line_color = "steelblue",
+  line_color = "#1F77B4",
   point_size = 4,
   point_color = line_color,
   sort = TRUE,
