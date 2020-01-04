@@ -14,9 +14,10 @@
 #'
 #' @examples
 #'
-#' # Plots the number of records per cut
-#' data(diamonds)
-#' bar_chart(diamonds, cut)
+#' data(biomedicalrevenue)
+#' biomedicalrevenue %>%
+#'   filter(year == 2018) %>%
+#'   bar_chart(company, year, limit = 10)
 #'
 #' @importFrom ggplot2 ggplot aes geom_col theme theme_minimal coord_flip
 #'             element_blank element_text margin scale_fill_manual

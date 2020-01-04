@@ -35,9 +35,10 @@ Easily create a bar chart
 }
 \examples{
 
-# Plots the number of records per cut
-data(diamonds)
-bar_chart(diamonds, cut)
+data(biomedicalrevenue)
+biomedicalrevenue \%>\%
+  filter(year == 2018) \%>\%
+  bar_chart(company, year, limit = 10)
 
 }
 \author{
