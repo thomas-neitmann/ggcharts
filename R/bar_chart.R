@@ -56,6 +56,7 @@ bar_chart <- function(data, x, y, ..., bar_color = "#1F77B4", sort = TRUE,
     eval(.geom_col) +
     theme_minimal() +
     theme(
+      panel.grid.minor.y = element_blank(),
       panel.grid.major.y = element_blank(),
       axis.text.y = element_text(margin = margin(r = -10))
     )

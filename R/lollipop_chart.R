@@ -66,7 +66,10 @@ lollipop_chart <- function(data, x, y, ..., line_size = 0.75,
     eval(.geom_segment) +
     eval(.geom_point) +
     theme_minimal() +
-    theme(panel.grid.major.y = element_blank())
+    theme(
+      panel.grid.minor.y = element_blank(),
+      panel.grid.major.y = element_blank()
+    )
 
   if (horizontal) {
     p <- p + coord_flip()
