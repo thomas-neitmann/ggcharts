@@ -72,7 +72,7 @@ display only the top 10? That’s easy, just set `limit = 10`.
 <img src="README_files/figure-markdown_strict/limit-1.png" width="50%" /><img src="README_files/figure-markdown_strict/limit-2.png" width="50%" />
 
 Changing colors
-===============
+---------------
 
     biomedicalrevenue %>%
       filter(year == 2017) %>%
@@ -87,3 +87,12 @@ Changing colors
       )
 
 <img src="README_files/figure-markdown_strict/colors-1.png" width="50%" /><img src="README_files/figure-markdown_strict/colors-2.png" width="50%" />
+
+Facetting
+---------
+
+    biomedicalrevenue %>%
+      filter(year %in% c(2011, 2018)) %>%
+      bar_chart(company, revenue, year, limit = 5)
+
+![](README_files/figure-markdown_strict/facet-1.png)

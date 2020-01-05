@@ -56,7 +56,7 @@ biomedicalrevenue %>%
   lollipop_chart(company, revenue, limit = 10)
 ```
 
-# Changing colors
+## Changing colors
 
 ```{r colors, out.width='50%', fig.show='hold'}
 biomedicalrevenue %>%
@@ -72,3 +72,10 @@ biomedicalrevenue %>%
   )
 ```
 
+## Facetting
+
+```{r facet, message=FALSE}
+biomedicalrevenue %>%
+  filter(year %in% c(2011, 2018)) %>%
+  bar_chart(company, revenue, year, limit = 5)
+```
