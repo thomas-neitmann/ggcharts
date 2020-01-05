@@ -26,6 +26,10 @@
 #' @export
 bar_chart <- function(data, x, y, ..., bar_color = "#1F77B4", sort = TRUE,
                       horizontal = TRUE, limit = NULL) {
+  if (!is.null(limit) && !sort) {
+    stop("The limit argument can only be set when sort = TRUE")
+  }
+
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   dots <- rlang::enquos(...)

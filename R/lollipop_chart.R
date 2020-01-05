@@ -31,6 +31,10 @@ lollipop_chart <- function(data, x, y, ..., line_size = 0.75,
                            line_color = "#1F77B4", point_size = 4,
                            point_color = line_color, sort = TRUE,
                            horizontal = TRUE, limit = NULL) {
+  if (!is.null(limit) && !sort) {
+    stop("The limit argument can only be set when sort = TRUE")
+  }
+
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   dot_names <- names(rlang::enquos(...))
