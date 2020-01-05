@@ -23,8 +23,8 @@
 #'   filter(year == 2015) %>%
 #'   bar_chart(company, year, limit = 10)
 #'
-#' @importFrom ggplot2 ggplot aes geom_point geom_segment theme theme_minimal
-#'             coord_flip element_blank facet_wrap
+#' @importFrom ggplot2 ggplot aes geom_point geom_segment coord_flip facet_wrap
+#'             scale_y_continuous expand_scale
 #' @importFrom magrittr %>%
 #' @export
 lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,

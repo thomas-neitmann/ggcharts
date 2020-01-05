@@ -1,3 +1,4 @@
+#' @importFrom ggplot2 theme_minimal theme element_blank element_rect
 theme_discrete_chart <- function(...) {
   theme_minimal(...) +
     theme(
