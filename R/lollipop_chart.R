@@ -24,10 +24,10 @@
 #'   bar_chart(company, year, limit = 10)
 #'
 #' @importFrom ggplot2 ggplot aes geom_point geom_segment theme theme_minimal
-#'             coord_flip element_blank
+#'             coord_flip element_blank facet_wrap
 #' @importFrom magrittr %>%
 #' @export
-lollipop_chart <- function(data, x, y, ..., line_size = 0.75,
+lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
                            line_color = "#1F77B4", point_size = 4,
                            point_color = line_color, sort = TRUE,
                            horizontal = TRUE, limit = NULL) {
@@ -38,15 +38,13 @@ lollipop_chart <- function(data, x, y, ..., line_size = 0.75,
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   dot_names <- names(rlang::enquos(...))
+  has_facet <- !missing(facet)
 
-  if (sort) {
-    data <- data %>%
-      dplyr::arrange(!!y) %>%
-      dplyr::mutate(!!x := reorder(!!x, !!y))
-  }
-
-  if (!is.null(limit)) {
-    data <- tail(data, limit)
+  if (has_facet) {
+    facet <- rlang::enquo(facet)
+    data <- pre_process_data(data, !!x, !!y, !!facet, sort, limit)
+  } else {
+    data <- pre_process_data(data, !!x, !!y, sort = sort, limit = limit)
   }
 
   .geom_point <- quote(geom_point())
@@ -74,5 +72,12 @@ lollipop_chart <- function(data, x, y, ..., line_size = 0.75,
   if (horizontal) {
     p <- p + coord_flip()
   }
+
+  if (has_facet) {
+    p <- p +
+      ggplot2::facet_wrap(vars(!!facet), scales = "free_y") +
+      tidytext::scale_x_reordered()
+  }
+
   p
 }

@@ -21,10 +21,10 @@
 #'   bar_chart(company, year, limit = 10)
 #'
 #' @importFrom ggplot2 ggplot aes geom_col theme theme_minimal coord_flip
-#'             element_blank element_text margin scale_fill_manual
+#'             element_blank element_text margin scale_fill_manual facet_wrap
 #' @importFrom magrittr %>%
 #' @export
-bar_chart <- function(data, x, y, ..., bar_color = "#1F77B4", sort = TRUE,
+bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE,
                       horizontal = TRUE, limit = NULL) {
   if (!is.null(limit) && !sort) {
     stop("The limit argument can only be set when sort = TRUE")
@@ -33,16 +33,14 @@ bar_chart <- function(data, x, y, ..., bar_color = "#1F77B4", sort = TRUE,
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   dots <- rlang::enquos(...)
+  has_facet <- !missing(facet)
   has_fill <- "fill" %in% names(dots)
 
-  if (sort) {
-    data <- data %>%
-      dplyr::arrange(!!y) %>%
-      dplyr::mutate(!!x := reorder(!!x, !!y))
-  }
-
-  if (!is.null(limit)) {
-    data <- tail(data, limit)
+  if (has_facet) {
+    facet <- rlang::enquo(facet)
+    data <- pre_process_data(data, !!x, !!y, !!facet, sort, limit)
+  } else {
+    data <- pre_process_data(data, !!x, !!y, sort = sort, limit = limit)
   }
 
   .geom_col <- quote(geom_col(width = .75))
@@ -67,6 +65,12 @@ bar_chart <- function(data, x, y, ..., bar_color = "#1F77B4", sort = TRUE,
 
   if (has_fill) {
     p <- p + scale_fill_manual(values = matplotlib_colors)
+  }
+
+  if (has_facet) {
+    p <- p +
+      ggplot2::facet_wrap(vars(!!facet), scales = "free_y") +
+      tidytext::scale_x_reordered()
   }
 
   p

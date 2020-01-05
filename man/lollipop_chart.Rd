@@ -8,6 +8,7 @@ lollipop_chart(
   data,
   x,
   y,
+  facet,
   ...,
   line_size = 0.75,
   line_color = "#1F77B4",

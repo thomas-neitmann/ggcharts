@@ -8,6 +8,7 @@ bar_chart(
   data,
   x,
   y,
+  facet,
   ...,
   bar_color = "#1F77B4",
   sort = TRUE,
@@ -35,6 +36,7 @@ Easily create a bar chart
 }
 \examples{
 
+library(dplyr)
 data(biomedicalrevenue)
 biomedicalrevenue \%>\%
   filter(year == 2018) \%>\%
