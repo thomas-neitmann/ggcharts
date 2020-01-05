@@ -52,12 +52,8 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE
 
   p <- ggplot(data, aes(!!x, !!y, ...)) +
     eval(.geom_col) +
-    theme_minimal() +
-    theme(
-      panel.grid.minor.y = element_blank(),
-      panel.grid.major.y = element_blank(),
-      axis.text.y = element_text(margin = margin(r = -10))
-    )
+    theme_discrete_chart() +
+    scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 
   if (horizontal) {
     p <- p + coord_flip()

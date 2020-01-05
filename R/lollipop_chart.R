@@ -63,11 +63,8 @@ lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
   p <- ggplot(data, aes(!!x, !!y, ...)) +
     eval(.geom_segment) +
     eval(.geom_point) +
-    theme_minimal() +
-    theme(
-      panel.grid.minor.y = element_blank(),
-      panel.grid.major.y = element_blank()
-    )
+    theme_discrete_chart() +
+    scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 
   if (horizontal) {
     p <- p + coord_flip()
