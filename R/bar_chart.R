@@ -52,7 +52,7 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE
 
   p <- ggplot(data, aes(!!x, !!y, ...)) +
     eval(.geom_col) +
-    theme_discrete_chart() +
+    theme_discrete_chart(horizontal) +
     scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 
   if (horizontal) {
