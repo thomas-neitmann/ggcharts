@@ -1,34 +1,34 @@
-#' @keyword Internal
+#' @importFrom magrittr %>%
 pre_process_data <- function(data, x, y, facet, sort, limit) {
 
-  x <- enquo(x)
-  y <- enquo(y)
+  x <- rlang::enquo(x)
+  y <- rlang::enquo(y)
 
   has_facet <- !missing(facet)
 
   if (has_facet) {
-    facet <- enquo(facet)
-    data <- group_by(data, !!facet)
+    facet <- rlang::enquo(facet)
+    data <- dplyr::group_by(data, !!facet)
   }
 
   if (sort) {
 
     if (is.null(limit)) {
-      data <- arrange(data, !!y)
+      data <- dplyr::arrange(data, !!y)
     } else {
-      data <- top_n(data, limit, !!y)
+      data <- dplyr::top_n(data, limit, !!y)
     }
 
-    data <- ungroup(data)
+    data <- dplyr::ungroup(data)
   }
 
   if (has_facet) {
     data <- data %>%
-      mutate(!!x := tidytext::reorder_within(!!x, !!y, !!facet)) %>%
-      arrange(!!facet, !!y)
+      dplyr::mutate(!!x := tidytext::reorder_within(!!x, !!y, !!facet)) %>%
+      dplyr::arrange(!!facet, !!y)
   } else {
     data <- data %>%
-      mutate(!!x := reorder(!!x, !!y))
+      dplyr::mutate(!!x := reorder(!!x, !!y))
   }
 
   data
