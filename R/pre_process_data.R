@@ -1,4 +1,5 @@
 #' @importFrom magrittr %>%
+#' @importFrom rlang :=
 pre_process_data <- function(data, x, y, facet, sort, limit) {
 
   x <- rlang::enquo(x)
@@ -28,7 +29,7 @@ pre_process_data <- function(data, x, y, facet, sort, limit) {
       dplyr::arrange(!!facet, !!y)
   } else {
     data <- data %>%
-      dplyr::mutate(!!x := reorder(!!x, !!y))
+      dplyr::mutate(!!x := stats::reorder(!!x, !!y))
   }
 
   data
