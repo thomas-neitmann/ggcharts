@@ -1,5 +1,12 @@
 #' importFrom ggplot2 coord_flip scale_fill_manual facet_wrap
 post_process_plot <- function(plot, horizontal, facet, fill) {
+  if (!missing(facet)) {
+    has_facet <- TRUE
+    facet <- rlang::enquo(facet)
+  } else {
+    has_facet <- FALSE
+  }
+
   if (horizontal) {
     plot <- plot + coord_flip()
   }

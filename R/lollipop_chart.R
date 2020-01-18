@@ -66,15 +66,5 @@ lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
     theme_discrete_chart(horizontal) +
     scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 
-  if (horizontal) {
-    p <- p + coord_flip()
-  }
-
-  if (has_facet) {
-    p <- p +
-      ggplot2::facet_wrap(vars(!!facet), scales = "free_y") +
-      tidytext::scale_x_reordered()
-  }
-
-  p
+  post_process_plot(p, horizontal, facet, FALSE)
 }

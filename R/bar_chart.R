@@ -55,19 +55,5 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE
     theme_discrete_chart(horizontal) +
     scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 
-  if (horizontal) {
-    p <- p + coord_flip()
-  }
-
-  if (has_fill) {
-    p <- p + scale_fill_manual(values = matplotlib_colors)
-  }
-
-  if (has_facet) {
-    p <- p +
-      ggplot2::facet_wrap(vars(!!facet), scales = "free_y") +
-      tidytext::scale_x_reordered()
-  }
-
-  p
+  post_process_plot(p, horizontal, facet, has_fill)
 }
