@@ -30,6 +30,15 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE
     stop("The limit argument can only be set when sort = TRUE")
   }
 
+  x_label <- substitute(x) %>%
+    deparse() %>%
+    gsub("_|\\.", " ", .) %>%
+    tools::toTitleCase()
+  y_label <- substitute(y) %>%
+    deparse() %>%
+    gsub("_|\\.", " ", .) %>%
+    tools::toTitleCase()
+
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   dots <- rlang::enquos(...)
@@ -69,5 +78,5 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE
       tidytext::scale_x_reordered()
   }
 
-  p
+  p + ggplot2::labs(x = x_label, y = y_label)
 }
