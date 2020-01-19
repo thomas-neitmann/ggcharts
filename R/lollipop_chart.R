@@ -24,7 +24,7 @@
 #'   bar_chart(company, year, limit = 10)
 #'
 #' @importFrom ggplot2 ggplot aes geom_point geom_segment coord_flip facet_wrap
-#'             scale_y_continuous expand_scale
+#'             scale_y_continuous expand_scale labs vars
 #' @importFrom magrittr %>%
 #' @export
 lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
@@ -37,6 +37,10 @@ lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
+
+  x_label <- pretty_label(x)
+  y_label <- pretty_label(y)
+
   dot_names <- names(rlang::enquos(...))
   has_facet <- !missing(facet)
 
@@ -76,5 +80,5 @@ lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
       tidytext::scale_x_reordered()
   }
 
-  p
+  p + labs(x = x_label, y = y_label)
 }

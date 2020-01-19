@@ -21,7 +21,7 @@
 #'   bar_chart(company, year, limit = 10)
 #'
 #' @importFrom ggplot2 ggplot aes geom_col coord_flip scale_fill_manual
-#'             facet_wrap scale_y_continuous expand_scale
+#'             facet_wrap scale_y_continuous expand_scale labs vars
 #' @importFrom magrittr %>%
 #' @export
 bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE,
@@ -30,17 +30,12 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE
     stop("The limit argument can only be set when sort = TRUE")
   }
 
-  x_label <- substitute(x) %>%
-    deparse() %>%
-    gsub("_|\\.", " ", .) %>%
-    tools::toTitleCase()
-  y_label <- substitute(y) %>%
-    deparse() %>%
-    gsub("_|\\.", " ", .) %>%
-    tools::toTitleCase()
-
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
+
+  x_label <- pretty_label(x)
+  y_label <- pretty_label(y)
+
   dots <- rlang::enquos(...)
   has_facet <- !missing(facet)
   has_fill <- "fill" %in% names(dots)
@@ -78,5 +73,5 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE
       tidytext::scale_x_reordered()
   }
 
-  p + ggplot2::labs(x = x_label, y = y_label)
+  p + labs(x = x_label, y = y_label)
 }
