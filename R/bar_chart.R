@@ -24,8 +24,9 @@
 #'             facet_wrap scale_y_continuous expand_scale
 #' @importFrom magrittr %>%
 #' @export
-bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE,
-                      horizontal = TRUE, limit = NULL) {
+bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4",
+                      highlight = NULL, sort = TRUE, horizontal = TRUE,
+                      limit = NULL) {
   if (!is.null(limit) && !sort) {
     stop("The limit argument can only be set when sort = TRUE")
   }
@@ -38,14 +39,16 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE
 
   if (has_facet) {
     facet <- rlang::enquo(facet)
-    data <- pre_process_data(data, !!x, !!y, !!facet, sort, limit)
+    data <- pre_process_data(data, !!x, !!y, !!facet, sort, limit, highlight)
   } else {
-    data <- pre_process_data(data, !!x, !!y, sort = sort, limit = limit)
+    data <- pre_process_data(data, !!x, !!y, sort = sort, limit = limit, highlight = highlight)
   }
 
   .geom_col <- quote(geom_col(width = .75))
   if (has_fill) {
     .geom_col$position <- "dodge"
+  } else if (!is.null(highlight)) {
+    .geom_col$mapping <- aes(fill = highlight)
   } else {
     .geom_col$fill <- quote(bar_color)
   }
@@ -55,7 +58,8 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4", sort = TRUE
     theme_discrete_chart(horizontal) +
     scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 
-  args <- list(plot = p, horizontal = horizontal, fill = has_fill)
+  args <- list(plot = p, horizontal = horizontal, fill = has_fill,
+               highlight = highlight, color = bar_color)
   if (has_facet) args$facet <- quote(!!facet)
   do.call(post_process_plot, args)
 }

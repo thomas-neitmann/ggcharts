@@ -1,5 +1,6 @@
 #' @importFrom ggplot2 coord_flip scale_fill_manual facet_wrap vars
-post_process_plot <- function(plot, horizontal, facet, fill) {
+post_process_plot <- function(plot, horizontal, facet, highlight,
+                              fill, color) {
   if (!missing(facet)) {
     has_facet <- TRUE
     facet <- rlang::enquo(facet)
@@ -9,6 +10,14 @@ post_process_plot <- function(plot, horizontal, facet, fill) {
 
   if (horizontal) {
     plot <- plot + coord_flip()
+  }
+
+  if (!is.null(highlight)) {
+    colors <- c("Y" = color, "N" = "lightgray")
+    plot <- plot +
+      scale_fill_manual(values = colors) +
+      scale_color_manual(values = colors) +
+      theme(legend.position = "none")
   }
 
   if (fill) {

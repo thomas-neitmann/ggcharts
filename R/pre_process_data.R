@@ -1,9 +1,13 @@
 #' @importFrom magrittr %>%
 #' @importFrom rlang :=
-pre_process_data <- function(data, x, y, facet, sort, limit) {
+pre_process_data <- function(data, x, y, facet, sort, limit, highlight) {
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
+
+  if (!is.null(highlight)) {
+    data <- mutate(data, highlight = if_else(!!x == highlight, "Y", "N"))
+  }
 
   has_facet <- !missing(facet)
 
