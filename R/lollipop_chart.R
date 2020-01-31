@@ -5,11 +5,13 @@
 #' @param data Dataset to use for the bar chart
 #' @param x The x variable
 #' @param y numeric. If y is missing then it will be assigned the number of records in each group of y
+#' @param facet A variable defining the faceting groups
 #' @param ... Additional arguments passed to aes()
 #' @param line_size character. Size of the lollipop 'stick'
 #' @param line_color character. Color of the lollipop 'stick'
 #' @param point_size character. Size of the lollipop 'head'
 #' @param point_color character. Color of the lollipop 'head'
+#' @param highlight A value of \code{x} that should be highlighted in the plot
 #' @param sort logical. Should the data be sorted before plotting?
 #' @param horizontal logical. Should coord_flip() be added to the plot
 #' @param limit integer. If a value for limit is provided only the first limit records will be displayed

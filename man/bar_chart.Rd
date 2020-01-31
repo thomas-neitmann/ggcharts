@@ -11,6 +11,7 @@ bar_chart(
   facet,
   ...,
   bar_color = "#1F77B4",
+  highlight = NULL,
   sort = TRUE,
   horizontal = TRUE,
   limit = NULL
@@ -23,7 +24,13 @@ bar_chart(
 
 \item{y}{numeric. If y is missing then it will be assigned the number of records in each group of y}
 
+\item{facet}{A variable defining the faceting groups}
+
 \item{...}{Additional arguments passed to aes()}
+
+\item{bar_color}{character. The color of the bars.}
+
+\item{highlight}{A value of \code{x} that should be highlighted in the plot}
 
 \item{sort}{logical. Should the data be sorted before plotting?}
 

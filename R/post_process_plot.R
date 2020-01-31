@@ -1,4 +1,5 @@
-#' @importFrom ggplot2 coord_flip scale_fill_manual facet_wrap vars
+#' @importFrom ggplot2 coord_flip scale_color_manual scale_fill_manual
+#'             facet_wrap theme vars
 post_process_plot <- function(plot, horizontal, facet, highlight,
                               fill, color) {
   if (!missing(facet)) {
