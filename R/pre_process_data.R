@@ -29,11 +29,11 @@ pre_process_data <- function(data, x, y, facet, sort, limit, highlight) {
 
   if (has_facet) {
     data <- data %>%
-      dplyr::mutate(!!x := tidytext::reorder_within(!!x, !!y, !!facet)) %>%
+      dplyr::mutate(!!x := reorder_within(!!x, !!y, !!facet)) %>%
       dplyr::arrange(!!facet, !!y)
   } else {
     data <- data %>%
-      dplyr::mutate(!!x := stats::reorder(!!x, !!y))
+      dplyr::mutate(!!x := reorder(!!x, !!y))
   }
 
   data
