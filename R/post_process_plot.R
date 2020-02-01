@@ -14,10 +14,21 @@ post_process_plot <- function(plot, horizontal, facet, highlight,
   }
 
   if (!is.null(highlight)) {
-    colors <- c("Y" = color, "N" = "lightgray")
+    if (length(color) == length(highlight)) {
+      colors <- stats::setNames(
+        object = c(color, "#e0e0e0"),
+        nm = c(highlight, "other")
+      )
+    } else {
+      message("Using the default color palette to highlight bars.")
+      colors <- stats::setNames(
+        object = c(matplotlib_colors[1:length(highlight)], "#e0e0e0"),
+        nm = c(highlight, "other")
+      )
+    }
+
     plot <- plot +
-      scale_fill_manual(values = colors) +
-      scale_color_manual(values = colors) +
+      scale_fill_manual(values = colors, aesthetics = c("fill", "color")) +
       theme(legend.position = "none")
   }
 

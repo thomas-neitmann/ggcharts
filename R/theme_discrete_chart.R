@@ -1,4 +1,5 @@
 #' @importFrom ggplot2 theme_minimal theme element_blank element_rect
+#'             element_text margin
 theme_discrete_chart <- function(horizontal, ...) {
 
   if (horizontal) {
@@ -6,17 +7,18 @@ theme_discrete_chart <- function(horizontal, ...) {
       theme(
         panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank(),
-        panel.grid.major.y = element_blank(),
+        panel.grid.major.y = element_blank()
       )
   } else {
     t <- theme_minimal(...) +
       theme(
         panel.grid.minor.y = element_blank(),
         panel.grid.minor.x = element_blank(),
-        panel.grid.major.x = element_blank(),
+        panel.grid.major.x = element_blank()
       )
   }
   t + theme(
-    strip.background = element_rect(fill = "lightgray", color = "lightgray")
+    strip.background = element_rect(fill = "gray", color = "gray"),
+    strip.text = element_text(margin = margin(1, 0, 1, 0, "mm"))
   )
 }
