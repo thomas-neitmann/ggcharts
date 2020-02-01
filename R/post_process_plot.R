@@ -14,7 +14,7 @@ post_process_plot <- function(plot, horizontal, facet, highlight,
   }
 
   if (!is.null(highlight)) {
-    colors <- c("Y" = color, "N" = "lightgray")
+    colors <- c("Y" = color, "N" = "#e0e0e0")
     plot <- plot +
       scale_fill_manual(values = colors) +
       scale_color_manual(values = colors) +
