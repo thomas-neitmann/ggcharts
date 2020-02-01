@@ -1,7 +1,7 @@
 #' @importFrom ggplot2 coord_flip scale_color_manual scale_fill_manual
 #'             facet_wrap theme vars
 post_process_plot <- function(plot, horizontal, facet, highlight,
-                              fill, color) {
+                              fill, color, label = TRUE) {
   if (!missing(facet)) {
     has_facet <- TRUE
     facet <- rlang::enquo(facet)
@@ -40,6 +40,10 @@ post_process_plot <- function(plot, horizontal, facet, highlight,
     plot <- plot +
       facet_wrap(vars(!!facet), scales = "free_y") +
       tidytext::scale_x_reordered()
+  }
+
+  if (label) {
+    plot <- plot + geom_text(aes(hjust = -0.1, label = !!plot$mapping$y))
   }
 
   plot
