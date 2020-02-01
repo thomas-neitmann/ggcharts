@@ -1,9 +1,14 @@
 #' @importFrom magrittr %>%
 #' @importFrom rlang :=
-pre_process_data <- function(data, x, y, facet, sort, limit) {
+pre_process_data <- function(data, x, y, facet, sort, limit, highlight) {
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
+
+  if (!is.null(highlight)) {
+    data <- data %>%
+      dplyr::mutate(highlight = dplyr::if_else(!!x == highlight, "Y", "N"))
+  }
 
   has_facet <- !missing(facet)
 
@@ -25,11 +30,11 @@ pre_process_data <- function(data, x, y, facet, sort, limit) {
 
   if (has_facet) {
     data <- data %>%
-      dplyr::mutate(!!x := tidytext::reorder_within(!!x, !!y, !!facet)) %>%
+      dplyr::mutate(!!x := reorder_within(!!x, !!y, !!facet)) %>%
       dplyr::arrange(!!facet, !!y)
   } else {
     data <- data %>%
-      dplyr::mutate(!!x := stats::reorder(!!x, !!y))
+      dplyr::mutate(!!x := reorder(!!x, !!y))
   }
 
   data

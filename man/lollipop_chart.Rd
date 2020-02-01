@@ -14,6 +14,7 @@ lollipop_chart(
   line_color = "#1F77B4",
   point_size = 4,
   point_color = line_color,
+  highlight = NULL,
   sort = TRUE,
   horizontal = TRUE,
   limit = NULL
@@ -26,6 +27,8 @@ lollipop_chart(
 
 \item{y}{numeric. If y is missing then it will be assigned the number of records in each group of y}
 
+\item{facet}{A variable defining the faceting groups}
+
 \item{...}{Additional arguments passed to aes()}
 
 \item{line_size}{character. Size of the lollipop 'stick'}
@@ -35,6 +38,8 @@ lollipop_chart(
 \item{point_size}{character. Size of the lollipop 'head'}
 
 \item{point_color}{character. Color of the lollipop 'head'}
+
+\item{highlight}{A value of \code{x} that should be highlighted in the plot}
 
 \item{sort}{logical. Should the data be sorted before plotting?}
 

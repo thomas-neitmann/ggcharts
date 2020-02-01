@@ -11,6 +11,36 @@ if (!"remotes" %in% installed.packages()) {
 remotes::install_github("thomas-neitmann/ggcharts")
 ```
 
+# Why ggcharts?
+
+Thanks to ggplot2 you can create beautiful plots in R. However, it can often take quite a bit of effort to get from a data visualization idea to an actual plot. As an example, let's say you want to create a faceted bar chart displaying the top 10 within each facet ordered from highest to lowest. What sounds simple is actually pretty hard to achieve. Have a look:
+
+```{r motivation, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(ggcharts)
+data("biomedicalrevenue")
+
+biomedicalrevenue %>%
+  group_by(year) %>%
+  top_n(10, revenue) %>%
+  ungroup() %>%
+  mutate(company = tidytext::reorder_within(company, revenue, year)) %>%
+  ggplot(aes(company, revenue)) +
+  geom_col() +
+  coord_flip() +
+  tidytext::scale_x_reordered() +
+  facet_wrap(vars(year), scales = "free_y")
+```
+
+That's a lot of code! And you likely never heard of some of the functions involved. With ggcharts you can create the same plot (actually an even better looking one) in a single line of code.
+
+```{r motivation_continued}
+bar_chart(biomedicalrevenue, company, revenue, facet = year, limit = 10)
+```
+
+That's the beauty of ggcharts: shortening the distance between data visualization idea and actual plot as much as possible.
+
 # Usage
 
 ## Basics
@@ -18,9 +48,6 @@ remotes::install_github("thomas-neitmann/ggcharts")
 Let's start off by loading some data for plotting. `ggcharts` comes with the `biomedicalrevenue` dataset which contains annual revenues (in billion USD) of top biomedical companies from 2011 to 2018.
 
 ```{r, message=FALSE}
-library(dplyr)
-library(ggcharts)
-data("biomedicalrevenue")
 head(biomedicalrevenue, 10)
 ```
 
@@ -67,15 +94,27 @@ biomedicalrevenue %>%
   filter(year == 2018) %>%
   lollipop_chart(
     company, revenue, 
-    point_color = "darkgreen", line_color = "gray", 
+    point_color = "darkgreen", line_color = "darkgray", 
     limit = 10
   )
 ```
+
+## Highlighting
+```{r highlight, out.width='50%', fig.show='hold'}
+biomedicalrevenue %>%
+  filter(year == 2015) %>%
+  lollipop_chart(company, revenue, highlight = "Novartis", limit = 15)
+
+biomedicalrevenue %>%
+  filter(year == 2015) %>%
+  bar_chart(company, revenue, highlight = "Roche", limit = 15)
+```
+
 
 ## Facetting
 
 ```{r facet, message=FALSE}
 biomedicalrevenue %>%
-  filter(year %in% c(2011, 2018)) %>%
-  bar_chart(company, revenue, year, limit = 5)
+  filter(year %in% c(2011, 2014, 2017)) %>%
+  bar_chart(company, revenue, facet = year, limit = 7)
 ```
