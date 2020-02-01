@@ -14,15 +14,16 @@ post_process_plot <- function(plot, horizontal, facet, highlight,
   }
 
   if (!is.null(highlight)) {
+    non_highl_col <- scales::alpha("#e0e0e0", .7)
     if (length(color) == length(highlight)) {
       colors <- stats::setNames(
-        object = c(color, "#e0e0e0"),
+        object = c(color, non_highl_col),
         nm = c(highlight, "other")
       )
     } else {
       message("Using the default color palette to highlight bars.")
       colors <- stats::setNames(
-        object = c(matplotlib_colors[1:length(highlight)], "#e0e0e0"),
+        object = c(matplotlib_colors[1:length(highlight)], non_highl_col),
         nm = c(highlight, "other")
       )
     }
