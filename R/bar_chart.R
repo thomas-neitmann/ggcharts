@@ -51,7 +51,7 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4",
   if (has_fill) {
     .geom_col$position <- "dodge"
   } else if (!is.null(highlight)) {
-    .geom_col$mapping <- aes(fill = highlight)
+    .geom_col$mapping <- quote(aes(fill = highlight))
   } else {
     .geom_col$fill <- quote(bar_color)
   }

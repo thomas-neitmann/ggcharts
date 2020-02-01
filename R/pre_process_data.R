@@ -6,8 +6,9 @@ pre_process_data <- function(data, x, y, facet, sort, limit, highlight) {
   y <- rlang::enquo(y)
 
   if (!is.null(highlight)) {
-    data <- data %>%
-      dplyr::mutate(highlight = dplyr::if_else(!!x == highlight, "Y", "N"))
+    data <- dplyr::mutate(data, highlight = dplyr::if_else(
+      !!x %in% highlight, as.character(!!x), "other")
+    )
   }
 
   has_facet <- !missing(facet)

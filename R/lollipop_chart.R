@@ -64,7 +64,6 @@ lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
     .geom_segment$color <- quote(line_color)
     .geom_point$color <- quote(point_color)
   }
-  x <<- .geom_segment
 
   p <- ggplot(data, aes(!!x, !!y, ...)) +
     eval(.geom_segment) +
