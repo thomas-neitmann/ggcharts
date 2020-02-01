@@ -1,5 +1,5 @@
 #' @importFrom ggplot2 theme_minimal theme element_blank element_rect
-#'             element_text
+#'             element_text margin
 theme_discrete_chart <- function(horizontal, ...) {
 
   if (horizontal) {

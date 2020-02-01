@@ -15,13 +15,13 @@ post_process_plot <- function(plot, horizontal, facet, highlight,
 
   if (!is.null(highlight)) {
     if (length(color) == length(highlight)) {
-      colors <- setNames(
+      colors <- stats::setNames(
         object = c(color, "#e0e0e0"),
         nm = c(highlight, "other")
       )
     } else {
       message("Using the default color palette to highlight bars.")
-      colors <- setNames(
+      colors <- stats::setNames(
         object = c(matplotlib_colors[1:length(highlight)], "#e0e0e0"),
         nm = c(highlight, "other")
       )
