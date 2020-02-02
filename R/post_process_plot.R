@@ -43,7 +43,29 @@ post_process_plot <- function(plot, horizontal, facet, highlight,
   }
 
   if (label) {
-    plot <- plot + geom_text(aes(hjust = -0.1, label = !!plot$mapping$y))
+    nudge <- layer_scales(plot)$y$range$range[2L] * .005
+    y <- plot$mapping$y
+    long_bars <- dplyr::filter(plot$data, !!y >= max(!!y) * .8)
+    short_bars <- dplyr::filter(plot$data, !!y < max(!!y) * .8)
+
+    plot <- plot +
+      geom_text(
+        data = long_bars,
+        mapping = aes(hjust = "right", label = !!y),
+        nudge_y = -nudge,
+        size = pt2mm(10),
+        color = "white"
+      )
+    if (nrow(short_bars) > 0) {
+      plot <- plot +
+        geom_text(
+          data = short_bars,
+          mapping = aes(hjust = "left", label = !!y),
+          nudge_y = nudge,
+          size = pt2mm(10)
+        )
+    }
+
   }
 
   plot
