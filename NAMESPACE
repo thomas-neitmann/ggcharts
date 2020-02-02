@@ -2,6 +2,7 @@
 
 export(bar_chart)
 export(diverging_bar_chart)
+export(diverging_lollipop_chart)
 export(lollipop_chart)
 import(ggplot2)
 importFrom(ggplot2,coord_flip)
