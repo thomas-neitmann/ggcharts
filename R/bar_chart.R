@@ -23,8 +23,7 @@
 #'   filter(year == 2018) %>%
 #'   bar_chart(company, year, limit = 10)
 #'
-#' @importFrom ggplot2 ggplot aes geom_col coord_flip scale_fill_manual
-#'             facet_wrap scale_y_continuous expand_scale
+#' @import ggplot2
 #' @importFrom magrittr %>%
 #' @export
 bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4",
