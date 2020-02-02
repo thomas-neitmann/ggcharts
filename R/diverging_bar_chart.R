@@ -11,8 +11,9 @@
 #' @param text_size The size of the bar annotation text in pt
 #'
 #' @examples
+#' `%>%` <- magrittr::`%>%`
 #' if (requireNamespace("tidyr")) {
-#'   `%>%` <- magrittr::`%>%`
+#'   data(biomedicalrevenue)
 #'   biomedicalrevenue %>%
 #'   dplyr::filter(year > 2016) %>%
 #'   tidyr::pivot_wider(
@@ -23,6 +24,11 @@
 #'   dplyr::mutate(diff = revenue_2018 - revenue_2017) %>%
 #'   diverging_bar_chart(company, diff)
 #' }
+#'
+#' data(mtcars)
+#' mtcars %>%
+#'   dplyr::mutate(model = row.names(.), hpz = scale(hp)) %>%
+#'   diverging_bar_chart(model, hpz)
 #'
 #' @import ggplot2
 #' @importFrom rlang .data

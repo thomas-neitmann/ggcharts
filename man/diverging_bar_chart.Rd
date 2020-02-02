@@ -31,8 +31,9 @@ and negative bars}
 Easily create a diverging bar chart
 }
 \examples{
+`\%>\%` <- magrittr::`\%>\%`
 if (requireNamespace("tidyr")) {
-  `\%>\%` <- magrittr::`\%>\%`
+  data(biomedicalrevenue)
   biomedicalrevenue \%>\%
   dplyr::filter(year > 2016) \%>\%
   tidyr::pivot_wider(
@@ -43,5 +44,10 @@ if (requireNamespace("tidyr")) {
   dplyr::mutate(diff = revenue_2018 - revenue_2017) \%>\%
   diverging_bar_chart(company, diff)
 }
+
+data(mtcars)
+mtcars \%>\%
+  dplyr::mutate(model = row.names(.), hpz = scale(hp)) \%>\%
+  diverging_bar_chart(model, hpz)
 
 }
