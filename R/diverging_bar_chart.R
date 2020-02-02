@@ -24,6 +24,7 @@
 #'   diverging_bar_chart(company, diff)
 #' }
 #'
+#' @import ggplot2
 #' @importFrom rlang .data
 #' @export
 diverging_bar_chart <- function(data, x, y, bar_colors = c("#1F77B4", "#FF7F0E"),
