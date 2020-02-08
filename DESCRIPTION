@@ -13,8 +13,7 @@ Depends:
 Imports:
     dplyr,
     magrittr,
-    rlang,
-    tidytext
+    rlang
 Suggests: tidyr
 License: MIT + file LICENSE
 Encoding: UTF-8
