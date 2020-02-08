@@ -16,11 +16,27 @@
 #' @param limit integer. If a value for limit is provided only the first limit records will be displayed
 #'
 #' @examples
-#' library(dplyr)
 #' data(biomedicalrevenue)
-#' biomedicalrevenue %>%
-#'   filter(year == 2018) %>%
-#'   bar_chart(company, revenue, limit = 10)
+#' revenue2018 <- biomedicalrevenue[biomedicalrevenue$year == 2018, ]
+#' revenue_roche <- biomedicalrevenue[biomedicalrevenue$company == "Roche", ]
+#'
+#' ## By default bar_chart() creates a horizontal and sorted plot
+#' bar_chart(revenue2018, company, revenue)
+#'
+#' ## Create a vertical, non-sorted bar chart
+#' bar_chart(revenue_roche, year, revenue, horizontal = FALSE, sort = FALSE)
+#'
+#' ## Limit the number of bars to the top 10
+#' bar_chart(revenue2018, company, revenue, limit = 10)
+#'
+#' ## Change the bar color
+#' bar_chart(revenue2018, company, revenue, bar_color = "purple")
+#'
+#' ## Highlight a single bar
+#' bar_chart(revenue2018, company, revenue, limit = 10, highlight = "Roche")
+#'
+#' ## Use facets to show the top 10 companies over the years
+#' bar_chart(biomedicalrevenue, company, revenue, facet = year, limit = 10)
 #'
 #' @import ggplot2
 #' @importFrom magrittr %>%

@@ -11,8 +11,8 @@
 #' @param text_size The size of the bar annotation text in pt
 #'
 #' @examples
-#' `%>%` <- magrittr::`%>%`
 #' if (requireNamespace("tidyr")) {
+#'   library(magrittr)
 #'   data(biomedicalrevenue)
 #'   biomedicalrevenue %>%
 #'   dplyr::filter(year > 2016) %>%
@@ -26,9 +26,22 @@
 #' }
 #'
 #' data(mtcars)
-#' mtcars %>%
-#'   dplyr::mutate(model = row.names(.), hpz = scale(hp)) %>%
-#'   diverging_bar_chart(model, hpz)
+#' mtcars_z <- dplyr::transmute(
+#'   .data = mtcars,
+#'   model = row.names(mtcars),
+#'   hpz = scale(hp)
+#' )
+#'
+#' diverging_bar_chart(mtcars_z, model, hpz)
+#'
+#' ## Change the colors
+#' diverging_bar_chart(mtcars_z, model, hpz, bar_color = c("darkgreen", "darkred"))
+#'
+#' ## Increase the axis label font size
+#' diverging_bar_chart(mtcars_z, model, hpz, text_size = 14)
+#'
+#' ## Display the axis label text in the same color as the bars
+#' diverging_bar_chart(mtcars_z, model, hpz, text_color = c("#1F77B4", "#FF7F0E"))
 #'
 #' @import ggplot2
 #' @importFrom rlang .data
