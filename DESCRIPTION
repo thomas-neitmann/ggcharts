@@ -7,10 +7,11 @@ Maintainer: Thomas Neitmann <th.neitmann@gmail.com>
 Description: This package intends to make it (much) easier to create common
     charts, such a bar charts, by taking care of a lot of data preprocessing
     and plot customization for you.
-Depends: R (>= 2.10)
+Depends:
+    R (>= 2.10),
+    ggplot2  
 Imports:
     dplyr,
-    ggplot2,
     magrittr,
     rlang,
     tidytext
