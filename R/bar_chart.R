@@ -16,12 +16,11 @@
 #' @param limit integer. If a value for limit is provided only the first limit records will be displayed
 #'
 #' @examples
-#'
 #' library(dplyr)
 #' data(biomedicalrevenue)
 #' biomedicalrevenue %>%
 #'   filter(year == 2018) %>%
-#'   bar_chart(company, year, limit = 10)
+#'   bar_chart(company, revenue, limit = 10)
 #'
 #' @import ggplot2
 #' @importFrom magrittr %>%
