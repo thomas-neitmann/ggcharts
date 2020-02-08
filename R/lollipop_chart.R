@@ -19,11 +19,33 @@
 #' @author Thomas Neitmann
 #'
 #' @examples
-#' library(dplyr)
 #' data(biomedicalrevenue)
-#' biomedicalrevenue %>%
-#'   filter(year == 2015) %>%
-#'   bar_chart(company, year, limit = 10)
+#' revenue2016 <- biomedicalrevenue[biomedicalrevenue$year == 2016, ]
+#' revenue_bayer <- biomedicalrevenue[biomedicalrevenue$company == "Bayer", ]
+#'
+#' ## By default lollipop_chart() creates a horizontal and sorted plot
+#' lollipop_chart(revenue2016, company, revenue)
+#'
+#' ## Create a vertical, non-sorted lollipop chart
+#' lollipop_chart(revenue_bayer, year, revenue, horizontal = FALSE, sort = FALSE)
+#'
+#' ## Limit the number of lollipops to the top 15
+#' lollipop_chart(revenue2016, company, revenue, limit = 15)
+#'
+#' ## Change the color of the whole lollipop
+#' lollipop_chart(revenue2016, company, revenue, line_color = "purple")
+#'
+#' ## Change the color of the lollipop stick and head individually
+#' lollipop_chart(revenue2016, company, revenue, point_color = "darkgreen", line_color = "gray")
+#'
+#' ## Decrease the lollipop head size
+#' lollipop_chart(revenue2016, company, revenue, point_size = 2.5)
+#'
+#' ## Highlight a single bar
+#' lollipop_chart(revenue2016, company, revenue, limit = 15, highlight = "Roche")
+#'
+#' ## Use facets to show the top 10 companies over the years
+#' lollipop_chart(biomedicalrevenue, company, revenue, facet = year, limit = 10)
 #'
 #' @import ggplot2
 #' @importFrom magrittr %>%

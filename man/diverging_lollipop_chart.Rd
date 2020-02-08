@@ -37,8 +37,8 @@ and negative lollipops}
 Easily create a diverging lollipop chart
 }
 \examples{
-`\%>\%` <- magrittr::`\%>\%`
 if (requireNamespace("tidyr")) {
+  library(magrittr)
   data(biomedicalrevenue)
   biomedicalrevenue \%>\%
   dplyr::filter(year > 2016) \%>\%
@@ -52,8 +52,21 @@ if (requireNamespace("tidyr")) {
 }
 
 data(mtcars)
-mtcars \%>\%
-  dplyr::mutate(model = row.names(.), hpz = scale(hp)) \%>\%
-  diverging_lollipop_chart(model, hpz)
+mtcars_z <- dplyr::transmute(
+  .data = mtcars,
+  model = row.names(mtcars),
+  hpz = scale(hp)
+)
+
+diverging_lollipop_chart(mtcars_z, model, hpz)
+
+## Change the colors
+diverging_lollipop_chart(mtcars_z, model, hpz, lollipop_colors = c("darkgreen", "darkred"))
+
+## Increase the axis label font size
+diverging_lollipop_chart(mtcars_z, model, hpz, text_size = 14)
+
+## Display the axis label text in the same color as the bars
+diverging_lollipop_chart(mtcars_z, model, hpz, text_color = c("#1F77B4", "#FF7F0E"))
 
 }
