@@ -39,7 +39,7 @@ post_process_plot <- function(plot, horizontal, facet, highlight,
   if (has_facet) {
     plot <- plot +
       facet_wrap(vars(!!facet), scales = "free_y") +
-      tidytext::scale_x_reordered()
+      scale_x_reordered()
   }
 
   plot
