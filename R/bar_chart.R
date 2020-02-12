@@ -72,11 +72,29 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4",
 
   p <- ggplot(data, aes(!!x, !!y, ...)) +
     eval(.geom_col) +
-    theme_discrete_chart(horizontal) +
     scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 
   args <- list(plot = p, horizontal = horizontal, fill = has_fill,
                highlight = highlight, color = bar_color)
   if (has_facet) args$facet <- quote(!!facet)
   do.call(post_process_plot, args)
+}
+
+column_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4",
+                         highlight = NULL) {
+  args <- list(
+    data = data,
+    x = quote(x),
+    y = quote(y),
+    `...` = ...,
+    bar_color = bar_color,
+    highlight = highlight,
+    horizontal = FALSE,
+    sort = FALSE,
+    limit = NULL
+  ) %>% print()
+  if (!missing(facet)) {
+    args$facet <- facet
+  }
+  do.call(bar_chart, args)
 }

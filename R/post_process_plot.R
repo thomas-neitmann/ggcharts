@@ -42,5 +42,5 @@ post_process_plot <- function(plot, horizontal, facet, highlight,
       scale_x_reordered()
   }
 
-  plot
+  plot + theme_discrete_chart()
 }
