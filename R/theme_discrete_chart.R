@@ -3,7 +3,7 @@
 theme_discrete_chart <- function(horizontal, ...) {
 
   if (horizontal) {
-    t <- theme_minimal(...) +
+    t <- theme_minimal(base_size = 14, ...) +
       theme(
         panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank(),
