@@ -76,7 +76,7 @@ diverging_bar_chart <- function(data, x, y, bar_colors = c("#1F77B4", "#FF7F0E")
       aes(label = !!x, y = 0, hjust = "left"),
       nudge_y = limit * .013
     ) +
-    geom_hline(yintercept = 0) +
+    geom_hline(yintercept = 0, color = "darkgray") +
     ylim(-limit, limit) +
     theme_discrete_chart() +
     theme(
