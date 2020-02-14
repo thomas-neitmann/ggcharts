@@ -43,7 +43,7 @@
 #' @export
 bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4",
                       highlight = NULL, sort = TRUE, horizontal = TRUE,
-                      limit = NULL) {
+                      limit = NULL, threshold = NULL) {
   if (!is.null(limit) && !sort) {
     stop("The limit argument can only be set when sort = TRUE")
   }
@@ -56,9 +56,9 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4",
 
   if (has_facet) {
     facet <- rlang::enquo(facet)
-    data <- pre_process_data(data, !!x, !!y, !!facet, sort, limit, highlight)
+    data <- pre_process_data(data, !!x, !!y, !!facet, sort, limit, highlight, threshold)
   } else {
-    data <- pre_process_data(data, !!x, !!y, sort = sort, limit = limit, highlight = highlight)
+    data <- pre_process_data(data, !!x, !!y, sort = sort, limit = limit, highlight = highlight, threshold = threshold)
   }
 
   .geom_col <- quote(geom_col(width = .75))

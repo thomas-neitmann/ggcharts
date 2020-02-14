@@ -1,6 +1,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom rlang :=
-pre_process_data <- function(data, x, y, facet, sort, limit, highlight) {
+pre_process_data <- function(data, x, y, facet, highlight, sort, limit,
+                             threshold) {
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
@@ -20,10 +21,14 @@ pre_process_data <- function(data, x, y, facet, sort, limit, highlight) {
 
   if (sort) {
 
-    if (is.null(limit)) {
-      data <- dplyr::arrange(data, !!y)
-    } else {
+    if (!is.null(limit)) {
       data <- dplyr::top_n(data, limit, !!y)
+    } else if (!is.null(threshold)) {
+      data <- data %>%
+        dplyr::arrange(!!y) %>%
+        dplyr::filter(!!y > threshold)
+    } else{
+      data <- dplyr::arrange(data, !!y)
     }
 
     data <- dplyr::ungroup(data)
