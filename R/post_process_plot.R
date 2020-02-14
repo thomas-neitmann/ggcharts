@@ -1,5 +1,4 @@
-#' @importFrom ggplot2 coord_flip scale_color_manual scale_fill_manual
-#'             facet_wrap theme vars
+#' @import ggplot2
 post_process_plot <- function(plot, horizontal = TRUE, facet = NULL,
                               highlight = NULL, fill = FALSE, color = NULL) {
   facet <- rlang::enquo(facet)
