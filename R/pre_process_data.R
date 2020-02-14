@@ -1,7 +1,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom rlang :=
-pre_process_data <- function(data, x, y, facet, highlight, sort, limit,
-                             threshold) {
+pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
+                             sort = TRUE, limit = NULL, threshold = NULL) {
 
   if (!is.null(limit) && !sort) {
     stop("The `limit` argument can only be set when sort = TRUE")
@@ -15,6 +15,8 @@ pre_process_data <- function(data, x, y, facet, highlight, sort, limit,
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
+  facet <- rlang::enquo(facet)
+  has_facet <- !rlang::quo_is_null(facet)
 
   if (!is.null(highlight)) {
     data <- dplyr::mutate(data, highlight = dplyr::if_else(
@@ -22,10 +24,7 @@ pre_process_data <- function(data, x, y, facet, highlight, sort, limit,
     )
   }
 
-  has_facet <- !missing(facet)
-
   if (has_facet) {
-    facet <- rlang::enquo(facet)
     data <- dplyr::group_by(data, !!facet)
   }
 

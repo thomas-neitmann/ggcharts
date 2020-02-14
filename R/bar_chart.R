@@ -41,22 +41,25 @@
 #' @import ggplot2
 #' @importFrom magrittr %>%
 #' @export
-bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4",
+bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
                       highlight = NULL, sort = TRUE, horizontal = TRUE,
                       limit = NULL, threshold = NULL) {
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
+  facet <- rlang::enquo(facet)
+  has_facet <- !rlang::quo_is_null(facet)
   dots <- rlang::enquos(...)
-  has_facet <- !missing(facet)
   has_fill <- "fill" %in% names(dots)
 
-  if (has_facet) {
-    facet <- rlang::enquo(facet)
-    data <- pre_process_data(data, !!x, !!y, !!facet, sort, limit, highlight, threshold)
-  } else {
-    data <- pre_process_data(data, !!x, !!y, sort = sort, limit = limit, highlight = highlight, threshold = threshold)
-  }
+  data <- pre_process_data(
+    data = data, x = !!x, y = !!y,
+    facet = !!facet,
+    highlight = highlight,
+    sort = sort,
+    limit = limit,
+    threshold = threshold
+  )
 
   .geom_col <- quote(geom_col(width = .75))
   if (has_fill) {
@@ -72,8 +75,12 @@ bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4",
     theme_discrete_chart(horizontal) +
     scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 
-  args <- list(plot = p, horizontal = horizontal, fill = has_fill,
-               highlight = highlight, color = bar_color)
-  if (has_facet) args$facet <- quote(!!facet)
-  do.call(post_process_plot, args)
+  post_process_plot(
+    plot = p,
+    horizontal = horizontal,
+    facet = !!facet,
+    fill = has_fill,
+    highlight = highlight,
+    color = bar_color
+  )
 }

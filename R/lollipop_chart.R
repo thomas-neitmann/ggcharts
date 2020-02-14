@@ -50,7 +50,7 @@
 #' @import ggplot2
 #' @importFrom magrittr %>%
 #' @export
-lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
+lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
                            line_color = "#1F77B4", point_size = 4,
                            point_color = line_color, highlight = NULL,
                            sort = TRUE, horizontal = TRUE, limit = NULL,
@@ -58,15 +58,18 @@ lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
+  facet <- rlang::enquo(facet)
+  has_facet <- !rlang::quo_is_null(facet)
   dot_names <- names(rlang::enquos(...))
-  has_facet <- !missing(facet)
 
-  if (has_facet) {
-    facet <- rlang::enquo(facet)
-    data <- pre_process_data(data, !!x, !!y, !!facet, sort, limit, highlight, threshold)
-  } else {
-    data <- pre_process_data(data, !!x, !!y, sort = sort, limit = limit, highlight = highlight, threshold = threshold)
-  }
+  data <- pre_process_data(
+    data = data, x = !!x, y = !!y,
+    facet = !!facet,
+    highlight = highlight,
+    sort = sort,
+    limit = limit,
+    threshold = threshold
+  )
 
   .geom_point <- quote(geom_point())
   .geom_segment <- quote(
@@ -90,8 +93,12 @@ lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
     theme_discrete_chart(horizontal) +
     scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 
-  args <- list(plot = p, horizontal = horizontal, fill = FALSE,
-               highlight = highlight, color = line_color)
-  if (has_facet) args$facet <- quote(!!facet)
-  do.call(post_process_plot, args)
+  post_process_plot(
+    plot = p,
+    horizontal = horizontal,
+    facet = !!facet,
+    fill = FALSE,
+    highlight = highlight,
+    color = line_color
+  )
 }

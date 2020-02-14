@@ -1,13 +1,8 @@
 #' @importFrom ggplot2 coord_flip scale_color_manual scale_fill_manual
 #'             facet_wrap theme vars
-post_process_plot <- function(plot, horizontal, facet, highlight,
-                              fill, color) {
-  if (!missing(facet)) {
-    has_facet <- TRUE
-    facet <- rlang::enquo(facet)
-  } else {
-    has_facet <- FALSE
-  }
+post_process_plot <- function(plot, horizontal = TRUE, facet = NULL,
+                              highlight = NULL, fill = FALSE, color = NULL) {
+  facet <- rlang::enquo(facet)
 
   if (horizontal) {
     plot <- plot + coord_flip()
@@ -36,7 +31,7 @@ post_process_plot <- function(plot, horizontal, facet, highlight,
     plot <- plot + scale_fill_manual(values = matplotlib_colors)
   }
 
-  if (has_facet) {
+  if (!rlang::quo_is_null(facet)) {
     plot <- plot +
       facet_wrap(vars(!!facet), scales = "free_y") +
       scale_x_reordered()
