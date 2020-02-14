@@ -55,9 +55,6 @@ lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
                            point_color = line_color, highlight = NULL,
                            sort = TRUE, horizontal = TRUE, limit = NULL,
                            threshold = NULL) {
-  if (!is.null(limit) && !sort) {
-    stop("The limit argument can only be set when sort = TRUE")
-  }
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)

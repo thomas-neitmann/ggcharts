@@ -44,9 +44,6 @@
 bar_chart <- function(data, x, y, facet, ..., bar_color = "#1F77B4",
                       highlight = NULL, sort = TRUE, horizontal = TRUE,
                       limit = NULL, threshold = NULL) {
-  if (!is.null(limit) && !sort) {
-    stop("The limit argument can only be set when sort = TRUE")
-  }
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
