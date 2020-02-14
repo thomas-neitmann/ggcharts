@@ -15,6 +15,7 @@
 #' @param sort logical. Should the data be sorted before plotting?
 #' @param horizontal logical. Should coord_flip() be added to the plot
 #' @param limit integer. If a value for limit is provided only the first limit records will be displayed
+#' @param threshold numeric. If a value for threshold is provided only records with y > threshold will be displayed
 #'
 #' @author Thomas Neitmann
 #'
@@ -32,6 +33,9 @@
 #' ## Limit the number of lollipops to the top 15
 #' lollipop_chart(revenue2016, company, revenue, limit = 15)
 #'
+#' ## Display only companies with revenue > 50B.
+#' lollipop_chart(revenue2016, company, revenue, threshold = 50)
+#'
 #' ## Change the color of the whole lollipop
 #' lollipop_chart(revenue2016, company, revenue, line_color = "purple")
 #'
@@ -41,7 +45,7 @@
 #' ## Decrease the lollipop head size
 #' lollipop_chart(revenue2016, company, revenue, point_size = 2.5)
 #'
-#' ## Highlight a single bar
+#' ## Highlight a single lollipop
 #' lollipop_chart(revenue2016, company, revenue, limit = 15, highlight = "Roche")
 #'
 #' ## Use facets to show the top 10 companies over the years
@@ -50,25 +54,26 @@
 #' @import ggplot2
 #' @importFrom magrittr %>%
 #' @export
-lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
+lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
                            line_color = "#1F77B4", point_size = 4,
                            point_color = line_color, highlight = NULL,
-                           sort = TRUE, horizontal = TRUE, limit = NULL) {
-  if (!is.null(limit) && !sort) {
-    stop("The limit argument can only be set when sort = TRUE")
-  }
+                           sort = TRUE, horizontal = TRUE, limit = NULL,
+                           threshold = NULL) {
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
+  facet <- rlang::enquo(facet)
+  has_facet <- !rlang::quo_is_null(facet)
   dot_names <- names(rlang::enquos(...))
-  has_facet <- !missing(facet)
 
-  if (has_facet) {
-    facet <- rlang::enquo(facet)
-    data <- pre_process_data(data, !!x, !!y, !!facet, sort, limit, highlight)
-  } else {
-    data <- pre_process_data(data, !!x, !!y, sort = sort, limit = limit, highlight = highlight)
-  }
+  data <- pre_process_data(
+    data = data, x = !!x, y = !!y,
+    facet = !!facet,
+    highlight = highlight,
+    sort = sort,
+    limit = limit,
+    threshold = threshold
+  )
 
   .geom_point <- quote(geom_point())
   .geom_segment <- quote(
@@ -92,8 +97,12 @@ lollipop_chart <- function(data, x, y, facet, ..., line_size = 0.75,
     theme_discrete_chart(horizontal) +
     scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 
-  args <- list(plot = p, horizontal = horizontal, fill = FALSE,
-               highlight = highlight, color = line_color)
-  if (has_facet) args$facet <- quote(!!facet)
-  do.call(post_process_plot, args)
+  post_process_plot(
+    plot = p,
+    horizontal = horizontal,
+    facet = !!facet,
+    fill = FALSE,
+    highlight = highlight,
+    color = line_color
+  )
 }

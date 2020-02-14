@@ -8,7 +8,7 @@ lollipop_chart(
   data,
   x,
   y,
-  facet,
+  facet = NULL,
   ...,
   line_size = 0.75,
   line_color = "#1F77B4",
@@ -17,7 +17,8 @@ lollipop_chart(
   highlight = NULL,
   sort = TRUE,
   horizontal = TRUE,
-  limit = NULL
+  limit = NULL,
+  threshold = NULL
 )
 }
 \arguments{
@@ -46,6 +47,8 @@ lollipop_chart(
 \item{horizontal}{logical. Should coord_flip() be added to the plot}
 
 \item{limit}{integer. If a value for limit is provided only the first limit records will be displayed}
+
+\item{threshold}{numeric. If a value for threshold is provided only records with y > threshold will be displayed}
 }
 \description{
 Easily create a lollipop chart using ggplot2
@@ -64,6 +67,9 @@ lollipop_chart(revenue_bayer, year, revenue, horizontal = FALSE, sort = FALSE)
 ## Limit the number of lollipops to the top 15
 lollipop_chart(revenue2016, company, revenue, limit = 15)
 
+## Display only companies with revenue > 50B.
+lollipop_chart(revenue2016, company, revenue, threshold = 50)
+
 ## Change the color of the whole lollipop
 lollipop_chart(revenue2016, company, revenue, line_color = "purple")
 
@@ -73,7 +79,7 @@ lollipop_chart(revenue2016, company, revenue, point_color = "darkgreen", line_co
 ## Decrease the lollipop head size
 lollipop_chart(revenue2016, company, revenue, point_size = 2.5)
 
-## Highlight a single bar
+## Highlight a single lollipop
 lollipop_chart(revenue2016, company, revenue, limit = 15, highlight = "Roche")
 
 ## Use facets to show the top 10 companies over the years
