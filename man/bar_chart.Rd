@@ -8,13 +8,14 @@ bar_chart(
   data,
   x,
   y,
-  facet,
+  facet = NULL,
   ...,
   bar_color = "#1F77B4",
   highlight = NULL,
   sort = TRUE,
   horizontal = TRUE,
-  limit = NULL
+  limit = NULL,
+  threshold = NULL
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ bar_chart(
 \item{horizontal}{logical. Should coord_flip() be added to the plot}
 
 \item{limit}{integer. If a value for limit is provided only the first limit records will be displayed}
+
+\item{threshold}{numeric. If a value for threshold is provided only records with y > threshold will be displayed}
 }
 \description{
 Easily create a bar chart
@@ -54,6 +57,9 @@ bar_chart(revenue_roche, year, revenue, horizontal = FALSE, sort = FALSE)
 
 ## Limit the number of bars to the top 10
 bar_chart(revenue2018, company, revenue, limit = 10)
+
+## Display only companies with revenue > 40B.
+bar_chart(revenue2018, company, revenue, threshold = 40)
 
 ## Change the bar color
 bar_chart(revenue2018, company, revenue, bar_color = "purple")

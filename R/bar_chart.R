@@ -14,6 +14,7 @@
 #' @param sort logical. Should the data be sorted before plotting?
 #' @param horizontal logical. Should coord_flip() be added to the plot
 #' @param limit integer. If a value for limit is provided only the first limit records will be displayed
+#' @param threshold numeric. If a value for threshold is provided only records with y > threshold will be displayed
 #'
 #' @examples
 #' data(biomedicalrevenue)
@@ -28,6 +29,9 @@
 #'
 #' ## Limit the number of bars to the top 10
 #' bar_chart(revenue2018, company, revenue, limit = 10)
+#'
+#' ## Display only companies with revenue > 40B.
+#' bar_chart(revenue2018, company, revenue, threshold = 40)
 #'
 #' ## Change the bar color
 #' bar_chart(revenue2018, company, revenue, bar_color = "purple")

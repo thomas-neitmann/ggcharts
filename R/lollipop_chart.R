@@ -15,6 +15,7 @@
 #' @param sort logical. Should the data be sorted before plotting?
 #' @param horizontal logical. Should coord_flip() be added to the plot
 #' @param limit integer. If a value for limit is provided only the first limit records will be displayed
+#' @param threshold numeric. If a value for threshold is provided only records with y > threshold will be displayed
 #'
 #' @author Thomas Neitmann
 #'
@@ -32,6 +33,9 @@
 #' ## Limit the number of lollipops to the top 15
 #' lollipop_chart(revenue2016, company, revenue, limit = 15)
 #'
+#' ## Display only companies with revenue > 50B.
+#' lollipop_chart(revenue2016, company, revenue, threshold = 50)
+#'
 #' ## Change the color of the whole lollipop
 #' lollipop_chart(revenue2016, company, revenue, line_color = "purple")
 #'
@@ -41,7 +45,7 @@
 #' ## Decrease the lollipop head size
 #' lollipop_chart(revenue2016, company, revenue, point_size = 2.5)
 #'
-#' ## Highlight a single bar
+#' ## Highlight a single lollipop
 #' lollipop_chart(revenue2016, company, revenue, limit = 15, highlight = "Roche")
 #'
 #' ## Use facets to show the top 10 companies over the years
