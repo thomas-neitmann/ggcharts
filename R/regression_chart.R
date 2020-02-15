@@ -14,6 +14,7 @@ regression_chart <- function(data, x, y, ..., point_color = "black", point_size 
     scale_y_continuous(expand = expand) +
     theme_minimal() +
     theme(
+      text = element_text(color = "black", size = 14),
       panel.grid.minor = element_blank(),
       panel.grid.major = element_blank(),
       axis.ticks = element_line(color = "darkgray"),
