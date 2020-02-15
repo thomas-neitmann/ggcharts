@@ -3,12 +3,11 @@ regression_chart <- function(data, x, y, ..., point_color = "black", point_size 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
 
-  point_color = scales::alpha(point_color, point_alpha)
+  point_color <- scales::alpha(point_color, point_alpha)
+  axis_color <- "#5c5c5c"
   expand <- expand_scale(mult = .015)
 
   ggplot(data, aes(!!x, !!y, ...)) +
-    geom_point(color = point_color) +
-    geom_smooth(method = "lm") +
     geom_point(color = point_color, size = point_size) +
     geom_smooth(formula = y ~ x, method = "lm") +
     scale_x_continuous(expand = expand) +
@@ -18,11 +17,11 @@ regression_chart <- function(data, x, y, ..., point_color = "black", point_size 
       text = element_text(color = "black", size = 14),
       panel.grid.minor = element_blank(),
       panel.grid.major = element_blank(),
-      axis.ticks = element_line(color = "darkgray"),
-      axis.ticks.length = grid::unit(2, "mm"),
+      axis.ticks = element_line(color = axis_color),
+      axis.ticks.length = unit(1.75, "mm"),
       axis.line = element_line(
-        color = "darkgray",
-        arrow = grid::arrow(length = grid::unit(2, "mm")),
+        color = axis_color,
+        arrow = grid::arrow(length = unit(2, "mm")),
         lineend = "round"
       )
     )
