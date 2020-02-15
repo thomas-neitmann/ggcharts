@@ -14,42 +14,7 @@ post_process_plot <- function(plot, horizontal, facet, highlight,
   }
 
   if (!is.null(highlight)) {
-    n_color <- length(color)
-    n_highlight <- length(highlight)
-    non_highl_col <- scales::alpha("#e0e0e0", .7)
-    if (n_color == n_highlight) {
-      colors <- stats::setNames(
-        object = c(color, non_highl_col),
-        nm = c(highlight, "other")
-      )
-    } else if (n_color == 1L) {
-      message("Using the same color to highlight all bars.")
-      colors <- stats::setNames(
-        object = c(rep(color, length(highlight)), non_highl_col),
-        nm = c(highlight, "other")
-      )
-    } else if (n_color < n_highlight) {
-      warning(
-        "The number of colors provided is less than the number of highlighted bars. ",
-        "Recycling the last provided color for all remaining values.",
-        call. = FALSE
-      )
-      diff <- n_highlight - n_color + 1
-      colors <- stats::setNames(
-        object = c(color[1:(n_color-1)], rep(color[n_color], diff), non_highl_col),
-        nm = c(highlight, "other")
-      )
-    } else {
-      warning(
-        "The number of colors provided is greater thah the number of highlighted bars. ",
-        "Ignoring the excessive color(s).",
-        call. = FALSE
-      )
-      colors <- stats::setNames(
-        object = c(color[1:n_highlight], non_highl_col),
-        nm = c(highlight, "other")
-      )
-    }
+    colors <- create_highlight_colors(highlight, color)
 
     plot <- plot +
       scale_fill_manual(values = colors, aesthetics = c("fill", "color")) +
@@ -67,4 +32,54 @@ post_process_plot <- function(plot, horizontal, facet, highlight,
   }
 
   plot
+}
+
+create_highlight_colors <- function(highlight, color) {
+
+  n_color <- length(color)
+  n_highlight <- length(highlight)
+  non_highl_col <- scales::alpha("#e0e0e0", .7)
+
+  if (n_color == n_highlight) {
+
+    colors <- stats::setNames(
+      object = c(color, non_highl_col),
+      nm = c(highlight, "other")
+    )
+
+  } else if (n_color == 1) {
+
+    message("Using the same color to highlight all bars.")
+    colors <- stats::setNames(
+      object = c(rep(color, length(highlight)), non_highl_col),
+      nm = c(highlight, "other")
+    )
+
+  } else if (n_color < n_highlight) {
+
+    warning(
+      "The number of colors provided is less than the number of highlighted bars. ",
+      "Recycling the last provided color for all remaining values.",
+      call. = FALSE
+    )
+    diff <- n_highlight - n_color + 1
+    colors <- stats::setNames(
+      object = c(color[1:(n_color-1)], rep(color[n_color], diff), non_highl_col),
+      nm = c(highlight, "other")
+    )
+
+  } else {
+
+    warning(
+      "The number of colors provided is greater thah the number of highlighted bars. ",
+      "Ignoring the excessive color(s).",
+      call. = FALSE
+    )
+    colors <- stats::setNames(
+      object = c(color[1:n_highlight], non_highl_col),
+      nm = c(highlight, "other")
+    )
+
+  }
+  colors
 }
