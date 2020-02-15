@@ -9,6 +9,7 @@ regression_chart <- function(data, x, y, ..., point_color = "black", point_size 
   ggplot(data, aes(!!x, !!y, ...)) +
     geom_point(color = point_color) +
     geom_smooth(method = "lm") +
+    geom_smooth(formula = y ~ x, method = "lm") +
     scale_x_continuous(expand = expand) +
     scale_y_continuous(expand = expand) +
     theme_minimal() +
