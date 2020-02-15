@@ -22,7 +22,8 @@ post_process_plot <- function(plot, horizontal = TRUE, facet = NULL,
     }
 
     plot <- plot +
-      scale_fill_manual(values = colors, aesthetics = c("fill", "color")) +
+      scale_fill_manual(values = colors) +
+      scale_color_manual(values = colors) +
       theme(legend.position = "none")
   }
 
