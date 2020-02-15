@@ -42,18 +42,12 @@ create_highlight_colors <- function(highlight, color) {
 
   if (n_color == n_highlight) {
 
-    colors <- stats::setNames(
-      object = c(color, non_highl_col),
-      nm = c(highlight, "other")
-    )
+    colors <- c(color, non_highl_col)
 
-  } else if (n_color == 1) {
+  } else if (n_color == 1L) {
 
     message("Using the same color to highlight all bars.")
-    colors <- stats::setNames(
-      object = c(rep(color, length(highlight)), non_highl_col),
-      nm = c(highlight, "other")
-    )
+    colors <- c(rep(color, length(highlight)), non_highl_col)
 
   } else if (n_color < n_highlight) {
 
@@ -63,10 +57,7 @@ create_highlight_colors <- function(highlight, color) {
       call. = FALSE
     )
     diff <- n_highlight - n_color + 1
-    colors <- stats::setNames(
-      object = c(color[1:(n_color-1)], rep(color[n_color], diff), non_highl_col),
-      nm = c(highlight, "other")
-    )
+    colors <- c(color[1:(n_color-1)], rep(color[n_color], diff), non_highl_col)
 
   } else {
 
@@ -75,11 +66,10 @@ create_highlight_colors <- function(highlight, color) {
       "Ignoring the excessive color(s).",
       call. = FALSE
     )
-    colors <- stats::setNames(
-      object = c(color[1:n_highlight], non_highl_col),
-      nm = c(highlight, "other")
-    )
+    colors <-  c(color[1:n_highlight], non_highl_col)
 
   }
+
+  names(colors) <- c(highlight, "other")
   colors
 }
