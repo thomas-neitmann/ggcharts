@@ -47,7 +47,7 @@
 #' @importFrom rlang .data
 #' @export
 diverging_bar_chart <- function(data, x, y, bar_colors = c("#1F77B4", "#FF7F0E"),
-                                text_color = "black", text_size = 10) {
+                                text_color = "black", text_size = 10, highlight = NULL) {
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
 
@@ -56,9 +56,31 @@ diverging_bar_chart <- function(data, x, y, bar_colors = c("#1F77B4", "#FF7F0E")
     flag = ifelse(!!y >= 0, "Y", "N")
   )
 
+  if (!is.null(highlight)) {
+    data <- data %>% dplyr::mutate(
+      flag = dplyr::if_else(
+        !!x %in% highlight,
+        as.character(!!x),
+        paste(flag, "other", sep = "_")
+      )
+    )
+    non_hghl_colors <- stats::setNames(
+      object = colorspace::lighten(bar_colors, .8),
+      nm = c("Y_other", "N_other")
+    )
+    hghl_colors <- vapply(highlight, function(nm) {
+      value <- data %>%
+        dplyr::filter(!!x == nm) %>%
+        dplyr::pull(!!y)
+      if (value >= 0) return(bar_colors[1]) else return(bar_colors[2])
+    }, character(1))
+    bar_colors <- c(hghl_colors, non_hghl_colors)
+  } else {
+    names(bar_colors) <- c("Y", "N")
+  }
+
   text_size <- pt2mm(text_size)
   limit <- max(dplyr::pull(data, !!y)) * 1.05
-  names(bar_colors) <- c("Y", "N")
   if (length(text_color) == 1) text_color <- rep(text_color, 2)
 
   ggplot(data, aes(!!x, !!y, fill = .data$flag)) +
