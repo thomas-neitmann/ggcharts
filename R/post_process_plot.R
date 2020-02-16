@@ -26,7 +26,11 @@ post_process_plot <- function(plot, horizontal = TRUE, facet = NULL,
       scale_x_reordered()
   }
 
-  plot
+  if (utils::packageVersion("ggplot2") >= "3.2.1") {
+    expand_scale <- expansion
+  }
+
+  plot + scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 }
 
 create_highlight_colors <- function(highlight, color) {
