@@ -41,15 +41,15 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
     }
 
     data <- dplyr::ungroup(data)
-  }
 
-  if (has_facet) {
-    data <- data %>%
-      dplyr::mutate(!!x := reorder_within(!!x, !!y, !!facet)) %>%
-      dplyr::arrange(!!facet, !!y)
-  } else {
-    data <- data %>%
-      dplyr::mutate(!!x := reorder(!!x, !!y))
+    if (has_facet) {
+      data <- data %>%
+        dplyr::mutate(!!x := reorder_within(!!x, !!y, !!facet)) %>%
+        dplyr::arrange(!!facet, !!y)
+    } else {
+      data <- data %>%
+        dplyr::mutate(!!x := reorder(!!x, !!y))
+    }
   }
 
   data
