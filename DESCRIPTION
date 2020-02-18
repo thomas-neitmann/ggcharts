@@ -14,7 +14,9 @@ Imports:
     dplyr,
     magrittr,
     rlang
-Suggests: tidyr
+Suggests: 
+    tidyr,
+    testthat (>= 2.1.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
