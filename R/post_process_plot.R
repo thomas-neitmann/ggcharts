@@ -1,6 +1,7 @@
 #' @import ggplot2
-post_process_plot <- function(plot, horizontal = TRUE, facet = NULL,
-                              highlight = NULL, fill = FALSE, color = NULL) {
+post_process_plot <- function(plot, is_sorted = TRUE, horizontal = TRUE,
+                              facet = NULL, highlight = NULL, fill = FALSE,
+                              color = NULL) {
   facet <- rlang::enquo(facet)
 
   if (horizontal) {
@@ -21,9 +22,17 @@ post_process_plot <- function(plot, horizontal = TRUE, facet = NULL,
   }
 
   if (!rlang::quo_is_null(facet)) {
-    plot <- plot +
-      facet_wrap(vars(!!facet), scales = "free_y") +
-      scale_x_reordered()
+    if (horizontal) {
+      plot <- plot + facet_wrap(vars(!!facet), scales = "free_y")
+
+      if (is_sorted) {
+        plot <- plot + scale_x_reordered()
+      }
+
+    } else {
+      plot <- plot + facet_wrap(vars(!!facet))
+    }
+
   }
 
   if (utils::packageVersion("ggplot2") >= "3.3.0") {

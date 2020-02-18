@@ -80,6 +80,7 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
 
   post_process_plot(
     plot = p,
+    is_sorted = sort,
     horizontal = horizontal,
     facet = !!facet,
     fill = has_fill,
