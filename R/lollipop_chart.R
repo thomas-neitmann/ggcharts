@@ -98,6 +98,7 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
 
   post_process_plot(
     plot = p,
+    is_sorted = TRUE,
     horizontal = horizontal,
     facet = !!facet,
     fill = FALSE,
