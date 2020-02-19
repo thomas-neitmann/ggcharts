@@ -29,3 +29,18 @@ vdiffr::expect_doppelganger(
   "Horizontal Sorted Bar Chart With Facets",
   bar_chart(biomedicalrevenue, company, revenue, facet = year)
 )
+
+# vdiffr::expect_doppelganger(
+#   "Vertical Sorted Bar Chart With Facets",
+#   bar_chart(biomedicalrevenue, year, revenue, facet = company, horizontal = FALSE)
+# )
+
+vdiffr::expect_doppelganger(
+  "Horizontal Non-Sorted Bar Chart With Facets",
+  bar_chart(biomedicalrevenue, year, revenue, facet = company, sort = FALSE)
+)
+
+vdiffr::expect_doppelganger(
+  "Vertical Non-Sorted Bar Chart With Facets",
+  bar_chart(biomedicalrevenue, year, revenue, facet = company, sort = FALSE, horizontal = FALSE)
+)

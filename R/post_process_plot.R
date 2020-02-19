@@ -22,15 +22,23 @@ post_process_plot <- function(plot, is_sorted = TRUE, horizontal = TRUE,
   }
 
   if (!rlang::quo_is_null(facet)) {
-    if (horizontal) {
-      plot <- plot + facet_wrap(vars(!!facet), scales = "free_y")
+    x <- rlang::as_name(plot$mapping$x)
+    is_numeric <- is.numeric(plot$data[[x]])
 
-      if (is_sorted) {
-        plot <- plot + scale_x_reordered()
-      }
-
+    if (is_numeric) {
+      scales <- "fixed"
     } else {
-      plot <- plot + facet_wrap(vars(!!facet))
+      if (horizontal) {
+        scales <- "free_y"
+      } else {
+        scales <- "free_x"
+      }
+    }
+
+    plot <- plot + facet_wrap(vars(!!facet), scales = scales)
+
+    if (is_sorted) {
+      plot <- plot + scale_x_reordered()
     }
 
   }
