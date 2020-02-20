@@ -58,15 +58,11 @@ diverging_bar_chart <- function(data, x, y, bar_colors = c("#1F77B4", "#FF7F0E")
 
   if (!is.null(highlight)) {
     data <- data %>% dplyr::mutate(
-      flag = dplyr::if_else(
-        !!x %in% highlight,
-        as.character(!!x),
-        paste(flag, "other", sep = "_")
-      )
+      flag = ifelse(!!x %in% highlight, as.character(!!x), flag)
     )
     non_hghl_colors <- stats::setNames(
       object = colorspace::lighten(bar_colors, .8),
-      nm = c("Y_other", "N_other")
+      nm = c("Y", "N")
     )
     hghl_colors <- vapply(highlight, function(nm) {
       value <- data %>%
