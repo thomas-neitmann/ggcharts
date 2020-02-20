@@ -16,6 +16,10 @@
 #' @param limit integer. If a value for limit is provided only the first limit records will be displayed
 #' @param threshold numeric. If a value for threshold is provided only records with y > threshold will be displayed
 #'
+#' @details
+#' \code{column_chart} is a shortcut for \code{bar_chart} with \code{horizontal = FALSE}
+#' and \code{sort = FALSE} if \code{x} is numeric.
+#'
 #' @examples
 #' data(biomedicalrevenue)
 #' revenue2018 <- biomedicalrevenue[biomedicalrevenue$year == 2018, ]
@@ -26,6 +30,9 @@
 #'
 #' ## Create a vertical, non-sorted bar chart
 #' bar_chart(revenue_roche, year, revenue, horizontal = FALSE, sort = FALSE)
+#'
+#' ## column_chart() is a shortcut for the above
+#' column_chart(revenue_roche, year, revenue)
 #'
 #' ## Limit the number of bars to the top 10
 #' bar_chart(revenue2018, company, revenue, limit = 10)
@@ -86,5 +93,29 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
     fill = has_fill,
     highlight = highlight,
     color = bar_color
+  )
+}
+
+#' @rdname bar_chart
+#' @export
+column_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
+                         highlight = NULL, sort = NULL, horizontal = FALSE,
+                         limit = NULL, threshold = NULL) {
+  if (is.null(sort)) {
+    sort <- !is.numeric(dplyr::pull(data, {{x}}))
+  }
+
+  bar_chart(
+    data = data,
+    x = {{x}},
+    y = {{y}},
+    facet = {{facet}},
+    ...,
+    bar_color = bar_color,
+    highlight = highlight,
+    sort = sort,
+    horizontal = horizontal,
+    limit = limit,
+    threshold = threshold
   )
 }

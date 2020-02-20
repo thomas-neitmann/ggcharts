@@ -54,7 +54,7 @@ create_highlight_colors <- function(highlight, color) {
 
   n_color <- length(color)
   n_highlight <- length(highlight)
-  non_highl_col <- scales::alpha("#e0e0e0", .7)
+  non_highl_col <- "#e0e0e0"
 
   if (n_color == n_highlight) {
 
