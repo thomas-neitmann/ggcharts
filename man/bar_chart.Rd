@@ -2,6 +2,7 @@
 % Please edit documentation in R/bar_chart.R
 \name{bar_chart}
 \alias{bar_chart}
+\alias{column_chart}
 \title{Easy Bar Charts}
 \usage{
 bar_chart(
@@ -14,6 +15,20 @@ bar_chart(
   highlight = NULL,
   sort = TRUE,
   horizontal = TRUE,
+  limit = NULL,
+  threshold = NULL
+)
+
+column_chart(
+  data,
+  x,
+  y,
+  facet = NULL,
+  ...,
+  bar_color = "#1F77B4",
+  highlight = NULL,
+  sort = NULL,
+  horizontal = FALSE,
   limit = NULL,
   threshold = NULL
 )
@@ -44,6 +59,10 @@ bar_chart(
 \description{
 Easily create a bar chart
 }
+\details{
+\code{column_chart} is a shortcut for \code{bar_chart} with \code{horizontal = FALSE}
+and \code{sort = FALSE} if \code{x} is numeric.
+}
 \examples{
 data(biomedicalrevenue)
 revenue2018 <- biomedicalrevenue[biomedicalrevenue$year == 2018, ]
@@ -54,6 +73,9 @@ bar_chart(revenue2018, company, revenue)
 
 ## Create a vertical, non-sorted bar chart
 bar_chart(revenue_roche, year, revenue, horizontal = FALSE, sort = FALSE)
+
+## column_chart() is a shortcut for the above
+column_chart(revenue_roche, year, revenue)
 
 ## Limit the number of bars to the top 10
 bar_chart(revenue2018, company, revenue, limit = 10)
