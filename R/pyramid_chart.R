@@ -6,7 +6,13 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("steelblue", "peachp
   group <- rlang::enquo(group)
 
   groups <- data %>% dplyr::pull(!!group) %>% unique()
-  if (length(groups) != 2) stop()
+  if (length(groups) != 2) {
+    err_msg <- paste0(
+      "There must be 2 unique values in `group` but there are ",
+      length(groups), "."
+    )
+    rlang::abort(err_msg)
+  }
   names(bar_colors) <- groups
 
   if (sort != "not") {
