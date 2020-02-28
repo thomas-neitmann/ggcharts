@@ -1,6 +1,6 @@
 Package: ggcharts
 Type: Package
-Title: Easily create common charts using ggplot2
+Title: Shorten the distance from data visualization idea to actual plot
 Version: 0.1.0
 Author: Thomas Neitmann
 Maintainer: Thomas Neitmann <th.neitmann@gmail.com>
