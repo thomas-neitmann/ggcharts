@@ -2,7 +2,7 @@
 #' @importFrom patchwork "+"
 #' @export
 pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"),
-                          sort = "no") {
+                          sort = "no", xlab = NULL, title = NULL) {
   sort <- match.arg(sort, c("no", "descending", "ascending"))
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
@@ -58,10 +58,11 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
 
   }
 
-  x_label <- rlang::as_name(x)
+  x_label <- if (is.null(xlab)) rlang::as_name(x) else xlab
   plots[[1]] + plots[[2]] +
     patchwork::plot_annotation(
       caption = x_label,
+      title = title,
       theme = theme(plot.caption = element_text(hjust = .5))
     )
 }
