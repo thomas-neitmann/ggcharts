@@ -1,7 +1,7 @@
 #' @import ggplot2
 #' @importFrom patchwork "+"
 #' @export
-pyramid_chart <- function(data, x, y, group, bar_colors = c("steelblue", "peachpuff"),
+pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"),
                           sort = "ascending", label_position = "left") {
   sort <- match.arg(sort, c("descending", "ascending", "not"))
   label_position <- match.arg(label_position, c("left", "center"))
