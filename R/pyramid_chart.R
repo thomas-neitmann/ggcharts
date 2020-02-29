@@ -60,7 +60,7 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
 
   }
 
-  x_label <- if (is.null(xlab)) rlang::as_name(x) else xlab
+  x_label <- if (is.null(xlab)) rlang::as_name(y) else xlab
   plots[[1]] + plots[[2]] +
     patchwork::plot_annotation(
       caption = x_label,
