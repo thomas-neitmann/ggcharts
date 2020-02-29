@@ -25,8 +25,8 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
       (function(list) list[[1]] + list[[2]])
 
     if (sort == "ascending") order <- -order
-
-    data <- dplyr::mutate(data, !!x := reorder(!!x, order))
+  } else {
+    order <- data %>% dplyr::pull(!!x) %>% seq_along()
   }
 
 
@@ -47,7 +47,9 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
       )
     }
 
-    plots[[i]] <- dplyr::filter(data, !!group == groups[i]) %>%
+    plots[[i]] <- data %>%
+      dplyr::filter(!!group == groups[i]) %>%
+      dplyr::mutate(!!x := reorder(!!x, order)) %>%
       ggplot(aes(!!x, !!y)) +
       geom_col(fill = bar_colors[i], width = .7) +
       scale_x_discrete(expand = expand_scale(add = .5)) +
