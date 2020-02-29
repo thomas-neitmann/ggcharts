@@ -1,3 +1,17 @@
+#' Pyramid Chart
+#'
+#' Easily create a pyramid chart
+#'
+#' @param data \code{data.frame}
+#' @param x \code{character} or \code{factor} column of \code{data}
+#' @param y \code{numeric} column of \code{data}
+#' @param group \code{character} or \code{factor} column of \code{data}
+#' @param bar_colors \code{character} vector of length 2 containing colors
+#' @param sort \code{character}. Should the bars be sorted? By default
+#'   \code{"no"}.
+#' @param xlab \code{character}. X axis label
+#' @param title \code{character}. Plot title. By default no title is displayed.
+#'
 #' @import ggplot2
 #' @import patchwork
 #' @export
