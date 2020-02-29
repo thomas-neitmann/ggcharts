@@ -2,9 +2,8 @@
 #' @importFrom patchwork "+"
 #' @export
 pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"),
-                          sort = "ascending", label_position = "left") {
+                          sort = "ascending") {
   sort <- match.arg(sort, c("descending", "ascending", "not"))
-  label_position <- match.arg(label_position, c("left", "center"))
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   group <- rlang::enquo(group)
