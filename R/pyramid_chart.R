@@ -1,5 +1,5 @@
 #' @import ggplot2
-#' @importFrom patchwork "+"
+#' @import patchwork
 #' @export
 pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"),
                           sort = "no", xlab = NULL, title = NULL) {
@@ -18,7 +18,7 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
   }
   names(bar_colors) <- groups
 
-  if (sort != "not") {
+  if (sort != "no") {
     order <- data %>%
       split(data[[rlang::as_name(group)]]) %>%
       lapply(function(x) x[[rlang::as_name(y)]]) %>%
