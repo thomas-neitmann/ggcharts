@@ -65,6 +65,6 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
     patchwork::plot_annotation(
       caption = x_label,
       title = title,
-      theme = theme(plot.caption = element_text(hjust = .5))
+      theme = theme(plot.caption = element_text(hjust = .5, size = 13))
     )
 }
