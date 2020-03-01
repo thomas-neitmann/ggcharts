@@ -56,7 +56,7 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
       )
     } else {
       y_scale <- scale_y_continuous(
-        limit = c(0, limit),
+        limits = c(0, limit),
         expand = expand_scale(mult = c(0, .05))
       )
     }
