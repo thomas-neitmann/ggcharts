@@ -34,7 +34,7 @@
 #'
 #' @import ggplot2
 #' @export
-dumbbell_chart <- function(data, x, y1, y2, line_size = 1.5, line_color = "gray",
+dumbbell_chart <- function(data, x, y1, y2, line_size = 1.5, line_color = "lightgray",
                            point_size = 4, point_colors = c("#1F77B4", "#FF7F0E"),
                            sort = TRUE, horizontal = TRUE, limit = NULL,
                            legend = TRUE, legend_labels = waiver()) {
