@@ -10,7 +10,7 @@ dumbbell_chart(
   y1,
   y2,
   line_size = 1.5,
-  line_color = "gray",
+  line_color = "lightgray",
   point_size = 4,
   point_colors = c("#1F77B4", "#FF7F0E"),
   sort = TRUE,
@@ -41,9 +41,11 @@ dumbbell_chart(
 
 \item{horizontal}{\code{logical}. Should the plot be displayed horizontally?}
 
-\item{limit}{\code{integer}. f a value for limit is provided only the first limit records will be displayed}
+\item{limit}{\code{integer}. If a value for limit is provided only the first \code{limit} records will be displayed}
 
 \item{legend}{\code{logical}. Should a legend be displayed?}
+
+\item{legend_labels}{\code{character}. Custom labels to be displayed in the legend}
 }
 \description{
 Easily create a dumbbell chart

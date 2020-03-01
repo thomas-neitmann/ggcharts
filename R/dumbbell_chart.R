@@ -12,7 +12,7 @@
 #' @param point_colors \code{numeric}. Point color
 #' @param sort \code{logical}. Should the data be sorted by \code{y2} before plotting?
 #' @param horizontal \code{logical}. Should the plot be displayed horizontally?
-#' @param limit \code{integer}. f a value for limit is provided only the first limit records will be displayed
+#' @param limit \code{integer}. If a value for limit is provided only the first \code{limit} records will be displayed
 #' @param legend \code{logical}. Should a legend be displayed?
 #' @param legend_labels \code{character}. Custom labels to be displayed in the legend
 #'
