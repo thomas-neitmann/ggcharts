@@ -10,7 +10,7 @@
 #' @param line_color \code{character}. Line color
 #' @param point_size \code{numeric}. Point size
 #' @param point_colors \code{numeric}. Point color
-#' @param sort \code{logical}. Should the data be sorted before plotting?
+#' @param sort \code{logical}. Should the data be sorted by \code{y2} before plotting?
 #' @param horizontal \code{logical}. Should the plot be displayed horizontally?
 #' @param limit \code{integer}. f a value for limit is provided only the first limit records will be displayed
 #' @param legend \code{logical}. Should a legend be displayed?

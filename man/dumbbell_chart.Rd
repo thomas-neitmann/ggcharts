@@ -16,7 +16,8 @@ dumbbell_chart(
   sort = TRUE,
   horizontal = TRUE,
   limit = NULL,
-  legend = TRUE
+  legend = TRUE,
+  legend_labels = waiver()
 )
 }
 \arguments{
@@ -36,7 +37,7 @@ dumbbell_chart(
 
 \item{point_colors}{\code{numeric}. Point color}
 
-\item{sort}{\code{logical}. Should the data be sorted before plotting?}
+\item{sort}{\code{logical}. Should the data be sorted by \code{y2} before plotting?}
 
 \item{horizontal}{\code{logical}. Should the plot be displayed horizontally?}
 
