@@ -36,7 +36,7 @@
 dumbbell_chart <- function(data, x, y1, y2, line_size = 1.5, line_color = "gray",
                            point_size = 4, point_colors = c("#1F77B4", "#FF7F0E"),
                            sort = TRUE, horizontal = TRUE, limit = NULL,
-                           legend = TRUE) {
+                           legend = TRUE, legend_labels = waiver()) {
   x <- rlang::enquo(x)
   y1 <- rlang::enquo(y1)
   y2 <- rlang::enquo(y2)
@@ -51,7 +51,7 @@ dumbbell_chart <- function(data, x, y1, y2, line_size = 1.5, line_color = "gray"
     ) +
     geom_point(aes(y = !!y1, color = rlang::as_name(y1)), size = point_size) +
     geom_point(aes(y = !!y2, color = rlang::as_name(y2)), size = point_size) +
-    scale_color_manual(values = point_colors) +
+    scale_color_manual(values = point_colors, labels = legend_labels) +
     theme_discrete_chart(TRUE)
 
   if (legend) {
