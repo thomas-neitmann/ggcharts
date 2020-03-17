@@ -40,7 +40,7 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
 
     if (sort == "ascending") order <- -order
   } else {
-    order <- data %>% dplyr::pull(!!x) %>% seq_along()
+    order <- 1:nrow(data)
   }
 
 
