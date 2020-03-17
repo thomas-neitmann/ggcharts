@@ -16,7 +16,7 @@ pyramid_chart(
 )
 }
 \arguments{
-\item{data}{\code{data.frame}}
+\item{data}{\code{data.frame} Dataset to use for plot}
 
 \item{x}{\code{character} or \code{factor} column of \code{data}}
 
@@ -35,4 +35,14 @@ pyramid_chart(
 }
 \description{
 Easily create a pyramid chart
+}
+\examples{
+library(magrittr)
+data(mtcars)
+cars <- mtcars \%>\%
+  dplyr::count(cyl, am) \%>\%
+  dplyr::mutate(am = ifelse(am == 0, "Manual", "Automatic"))
+
+pyramid_chart(cars, cyl, n, am)
+
 }
