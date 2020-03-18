@@ -14,18 +14,18 @@ diverging_bar_chart(
 )
 }
 \arguments{
-\item{data}{Dataset to use for the chart}
+\item{data}{Dataset to use for the diverging bar chart}
 
-\item{x}{The x variable}
+\item{x}{\code{character} or \code{factor} column of \code{data}}
 
-\item{y}{The y variable}
+\item{y}{\code{numeric} column of \code{data} representing the bar length}
 
-\item{bar_colors}{A vector of length 2 containing the colors for the positive
-and negative bars}
+\item{bar_colors}{A \code{character} vector of length 2 containing the colors
+for the positive and negative bars}
 
-\item{text_color}{The color for the bar annotations}
+\item{text_color}{\code{character}. The color for the bar annotations}
 
-\item{text_size}{The size of the bar annotation text in pt}
+\item{text_size}{\code{numeric}. The size of the bar annotation text in pt}
 }
 \description{
 Easily create a diverging bar chart
@@ -63,4 +63,7 @@ diverging_bar_chart(mtcars_z, model, hpz, text_size = 14)
 ## Display the axis label text in the same color as the bars
 diverging_bar_chart(mtcars_z, model, hpz, text_color = c("#1F77B4", "#FF7F0E"))
 
+}
+\author{
+Thomas Neitmann
 }

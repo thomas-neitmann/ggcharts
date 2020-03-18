@@ -24,34 +24,45 @@ lollipop_chart(
 \arguments{
 \item{data}{Dataset to use for the bar chart}
 
-\item{x}{The x variable}
+\item{x}{\code{character} or \code{factor} column of \code{data}}
 
-\item{y}{numeric. If y is missing then it will be assigned the number of records in each group of y}
+\item{y}{\code{numeric} column of \code{data} representing the lollipop length}
 
-\item{facet}{A variable defining the faceting groups}
+\item{facet}{\code{character} or \code{factor} column of \code{data} defining
+the faceting groups}
 
-\item{...}{Additional arguments passed to aes()}
+\item{...}{Additional arguments passed to \code{aes()}}
 
-\item{line_size}{character. Size of the lollipop 'stick'}
+\item{line_size}{\code{numeric}. Size of the lollipop 'stick'}
 
-\item{line_color}{character. Color of the lollipop 'stick'}
+\item{line_color}{\code{character}. Color of the lollipop 'stick'}
 
-\item{point_size}{character. Size of the lollipop 'head'}
+\item{point_size}{\code{numeric}. Size of the lollipop 'head'}
 
-\item{point_color}{character. Color of the lollipop 'head'}
+\item{point_color}{\code{character}. Color of the lollipop 'head'}
 
-\item{highlight}{A value of \code{x} that should be highlighted in the plot}
+\item{highlight}{\code{character}. One or more value(s) of \code{x} that
+should be highlighted in the plot}
 
-\item{sort}{logical. Should the data be sorted before plotting?}
+\item{sort}{\code{logical}. Should the data be sorted before plotting?}
 
-\item{horizontal}{logical. Should coord_flip() be added to the plot}
+\item{horizontal}{\code{logical}. Should the plot be oriented horizontally?}
 
-\item{limit}{integer. If a value for limit is provided only the first limit records will be displayed}
+\item{limit}{\code{numeric}. If a value for \code{limit} is provided only the
+top \code{limit} records will be displayed}
 
-\item{threshold}{numeric. If a value for threshold is provided only records with y > threshold will be displayed}
+\item{threshold}{\code{numeric}. If a value for threshold is provided only
+records with \code{y > threshold} will be displayed}
 }
 \description{
-Easily create a lollipop chart using ggplot2
+Easily create a lollipop chart
+}
+\details{
+Both \code{limit} and \code{threshold} only work when \code{sort = TRUE}.
+Attempting to use them when \code{sort = FALSE} will result in an error.
+Furthermore, only \code{limit} or \code{threshold} can be used at a time.
+Providing a value for both \code{limit} and \code{threshold} will result in
+an error as well.
 }
 \examples{
 data(biomedicalrevenue)

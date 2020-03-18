@@ -2,34 +2,56 @@
 #'
 #' Easily create a dumbbell chart
 #'
-#' @param data Dataset to use for plot
-#' @param x Variable representing the categories to plot
-#' @param y1 Variable representing the dumbbell end
-#' @param y2 Variable representing the dumbbell start
+#' @author Thomas Neitmann
+#'
+#' @param data Dataset to use for the dumbbell chart
+#' @param x \code{character} or \code{factor} column of \code{data}
+#' @param y1 \code{numeric} column of \code{data} representing the dumbbell end
+#' @param y2 \code{numeric} column of \code{data} representing the dumbbell start
 #' @param line_size \code{numeric}. Line width
 #' @param line_color \code{character}. Line color
 #' @param point_size \code{numeric}. Point size
 #' @param point_colors \code{numeric}. Point color
-#' @param sort \code{logical}. Should the data be sorted by \code{y2} before plotting?
+#' @param sort \code{logical}. Should the data be sorted by \code{y2} before
+#'        plotting?
 #' @param horizontal \code{logical}. Should the plot be displayed horizontally?
-#' @param limit \code{integer}. If a value for limit is provided only the first \code{limit} records will be displayed
+#' @param limit \code{integer}. If a value for limit is provided only the first
+#'        \code{limit} records will be displayed
 #' @param legend \code{logical}. Should a legend be displayed?
-#' @param legend_labels \code{character}. Custom labels to be displayed in the legend
+#' @param legend_labels \code{character}. Custom labels to be displayed in the
+#'        legend
 #'
 #' @examples
-#' if (requireNamespace("tidyr")) {
+#' if (requireNamespace("tidyr") && requireNamespace("gapminder")) {
 #'   library(magrittr)
-#'   data(biomedicalrevenue)
+#'   data(gapminder, package = "gapminder")
 #'
-#'   biomedicalrevenue %>%
-#'     dplyr::filter(year %in% c(2011, 2018)) %>%
+#'   # Data has to be in wide format
+#'   pop <- gapminder %>%
+#'     dplyr::filter(year %in% c(1952, 2007)) %>%
 #'     tidyr::pivot_wider(
-#'       values_from = revenue,
+#'       id_cols = country,
+#'       values_from = pop,
 #'       names_from = year,
-#'       names_prefix = "revenue_"
-#'     ) %>%
-#'     dplyr::filter(revenue_2011 > 40, revenue_2018 > 40) %>%
-#'     dumbbell_chart(company, revenue_2011, revenue_2018)
+#'       names_prefix = "pop_"
+#'     )
+#'
+#'   dumbbell_chart(pop, country, pop_1952, pop_2007)
+#'
+#'   # Display only the top 10 countries in terms of population in 2007
+#'   dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10)
+#'
+#'   # Change line and point color
+#'   dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10,
+#'                  line_color = "lightgray", point_color = c("lightgray", "black"))
+#'
+#'   # Add custom legend labels
+#'   dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10,
+#'                  legend_labels = c("1952", "2007"))
+#'
+#'   # Increase line width and point size
+#'   dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10,
+#'                  line_size = 2, point_size = 5)
 #' }
 #'
 #' @import ggplot2

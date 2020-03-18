@@ -2,15 +2,17 @@
 #'
 #' Easily create a diverging lollipop chart
 #'
-#' @param data Dataset to use for the chart
-#' @param x The x variable
-#' @param y The y variable
-#' @param lollipop_colors A vector of length 2 containing the colors for the positive
-#'                   and negative lollipops
-#' @param line_size numeric. Size of the lollipop 'stick'
-#' @param point_size numeric. Size of the lollipop 'head'
-#' @param text_color The color for the lollipop annotations
-#' @param text_size The size of the lollipop annotation text in pt
+#' @author Thomas Neitmann
+#'
+#' @param data Dataset to use for the diverging lollipop chart
+#' @param x \code{character} or \code{factor} column of \code{data}
+#' @param y \code{numeric} column of \code{data} representing the lollipop length
+#' @param lollipop_colors A \code{character} vector of length 2 containing the
+#'        colors for the positive and negative lollipops
+#' @param line_size \code{numeric}. Size of the lollipop 'stick'
+#' @param point_size \code{numeric}. Size of the lollipop 'head'
+#' @param text_color \code{character}. The color for the lollipop annotations
+#' @param text_size \code{numeric} The size of the lollipop annotation text in pt
 #'
 #' @examples
 #' if (requireNamespace("tidyr")) {

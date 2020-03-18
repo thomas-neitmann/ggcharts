@@ -1,23 +1,34 @@
 #' Lollipop Chart
 #'
-#' Easily create a lollipop chart using ggplot2
-#'
-#' @param data Dataset to use for the bar chart
-#' @param x The x variable
-#' @param y numeric. If y is missing then it will be assigned the number of records in each group of y
-#' @param facet A variable defining the faceting groups
-#' @param ... Additional arguments passed to aes()
-#' @param line_size character. Size of the lollipop 'stick'
-#' @param line_color character. Color of the lollipop 'stick'
-#' @param point_size character. Size of the lollipop 'head'
-#' @param point_color character. Color of the lollipop 'head'
-#' @param highlight A value of \code{x} that should be highlighted in the plot
-#' @param sort logical. Should the data be sorted before plotting?
-#' @param horizontal logical. Should coord_flip() be added to the plot
-#' @param limit integer. If a value for limit is provided only the first limit records will be displayed
-#' @param threshold numeric. If a value for threshold is provided only records with y > threshold will be displayed
+#' Easily create a lollipop chart
 #'
 #' @author Thomas Neitmann
+#'
+#' @param data Dataset to use for the bar chart
+#' @param x \code{character} or \code{factor} column of \code{data}
+#' @param y \code{numeric} column of \code{data} representing the lollipop length
+#' @param facet \code{character} or \code{factor} column of \code{data} defining
+#'        the faceting groups
+#' @param ... Additional arguments passed to \code{aes()}
+#' @param line_size \code{numeric}. Size of the lollipop 'stick'
+#' @param line_color \code{character}. Color of the lollipop 'stick'
+#' @param point_size \code{numeric}. Size of the lollipop 'head'
+#' @param point_color \code{character}. Color of the lollipop 'head'
+#' @param highlight \code{character}. One or more value(s) of \code{x} that
+#'        should be highlighted in the plot
+#' @param sort \code{logical}. Should the data be sorted before plotting?
+#' @param horizontal \code{logical}. Should the plot be oriented horizontally?
+#' @param limit \code{numeric}. If a value for \code{limit} is provided only the
+#'        top \code{limit} records will be displayed
+#' @param threshold \code{numeric}. If a value for threshold is provided only
+#'        records with \code{y > threshold} will be displayed
+#'
+#' @details
+#' Both \code{limit} and \code{threshold} only work when \code{sort = TRUE}.
+#' Attempting to use them when \code{sort = FALSE} will result in an error.
+#' Furthermore, only \code{limit} or \code{threshold} can be used at a time.
+#' Providing a value for both \code{limit} and \code{threshold} will result in
+#' an error as well.
 #'
 #' @examples
 #' data(biomedicalrevenue)

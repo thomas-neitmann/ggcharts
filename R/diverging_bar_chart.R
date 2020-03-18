@@ -2,13 +2,15 @@
 #'
 #' Easily create a diverging bar chart
 #'
-#' @param data Dataset to use for the chart
-#' @param x The x variable
-#' @param y The y variable
-#' @param bar_colors A vector of length 2 containing the colors for the positive
-#'                   and negative bars
-#' @param text_color The color for the bar annotations
-#' @param text_size The size of the bar annotation text in pt
+#' @author Thomas Neitmann
+#'
+#' @param data Dataset to use for the diverging bar chart
+#' @param x \code{character} or \code{factor} column of \code{data}
+#' @param y \code{numeric} column of \code{data} representing the bar length
+#' @param bar_colors A \code{character} vector of length 2 containing the colors
+#'        for the positive and negative bars
+#' @param text_color \code{character}. The color for the bar annotations
+#' @param text_size \code{numeric}. The size of the bar annotation text in pt
 #'
 #' @examples
 #' if (requireNamespace("tidyr")) {

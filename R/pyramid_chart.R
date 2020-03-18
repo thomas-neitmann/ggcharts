@@ -2,7 +2,9 @@
 #'
 #' Easily create a pyramid chart
 #'
-#' @param data \code{data.frame} Dataset to use for plot
+#' @author Thomas Neitmann
+#'
+#' @param data Dataset to use for the pyramid chart
 #' @param x \code{character} or \code{factor} column of \code{data}
 #' @param y \code{numeric} column of \code{data}
 #' @param group \code{character} or \code{factor} column of \code{data}

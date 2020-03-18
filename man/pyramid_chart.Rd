@@ -16,7 +16,7 @@ pyramid_chart(
 )
 }
 \arguments{
-\item{data}{\code{data.frame} Dataset to use for plot}
+\item{data}{Dataset to use for the pyramid chart}
 
 \item{x}{\code{character} or \code{factor} column of \code{data}}
 
@@ -26,8 +26,7 @@ pyramid_chart(
 
 \item{bar_colors}{\code{character} vector of length 2 containing colors}
 
-\item{sort}{\code{character}. Should the bars be sorted? By default
-\code{"no"}.}
+\item{sort}{\code{character}. Should the bars be sorted? By default \code{"no"}.}
 
 \item{xlab}{\code{character}. X axis label}
 
@@ -45,4 +44,7 @@ cars <- mtcars \%>\%
 
 pyramid_chart(cars, cyl, n, am)
 
+}
+\author{
+Thomas Neitmann
 }
