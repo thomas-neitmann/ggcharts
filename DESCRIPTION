@@ -1,12 +1,12 @@
 Package: ggcharts
 Type: Package
-Title: Shorten the distance from data visualization idea to actual plot
+Title: Shorten the Distance from Data Visualization Idea to Actual Plot
 Version: 0.1.0
 Author: Thomas Neitmann
 Maintainer: Thomas Neitmann <th.neitmann@gmail.com>
-Description: This package intends to make it (much) easier to create common
-    charts, such a bar charts, by taking care of a lot of data preprocessing
-    and plot customization for you.
+Description: Streamline the creation of common charts by taking care of a lot of
+    data pre-processing and plot customization for the user. Provides a
+    high-level interface to create plots using ggplot2.
 Depends:
     R (>= 2.10),
     ggplot2  
