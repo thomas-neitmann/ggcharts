@@ -92,7 +92,7 @@ biomedicalrevenue %>%
 
 From this little example you can already see some important features of `ggcharts`:
 
--   the data is sorted prior to plotting without you having to take care of that; if that is not desireable set `sort = FALSE`
+-   the data is sorted prior to plotting without you having to take care of that; if that is not desirable set `sort = FALSE`
 -   the plot is horizontal by default; this can be changed by setting `horizontal = FALSE`
 -   `ggcharts` uses `theme_minimal()`
 
@@ -144,7 +144,7 @@ biomedicalrevenue %>%
 
 <img src="README_files/figure-markdown_github/highlight-1.png" width="50%" /><img src="README_files/figure-markdown_github/highlight-2.png" width="50%" />
 
-### Facetting
+### Faceting
 
 ``` r
 biomedicalrevenue %>%

@@ -5,7 +5,7 @@ Version: 0.1.0
 Author: Thomas Neitmann
 Maintainer: Thomas Neitmann <th.neitmann@gmail.com>
 Description: Streamline the creation of common charts by taking care of a lot of
-    data pre-processing and plot customization for the user. Provides a
+    data preprocessing and plot customization for the user. Provides a
     high-level interface to create plots using ggplot2.
 Depends:
     R (>= 2.10),
