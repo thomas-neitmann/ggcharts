@@ -21,6 +21,8 @@
 #' @param legend_labels \code{character}. Custom labels to be displayed in the
 #'        legend
 #'
+#' @return An object of class \code{ggplot}
+#'
 #' @examples
 #' if (requireNamespace("tidyr") && requireNamespace("gapminder")) {
 #'   library(magrittr)

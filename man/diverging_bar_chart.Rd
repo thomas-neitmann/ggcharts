@@ -27,6 +27,9 @@ for the positive and negative bars}
 
 \item{text_size}{\code{numeric}. The size of the bar annotation text in pt}
 }
+\value{
+An object of class \code{ggplot}
+}
 \description{
 Easily create a diverging bar chart
 }

@@ -30,6 +30,8 @@
 #' Providing a value for both \code{limit} and \code{threshold} will result in
 #' an error as well.
 #'
+#' @return An object of class \code{ggplot}
+#'
 #' @examples
 #' data(biomedicalrevenue)
 #' revenue2016 <- biomedicalrevenue[biomedicalrevenue$year == 2016, ]

@@ -50,6 +50,9 @@ plotting?}
 \item{legend_labels}{\code{character}. Custom labels to be displayed in the
 legend}
 }
+\value{
+An object of class \code{ggplot}
+}
 \description{
 Easily create a dumbbell chart
 }

@@ -33,6 +33,9 @@ colors for the positive and negative lollipops}
 
 \item{text_size}{\code{numeric} The size of the lollipop annotation text in pt}
 }
+\value{
+An object of class \code{ggplot}
+}
 \description{
 Easily create a diverging lollipop chart
 }

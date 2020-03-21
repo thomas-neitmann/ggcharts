@@ -13,6 +13,8 @@
 #' @param xlab \code{character}. X axis label
 #' @param title \code{character}. Plot title. By default no title is displayed.
 #'
+#' @return An object of class \code{ggplot}
+#'
 #' @examples
 #' library(magrittr)
 #' data(mtcars)

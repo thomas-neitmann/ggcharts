@@ -12,6 +12,8 @@
 #' @param text_color \code{character}. The color for the bar annotations
 #' @param text_size \code{numeric}. The size of the bar annotation text in pt
 #'
+#' @return An object of class \code{ggplot}
+#'
 #' @examples
 #' if (requireNamespace("tidyr")) {
 #'   library(magrittr)

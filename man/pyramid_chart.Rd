@@ -32,6 +32,9 @@ pyramid_chart(
 
 \item{title}{\code{character}. Plot title. By default no title is displayed.}
 }
+\value{
+An object of class \code{ggplot}
+}
 \description{
 Easily create a pyramid chart
 }

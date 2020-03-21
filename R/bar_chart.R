@@ -31,6 +31,8 @@
 #' \code{horizontal = FALSE} and \code{sort = FALSE} if \code{x} is
 #' \code{numeric}.
 #'
+#' @return An object of class \code{ggplot}
+#'
 #' @examples
 #' data(biomedicalrevenue)
 #' revenue2018 <- biomedicalrevenue[biomedicalrevenue$year == 2018, ]

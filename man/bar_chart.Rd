@@ -60,6 +60,9 @@ top \code{limit} records will be displayed}
 \item{threshold}{\code{numeric}. If a value for threshold is provided only
 records with \code{y > threshold} will be displayed}
 }
+\value{
+An object of class \code{ggplot}
+}
 \description{
 Easily create a bar chart
 }
