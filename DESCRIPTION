@@ -2,8 +2,11 @@ Package: ggcharts
 Type: Package
 Title: Shorten the Distance from Data Visualization Idea to Actual Plot
 Version: 0.1.0
-Author: Thomas Neitmann
-Maintainer: Thomas Neitmann <th.neitmann@gmail.com>
+Authors@R: c(
+    person("Thomas", "Neitmann", , "th.neitmann@gmail.com", c("aut", "cre")),
+    person("Julia", "Silge", role = "ctb"),
+    person("David", "Robinson", role = "ctb")
+    )
 Description: Streamline the creation of common charts by taking care of a lot of
     data preprocessing and plot customization for the user. Provides a
     high-level interface to create plots using 'ggplot2'.
