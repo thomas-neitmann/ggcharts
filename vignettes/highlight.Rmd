@@ -1,0 +1,120 @@
+---
+title: "Make Your Plots Stand Out with Highlights"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{highlight}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  warning = FALSE,
+  fig.width = 5.5,
+  fig.height = 5.5
+)
+```
+
+The `ggcharts` package currently offers two functions with a `highlight` parameter: `bar_chart()` and `lollipop_chart()`. Unless otherwise noted the usage is the same for both functions.
+
+```{r setup, message=FALSE}
+library(ggcharts)
+library(dplyr)
+data("biomedicalrevenue")
+revenue2018 <- biomedicalrevenue %>%
+  filter(year == 2018)
+```
+
+
+## Basic Usage
+
+In its most simple form the `highlight` feature can be used to highlight a single bar or lollipop.
+
+```{r, warning=FALSE}
+bar_chart(
+  revenue2018,
+  company,
+  revenue,
+  limit = 10,
+  highlight = "Roche"
+)
+```
+
+
+## Changing the Highlight Color
+
+Changing the `highlight` color is simple: just provide a color to the `bar_color` parameter.
+
+```{r}
+bar_chart(
+  revenue2018,
+  company,
+  revenue,
+  limit = 10,
+  highlight = "Roche",
+  bar_color = "darkorange"
+)
+```
+
+To change the `highlight` color in `lollipop_chart()` pass a color to `line_color`. Note that having a different color for the lollipop head and stick is not possible when passing a value to `highlight`. The `point_color` will simply be ignored.
+
+```{r}
+lollipop_chart(
+  revenue2018,
+  company,
+  revenue,
+  limit = 10,
+  highlight = "Roche",
+  line_color = "darkgreen"
+)
+```
+
+
+## Highlighting Multiple Data Points
+
+To highlight more than one bar pass a vector to `highlight`. Note the message that gets printed.
+
+```{r}
+bar_chart(
+  revenue2018,
+  company,
+  revenue,
+  limit = 10,
+  highlight = c("Roche", "Novartis")
+)
+```
+
+To highlight multiple bars in different colors pass a vector of colors to `bar_color` or `line_color` for `bar_chart()` and `lollipop_chart()`, respectively.
+
+```{r}
+lollipop_chart(
+  revenue2018,
+  company,
+  revenue,
+  limit = 10,
+  highlight = c("Roche", "Novartis"),
+  line_color = c("steelblue", "darkorange")
+)
+```
+
+
+## Highlight + Facet
+
+The highlight feature is particulary useful when used in conjuction with the `facet` feature.
+
+```{r, fig.width=8, fig.height=8}
+biomedicalrevenue %>%
+  filter(year %in% c(2012, 2014, 2016, 2018)) %>%
+  bar_chart(
+    company,
+    revenue,
+    facet = year,
+    limit = 12,
+    highlight = "Bayer",
+    bar_color = "darkgreen"
+  )
+```
+
