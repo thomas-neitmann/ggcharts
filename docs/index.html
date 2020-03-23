@@ -84,128 +84,57 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#ggcharts" class="anchor"></a>ggcharts</h1></div>
 
+<div id="overview" class="section level2">
+<h2 class="hasAnchor">
+<a href="#overview" class="anchor"></a>Overview</h2>
+<p><code>ggcharts</code> provides a high-level <code>ggplot2</code> interface for creating common charts. It’s aim is both simple and ambitious: shorten the distance from data visualization idea to actual plot. How so? By taking care of a lot of data preprocessing, nitty-gritty <code>ggplot2</code> details and plot styling for the user. The resulting plots are <code>ggplot</code> objects and can be further customized using any <code>ggplot2</code> function.</p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (<span class="op">!</span><span class="st">"remotes"</span> <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span>()) {
   <span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"remotes"</span>)
 }
-remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"thomas-neitmann/ggcharts"</span>)</code></pre></div>
+remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"thomas-neitmann/ggcharts"</span>, <span class="dt">upgrade =</span> <span class="st">"never"</span>)</code></pre></div>
 </div>
 <div id="why-ggcharts" class="section level2">
 <h2 class="hasAnchor">
 <a href="#why-ggcharts" class="anchor"></a>Why ggcharts?</h2>
-<p>Thanks to ggplot2 you can create beautiful plots in R. However, it can often take quite a bit of effort to get from a data visualization idea to an actual plot. As an example, let’s say you want to create a faceted bar chart displaying the top 10 within each facet ordered from highest to lowest. What sounds simple is actually pretty hard to achieve. Have a look:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">## Warning: package 'dplyr' was built under R version 3.6.3</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)
+<p>Thanks to <code>ggplot2</code> you can create beautiful plots in <code>R</code>. However, it can often take quite a bit of effort to get from a data visualization idea to an actual plot. As an example, let’s say you want to create a faceted bar chart displaying the top 10 within each facet ordered from highest to lowest. What sounds simple is actually pretty hard to achieve. Have a look:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggcharts)
 <span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"biomedicalrevenue"</span>)
 
 biomedicalrevenue <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(year) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="dv">10</span>, revenue) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">company =</span> tidytext<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/tidytext/man/reorder_within.html">reorder_within</a></span>(company, revenue, year)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(year) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">top_n</span>(<span class="dv">10</span>, revenue) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">company =</span> tidytext<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/tidytext/man/reorder_within.html">reorder_within</a></span>(company, revenue, year)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(company, revenue)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_col</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">coord_flip</span>() <span class="op">+</span>
 <span class="st">  </span>tidytext<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/tidytext/man/reorder_within.html">scale_x_reordered</a></span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(year), <span class="dt">scales =</span> <span class="st">"free_y"</span>)</code></pre></div>
-<p><img src="README_files/figure-markdown_github/motivation-1.png"></p>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="kw">vars</span>(year), <span class="dt">scales =</span> <span class="st">"free_y"</span>)</code></pre></div>
+<p><img src="reference/figures/README-motivation-1.png"></p>
 <p>That’s a lot of code! And you likely never heard of some of the functions involved. With ggcharts you can create the same plot (actually an even better looking one) in a single line of code.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/bar_chart.html">bar_chart</a></span>(biomedicalrevenue, company, revenue, <span class="dt">facet =</span> year, <span class="dt">limit =</span> <span class="dv">10</span>)</code></pre></div>
-<p><img src="README_files/figure-markdown_github/motivation_continued-1.png"></p>
-<p>That’s the beauty of ggcharts: shortening the distance between data visualization idea and actual plot as much as possible.</p>
+<p><img src="reference/figures/README-motivation_continued-1.png"></p>
+<p>That’s the beauty of <code>ggcharts</code>: shortening the distance between data visualization idea and actual plot as much as possible.</p>
 </div>
-<div id="usage" class="section level2">
+<div id="features" class="section level2">
 <h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<div id="basics" class="section level3">
-<h3 class="hasAnchor">
-<a href="#basics" class="anchor"></a>Basics</h3>
-<p>Let’s start off by loading some data for plotting. <code>ggcharts</code> comes with the <code>biomedicalrevenue</code> dataset which contains annual revenues (in billion USD) of top biomedical companies from 2011 to 2018.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(biomedicalrevenue, <span class="dv">10</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">##              company year revenue
-## 1  Johnson &amp; Johnson 2018   81.60
-## 2  Johnson &amp; Johnson 2017   76.50
-## 3  Johnson &amp; Johnson 2016   71.89
-## 4  Johnson &amp; Johnson 2015   70.10
-## 5  Johnson &amp; Johnson 2014   74.30
-## 6  Johnson &amp; Johnson 2013   71.31
-## 7  Johnson &amp; Johnson 2012   67.20
-## 8  Johnson &amp; Johnson 2011   65.00
-## 9              Roche 2018   56.86
-## 10             Roche 2017   57.37</code></pre></div>
-<p>Now that we have our data let’s create a basic <code><a href="reference/bar_chart.html">bar_chart()</a></code> and <code><a href="reference/lollipop_chart.html">lollipop_chart()</a></code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biomedicalrevenue <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2017</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/bar_chart.html">bar_chart</a></span>(company, revenue)
-
-biomedicalrevenue <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2018</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/lollipop_chart.html">lollipop_chart</a></span>(company, revenue)</code></pre></div>
-<p><img src="README_files/figure-markdown_github/basics-1.png" width="50%"><img src="README_files/figure-markdown_github/basics-2.png" width="50%"></p>
-<p>From this little example you can already see some important features of <code>ggcharts</code>:</p>
+<a href="#features" class="anchor"></a>Features</h2>
+<p>Currently <code>ggcharts</code> includes the following functions:</p>
 <ul>
-<li>the data is sorted prior to plotting without you having to take care of that; if that is not desirable set <code>sort = FALSE</code>
-</li>
-<li>the plot is horizontal by default; this can be changed by setting <code>horizontal = FALSE</code>
-</li>
-<li>
-<code>ggcharts</code> uses <code>theme_minimal()</code>
-</li>
+<li><code><a href="reference/bar_chart.html">bar_chart()</a></code></li>
+<li><code><a href="reference/diverging_bar_chart.html">diverging_bar_chart()</a></code></li>
+<li><code><a href="reference/bar_chart.html">column_chart()</a></code></li>
+<li><code><a href="reference/lollipop_chart.html">lollipop_chart()</a></code></li>
+<li><code><a href="reference/diverging_lollipop_chart.html">diverging_lollipop_chart()</a></code></li>
+<li><code><a href="reference/dumbbell_chart.html">dumbbell_chart()</a></code></li>
 </ul>
-</div>
-<div id="using-the-limit-argument" class="section level3">
-<h3 class="hasAnchor">
-<a href="#using-the-limit-argument" class="anchor"></a>Using the limit argument</h3>
-<p>The plots above contain data from all companies. What if you want to display only the top 10? That’s easy, just set <code>limit = 10</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biomedicalrevenue <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2017</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/bar_chart.html">bar_chart</a></span>(company, revenue, <span class="dt">limit =</span> <span class="dv">10</span>)
-
-biomedicalrevenue <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2018</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/lollipop_chart.html">lollipop_chart</a></span>(company, revenue, <span class="dt">limit =</span> <span class="dv">10</span>)</code></pre></div>
-<p><img src="README_files/figure-markdown_github/limit-1.png" width="50%"><img src="README_files/figure-markdown_github/limit-2.png" width="50%"></p>
-</div>
-<div id="changing-colors" class="section level3">
-<h3 class="hasAnchor">
-<a href="#changing-colors" class="anchor"></a>Changing colors</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biomedicalrevenue <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2017</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/bar_chart.html">bar_chart</a></span>(company, revenue, <span class="dt">bar_color =</span> <span class="st">"#b32134"</span>, <span class="dt">limit =</span> <span class="dv">10</span>)
-
-biomedicalrevenue <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2018</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/lollipop_chart.html">lollipop_chart</a></span>(
-    company, revenue, 
-    <span class="dt">point_color =</span> <span class="st">"darkgreen"</span>, <span class="dt">line_color =</span> <span class="st">"darkgray"</span>, 
-    <span class="dt">limit =</span> <span class="dv">10</span>
-  )</code></pre></div>
-<p><img src="README_files/figure-markdown_github/colors-1.png" width="50%"><img src="README_files/figure-markdown_github/colors-2.png" width="50%"></p>
-</div>
-<div id="highlighting" class="section level3">
-<h3 class="hasAnchor">
-<a href="#highlighting" class="anchor"></a>Highlighting</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biomedicalrevenue <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2015</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/lollipop_chart.html">lollipop_chart</a></span>(company, revenue, <span class="dt">highlight =</span> <span class="st">"Novartis"</span>, <span class="dt">limit =</span> <span class="dv">15</span>)
-
-biomedicalrevenue <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2015</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/bar_chart.html">bar_chart</a></span>(company, revenue, <span class="dt">highlight =</span> <span class="st">"Roche"</span>, <span class="dt">limit =</span> <span class="dv">15</span>)</code></pre></div>
-<p><img src="README_files/figure-markdown_github/highlight-1.png" width="50%"><img src="README_files/figure-markdown_github/highlight-2.png" width="50%"></p>
-</div>
-<div id="faceting" class="section level3">
-<h3 class="hasAnchor">
-<a href="#faceting" class="anchor"></a>Faceting</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biomedicalrevenue <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2011</span>, <span class="dv">2014</span>, <span class="dv">2017</span>)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="reference/bar_chart.html">bar_chart</a></span>(company, revenue, <span class="dt">facet =</span> year, <span class="dt">limit =</span> <span class="dv">7</span>)</code></pre></div>
-<p><img src="README_files/figure-markdown_github/facet-1.png"></p>
-</div>
+<p>To learn more about these, check out the <a href="https://thomas-neitmann.github.io/ggcharts/reference/index.html">package website</a>.</p>
 </div>
 </div>
   </div>
