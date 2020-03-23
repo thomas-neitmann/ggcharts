@@ -3,6 +3,13 @@ output: github_document
 title: "ggcharts"
 ---
 
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  fig.path = "man/figures/README-"
+)
+```
+
+
 [![Build Status](https://travis-ci.com/thomas-neitmann/ggcharts.svg?branch=master)](https://travis-ci.com/thomas-neitmann/ggcharts)
 
 ## Overview

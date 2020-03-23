@@ -41,7 +41,7 @@ biomedicalrevenue %>%
   facet_wrap(vars(year), scales = "free_y")
 ```
 
-![](README_files/figure-markdown_github/motivation-1.png)
+![](man/figures/README-motivation-1.png)
 
 That's a lot of code! And you likely never heard of some of the functions involved. With ggcharts you can create the same plot (actually an even better looking one) in a single line of code.
 
@@ -49,7 +49,7 @@ That's a lot of code! And you likely never heard of some of the functions involv
 bar_chart(biomedicalrevenue, company, revenue, facet = year, limit = 10)
 ```
 
-![](README_files/figure-markdown_github/motivation_continued-1.png)
+![](man/figures/README-motivation_continued-1.png)
 
 That's the beauty of `ggcharts`: shortening the distance between data visualization idea and actual plot as much as possible.
 
