@@ -71,22 +71,24 @@ if (requireNamespace("tidyr") && requireNamespace("gapminder")) {
       names_prefix = "pop_"
     )
 
-  dumbbell_chart(pop, country, pop_1952, pop_2007)
+  withAutoprint({
+    dumbbell_chart(pop, country, pop_1952, pop_2007)
 
-  # Display only the top 10 countries in terms of population in 2007
-  dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10)
+    # Display only the top 10 countries in terms of population in 2007
+    dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10)
 
-  # Change line and point color
-  dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10,
+    # Change line and point color
+    dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10,
                  line_color = "lightgray", point_color = c("lightgray", "black"))
 
-  # Add custom legend labels
-  dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10,
-                 legend_labels = c("1952", "2007"))
+    # Add custom legend labels
+    dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10,
+                   legend_labels = c("1952", "2007"))
 
-  # Increase line width and point size
-  dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10,
-                 line_size = 2, point_size = 5)
+    # Increase line width and point size
+    dumbbell_chart(pop, country, pop_1952, pop_2007, limit = 10,
+                   line_size = 2, point_size = 5)
+  }, echo = FALSE)
 }
 
 }
