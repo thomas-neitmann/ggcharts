@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-`ggcharts` provides a high-level `ggplot2` interface for creating common charts. It's aim is both simple and ambitious: shorten the distance from data visualization idea to actual plot. How so? By taking care of a lot of data preprocessing, nitty-gritty `ggplot2` details and plot styling for the user. The resulting plots are `ggplot` objects and can be further customized using any `ggplot2` function.
+`ggcharts` provides a high-level `ggplot2` interface for creating common charts. Its aim is both simple and ambitious: shorten the distance from data visualization idea to actual plot. How so? By taking care of a lot of data preprocessing, obscure `ggplot2` details and plot styling for you. The resulting plots are `ggplot` objects and can be further customized using any `ggplot2` function.
 
 ## Installation
 

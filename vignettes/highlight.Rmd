@@ -103,7 +103,7 @@ lollipop_chart(
 
 ## Highlight + Facet
 
-The highlight feature is particulary useful when used in conjuction with the `facet` feature.
+The highlight feature is particularly useful when used in conjunction with the `facet` feature.
 
 ```{r, fig.width=8, fig.height=8}
 biomedicalrevenue %>%
