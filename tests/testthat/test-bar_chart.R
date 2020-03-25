@@ -44,3 +44,18 @@ vdiffr::expect_doppelganger(
   "Vertical Non-Sorted Bar Chart With Facets",
   bar_chart(biomedicalrevenue, year, revenue, facet = company, sort = FALSE, horizontal = FALSE)
 )
+
+vdiffr::expect_doppelganger(
+  "Horizontal Sorted Bar Chart With One Highlight",
+  bar_chart(revenue_2018, company, revenue, limit = 12, highlight = "Sanofi")
+)
+
+vdiffr::expect_doppelganger(
+  "Horizontal Sorted Bar Chart With Two Highlights in The Same Color",
+  bar_chart(revenue_2018, company, revenue, limit = 12, highlight = c("Sanofi", "Novartis"))
+)
+
+vdiffr::expect_doppelganger(
+  "Horizontal Sorted Bar Chart: 2 Highlights, Different Colors",
+  bar_chart(revenue_2018, company, revenue, limit = 12, highlight = c("Sanofi", "Novartis"), bar_color = c("yellow", "darkorange"))
+)
