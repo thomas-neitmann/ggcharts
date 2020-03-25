@@ -80,6 +80,7 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
     data = data, x = !!x, y = !!y,
     facet = !!facet,
     highlight = highlight,
+    highlight_color = bar_color,
     sort = sort,
     limit = limit,
     threshold = threshold
@@ -89,7 +90,7 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
   if (has_fill) {
     .geom_col$position <- "dodge"
   } else if (!is.null(highlight)) {
-    .geom_col$mapping <- quote(aes(fill = highlight))
+    .geom_col$mapping <- quote(aes(fill = .color))
   } else {
     .geom_col$fill <- quote(bar_color)
   }

@@ -83,6 +83,7 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
     data = data, x = !!x, y = !!y,
     facet = !!facet,
     highlight = highlight,
+    highlight_color = line_color,
     sort = sort,
     limit = limit,
     threshold = threshold
@@ -97,8 +98,8 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
     .geom_point$size <- quote(point_size)
   }
   if (!is.null(highlight)) {
-    .geom_segment[[2]]$color <- quote(highlight)
-    .geom_point$mapping <- quote(aes(color = highlight))
+    .geom_segment[[2]]$color <- quote(.color)
+    .geom_point$mapping <- quote(aes(color = .color))
   } else if (!"color" %in% dot_names) {
     .geom_segment$color <- quote(line_color)
     .geom_point$color <- quote(point_color)
