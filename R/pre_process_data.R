@@ -66,6 +66,9 @@ create_highlight_colors <- function(x, highlight, color) {
   }
 
   highlight_color <- rep("lightgray", length(x))
-  highlight_color[x %in% highlight] <- color
+  for (i in seq_along(highlight)) {
+    highlight_color[x == highlight[i]] <- color[i]
+  }
+
   highlight_color
 }
