@@ -1,7 +1,8 @@
 #' @importFrom magrittr %>%
 #' @importFrom rlang :=
 pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
-                             sort = TRUE, limit = NULL, threshold = NULL) {
+                             highlight_color = NULL, sort = TRUE, limit = NULL,
+                             threshold = NULL) {
 
   if (!is.null(limit) && !sort) {
     stop("The `limit` argument can only be set when sort = TRUE")
@@ -19,8 +20,10 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
   has_facet <- !rlang::quo_is_null(facet)
 
   if (!is.null(highlight)) {
-    data <- dplyr::mutate(data, highlight = dplyr::if_else(
-      !!x %in% highlight, as.character(!!x), "other")
+    data$.color <- create_highlight_colors(
+      dplyr::pull(data, !!x),
+      highlight,
+      highlight_color
     )
   }
 
@@ -53,4 +56,19 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
   }
 
   data
+}
+
+create_highlight_colors <- function(x, highlight, color) {
+  stopifnot(length(color) == 1L || length(color) == length(highlight))
+
+  if (length(color) == 1) {
+    color <- rep(color, length(highlight))
+  }
+
+  highlight_color <- rep("lightgray", length(x))
+  for (i in seq_along(highlight)) {
+    highlight_color[x == highlight[i]] <- color[i]
+  }
+
+  highlight_color
 }
