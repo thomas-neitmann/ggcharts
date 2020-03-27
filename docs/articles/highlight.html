@@ -153,7 +153,6 @@ revenue2018 &lt;-<span class="st"> </span>biomedicalrevenue <span class="op">%&g
   <span class="dt">limit =</span> <span class="dv">10</span>,
   <span class="dt">highlight =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Roche"</span>, <span class="st">"Novartis"</span>)
 )</code></pre></div>
-<pre><code>#&gt; Using the same color to highlight all bars.</code></pre>
 <p><img src="highlight_files/figure-html/unnamed-chunk-5-1.png" width="528"></p>
 <p>To highlight multiple bars in different colors pass a vector of colors to <code>bar_color</code> or <code>line_color</code> for <code><a href="../reference/bar_chart.html">bar_chart()</a></code> and <code><a href="../reference/lollipop_chart.html">lollipop_chart()</a></code>, respectively.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/lollipop_chart.html">lollipop_chart</a></span>(
@@ -169,7 +168,7 @@ revenue2018 &lt;-<span class="st"> </span>biomedicalrevenue <span class="op">%&g
 <div id="highlight-facet" class="section level2">
 <h2 class="hasAnchor">
 <a href="#highlight-facet" class="anchor"></a>Highlight + Facet</h2>
-<p>The highlight feature is particulary useful when used in conjuction with the <code>facet</code> feature.</p>
+<p>The highlight feature is particularly useful when used in conjunction with the <code>facet</code> feature.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biomedicalrevenue <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2012</span>, <span class="dv">2014</span>, <span class="dv">2016</span>, <span class="dv">2018</span>)) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/bar_chart.html">bar_chart</a></span>(
