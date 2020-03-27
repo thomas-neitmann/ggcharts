@@ -11,11 +11,8 @@ knitr::opts_chunk$set(
 
 
 [![Build Status](https://travis-ci.com/thomas-neitmann/ggcharts.svg?branch=master)](https://travis-ci.com/thomas-neitmann/ggcharts)
-
 [![CRAN Version](https://www.r-pkg.org/badges/version/ggcharts?color=green)](https://cran.r-project.org/package=ggcharts)
-
 [![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/ggcharts?color=green)](https://cran.r-project.org/package=ggcharts)
-
 [![Lifecycle Status](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 ## Overview
