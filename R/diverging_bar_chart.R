@@ -57,15 +57,14 @@ diverging_bar_chart <- function(data, x, y, bar_colors = c("#1F77B4", "#FF7F0E")
 
   data <- data %>% dplyr::mutate(
     !!x := reorder(!!x, !!y),
-    flag = ifelse(!!y >= 0, "Y", "N")
+    .color = ifelse(!!y >= 0, bar_colors[1], bar_colors[2])
   )
 
   text_size <- pt2mm(text_size)
   limit <- max(dplyr::pull(data, !!y)) * 1.05
-  names(bar_colors) <- c("Y", "N")
   if (length(text_color) == 1) text_color <- rep(text_color, 2)
 
-  ggplot(data, aes(!!x, !!y, fill = .data$flag)) +
+  ggplot(data, aes(!!x, !!y, fill = .data$.color)) +
     geom_col() +
     coord_flip() +
     geom_text(
@@ -83,9 +82,6 @@ diverging_bar_chart <- function(data, x, y, bar_colors = c("#1F77B4", "#FF7F0E")
     geom_hline(yintercept = 0) +
     ylim(-limit, limit) +
     theme_discrete_chart(horizontal = TRUE) +
-    theme(
-      axis.text.y = element_blank(),
-      legend.position = "none"
-    ) +
-    scale_fill_manual(values = bar_colors)
+    theme(axis.text.y = element_blank()) +
+    scale_fill_identity()
 }
