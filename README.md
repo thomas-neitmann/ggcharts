@@ -11,6 +11,14 @@ Overview
 Installation
 ------------
 
+The package is available from CRAN.
+
+``` r
+install.packages("ggcharts")
+```
+
+Alternatively, you can install the latest development version from GitHub.
+
 ``` r
 if (!"remotes" %in% installed.packages()) {
   install.packages("remotes")
@@ -65,4 +73,4 @@ Currently `ggcharts` includes the following functions:
 -   `diverging_lollipop_chart()`
 -   `dumbbell_chart()`
 
-To learn more about these, check out the [package website](https://thomas-neitmann.github.io/ggcharts/reference/index.html).
+You can learn more about these functions [here](https://thomas-neitmann.github.io/ggcharts/reference/index.html).
