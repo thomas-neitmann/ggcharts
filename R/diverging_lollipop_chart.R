@@ -61,15 +61,14 @@ diverging_lollipop_chart <- function(data, x, y,
 
   data <- data %>% dplyr::mutate(
     !!x := reorder(!!x, !!y),
-    flag = ifelse(!!y >= 0, "Y", "N")
+    .color = ifelse(!!y >= 0, lollipop_colors[1], lollipop_colors[2])
   )
 
   text_size <- pt2mm(text_size)
   limit <- max(dplyr::pull(data, !!y)) * 1.05
-  names(lollipop_colors) <- c("Y", "N")
   if (length(text_color) == 1) text_color <- rep(text_color, 2)
 
-  ggplot(data, aes(!!x, !!y, color = .data$flag)) +
+  ggplot(data, aes(!!x, !!y, color = .data$.color)) +
     geom_segment(aes(y = 0, xend = !!x, yend = !!y), size = line_size) +
     geom_point(size = point_size) +
     coord_flip() +
@@ -88,9 +87,6 @@ diverging_lollipop_chart <- function(data, x, y,
     geom_hline(yintercept = 0) +
     ylim(-limit, limit) +
     theme_discrete_chart(horizontal = TRUE) +
-    theme(
-      axis.text.y = element_blank(),
-      legend.position = "none"
-    ) +
-    scale_fill_manual(values = lollipop_colors, aesthetics = c("fill", "color"))
+    theme(axis.text.y = element_blank()) +
+    scale_color_identity()
 }
