@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 The `ggcharts` package currently offers two functions with a `highlight` parameter: `bar_chart()` and `lollipop_chart()`. Unless otherwise noted the usage is the same for both functions.
 
-```{r setup, message=FALSE}
+```{r setup, message=FALSE, warning=FALSE}
 library(ggcharts)
 library(dplyr)
 data("biomedicalrevenue")
