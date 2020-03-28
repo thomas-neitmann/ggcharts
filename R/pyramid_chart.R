@@ -37,7 +37,7 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
   groups <- data %>% dplyr::pull(!!group) %>% unique()
   if (length(groups) != 2) {
     err_msg <- paste0(
-      "There must be 2 unique values in `group` but there are ",
+      "There must be 2 unique values in `group`, not ",
       length(groups), "."
     )
     rlang::abort(err_msg)
