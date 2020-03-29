@@ -5,13 +5,13 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
                              threshold = NULL) {
 
   if (!is.null(limit) && !sort) {
-    stop("The `limit` argument can only be set when sort = TRUE")
+    rlang::abort("`limit` must not be set when `sort = FALSE`.")
   }
   if (!is.null(threshold) && !sort) {
-    stop("The `threshold` argument can only be set when sort = TRUE")
+    rlang::abort("`threshold` must not be set when `sort = FALSE`.")
   }
   if (!is.null(limit) && !is.null(threshold)) {
-    stop("Please specify either the `limit` or `threshold` argument but not both!")
+    rlang::abort("`limit` and `threshold` must not be used simultaneously.")
   }
 
   x <- rlang::enquo(x)
