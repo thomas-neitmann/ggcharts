@@ -1,7 +1,14 @@
-regression_chart <- function(data, x, y, ..., point_color = "black", point_size = 1,
+regression_chart <- function(data, x, y, ..., order = 1, conf_int = .95,
+                             point_color = "black", point_size = 1,
                              point_alpha = .7, line_color, line_width) {
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
+
+  if (conf_int < 0 || conf_int > 1) {
+    err_msg <- paste0("`conf_int` must be in [0, 1], not ", conf_int, ".")
+    rlang::abort(err_msg)
+  }
+  se <- !is.na(conf_int)
 
   point_color <- scales::alpha(point_color, point_alpha)
   axis_color <- "#5c5c5c"
@@ -9,7 +16,13 @@ regression_chart <- function(data, x, y, ..., point_color = "black", point_size 
 
   ggplot(data, aes(!!x, !!y, ...)) +
     geom_point(color = point_color, size = point_size) +
-    geom_smooth(formula = y ~ x, method = "lm") +
+    geom_smooth(
+      formula = y ~ poly(x, order),
+      method = "lm",
+      n = nrow(data),
+      se = se,
+      level = conf_int
+    ) +
     scale_x_continuous(expand = expand) +
     scale_y_continuous(expand = expand) +
     theme_minimal() +
