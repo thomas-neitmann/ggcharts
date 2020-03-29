@@ -1,6 +1,7 @@
 regression_chart <- function(data, x, y, ..., order = 1, conf_int = .95,
                              point_color = "black", point_size = 1,
-                             point_alpha = .7, line_color, line_width) {
+                             point_alpha = .7, line_color = "#1F77B4",
+                             line_width = 1) {
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
 
@@ -21,7 +22,9 @@ regression_chart <- function(data, x, y, ..., order = 1, conf_int = .95,
       method = "lm",
       n = nrow(data),
       se = se,
-      level = conf_int
+      level = conf_int,
+      color = line_color,
+      size = line_width
     ) +
     scale_x_continuous(expand = expand) +
     scale_y_continuous(expand = expand) +
