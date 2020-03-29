@@ -25,7 +25,7 @@ regression_chart <- function(data, x, y, ..., order = 1, conf_int = .95,
     ) +
     scale_x_continuous(expand = expand) +
     scale_y_continuous(expand = expand) +
-    theme_minimal() +
+    theme_minimal(base_size = 14) +
     theme(
       text = element_text(color = "black", size = 14),
       panel.grid.minor = element_blank(),
