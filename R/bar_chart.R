@@ -6,7 +6,9 @@
 #'
 #' @param data Dataset to use for the bar chart
 #' @param x \code{character} or \code{factor} column of \code{data}
-#' @param y \code{numeric} column of \code{data} representing the bar length
+#' @param y \code{numeric} column of \code{data} representing the bar length.
+#'        If missing, the bar length will be proportional to the count of each
+#'        value in \code{x}.
 #' @param facet \code{character} or \code{factor} column of \code{data} defining
 #'        the faceting groups
 #' @param ... Additional arguments passed to \code{aes()}
@@ -40,6 +42,9 @@
 #'
 #' ## By default bar_chart() creates a horizontal and sorted plot
 #' bar_chart(revenue2018, company, revenue)
+#'
+#' ## If the `y` argument is missing the count of each value in `x` is displayed
+#' bar_chart(mtcars, cyl)
 #'
 #' ## Create a vertical, non-sorted bar chart
 #' bar_chart(revenue_roche, year, revenue, horizontal = FALSE, sort = FALSE)
@@ -85,6 +90,10 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
     limit = limit,
     threshold = threshold
   )
+
+  if (rlang::quo_is_missing(y)) {
+    y <- sym("n")
+  }
 
   .geom_col <- quote(geom_col(width = .75))
   if (has_fill) {

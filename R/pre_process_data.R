@@ -19,6 +19,15 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
   facet <- rlang::enquo(facet)
   has_facet <- !rlang::quo_is_null(facet)
 
+  if (rlang::quo_is_missing(y)) {
+    if (has_facet) {
+      data <- dplyr::count(data, !!facet, !!x)
+    } else {
+      data <- dplyr::count(data, !!x)
+    }
+    y <- rlang::sym("n")
+  }
+
   if (!is.null(highlight)) {
     data$.color <- create_highlight_colors(
       dplyr::pull(data, !!x),
@@ -39,7 +48,7 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
       data <- data %>%
         dplyr::arrange(!!y) %>%
         dplyr::filter(!!y > threshold)
-    } else{
+    } else {
       data <- dplyr::arrange(data, !!y)
     }
 

@@ -6,7 +6,9 @@
 #'
 #' @param data Dataset to use for the bar chart
 #' @param x \code{character} or \code{factor} column of \code{data}
-#' @param y \code{numeric} column of \code{data} representing the lollipop length
+#' @param y \code{numeric} column of \code{data} representing the lollipop length.
+#'        If missing, the lollipop length will be proportional to the count of
+#'        each value in \code{x}.
 #' @param facet \code{character} or \code{factor} column of \code{data} defining
 #'        the faceting groups
 #' @param ... Additional arguments passed to \code{aes()}
@@ -39,6 +41,9 @@
 #'
 #' ## By default lollipop_chart() creates a horizontal and sorted plot
 #' lollipop_chart(revenue2016, company, revenue)
+#'
+#' ## If the `y` argument is missing the count of each value in `x` is displayed
+#' lollipop_chart(mtcars, cyl)
 #'
 #' ## Create a vertical, non-sorted lollipop chart
 #' lollipop_chart(revenue_bayer, year, revenue, horizontal = FALSE, sort = FALSE)
@@ -88,6 +93,10 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
     limit = limit,
     threshold = threshold
   )
+
+  if (rlang::quo_is_missing(y)) {
+    y <- sym("n")
+  }
 
   .geom_point <- quote(geom_point())
   .geom_segment <- quote(
