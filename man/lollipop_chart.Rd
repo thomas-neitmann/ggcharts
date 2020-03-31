@@ -26,7 +26,9 @@ lollipop_chart(
 
 \item{x}{\code{character} or \code{factor} column of \code{data}}
 
-\item{y}{\code{numeric} column of \code{data} representing the lollipop length}
+\item{y}{\code{numeric} column of \code{data} representing the lollipop length.
+If missing, the lollipop length will be proportional to the count of
+each value in \code{x}.}
 
 \item{facet}{\code{character} or \code{factor} column of \code{data} defining
 the faceting groups}
@@ -74,6 +76,9 @@ revenue_bayer <- biomedicalrevenue[biomedicalrevenue$company == "Bayer", ]
 
 ## By default lollipop_chart() creates a horizontal and sorted plot
 lollipop_chart(revenue2016, company, revenue)
+
+## If the `y` argument is missing the count of each value in `x` is displayed
+lollipop_chart(mtcars, cyl)
 
 ## Create a vertical, non-sorted lollipop chart
 lollipop_chart(revenue_bayer, year, revenue, horizontal = FALSE, sort = FALSE)
