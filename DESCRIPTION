@@ -20,8 +20,12 @@ Imports:
     rlang
 Suggests:
     gapminder,
+    grDevices,
     knitr,
+    miniUI,
     rmarkdown,
+    shiny,
+    shinyWidgets,
     tidyr,
     testthat (>= 2.1.0),
     vdiffr
