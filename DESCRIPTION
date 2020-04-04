@@ -21,6 +21,7 @@ Imports:
 Suggests:
     gapminder,
     knitr,
+    lintr,
     rmarkdown,
     tidyr,
     testthat (>= 2.1.0),
