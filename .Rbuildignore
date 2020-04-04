@@ -5,3 +5,4 @@
 ^.travis.yml$
 ^_pkgdown.yaml$
 ^docs$
+^.lintr$
