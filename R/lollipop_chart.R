@@ -81,7 +81,6 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   facet <- rlang::enquo(facet)
-  has_facet <- !rlang::quo_is_null(facet)
   dot_names <- names(rlang::enquos(...))
 
   data <- pre_process_data(
