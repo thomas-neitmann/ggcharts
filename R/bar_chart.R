@@ -77,7 +77,6 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   facet <- rlang::enquo(facet)
-  has_facet <- !rlang::quo_is_null(facet)
   dots <- rlang::enquos(...)
   has_fill <- "fill" %in% names(dots)
 

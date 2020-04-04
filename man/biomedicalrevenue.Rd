@@ -17,6 +17,6 @@
 biomedicalrevenue
 }
 \description{
-A dataset containing the annual revenues of top biomedical companies from 2011 to 2018.
+Annual revenues of top biomedical companies from 2011 to 2018.
 }
 \keyword{datasets}

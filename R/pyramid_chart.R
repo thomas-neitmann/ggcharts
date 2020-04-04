@@ -52,7 +52,7 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
 
     if (sort == "ascending") order <- -order
   } else {
-    order <- 1:nrow(data)
+    order <- seq_len(nrow(data))
   }
 
 
