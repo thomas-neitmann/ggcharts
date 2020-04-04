@@ -29,7 +29,7 @@ pyramid_theme <- function(side) {
   theme_minimal(base_size = 13) +
     theme(
       axis.title.y = element_blank(),
-      axis.text.y = if (left) element_blank() else element_text(hjust = .5, color = "black", margin = margin(l = 10, r = 10)),
+      axis.text.y = element_blank(),
       axis.title.x = element_blank(),
       axis.ticks.y = element_blank(),
       plot.margin = if (left) margin(5, 0, 5, 5) else margin(5, 5, 5, 0),

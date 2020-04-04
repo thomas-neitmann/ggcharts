@@ -10,8 +10,6 @@
 #' @param group \code{character} or \code{factor} column of \code{data}
 #' @param bar_colors \code{character} vector of length 2 containing colors
 #' @param sort \code{character}. Should the bars be sorted? By default \code{"no"}.
-#' @param xlab \code{character}. X axis label
-#' @param title \code{character}. Plot title. By default no title is displayed.
 #'
 #' @return An object of class \code{ggplot}
 #'
@@ -28,7 +26,7 @@
 #' @import patchwork
 #' @export
 pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"),
-                          sort = "no", xlab = NULL, title = NULL) {
+                          sort = "no") {
   sort <- match.arg(sort, c("no", "descending", "ascending"))
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
@@ -83,14 +81,21 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
       coord_flip() +
       pyramid_theme(sides[i]) +
       ggtitle(groups[i])
-
   }
 
-  x_label <- if (is.null(xlab)) rlang::as_name(y) else xlab
-  plots[[1]] + plots[[2]] +
-    patchwork::plot_annotation(
-      caption = x_label,
-      title = title,
-      theme = theme(plot.caption = element_text(hjust = .5, size = 13))
-    )
+  axis_label <- data %>%
+    dplyr::filter(!!group == groups[1]) %>%
+    dplyr::mutate(!!x := reorder(!!x, order)) %>%
+    ggplot() +
+    geom_text(aes(x = !!x, y = 0, label = !!x), hjust = .5) +
+    coord_flip() +
+    scale_x_discrete(expand = expand_scale(add = .5)) +
+    theme_void() +
+    theme(axis.title.x = element_text()) +
+    ylab(rlang::as_name(x))
+
+  width <- dplyr::pull(data, !!x) %>% strwidth(unit = "inch") %>% max()
+
+  plots[[1]] + axis_label + plots[[2]] +
+    patchwork::plot_layout(width = c(1, unit(width / 2, "inch"), 1))
 }
