@@ -23,6 +23,7 @@ Suggests:
     knitr,
     lintr,
     rmarkdown,
+    spelling,
     tidyr,
     testthat (>= 2.1.0),
     vdiffr
