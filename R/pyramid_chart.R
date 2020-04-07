@@ -94,7 +94,10 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
     theme(axis.title.x = element_text()) +
     ylab(rlang::as_name(x))
 
-  width <- dplyr::pull(data, !!x) %>% strwidth(unit = "inch") %>% max()
+  width <- data %>%
+    dplyr::pull(!!x) %>%
+    graphics::strwidth(unit = "inch") %>%
+    max()
 
   plots[[1]] + axis_label + plots[[2]] +
     patchwork::plot_layout(width = c(1, unit(width / 2, "inch"), 1))
