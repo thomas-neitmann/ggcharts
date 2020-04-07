@@ -99,3 +99,47 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
   plots[[1]] + axis_label + plots[[2]] +
     patchwork::plot_layout(width = c(1, unit(width / 2, "inch"), 1))
 }
+
+add_theme <- function(plot, theme) {
+  plot[[1]] <- plot[[1]] + as_left_theme(theme)
+  plot[[2]] <- plot[[2]] + as_center_theme(theme)
+  plot[[3]] <- plot[[3]] + as_right_theme(theme)
+  plot
+}
+
+as_center_theme <- function(theme) {
+  theme +
+    theme(
+      axis.ticks = element_blank(),
+      axis.title.y = element_blank(),
+      axis.text = element_blank(),
+      axis.line = element_blank(),
+      plot.margin = margin(5, 0, 5, 0),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank()
+    )
+}
+
+as_left_theme <- function(theme) {
+  theme +
+    theme(
+      axis.ticks.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.text.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.title.x = element_blank(),
+      plot.title = element_text(hjust = 1)
+    )
+}
+
+as_right_theme <- function(theme) {
+  theme +
+    theme(
+      axis.ticks.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.text.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.title.x = element_blank(),
+      plot.title = element_text(hjust = 0)
+    )
+}

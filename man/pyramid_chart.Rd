@@ -10,9 +10,7 @@ pyramid_chart(
   y,
   group,
   bar_colors = c("#1F77B4", "#FF7F0E"),
-  sort = "no",
-  xlab = NULL,
-  title = NULL
+  sort = "no"
 )
 }
 \arguments{
@@ -27,10 +25,6 @@ pyramid_chart(
 \item{bar_colors}{\code{character} vector of length 2 containing colors}
 
 \item{sort}{\code{character}. Should the bars be sorted? By default \code{"no"}.}
-
-\item{xlab}{\code{character}. X axis label}
-
-\item{title}{\code{character}. Plot title. By default no title is displayed.}
 }
 \value{
 An object of class \code{ggplot}
