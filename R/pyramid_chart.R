@@ -118,6 +118,23 @@ add_scale <- function(plot, scale) {
   plot
 }
 
+add_labels <- function(plot, labels) {
+  args <- list()
+  if (exists("title", labels)) {
+    args$title <- labels$title
+  }
+  if (exists("subtitle", labels)) {
+    args$subtitle <- labels$subtitle
+  }
+  if (exists("caption", labels)) {
+    args$caption <- labels$caption
+  }
+  if (exists("x", labels)) {
+    plot[[2]] <- plot[[2]] + ylab(labels$x)
+  }
+  plot + do.call(patchwork::plot_annotation, args)
+}
+
 add_theme <- function(plot, theme) {
   plot[[1]] <- plot[[1]] + as_left_theme(theme)
   plot[[2]] <- plot[[2]] + as_center_theme(theme)
