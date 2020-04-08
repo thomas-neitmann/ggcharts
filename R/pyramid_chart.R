@@ -92,7 +92,7 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
     scale_x_discrete(expand = expand_scale(add = .5)) +
     theme_void() +
     theme(axis.title.x = element_text()) +
-    ylab(rlang::as_name(x))
+    ylab(rlang::as_name(y))
 
   width <- data %>%
     dplyr::pull(!!x) %>%
