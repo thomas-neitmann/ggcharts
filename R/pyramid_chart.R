@@ -132,6 +132,7 @@ add_labels <- function(plot, labels) {
   if (exists("x", labels)) {
     plot[[2]] <- plot[[2]] + ylab(labels$x)
   }
+  args$theme <- plot[[2]]$theme
   plot + do.call(patchwork::plot_annotation, args)
 }
 
