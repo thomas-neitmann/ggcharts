@@ -99,8 +99,23 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
     graphics::strwidth(unit = "inch") %>%
     max()
 
-  plots[[1]] + axis_label + plots[[2]] +
+  p <- plots[[1]] + axis_label + plots[[2]] +
     patchwork::plot_layout(width = c(1, unit(width / 2, "inch"), 1))
+  PyramidChart(plot = p)
+}
+
+add_scale <- function(plot, scale) {
+  reverse_scale <- scale$clone()
+  reverse_scale$trans <- scales::reverse_trans()
+
+  if (length(scale$expand) == 0) {
+    scale$expand <- expansion(c(0, .05))
+    reverse_scale$expand <- expansion(c(.05, 0))
+  }
+
+  plot[[1]] <- plot[[1]] + reverse_scale
+  plot[[3]] <- plot[[3]] + scale
+  plot
 }
 
 add_theme <- function(plot, theme) {
@@ -119,7 +134,8 @@ as_center_theme <- function(theme) {
       axis.line = element_blank(),
       plot.margin = margin(5, 0, 5, 0),
       panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank()
+      panel.grid.minor = element_blank(),
+      panel.border = element_blank()
     )
 }
 
