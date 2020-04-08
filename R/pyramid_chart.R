@@ -113,6 +113,13 @@ add_scale <- function(plot, scale) {
     reverse_scale$expand <- expansion(c(.05, 0))
   }
 
+  if (is.null(scale$limits)) {
+    scale$limits <- plot[[3]]$scales$get_scales("y")$limits
+    reverse_scale$limits <- plot[[1]]$scales$get_scales("y")$limits
+  } else {
+    rlang::abort("Setting limits is not supported currently.")
+  }
+
   plot[[1]] <- plot[[1]] + reverse_scale
   plot[[3]] <- plot[[3]] + scale
   plot
