@@ -154,13 +154,20 @@ as_center_theme <- function(theme) {
   theme +
     theme(
       axis.ticks = element_blank(),
-      axis.title.y = element_blank(),
       axis.text = element_blank(),
       axis.line = element_blank(),
+      axis.ticks.x = element_blank(),
+      axis.text.x = element_blank(),
+      axis.line.x = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.text.y = element_blank(),
+      axis.line.y = element_blank(),
       plot.margin = margin(5, 0, 5, 0),
       panel.grid.major = element_blank(),
       panel.grid.minor = element_blank(),
-      panel.border = element_blank()
+      panel.border = element_blank(),
+      panel.background = element_rect(fill = "white")
     )
 }
 
