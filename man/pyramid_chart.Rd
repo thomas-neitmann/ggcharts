@@ -10,7 +10,9 @@ pyramid_chart(
   y,
   group,
   bar_colors = c("#1F77B4", "#FF7F0E"),
-  sort = "no"
+  sort = "no",
+  title = NULL,
+  xlab = NULL
 )
 }
 \arguments{
@@ -25,12 +27,21 @@ pyramid_chart(
 \item{bar_colors}{\code{character} vector of length 2 containing colors}
 
 \item{sort}{\code{character}. Should the bars be sorted? By default \code{"no"}.}
+
+\item{title}{\code{character}. Deprecated. Plot title. By default no title is displayed.}
+
+\item{xlab}{\code{character}. Deprecated. X axis label.}
 }
 \value{
 An object of class \code{ggplot}
 }
 \description{
 Easily create a pyramid chart
+}
+\details{
+Arguments \code{xlab} and \code{title} are soft-deprecated, i.e. you can
+still use them but a warning will be thrown. Instead, use \code{labs}. See
+below for an example.
 }
 \examples{
 library(magrittr)
@@ -40,6 +51,9 @@ cars <- mtcars \%>\%
   dplyr::mutate(am = ifelse(am == 0, "Manual", "Automatic"))
 
 pyramid_chart(cars, cyl, n, am)
+
+pyramid_chart(cars, cyl, n, am) +
+  labs(title = "Pyramid Chart", x = "Number of Cars")
 
 }
 \author{

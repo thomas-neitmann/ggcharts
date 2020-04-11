@@ -10,6 +10,13 @@
 #' @param group \code{character} or \code{factor} column of \code{data}
 #' @param bar_colors \code{character} vector of length 2 containing colors
 #' @param sort \code{character}. Should the bars be sorted? By default \code{"no"}.
+#' @param xlab \code{character}. Deprecated. X axis label.
+#' @param title \code{character}. Deprecated. Plot title. By default no title is displayed.
+#'
+#' @details
+#' Arguments \code{xlab} and \code{title} are soft-deprecated, i.e. you can
+#' still use them but a warning will be thrown. Instead, use \code{labs}. See
+#' below for an example.
 #'
 #' @return An object of class \code{ggplot}
 #'
@@ -22,15 +29,27 @@
 #'
 #' pyramid_chart(cars, cyl, n, am)
 #'
+#' pyramid_chart(cars, cyl, n, am) +
+#'   labs(title = "Pyramid Chart", x = "Number of Cars")
+#'
 #' @import ggplot2
 #' @import patchwork
 #' @export
 pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"),
-                          sort = "no") {
+                          sort = "no", title = NULL, xlab = NULL) {
   sort <- match.arg(sort, c("no", "descending", "ascending"))
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   group <- rlang::enquo(group)
+
+  if (!is.null(title)) {
+    lifecycle::deprecate_warn("0.1.0.9000", "pyramid_chart(title = )", "labs(title = )")
+  }
+  if (!is.null(xlab)) {
+    lifecycle::deprecate_warn("0.1.0.9000", "pyramid_chart(xlab = )", "labs(x = )")
+  } else {
+    xlab <- rlang::as_name(y)
+  }
 
   groups <- data %>% dplyr::pull(!!group) %>% unique()
   if (length(groups) != 2) {
@@ -92,7 +111,7 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
     scale_x_discrete(expand = expand_scale(add = .5)) +
     theme_void() +
     theme(axis.title.x = element_text()) +
-    ylab(rlang::as_name(y))
+    ylab(xlab)
 
   width <- data %>%
     dplyr::pull(!!x) %>%
@@ -100,7 +119,8 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
     max()
 
   p <- plots[[1]] + axis_label + plots[[2]] +
-    patchwork::plot_layout(width = c(1, unit(width / 2, "inch"), 1))
+    patchwork::plot_layout(width = c(1, unit(width / 2, "inch"), 1)) +
+    patchwork::plot_annotation(title = title)
   PyramidChart(plot = p)
 }
 
