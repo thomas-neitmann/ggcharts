@@ -18,7 +18,7 @@
 #' still use them but a warning will be thrown. Instead, use \code{labs}. See
 #' below for an example.
 #'
-#' @return An object of class \code{ggplot}
+#' @return An object of class \code{PyramidChart}
 #'
 #' @examples
 #' library(magrittr)
