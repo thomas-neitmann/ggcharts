@@ -33,7 +33,7 @@ pyramid_chart(
 \item{xlab}{\code{character}. Deprecated. X axis label.}
 }
 \value{
-An object of class \code{ggplot}
+An object of class \code{PyramidChart}
 }
 \description{
 Easily create a pyramid chart
