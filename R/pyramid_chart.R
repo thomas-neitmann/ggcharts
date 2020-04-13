@@ -140,8 +140,11 @@ add_scale <- function(plot, scale) {
     reverse_scale$limits <- reverse_scale$trans$transform(rev(scale$limits))
   }
 
-  plot[[1]] <- plot[[1]] + reverse_scale
-  plot[[3]] <- plot[[3]] + scale
+  suppressMessages({
+    plot[[1]] <- plot[[1]] + reverse_scale
+    plot[[3]] <- plot[[3]] + scale
+  })
+
   plot
 }
 
