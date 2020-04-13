@@ -189,8 +189,7 @@ as_center_theme <- function(theme) {
       plot.margin = margin(5, 0, 5, 0),
       panel.grid.major = element_blank(),
       panel.grid.minor = element_blank(),
-      panel.border = element_blank(),
-      panel.background = element_rect(fill = "white")
+      panel.border = element_blank()
     )
 }
 
