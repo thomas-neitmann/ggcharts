@@ -36,6 +36,10 @@ Change PyramidChart labels
 
 Print PyramidChart
 }
+\details{
+This class is not meant to be directly used. To create a pyramid chart
+use \code{pyramid_chart} instead.
+}
 \section{Slots}{
 
 \describe{

@@ -6,6 +6,11 @@ methods::setOldClass("labels")
 #' An S4 Class Representing a Pyramid Chart
 #'
 #' @slot plot The pyramid chart created with \code{pyramic_chart}
+#'
+#' @details
+#' This class is not meant to be directly used. To create a pyramid chart
+#' use \code{pyramid_chart} instead.
+#'
 #' @importFrom methods new
 PyramidChart <- methods::setClass(
   "PyramidChart",
