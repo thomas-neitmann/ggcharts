@@ -79,7 +79,8 @@ dumbbell_chart <- function(data, x, y1, y2, line_size = 1.5, line_color = "light
     geom_point(aes(y = !!y1, color = rlang::as_name(y1)), size = point_size) +
     geom_point(aes(y = !!y2, color = rlang::as_name(y2)), size = point_size) +
     scale_color_manual(values = point_colors, labels = legend_labels) +
-    theme_discrete_chart(TRUE)
+    theme_discrete_chart(horizontal = TRUE) +
+    theme(axis.line.y = element_blank())
 
   if (legend) {
     plot <- plot +
