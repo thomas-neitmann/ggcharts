@@ -24,7 +24,7 @@ PyramidChart <- methods::setClass(
 #'
 #' @rdname PyramidChart-class
 methods::setMethod("+", signature("PyramidChart", "theme"), function(e1, e2) {
-  PyramidChart(plot = add_theme(e1@plot, e2))
+  PyramidChart(plot = add_theme(e1@plot, e2), xlab = e1@xlab)
 })
 
 #' Change PyramidChart scale
@@ -34,7 +34,7 @@ methods::setMethod("+", signature("PyramidChart", "theme"), function(e1, e2) {
 #'
 #' @rdname PyramidChart-class
 methods::setMethod("+", signature("PyramidChart", "ScaleContinuousPosition"), function(e1, e2) {
-  PyramidChart(plot = add_scale(e1@plot, e2))
+  PyramidChart(plot = add_scale(e1@plot, e2), xlab = e1@xlab)
 })
 
 #' Change PyramidChart labels
@@ -44,7 +44,7 @@ methods::setMethod("+", signature("PyramidChart", "ScaleContinuousPosition"), fu
 #'
 #' @rdname PyramidChart-class
 methods::setMethod("+", signature("PyramidChart", "labels"), function(e1, e2) {
-  PyramidChart(plot = add_labels(e1@plot, e2))
+  PyramidChart(plot = add_labels(e1@plot, e2), xlab = e1@xlab)
 })
 
 #' Print PyramidChart
