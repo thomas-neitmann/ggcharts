@@ -1,46 +1,48 @@
-#' @importFrom ggplot2 coord_flip scale_color_manual scale_fill_manual
-#'             facet_wrap theme vars
-post_process_plot <- function(plot, horizontal, facet, highlight,
-                              fill, color) {
-  if (!missing(facet)) {
-    has_facet <- TRUE
-    facet <- rlang::enquo(facet)
-  } else {
-    has_facet <- FALSE
-  }
+#' @import ggplot2
+post_process_plot <- function(plot, is_sorted = TRUE, horizontal = TRUE,
+                              facet = NULL, highlight = NULL, fill = FALSE,
+                              color = NULL) {
+  facet <- rlang::enquo(facet)
 
   if (horizontal) {
     plot <- plot + coord_flip()
   }
 
   if (!is.null(highlight)) {
-    if (length(color) == length(highlight)) {
-      colors <- stats::setNames(
-        object = c(color, "#e0e0e0"),
-        nm = c(highlight, "other")
-      )
-    } else {
-      message("Using the default color palette to highlight bars.")
-      colors <- stats::setNames(
-        object = c(matplotlib_colors[1:length(highlight)], "#e0e0e0"),
-        nm = c(highlight, "other")
-      )
-    }
-
     plot <- plot +
-      scale_fill_manual(values = colors, aesthetics = c("fill", "color")) +
-      theme(legend.position = "none")
+      scale_fill_identity() +
+      scale_color_identity()
   }
 
   if (fill) {
     plot <- plot + scale_fill_manual(values = matplotlib_colors)
   }
 
-  if (has_facet) {
-    plot <- plot +
-      facet_wrap(vars(!!facet), scales = "free_y") +
-      scale_x_reordered()
+  if (!rlang::quo_is_null(facet)) {
+    x <- rlang::as_name(plot$mapping$x)
+    is_numeric <- is.numeric(plot$data[[x]])
+
+    if (is_numeric) {
+      scales <- "fixed"
+    } else {
+      if (horizontal) {
+        scales <- "free_y"
+      } else {
+        scales <- "free_x"
+      }
+    }
+
+    plot <- plot + facet_wrap(vars(!!facet), scales = scales)
+
+    if (is_sorted) {
+      plot <- plot + scale_x_reordered()
+    }
+
   }
 
-  plot + theme_discrete_chart()
+  if (utils::packageVersion("ggplot2") >= "3.3.0") {
+    expand_scale <- expansion
+  }
+
+  plot + scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
 }

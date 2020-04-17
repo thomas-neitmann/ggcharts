@@ -1,0 +1,4 @@
+template:
+  params:
+    bootswatch: slate
+    ganalytics: UA-161676274-1

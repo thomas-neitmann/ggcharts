@@ -2,15 +2,19 @@
 #'
 #' Easily create a diverging lollipop chart
 #'
-#' @param data Dataset to use for the chart
-#' @param x The x variable
-#' @param y The y variable
-#' @param lollipop_colors A vector of length 2 containing the colors for the positive
-#'                   and negative lollipops
-#' @param line_size numeric. Size of the lollipop 'stick'
-#' @param point_size numeric. Size of the lollipop 'head'
-#' @param text_color The color for the lollipop annotations
-#' @param text_size The size of the lollipop annotation text in pt
+#' @author Thomas Neitmann
+#'
+#' @param data Dataset to use for the diverging lollipop chart
+#' @param x \code{character} or \code{factor} column of \code{data}
+#' @param y \code{numeric} column of \code{data} representing the lollipop length
+#' @param lollipop_colors A \code{character} vector of length 2 containing the
+#'        colors for the positive and negative lollipops
+#' @param line_size \code{numeric}. Size of the lollipop 'stick'
+#' @param point_size \code{numeric}. Size of the lollipop 'head'
+#' @param text_color \code{character}. The color for the lollipop annotations
+#' @param text_size \code{numeric} The size of the lollipop annotation text in pt
+#'
+#' @return An object of class \code{ggplot}
 #'
 #' @examples
 #' if (requireNamespace("tidyr")) {
@@ -57,15 +61,14 @@ diverging_lollipop_chart <- function(data, x, y,
 
   data <- data %>% dplyr::mutate(
     !!x := reorder(!!x, !!y),
-    flag = ifelse(!!y >= 0, "Y", "N")
+    .color = ifelse(!!y >= 0, lollipop_colors[1], lollipop_colors[2])
   )
 
   text_size <- pt2mm(text_size)
   limit <- max(dplyr::pull(data, !!y)) * 1.05
-  names(lollipop_colors) <- c("Y", "N")
   if (length(text_color) == 1) text_color <- rep(text_color, 2)
 
-  ggplot(data, aes(!!x, !!y, color = .data$flag)) +
+  ggplot(data, aes(!!x, !!y, color = .data$.color)) +
     geom_segment(aes(y = 0, xend = !!x, yend = !!y), size = line_size) +
     geom_point(size = point_size) +
     coord_flip() +
@@ -83,10 +86,7 @@ diverging_lollipop_chart <- function(data, x, y,
     ) +
     geom_hline(yintercept = 0, color = "darkgray") +
     ylim(-limit, limit) +
-    theme_discrete_chart() +
-    theme(
-      axis.text.y = element_blank(),
-      legend.position = "none"
-    ) +
-    scale_fill_manual(values = lollipop_colors, aesthetics = c("fill", "color"))
+    theme_discrete_chart(horizontal = TRUE) +
+    theme(axis.text.y = element_blank()) +
+    scale_color_identity()
 }

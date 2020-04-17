@@ -16,22 +16,25 @@ diverging_lollipop_chart(
 )
 }
 \arguments{
-\item{data}{Dataset to use for the chart}
+\item{data}{Dataset to use for the diverging lollipop chart}
 
-\item{x}{The x variable}
+\item{x}{\code{character} or \code{factor} column of \code{data}}
 
-\item{y}{The y variable}
+\item{y}{\code{numeric} column of \code{data} representing the lollipop length}
 
-\item{lollipop_colors}{A vector of length 2 containing the colors for the positive
-and negative lollipops}
+\item{lollipop_colors}{A \code{character} vector of length 2 containing the
+colors for the positive and negative lollipops}
 
-\item{line_size}{numeric. Size of the lollipop 'stick'}
+\item{line_size}{\code{numeric}. Size of the lollipop 'stick'}
 
-\item{point_size}{numeric. Size of the lollipop 'head'}
+\item{point_size}{\code{numeric}. Size of the lollipop 'head'}
 
-\item{text_color}{The color for the lollipop annotations}
+\item{text_color}{\code{character}. The color for the lollipop annotations}
 
-\item{text_size}{The size of the lollipop annotation text in pt}
+\item{text_size}{\code{numeric} The size of the lollipop annotation text in pt}
+}
+\value{
+An object of class \code{ggplot}
 }
 \description{
 Easily create a diverging lollipop chart
@@ -69,4 +72,7 @@ diverging_lollipop_chart(mtcars_z, model, hpz, text_size = 14)
 ## Display the axis label text in the same color as the bars
 diverging_lollipop_chart(mtcars_z, model, hpz, text_color = c("#1F77B4", "#FF7F0E"))
 
+}
+\author{
+Thomas Neitmann
 }

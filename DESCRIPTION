@@ -1,21 +1,36 @@
 Package: ggcharts
 Type: Package
-Title: Easily create common charts using ggplot2
+Title: Shorten the Distance from Data Visualization Idea to Actual Plot
 Version: 0.1.0
-Author: Thomas Neitmann
-Maintainer: Thomas Neitmann <th.neitmann@gmail.com>
-Description: This package intends to make it (much) easier to create common
-    charts, such a bar charts, by taking care of a lot of data preprocessing
-    and plot customization for you.
+Authors@R: c(
+    person("Thomas", "Neitmann", , "th.neitmann@gmail.com", c("aut", "cre")),
+    person("Julia", "Silge", role = c("ctb", "cph")),
+    person("David", "Robinson", role = c("ctb", "cph"))
+    )
+Description: Streamline the creation of common charts by taking care of a lot of
+    data preprocessing and plot customization for the user. Provides a
+    high-level interface to create plots using 'ggplot2'.
 Depends:
     R (>= 2.10),
     ggplot2  
 Imports:
     dplyr,
     magrittr,
+    patchwork,
     rlang
-Suggests: tidyr
+Suggests:
+    gapminder,
+    knitr,
+    lintr,
+    rmarkdown,
+    spelling,
+    tidyr,
+    testthat (>= 2.1.0),
+    vdiffr
 License: MIT + file LICENSE
+URL: https://github.com/thomas-neitmann/ggcharts
+BugReports: https://github.com/thomas-neitmann/ggcharts/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
+VignetteBuilder: knitr
