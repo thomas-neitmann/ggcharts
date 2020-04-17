@@ -20,6 +20,8 @@ theme_discrete_chart <- function(base_size = 14, base_family = "",
       ),
       axis.line.x = element_line(color = "darkgray"),
       axis.ticks.x = element_line(color = "darkgray"),
-      axis.ticks.length.x = unit(1.75, "mm")
+      axis.ticks.length.x = unit(1.75, "mm"),
+      axis.text.x = element_text(color = "black"),
+      axis.text.y = element_text(color = "black")
     )
 }
