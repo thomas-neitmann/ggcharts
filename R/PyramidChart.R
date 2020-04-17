@@ -54,5 +54,12 @@ methods::setMethod("+", signature("PyramidChart", "labels"), function(e1, e2) {
 #' @rdname PyramidChart-class
 methods::setMethod("show", signature("PyramidChart"), function(object) {
   print(object@plot)
-  grid::grid.text(object@xlab, y = unit(.25, "grobheight", data = patchworkGrob(object@plot)))
+  if (is.null(object@plot$patches$annotation$caption)) {
+    y <- .25
+  } else {
+    y <- .45
+  }
+  grob <- patchworkGrob(object@plot)
+
+  grid::grid.text(object@xlab, y = unit(y, "grobheight", data = grob))
 })
