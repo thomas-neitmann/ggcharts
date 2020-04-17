@@ -111,7 +111,7 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
     scale_x_discrete(expand = expand_scale(add = .5)) +
     theme_void() +
     theme(axis.title.x = element_text()) +
-    ylab(xlab)
+    ylab("")
 
   width <- data %>%
     dplyr::pull(!!x) %>%
@@ -121,7 +121,7 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
   p <- plots[[1]] + axis_label + plots[[2]] +
     patchwork::plot_layout(width = c(1, unit(width / 2, "inch"), 1)) +
     patchwork::plot_annotation(title = title)
-  PyramidChart(plot = p)
+  PyramidChart(plot = p, xlab = xlab)
 }
 
 add_scale <- function(plot, scale) {

@@ -14,7 +14,7 @@ methods::setOldClass("labels")
 #' @importFrom methods new
 PyramidChart <- methods::setClass(
   "PyramidChart",
-  slots = list(plot = "patchwork")
+  slots = list(plot = "patchwork", xlab = "character")
 )
 
 #' Change PyramidChart theme
@@ -54,4 +54,5 @@ methods::setMethod("+", signature("PyramidChart", "labels"), function(e1, e2) {
 #' @rdname PyramidChart-class
 methods::setMethod("show", signature("PyramidChart"), function(object) {
   print(object@plot)
+  grid::grid.text(object@xlab, y = unit(.04, "npc"))
 })
