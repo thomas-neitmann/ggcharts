@@ -1,5 +1,5 @@
 ---
-title: "Customize ggcharts Plots"
+title: "Customizing ggcharts Plots"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{customize}
