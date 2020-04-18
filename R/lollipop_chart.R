@@ -116,7 +116,7 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
   p <- ggplot(data, aes(!!x, !!y, ...)) +
     eval(.geom_segment) +
     eval(.geom_point) +
-    theme_discrete_chart(horizontal = horizontal)
+    theme_ggcharts(horizontal = horizontal)
 
   post_process_plot(
     plot = p,

@@ -1,18 +1,14 @@
 #' @import ggplot2
-theme_discrete_chart <- function(base_size = 14,
-                                 base_family = "",
-                                 base_line_size = base_size/22,
-                                 base_rect_size = base_size/22,
-                                 axis_line = TRUE,
-                                 horizontal = TRUE) {
+theme_ggcharts <- function(base_size = 14,
+                           base_family = "",
+                           axis_line = TRUE,
+                           horizontal = TRUE) {
   blank <- element_blank()
   grid_line <- element_line(color = "#cccccc", size = 0.2)
   axis_line <- if (axis_line) element_line(color = "black", size = 1) else blank
   theme_minimal(
     base_size = base_size,
-    base_family = base_family,
-    base_line_size = base_line_size,
-    base_rect_size = base_rect_size
+    base_family = base_family
   ) +
     theme(
       panel.grid.minor = blank,
