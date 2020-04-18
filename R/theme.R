@@ -5,7 +5,7 @@ theme_ggcharts <- function(base_size = 14,
                            horizontal = TRUE) {
   blank <- element_blank()
   grid_line <- element_line(color = "#cccccc", size = 0.2)
-  axis_line <- if (axis_line) element_line(color = "black", size = 1) else blank
+  axis_line <- if (axis_line) element_line(color = "black", size = .7) else blank
   theme_minimal(
     base_size = base_size,
     base_family = base_family
@@ -14,7 +14,7 @@ theme_ggcharts <- function(base_size = 14,
       panel.grid.minor = blank,
       panel.grid.major.y = if (horizontal) blank else grid_line,
       panel.grid.major.x = if (horizontal) grid_line else blank,
-      strip.background = element_rect(fill = "white", color = "white"),
+      strip.background = blank,
       strip.text = element_text(
         margin = margin(1, 0, 1, 0, "mm"),
         face = "bold",
@@ -24,7 +24,9 @@ theme_ggcharts <- function(base_size = 14,
       axis.line.y = if (horizontal) axis_line else blank,
       axis.ticks.length.x = unit(1.75, "mm"),
       axis.text.x = element_text(color = "black"),
-      axis.text.y = element_text(color = "black")
+      axis.text.y = element_text(color = "black"),
+      plot.background = element_rect(fill = "#e5e7eb", color = "#e5e7eb"),
+      plot.title.position = "plot"
     )
 }
 
