@@ -30,6 +30,37 @@ theme_ggcharts <- function(base_size = 14,
     )
 }
 
+theme_hermit <- function(base_size = 14,
+                         base_family = "",
+                         axis_line = TRUE,
+                         horizontal = TRUE) {
+  blank <- element_blank()
+  text_color <- "#D6DDE1"
+  grid_line <- element_line(color = "#636b7e", size = 0.2)
+  axis_line <- if (axis_line) element_line(color = text_color, size = .7) else blank
+
+  theme_minimal(base_size = base_size, base_family = base_family) +
+    theme(
+      panel.grid.minor = blank,
+      panel.grid.major.y = if (horizontal) blank else grid_line,
+      panel.grid.major.x = if (horizontal) grid_line else blank,
+      strip.background = blank,
+      strip.text = element_text(
+        margin = margin(1, 0, 1, 0, "mm"),
+        face = "bold",
+        hjust = 0,
+        color = text_color
+      ),
+      text = element_text(color = text_color),
+      axis.text.x = element_text(color = text_color),
+      axis.text.y = element_text(color = text_color),
+      axis.line.x = if (horizontal) blank else axis_line,
+      axis.line.y = if (horizontal) axis_line else blank,
+      plot.background = element_rect(fill = "#494F5C", color = "#494F5C"),
+      plot.title.position = "plot"
+    )
+}
+
 pyramid_theme <- function(side = c("left", "right")) {
   side <- match.arg(side)
   if (side == "left") {
