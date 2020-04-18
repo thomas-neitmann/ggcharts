@@ -6,27 +6,25 @@ theme_ggcharts <- function(base_size = 14,
   blank <- element_blank()
   grid_line <- element_line(color = "#cccccc", size = 0.2)
   axis_line <- if (axis_line) element_line(color = "black", size = .7) else blank
-  theme_minimal(
-    base_size = base_size,
-    base_family = base_family
-  ) +
+
+  theme_minimal(base_size = base_size, base_family = base_family) +
     theme(
+      axis.line.x = if (horizontal) blank else axis_line,
+      axis.line.y = if (horizontal) axis_line else blank,
+      axis.text.x = element_text(color = "black"),
+      axis.text.y = element_text(color = "black"),
       panel.grid.minor = blank,
       panel.grid.major.y = if (horizontal) blank else grid_line,
       panel.grid.major.x = if (horizontal) grid_line else blank,
+      plot.background = element_rect(fill = "#e5e7eb", color = "#e5e7eb"),
+      plot.title.position = "plot",
       strip.background = blank,
       strip.text = element_text(
         margin = margin(1, 0, 1, 0, "mm"),
         face = "bold",
         hjust = 0
       ),
-      axis.line.x = if (horizontal) blank else axis_line,
-      axis.line.y = if (horizontal) axis_line else blank,
-      axis.ticks.length.x = unit(1.75, "mm"),
-      axis.text.x = element_text(color = "black"),
-      axis.text.y = element_text(color = "black"),
-      plot.background = element_rect(fill = "#e5e7eb", color = "#e5e7eb"),
-      plot.title.position = "plot"
+      text = element_text(color = "black")
     )
 }
 
@@ -41,9 +39,15 @@ theme_hermit <- function(base_size = 14,
 
   theme_minimal(base_size = base_size, base_family = base_family) +
     theme(
+      axis.line.x = if (horizontal) blank else axis_line,
+      axis.line.y = if (horizontal) axis_line else blank,
+      axis.text.x = element_text(color = text_color),
+      axis.text.y = element_text(color = text_color),
       panel.grid.minor = blank,
       panel.grid.major.y = if (horizontal) blank else grid_line,
       panel.grid.major.x = if (horizontal) grid_line else blank,
+      plot.background = element_rect(fill = "#494F5C", color = "#494F5C"),
+      plot.title.position = "plot",
       strip.background = blank,
       strip.text = element_text(
         margin = margin(1, 0, 1, 0, "mm"),
@@ -51,13 +55,7 @@ theme_hermit <- function(base_size = 14,
         hjust = 0,
         color = text_color
       ),
-      text = element_text(color = text_color),
-      axis.text.x = element_text(color = text_color),
-      axis.text.y = element_text(color = text_color),
-      axis.line.x = if (horizontal) blank else axis_line,
-      axis.line.y = if (horizontal) axis_line else blank,
-      plot.background = element_rect(fill = "#494F5C", color = "#494F5C"),
-      plot.title.position = "plot"
+      text = element_text(color = text_color)
     )
 }
 
