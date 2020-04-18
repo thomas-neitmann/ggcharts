@@ -39,13 +39,15 @@ An object of class \code{ggplot}
 Easily create a pyramid chart
 }
 \examples{
-library(magrittr)
-data(mtcars)
-cars <- mtcars \%>\%
-  dplyr::count(cyl, am) \%>\%
-  dplyr::mutate(am = ifelse(am == 0, "Manual", "Automatic"))
+data(populationch)
 
-pyramid_chart(cars, cyl, n, am)
+pyramid_chart(populationch, age, pop, sex)
+
+## Change bar colors
+pyramid_chart(populationch, age, pop, sex, bar_colors = c("darkgreen", "darkorange"))
+
+## Change x axis label and add title
+pyramid_chart(populationch, age, pop, sex, xlab = "Population", title = "Switzerland 2020")
 
 }
 \author{
