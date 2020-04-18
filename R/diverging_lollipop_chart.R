@@ -84,9 +84,9 @@ diverging_lollipop_chart <- function(data, x, y,
       aes(label = !!x, y = 0, hjust = "left"),
       nudge_y = limit * .013
     ) +
-    geom_hline(yintercept = 0) +
+    geom_hline(yintercept = 0, color = "black", size = 1) +
     ylim(-limit, limit) +
-    theme_discrete_chart(horizontal = TRUE) +
+    theme_ggcharts(axis_line = NA, grid_line = "Y") +
     theme(axis.text.y = element_blank()) +
     scale_color_identity()
 }

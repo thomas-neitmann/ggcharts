@@ -6,3 +6,4 @@
 ^_pkgdown.yaml$
 ^docs$
 ^.lintr$
+^.github$
