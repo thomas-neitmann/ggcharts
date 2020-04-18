@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Top Biomedical Companies Revenues. — biomedicalrevenue • ggcharts</title>
+<title>Themes — theme_ggcharts • ggcharts</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Top Biomedical Companies Revenues. — biomedicalrevenue" />
-<meta property="og:description" content="Annual revenues of top biomedical companies from 2011 to 2018." />
+<meta property="og:title" content="Themes — theme_ggcharts" />
+<meta property="og:description" content="ggplot2 themes" />
 
 
 
@@ -133,30 +133,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Top Biomedical Companies Revenues.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/thomas-neitmann/ggcharts/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>biomedicalrevenue.Rd</code></div>
+    <h1>Themes</h1>
+    <small class="dont-index">Source: <a href='https://github.com/thomas-neitmann/ggcharts/blob/master/R/theme.R'><code>R/theme.R</code></a></small>
+    <div class="hidden name"><code>theme.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Annual revenues of top biomedical companies from 2011 to 2018.</p>
+    <p>ggplot2 themes</p>
     </div>
 
-    <pre class="usage"><span class='no'>biomedicalrevenue</span></pre>
+    <pre class="usage"><span class='fu'>theme_ggcharts</span>(
+  <span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14</span>,
+  <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>axis_line</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>grid_line</span> <span class='kw'>=</span> <span class='fl'>NA</span>
+)
 
+<span class='fu'>theme_hermit</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>axis_line</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>grid_line</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>base_size</th>
+      <td><p><code>numeric</code>. Base font size in pt.</p></td>
+    </tr>
+    <tr>
+      <th>base_family</th>
+      <td><p><code>character</code>. Base font family.</p></td>
+    </tr>
+    <tr>
+      <th>axis_line</th>
+      <td><p><code>character</code>. Where to draw an axis line.</p></td>
+    </tr>
+    <tr>
+      <th>grid_line</th>
+      <td><p><code>character</code>. Where to draw grid lines.</p></td>
+    </tr>
+    </table>
 
-    <p>A data frame with 224 rows and 3 variables:</p><dl'>
-  <dt>company</dt><dd><p>Name of the company</p></dd>
-  <dt>year</dt><dd><p>Fiscal year</p></dd>
-  <dt>revenue</dt><dd><p>Revenue in billion USD</p></dd>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-</dl>
-
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href='https://en.wikipedia.org/wiki/List_of_largest_biomedical_companies_by_revenue'>https://en.wikipedia.org/wiki/List_of_largest_biomedical_companies_by_revenue</a></p>
+    <p><code>theme_ggcharts</code> is the default theme used when creating any plot with
+<code>ggcharts</code>.
+Accepted values for <code>axis_line</code> and <code>grid_line</code> are
+<code><a href='https://rdrr.io/r/base/c.html'>c(NA, "X", "Y", "XY")</a></code>. When set to <code>NA</code>, the default, nothing is
+drawn.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
