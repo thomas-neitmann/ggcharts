@@ -81,7 +81,7 @@ diverging_bar_chart <- function(data, x, y, bar_colors = c("#1F77B4", "#FF7F0E")
     ) +
     geom_hline(yintercept = 0, color = "black", size = 1) +
     ylim(-limit, limit) +
-    theme_ggcharts(axis_line = FALSE, horizontal = TRUE) +
+    theme_ggcharts(axis_line = NA, grid_line = "Y") +
     theme(axis.text.y = element_blank()) +
     scale_fill_identity()
 }

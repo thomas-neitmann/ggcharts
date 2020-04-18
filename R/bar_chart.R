@@ -104,8 +104,7 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
   }
 
   p <- ggplot(data, aes(!!x, !!y, ...)) +
-    eval(.geom_col) +
-    theme_ggcharts(horizontal = horizontal)
+    eval(.geom_col)
 
   post_process_plot(
     plot = p,

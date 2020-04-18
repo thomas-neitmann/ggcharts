@@ -1,21 +1,43 @@
-#' @import ggplot2
+#' Themes
+#'
+#' ggplot2 themes
+#'
+#' @param base_size \code{numeric}. Base font size in pt.
+#' @param base_family \code{character}. Base font family.
+#' @param axis_line \code{character}. Where to draw an axis line.
+#' @param grid_line \code{character}. Where to draw grid lines.
+#'
+#' @details
+#' \code{theme_ggcharts} is the default theme used when creating any plot with
+#' \code{ggcharts}.
+#' Accepted values for \code{axis_line} and \code{grid_line} are
+#' \code{c(NA, "X", "Y", "XY")}. When set to \code{NA}, the default, nothing is
+#' drawn.
+#'
+#' @author Thomas Neitmann
+#'
+#' @rdname theme
+#' @export
 theme_ggcharts <- function(base_size = 14,
                            base_family = "",
-                           axis_line = TRUE,
-                           horizontal = TRUE) {
+                           axis_line = NA,
+                           grid_line = NA) {
+  axis_line <- match.arg(toupper(axis_line), c(NA, "X", "Y", "XY"))
+  grid_line <- match.arg(toupper(grid_line), c(NA, "X", "Y", "XY"))
+
   blank <- element_blank()
-  grid_line <- element_line(color = "#cccccc", size = 0.2)
-  axis_line <- if (axis_line) element_line(color = "black", size = .7) else blank
+  elm_grid_line <- element_line(color = "#cccccc", size = 0.2)
+  elm_axis_line <- element_line(color = "black", size = .7)
 
   theme_minimal(base_size = base_size, base_family = base_family) +
     theme(
-      axis.line.x = if (horizontal) blank else axis_line,
-      axis.line.y = if (horizontal) axis_line else blank,
+      axis.line.x = if (grepl("X", axis_line)) elm_axis_line else blank,
+      axis.line.y = if (grepl("Y", axis_line)) elm_axis_line else blank,
       axis.text.x = element_text(color = "black"),
       axis.text.y = element_text(color = "black"),
       panel.grid.minor = blank,
-      panel.grid.major.y = if (horizontal) blank else grid_line,
-      panel.grid.major.x = if (horizontal) grid_line else blank,
+      panel.grid.major.x = if (grepl("Y", grid_line)) elm_grid_line else blank,
+      panel.grid.major.y = if (grepl("X", grid_line)) elm_grid_line else blank,
       plot.background = element_rect(fill = "#e5e7eb", color = "#e5e7eb"),
       plot.title.position = "plot",
       strip.background = blank,
@@ -28,24 +50,29 @@ theme_ggcharts <- function(base_size = 14,
     )
 }
 
+#' @rdname theme
+#' @export
 theme_hermit <- function(base_size = 14,
                          base_family = "",
-                         axis_line = TRUE,
-                         horizontal = TRUE) {
+                         axis_line = NA,
+                         grid_line = NA) {
+  axis_line <- match.arg(toupper(axis_line), c(NA, "X", "Y", "XY"))
+  grid_line <- match.arg(toupper(grid_line), c(NA, "X", "Y", "XY"))
+
   blank <- element_blank()
   text_color <- "#D6DDE1"
-  grid_line <- element_line(color = "#636b7e", size = 0.2)
-  axis_line <- if (axis_line) element_line(color = text_color, size = .7) else blank
+  elm_grid_line <- element_line(color = "#636b7e", size = 0.2)
+  elm_axis_line <- element_line(color = text_color, size = .7)
 
   theme_minimal(base_size = base_size, base_family = base_family) +
     theme(
-      axis.line.x = if (horizontal) blank else axis_line,
-      axis.line.y = if (horizontal) axis_line else blank,
+      axis.line.x = if (grepl("X", axis_line)) elm_axis_line else blank,
+      axis.line.y = if (grepl("Y", axis_line)) elm_axis_line else blank,
       axis.text.x = element_text(color = text_color),
       axis.text.y = element_text(color = text_color),
       panel.grid.minor = blank,
-      panel.grid.major.y = if (horizontal) blank else grid_line,
-      panel.grid.major.x = if (horizontal) grid_line else blank,
+      panel.grid.major.x = if (grepl("Y", grid_line)) elm_grid_line else blank,
+      panel.grid.major.y = if (grepl("X", grid_line)) elm_grid_line else blank,
       plot.background = element_rect(fill = "#494F5C", color = "#494F5C"),
       plot.title.position = "plot",
       strip.background = blank,
