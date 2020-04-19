@@ -130,7 +130,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(<span class="no">year</span>), <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>)</pre></div>
 <p><img src="reference/figures/README-motivation-1.png"></p>
 <p>That’s a lot of code! And you likely never heard of some of the functions involved. With ggcharts you can create the same plot (actually an even better looking one) in a single line of code.</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="reference/bar_chart.html">bar_chart</a></span>(<span class="no">biomedicalrevenue</span>, <span class="no">company</span>, <span class="no">revenue</span>, <span class="kw">facet</span> <span class="kw">=</span> <span class="no">year</span>, <span class="kw">limit</span> <span class="kw">=</span> <span class="fl">10</span>)</pre></div>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="reference/bar_chart.html">bar_chart</a></span>(<span class="no">biomedicalrevenue</span>, <span class="no">company</span>, <span class="no">revenue</span>, <span class="kw">facet</span> <span class="kw">=</span> <span class="no">year</span>, <span class="kw">top_n</span> <span class="kw">=</span> <span class="fl">10</span>)</pre></div>
 <p><img src="reference/figures/README-motivation_continued-1.png"></p>
 <p>That’s the beauty of <code>ggcharts</code>: shortening the distance between data visualization idea and actual plot as much as possible.</p>
 </div>
@@ -145,6 +145,7 @@
 <li><code><a href="reference/lollipop_chart.html">lollipop_chart()</a></code></li>
 <li><code><a href="reference/diverging_lollipop_chart.html">diverging_lollipop_chart()</a></code></li>
 <li><code><a href="reference/dumbbell_chart.html">dumbbell_chart()</a></code></li>
+<li><code><a href="reference/pyramid_chart.html">pyramid_chart()</a></code></li>
 </ul>
 <p>You can learn more about these functions <a href="https://thomas-neitmann.github.io/ggcharts/reference/index.html">here</a>.</p>
 </div>
