@@ -17,16 +17,17 @@
 #'        should be highlighted in the plot
 #' @param sort \code{logical}. Should the data be sorted before plotting?
 #' @param horizontal \code{logical}. Should the plot be oriented horizontally?
-#' @param limit \code{numeric}. If a value for \code{limit} is provided only the
-#'        top \code{limit} records will be displayed
+#' @param top_n \code{numeric}. If a value for \code{top_n} is provided only the
+#'        top \code{top_n} records will be displayed
 #' @param threshold \code{numeric}. If a value for threshold is provided only
 #'        records with \code{y > threshold} will be displayed
+#' @param limit Deprecated. use \code{top_n} instead.
 #'
 #' @details
-#' Both \code{limit} and \code{threshold} only work when \code{sort = TRUE}.
+#' Both \code{top_n} and \code{threshold} only work when \code{sort = TRUE}.
 #' Attempting to use them when \code{sort = FALSE} will result in an error.
-#' Furthermore, only \code{limit} or \code{threshold} can be used at a time.
-#' Providing a value for both \code{limit} and \code{threshold} will result in
+#' Furthermore, only \code{top_n} or \code{threshold} can be used at a time.
+#' Providing a value for both \code{top_n} and \code{threshold} will result in
 #' an error as well.
 #'
 #' \code{column_chart()} is a shortcut for \code{bar_chart()} with
@@ -53,7 +54,7 @@
 #' column_chart(revenue_roche, year, revenue)
 #'
 #' ## Limit the number of bars to the top 10
-#' bar_chart(revenue2018, company, revenue, limit = 10)
+#' bar_chart(revenue2018, company, revenue, top_n = 10)
 #'
 #' ## Display only companies with revenue > 40B.
 #' bar_chart(revenue2018, company, revenue, threshold = 40)
@@ -62,17 +63,17 @@
 #' bar_chart(revenue2018, company, revenue, bar_color = "purple")
 #'
 #' ## Highlight a single bar
-#' bar_chart(revenue2018, company, revenue, limit = 10, highlight = "Roche")
+#' bar_chart(revenue2018, company, revenue, top_n = 10, highlight = "Roche")
 #'
 #' ## Use facets to show the top 10 companies over the years
-#' bar_chart(biomedicalrevenue, company, revenue, facet = year, limit = 10)
+#' bar_chart(biomedicalrevenue, company, revenue, facet = year, top_n = 10)
 #'
 #' @import ggplot2
 #' @importFrom magrittr %>%
 #' @export
 bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
                       highlight = NULL, sort = TRUE, horizontal = TRUE,
-                      limit = NULL, threshold = NULL) {
+                      top_n = NULL, threshold = NULL, limit = NULL) {
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
@@ -86,8 +87,9 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
     highlight = highlight,
     highlight_color = bar_color,
     sort = sort,
-    limit = limit,
-    threshold = threshold
+    top_n = top_n,
+    threshold = threshold,
+    limit = limit
   )
 
   if (rlang::quo_is_missing(y)) {
@@ -121,7 +123,7 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
 #' @export
 column_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
                          highlight = NULL, sort = NULL, horizontal = FALSE,
-                         limit = NULL, threshold = NULL) {
+                         top_n = NULL, threshold = NULL, limit = NULL) {
   if (is.null(sort)) {
     sort <- !is.numeric(dplyr::pull(data, {{x}}))
   }
@@ -136,7 +138,8 @@ column_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
     highlight = highlight,
     sort = sort,
     horizontal = horizontal,
-    limit = limit,
-    threshold = threshold
+    top_n = top_n,
+    threshold = threshold,
+    limit = limit
   )
 }
