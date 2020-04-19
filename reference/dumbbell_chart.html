@@ -153,9 +153,10 @@
   <span class='kw'>point_colors</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#1F77B4"</span>, <span class='st'>"#FF7F0E"</span>),
   <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>horizontal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>legend_labels</span> <span class='kw'>=</span> <span class='fu'>waiver</span>()
+  <span class='kw'>legend_labels</span> <span class='kw'>=</span> <span class='fu'>waiver</span>(),
+  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -203,9 +204,9 @@ plotting?</p></td>
       <td><p><code>logical</code>. Should the plot be displayed horizontally?</p></td>
     </tr>
     <tr>
-      <th>limit</th>
-      <td><p><code>integer</code>. If a value for limit is provided only the first
-<code>limit</code> records will be displayed</p></td>
+      <th>top_n</th>
+      <td><p><code>integer</code>. If a value for top_n is provided only the first
+<code>top_n</code> records will be displayed</p></td>
     </tr>
     <tr>
       <th>legend</th>
@@ -215,6 +216,10 @@ plotting?</p></td>
       <th>legend_labels</th>
       <td><p><code>character</code>. Custom labels to be displayed in the
 legend</p></td>
+    </tr>
+    <tr>
+      <th>limit</th>
+      <td><p>Deprecated. use <code>top_n</code> instead.</p></td>
     </tr>
     </table>
 
@@ -241,18 +246,18 @@ legend</p></td>
     <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>)
 
     <span class='co'># Display only the top 10 countries in terms of population in 2007</span>
-    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>)
 
     <span class='co'># Change line and point color</span>
-    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>,
                  <span class='kw'>line_color</span> <span class='kw'>=</span> <span class='st'>"lightgray"</span>, <span class='kw'>point_color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightgray"</span>, <span class='st'>"black"</span>))
 
     <span class='co'># Add custom legend labels</span>
-    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>,
                    <span class='kw'>legend_labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1952"</span>, <span class='st'>"2007"</span>))
 
     <span class='co'># Increase line width and point size</span>
-    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>,
                    <span class='kw'>line_size</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>point_size</span> <span class='kw'>=</span> <span class='fl'>5</span>)
   }, <span class='kw'>echo</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 }</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: gapminder</span></div><div class='img'><img src='dumbbell_chart-1.png' alt='' width='700' height='433' /></div><div class='img'><img src='dumbbell_chart-2.png' alt='' width='700' height='433' /></div><div class='img'><img src='dumbbell_chart-3.png' alt='' width='700' height='433' /></div><div class='img'><img src='dumbbell_chart-4.png' alt='' width='700' height='433' /></div><div class='img'><img src='dumbbell_chart-5.png' alt='' width='700' height='433' /></div><div class='input'>

@@ -152,8 +152,9 @@
   <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>horizontal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )
 
 <span class='fu'>column_chart</span>(
@@ -166,8 +167,9 @@
   <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>sort</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>horizontal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -214,14 +216,18 @@ should be highlighted in the plot</p></td>
       <td><p><code>logical</code>. Should the plot be oriented horizontally?</p></td>
     </tr>
     <tr>
-      <th>limit</th>
-      <td><p><code>numeric</code>. If a value for <code>limit</code> is provided only the
-top <code>limit</code> records will be displayed</p></td>
+      <th>top_n</th>
+      <td><p><code>numeric</code>. If a value for <code>top_n</code> is provided only the
+top <code>top_n</code> records will be displayed</p></td>
     </tr>
     <tr>
       <th>threshold</th>
       <td><p><code>numeric</code>. If a value for threshold is provided only
 records with <code>y &gt; threshold</code> will be displayed</p></td>
+    </tr>
+    <tr>
+      <th>limit</th>
+      <td><p>Deprecated. use <code>top_n</code> instead.</p></td>
     </tr>
     </table>
 
@@ -230,10 +236,10 @@ records with <code>y &gt; threshold</code> will be displayed</p></td>
     <p>An object of class <code>ggplot</code></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Both <code>limit</code> and <code>threshold</code> only work when <code>sort = TRUE</code>.
+    <p>Both <code>top_n</code> and <code>threshold</code> only work when <code>sort = TRUE</code>.
 Attempting to use them when <code>sort = FALSE</code> will result in an error.
-Furthermore, only <code>limit</code> or <code>threshold</code> can be used at a time.
-Providing a value for both <code>limit</code> and <code>threshold</code> will result in
+Furthermore, only <code>top_n</code> or <code>threshold</code> can be used at a time.
+Providing a value for both <code>top_n</code> and <code>threshold</code> will result in
 an error as well.</p>
 <p><code>column_chart()</code> is a shortcut for <code>bar_chart()</code> with
 <code>horizontal = FALSE</code> and <code>sort = FALSE</code> if <code>x</code> is
@@ -253,15 +259,15 @@ an error as well.</p>
 <span class='co'>## column_chart() is a shortcut for the above</span>
 <span class='fu'>column_chart</span>(<span class='no'>revenue_roche</span>, <span class='no'>year</span>, <span class='no'>revenue</span>)</div><div class='img'><img src='bar_chart-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Limit the number of bars to the top 10</span>
-<span class='fu'>bar_chart</span>(<span class='no'>revenue2018</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='img'><img src='bar_chart-5.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>bar_chart</span>(<span class='no'>revenue2018</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='img'><img src='bar_chart-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Display only companies with revenue &gt; 40B.</span>
 <span class='fu'>bar_chart</span>(<span class='no'>revenue2018</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>40</span>)</div><div class='img'><img src='bar_chart-6.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Change the bar color</span>
 <span class='fu'>bar_chart</span>(<span class='no'>revenue2018</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>bar_color</span> <span class='kw'>=</span> <span class='st'>"purple"</span>)</div><div class='img'><img src='bar_chart-7.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Highlight a single bar</span>
-<span class='fu'>bar_chart</span>(<span class='no'>revenue2018</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='st'>"Roche"</span>)</div><div class='img'><img src='bar_chart-8.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>bar_chart</span>(<span class='no'>revenue2018</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='st'>"Roche"</span>)</div><div class='img'><img src='bar_chart-8.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Use facets to show the top 10 companies over the years</span>
-<span class='fu'>bar_chart</span>(<span class='no'>biomedicalrevenue</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='no'>year</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='img'><img src='bar_chart-9.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>bar_chart</span>(<span class='no'>biomedicalrevenue</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='no'>year</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='img'><img src='bar_chart-9.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

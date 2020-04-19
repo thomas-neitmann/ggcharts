@@ -155,8 +155,9 @@
   <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>horizontal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -215,14 +216,18 @@ should be highlighted in the plot</p></td>
       <td><p><code>logical</code>. Should the plot be oriented horizontally?</p></td>
     </tr>
     <tr>
-      <th>limit</th>
-      <td><p><code>numeric</code>. If a value for <code>limit</code> is provided only the
-top <code>limit</code> records will be displayed</p></td>
+      <th>top_n</th>
+      <td><p><code>numeric</code>. If a value for <code>top_n</code> is provided only the
+top <code>top_n</code> records will be displayed</p></td>
     </tr>
     <tr>
       <th>threshold</th>
       <td><p><code>numeric</code>. If a value for threshold is provided only
 records with <code>y &gt; threshold</code> will be displayed</p></td>
+    </tr>
+    <tr>
+      <th>limit</th>
+      <td><p>Deprecated. use <code>top_n</code> instead.</p></td>
     </tr>
     </table>
 
@@ -231,10 +236,10 @@ records with <code>y &gt; threshold</code> will be displayed</p></td>
     <p>An object of class <code>ggplot</code></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Both <code>limit</code> and <code>threshold</code> only work when <code>sort = TRUE</code>.
+    <p>Both <code>top_n</code> and <code>threshold</code> only work when <code>sort = TRUE</code>.
 Attempting to use them when <code>sort = FALSE</code> will result in an error.
-Furthermore, only <code>limit</code> or <code>threshold</code> can be used at a time.
-Providing a value for both <code>limit</code> and <code>threshold</code> will result in
+Furthermore, only <code>top_n</code> or <code>threshold</code> can be used at a time.
+Providing a value for both <code>top_n</code> and <code>threshold</code> will result in
 an error as well.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -249,7 +254,7 @@ an error as well.</p>
 <span class='co'>## Create a vertical, non-sorted lollipop chart</span>
 <span class='fu'>lollipop_chart</span>(<span class='no'>revenue_bayer</span>, <span class='no'>year</span>, <span class='no'>revenue</span>, <span class='kw'>horizontal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='lollipop_chart-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Limit the number of lollipops to the top 15</span>
-<span class='fu'>lollipop_chart</span>(<span class='no'>revenue2016</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>15</span>)</div><div class='img'><img src='lollipop_chart-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>lollipop_chart</span>(<span class='no'>revenue2016</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>15</span>)</div><div class='img'><img src='lollipop_chart-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Display only companies with revenue &gt; 50B.</span>
 <span class='fu'>lollipop_chart</span>(<span class='no'>revenue2016</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>50</span>)</div><div class='img'><img src='lollipop_chart-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Change the color of the whole lollipop</span>
@@ -259,9 +264,9 @@ an error as well.</p>
 <span class='co'>## Decrease the lollipop head size</span>
 <span class='fu'>lollipop_chart</span>(<span class='no'>revenue2016</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>point_size</span> <span class='kw'>=</span> <span class='fl'>2.5</span>)</div><div class='img'><img src='lollipop_chart-8.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Highlight a single lollipop</span>
-<span class='fu'>lollipop_chart</span>(<span class='no'>revenue2016</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='st'>"Roche"</span>)</div><div class='img'><img src='lollipop_chart-9.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>lollipop_chart</span>(<span class='no'>revenue2016</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='st'>"Roche"</span>)</div><div class='img'><img src='lollipop_chart-9.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Use facets to show the top 10 companies over the years</span>
-<span class='fu'>lollipop_chart</span>(<span class='no'>biomedicalrevenue</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='no'>year</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='img'><img src='lollipop_chart-10.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>lollipop_chart</span>(<span class='no'>biomedicalrevenue</span>, <span class='no'>company</span>, <span class='no'>revenue</span>, <span class='kw'>facet</span> <span class='kw'>=</span> <span class='no'>year</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='img'><img src='lollipop_chart-10.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
