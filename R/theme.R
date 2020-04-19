@@ -38,7 +38,7 @@ theme_ggcharts <- function(base_size = 14,
       panel.grid.minor = blank,
       panel.grid.major.x = if (grepl("Y", grid_line)) elm_grid_line else blank,
       panel.grid.major.y = if (grepl("X", grid_line)) elm_grid_line else blank,
-      plot.background = element_rect(fill = "#e5e7eb", color = "#e5e7eb"),
+      plot.background = element_rect(fill = "#F4F8FB", color = "#F4F8FB"),
       plot.title.position = "plot",
       strip.background = blank,
       strip.text = element_text(
