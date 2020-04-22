@@ -39,15 +39,15 @@ An object of class \code{ggplot}
 Easily create a pyramid chart
 }
 \examples{
-data(populationch)
+data(popch)
 
-pyramid_chart(populationch, age, pop, sex)
+pyramid_chart(popch, age, pop, sex)
 
 ## Change bar colors
-pyramid_chart(populationch, age, pop, sex, bar_colors = c("darkgreen", "darkorange"))
+pyramid_chart(popch, age, pop, sex, bar_colors = c("darkgreen", "darkorange"))
 
 ## Change x axis label and add title
-pyramid_chart(populationch, age, pop, sex, xlab = "Population", title = "Switzerland 2020")
+pyramid_chart(popch, age, pop, sex, xlab = "Population", title = "Switzerland 2020")
 
 }
 \author{

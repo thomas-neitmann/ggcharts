@@ -22,4 +22,4 @@
 #'   \item{pop}{Population}
 #' }
 #' @source US Census International Data Base
-"populationch"
+"popch"
