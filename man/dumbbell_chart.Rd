@@ -60,39 +60,24 @@ An object of class \code{ggplot}
 Easily create a dumbbell chart
 }
 \examples{
-if (requireNamespace("tidyr") && requireNamespace("gapminder")) {
-  library(magrittr)
-  data(gapminder, package = "gapminder")
+data(popeurope)
 
-  # Data has to be in wide format
-  pop <- gapminder \%>\%
-    dplyr::filter(year \%in\% c(1952, 2007)) \%>\%
-    tidyr::pivot_wider(
-      id_cols = country,
-      values_from = pop,
-      names_from = year,
-      names_prefix = "pop_"
-    )
+dumbbell_chart(popeurope, country, pop1952, pop2007)
 
-  withAutoprint({
-    dumbbell_chart(pop, country, pop_1952, pop_2007)
+# Display only the top 10 countries in terms of population in 2007
+dumbbell_chart(popeurope, country, pop1952, pop2007, top_n = 10)
 
-    # Display only the top 10 countries in terms of population in 2007
-    dumbbell_chart(pop, country, pop_1952, pop_2007, top_n = 10)
+# Change line and point color
+dumbbell_chart(popeurope, country, pop1952, pop2007, top_n = 10,
+               line_color = "lightgray", point_color = c("lightgray", "black"))
 
-    # Change line and point color
-    dumbbell_chart(pop, country, pop_1952, pop_2007, top_n = 10,
-                 line_color = "lightgray", point_color = c("lightgray", "black"))
+# Add custom legend labels
+dumbbell_chart(popeurope, country, pop1952, pop2007, top_n = 10,
+               legend_labels = c("1952", "2007"))
 
-    # Add custom legend labels
-    dumbbell_chart(pop, country, pop_1952, pop_2007, top_n = 10,
-                   legend_labels = c("1952", "2007"))
-
-    # Increase line width and point size
-    dumbbell_chart(pop, country, pop_1952, pop_2007, top_n = 10,
-                   line_size = 2, point_size = 5)
-  }, echo = FALSE)
-}
+# Increase line width and point size
+dumbbell_chart(popeurope, country, pop1952, pop2007, top_n = 10,
+               line_size = 2, point_size = 5)
 
 }
 \author{
