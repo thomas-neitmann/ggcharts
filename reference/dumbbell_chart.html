@@ -230,39 +230,20 @@ legend</p></td>
     <p>An object of class <code>ggplot</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"tidyr"</span>) <span class='kw'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"gapminder"</span>)) {
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>magrittr</span>)
-  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>gapminder</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"gapminder"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>popeurope</span>)
 
-  <span class='co'># Data has to be in wide format</span>
-  <span class='no'>pop</span> <span class='kw'>&lt;-</span> <span class='no'>gapminder</span> <span class='kw'>%&gt;%</span>
-    <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>year</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1952</span>, <span class='fl'>2007</span>)) <span class='kw'>%&gt;%</span>
-    <span class='kw pkg'>tidyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span>(
-      <span class='kw'>id_cols</span> <span class='kw'>=</span> <span class='no'>country</span>,
-      <span class='kw'>values_from</span> <span class='kw'>=</span> <span class='no'>pop</span>,
-      <span class='kw'>names_from</span> <span class='kw'>=</span> <span class='no'>year</span>,
-      <span class='kw'>names_prefix</span> <span class='kw'>=</span> <span class='st'>"pop_"</span>
-    )
-
-  <span class='fu'><a href='https://rdrr.io/r/base/source.html'>withAutoprint</a></span>({
-    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>)
-
-    <span class='co'># Display only the top 10 countries in terms of population in 2007</span>
-    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>)
-
-    <span class='co'># Change line and point color</span>
-    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-                 <span class='kw'>line_color</span> <span class='kw'>=</span> <span class='st'>"lightgray"</span>, <span class='kw'>point_color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightgray"</span>, <span class='st'>"black"</span>))
-
-    <span class='co'># Add custom legend labels</span>
-    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-                   <span class='kw'>legend_labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1952"</span>, <span class='st'>"2007"</span>))
-
-    <span class='co'># Increase line width and point size</span>
-    <span class='fu'>dumbbell_chart</span>(<span class='no'>pop</span>, <span class='no'>country</span>, <span class='no'>pop_1952</span>, <span class='no'>pop_2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>,
-                   <span class='kw'>line_size</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>point_size</span> <span class='kw'>=</span> <span class='fl'>5</span>)
-  }, <span class='kw'>echo</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: gapminder</span></div><div class='img'><img src='dumbbell_chart-1.png' alt='' width='700' height='433' /></div><div class='img'><img src='dumbbell_chart-2.png' alt='' width='700' height='433' /></div><div class='img'><img src='dumbbell_chart-3.png' alt='' width='700' height='433' /></div><div class='img'><img src='dumbbell_chart-4.png' alt='' width='700' height='433' /></div><div class='img'><img src='dumbbell_chart-5.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>dumbbell_chart</span>(<span class='no'>popeurope</span>, <span class='no'>country</span>, <span class='no'>pop1952</span>, <span class='no'>pop2007</span>)</div><div class='img'><img src='dumbbell_chart-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Display only the top 10 countries in terms of population in 2007</span>
+<span class='fu'>dumbbell_chart</span>(<span class='no'>popeurope</span>, <span class='no'>country</span>, <span class='no'>pop1952</span>, <span class='no'>pop2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='img'><img src='dumbbell_chart-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Change line and point color</span>
+<span class='fu'>dumbbell_chart</span>(<span class='no'>popeurope</span>, <span class='no'>country</span>, <span class='no'>pop1952</span>, <span class='no'>pop2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+               <span class='kw'>line_color</span> <span class='kw'>=</span> <span class='st'>"lightgray"</span>, <span class='kw'>point_color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightgray"</span>, <span class='st'>"black"</span>))</div><div class='img'><img src='dumbbell_chart-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Add custom legend labels</span>
+<span class='fu'>dumbbell_chart</span>(<span class='no'>popeurope</span>, <span class='no'>country</span>, <span class='no'>pop1952</span>, <span class='no'>pop2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+               <span class='kw'>legend_labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"1952"</span>, <span class='st'>"2007"</span>))</div><div class='img'><img src='dumbbell_chart-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Increase line width and point size</span>
+<span class='fu'>dumbbell_chart</span>(<span class='no'>popeurope</span>, <span class='no'>country</span>, <span class='no'>pop1952</span>, <span class='no'>pop2007</span>, <span class='kw'>top_n</span> <span class='kw'>=</span> <span class='fl'>10</span>,
+               <span class='kw'>line_size</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>point_size</span> <span class='kw'>=</span> <span class='fl'>5</span>)</div><div class='img'><img src='dumbbell_chart-5.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
