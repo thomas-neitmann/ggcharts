@@ -16,13 +16,15 @@
 #' @return An object of class \code{ggplot}
 #'
 #' @examples
-#' library(magrittr)
-#' data(mtcars)
-#' cars <- mtcars %>%
-#'   dplyr::count(cyl, am) %>%
-#'   dplyr::mutate(am = ifelse(am == 0, "Manual", "Automatic"))
+#' data(popch)
 #'
-#' pyramid_chart(cars, cyl, n, am)
+#' pyramid_chart(popch, age, pop, sex)
+#'
+#' ## Change bar colors
+#' pyramid_chart(popch, age, pop, sex, bar_colors = c("darkgreen", "darkorange"))
+#'
+#' ## Change x axis label and add title
+#' pyramid_chart(popch, age, pop, sex, xlab = "Population", title = "Switzerland 2020")
 #'
 #' @import ggplot2
 #' @import patchwork
