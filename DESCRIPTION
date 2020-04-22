@@ -15,6 +15,7 @@ Depends:
     ggplot2  
 Imports:
     dplyr,
+    lifecycle,
     magrittr,
     patchwork,
     rlang
@@ -23,7 +24,9 @@ Suggests:
     knitr,
     lintr,
     rmarkdown,
+    scales,
     spelling,
+    tibble,
     tidyr,
     testthat (>= 2.1.0),
     vdiffr

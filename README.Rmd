@@ -5,7 +5,9 @@ title: "ggcharts"
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(
-  fig.path = "man/figures/README-"
+  fig.path = "man/figures/README-",
+  fig.height = 8,
+  fig.width = 8
 )
 ```
 
@@ -61,7 +63,7 @@ biomedicalrevenue %>%
 That's a lot of code! And you likely never heard of some of the functions involved. With ggcharts you can create the same plot (actually an even better looking one) in a single line of code.
 
 ```{r motivation_continued}
-bar_chart(biomedicalrevenue, company, revenue, facet = year, limit = 10)
+bar_chart(biomedicalrevenue, company, revenue, facet = year, top_n = 10)
 ```
 
 That's the beauty of `ggcharts`: shortening the distance between data visualization idea and actual plot as much as possible.
@@ -76,5 +78,6 @@ Currently `ggcharts` includes the following functions:
 - `lollipop_chart()`
 - `diverging_lollipop_chart()`
 - `dumbbell_chart()`
+- `pyramid_chart()`
 
 You can learn more about these functions [here](https://thomas-neitmann.github.io/ggcharts/reference/index.html).

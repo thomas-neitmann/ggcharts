@@ -6,6 +6,11 @@ post_process_plot <- function(plot, is_sorted = TRUE, horizontal = TRUE,
 
   if (horizontal) {
     plot <- plot + coord_flip()
+    axis_line <- "Y"
+    grid_line <- "Y"
+  } else {
+    axis_line <- "X"
+    grid_line <- "X"
   }
 
   if (!is.null(highlight)) {
@@ -44,5 +49,7 @@ post_process_plot <- function(plot, is_sorted = TRUE, horizontal = TRUE,
     expand_scale <- expansion
   }
 
-  plot + scale_y_continuous(expand = expand_scale(mult = c(0, 0.05)))
+  plot +
+    scale_y_continuous(expand = expand_scale(mult = c(0, 0.05))) +
+    theme_ggcharts(axis_line = axis_line, grid_line = grid_line)
 }

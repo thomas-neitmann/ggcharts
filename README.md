@@ -54,7 +54,7 @@ biomedicalrevenue %>%
 That's a lot of code! And you likely never heard of some of the functions involved. With ggcharts you can create the same plot (actually an even better looking one) in a single line of code.
 
 ``` r
-bar_chart(biomedicalrevenue, company, revenue, facet = year, limit = 10)
+bar_chart(biomedicalrevenue, company, revenue, facet = year, top_n = 10)
 ```
 
 ![](man/figures/README-motivation_continued-1.png)
@@ -72,5 +72,6 @@ Currently `ggcharts` includes the following functions:
 -   `lollipop_chart()`
 -   `diverging_lollipop_chart()`
 -   `dumbbell_chart()`
+-   `pyramid_chart()`
 
 You can learn more about these functions [here](https://thomas-neitmann.github.io/ggcharts/reference/index.html).
