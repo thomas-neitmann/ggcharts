@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • ggcharts</title>
+<title>Population Statistics of Switzerland — popch • ggcharts</title>
 
 
 <!-- jquery -->
@@ -41,7 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Population Statistics of Switzerland — popch" />
+<meta property="og:description" content="Swiss population in 2020 by five-year age groups" />
 
 
 
@@ -70,7 +71,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -132,96 +133,34 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Population Statistics of Switzerland</h1>
+    <small class="dont-index">Source: <a href='https://github.com/thomas-neitmann/ggcharts/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>popch.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Swiss population in 2020 by five-year age groups</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='no'>popch</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="bar_chart.html">bar_chart()</a></code> <code><a href="bar_chart.html">column_chart()</a></code> </p>
-        </td>
-        <td><p>Bar Chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="biomedicalrevenue.html">biomedicalrevenue</a></code> </p>
-        </td>
-        <td><p>Top Biomedical Companies Revenues.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="diverging_bar_chart.html">diverging_bar_chart()</a></code> </p>
-        </td>
-        <td><p>Diverging Bar Chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="diverging_lollipop_chart.html">diverging_lollipop_chart()</a></code> </p>
-        </td>
-        <td><p>Diverging Lollipop Chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dumbbell_chart.html">dumbbell_chart()</a></code> </p>
-        </td>
-        <td><p>Dumbbell Chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lollipop_chart.html">lollipop_chart()</a></code> </p>
-        </td>
-        <td><p>Lollipop Chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="popch.html">popch</a></code> </p>
-        </td>
-        <td><p>Population Statistics of Switzerland</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="popeurope.html">popeurope</a></code> </p>
-        </td>
-        <td><p>European Population</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pyramid_chart.html">pyramid_chart()</a></code> </p>
-        </td>
-        <td><p>Pyramid Chart</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="theme.html">theme_ggcharts()</a></code> <code><a href="theme.html">theme_hermit()</a></code> </p>
-        </td>
-        <td><p>Themes</p></td>
-      </tr>
-    </tbody>
-    </table>
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame with 42 rows and 3 variables:</p><dl'>
+  <dt>age</dt><dd><p>Five-year age group</p></dd>
+  <dt>sex</dt><dd><p>Sex</p></dd>
+  <dt>pop</dt><dd><p>Population</p></dd>
+
+</dl>
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>US Census International Data Base</p>
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
