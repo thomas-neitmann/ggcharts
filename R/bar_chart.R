@@ -73,7 +73,7 @@
 #' @export
 bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
                       highlight = NULL, sort = TRUE, horizontal = TRUE,
-                      top_n = NULL, threshold = NULL, limit = NULL) {
+                      top_n = NULL, threshold = NULL, other = FALSE, limit = NULL) {
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
@@ -89,6 +89,7 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
     sort = sort,
     top_n = top_n,
     threshold = threshold,
+    other = other,
     limit = limit
   )
 

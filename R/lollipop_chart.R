@@ -77,7 +77,7 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
                            line_color = "#1F77B4", point_size = 4,
                            point_color = line_color, highlight = NULL,
                            sort = TRUE, horizontal = TRUE, top_n = NULL,
-                           threshold = NULL, limit = NULL) {
+                           threshold = NULL, other = FALSE, limit = NULL) {
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
@@ -92,6 +92,7 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
     sort = sort,
     top_n = top_n,
     threshold = threshold,
+    other = other,
     limit = limit
   )
 
