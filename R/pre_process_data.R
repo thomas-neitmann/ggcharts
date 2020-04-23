@@ -30,6 +30,10 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
   facet <- rlang::enquo(facet)
   has_facet <- !rlang::quo_is_null(facet)
 
+  if (other && has_facet) {
+    rlang::abort("`other` and `facet` cannot be used in conjunction currently.")
+  }
+
   if (rlang::quo_is_missing(y)) {
     if (has_facet) {
       data <- dplyr::count(data, !!facet, !!x)
