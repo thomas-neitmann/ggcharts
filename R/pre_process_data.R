@@ -77,14 +77,7 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
         dplyr::mutate(!!x := reorder_within(!!x, !!y, !!facet)) %>%
         dplyr::arrange(!!facet, !!y)
     } else {
-      if (other) {
-        data <- data %>%
-          dplyr::mutate(!!x := reorder_other(!!x, !!y))
-      } else {
-        data <- data %>%
-          dplyr::mutate(!!x := reorder(!!x, !!y))
-      }
-
+      data <- dplyr::mutate(data, !!x := reorder(!!x, !!y, other = other))
     }
   }
 
