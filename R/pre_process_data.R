@@ -21,6 +21,9 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
   if (!is.null(top_n) && !is.null(threshold)) {
     rlang::abort("`top_n` and `threshold` must not be used simultaneously.")
   }
+  if (is.null(threshold) && other) {
+    rlang::abort("`threshold` must be set when `other = TRUE`")
+  }
 
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
@@ -53,19 +56,7 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
     if (!is.null(top_n)) {
       data <- dplyr::top_n(data, top_n, !!y)
     } else if (!is.null(threshold)) {
-
-      if (other) {
-        data <- data %>%
-          dplyr::mutate(!!x := ifelse(!!y > threshold, as.character(!!x), "Other")) %>%
-          dplyr::group_by(!!x) %>%
-          dplyr::summarise(!!y := sum(!!y)) %>%
-          dplyr::ungroup()
-      } else {
-        data <- data %>%
-          dplyr::arrange(!!y) %>%
-          dplyr::filter(!!y > threshold)
-      }
-
+      data <- apply_threshold(data, !!x, !!y, threshold, other)
     } else {
       data <- dplyr::arrange(data, !!y)
     }
@@ -82,6 +73,22 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
   }
 
   data
+}
+
+apply_threshold <- function(data, x, y, threshold, other) {
+  x <- rlang::enquo(x)
+  y <- rlang::enquo(y)
+  if (other) {
+    data %>%
+      dplyr::mutate(!!x := ifelse(!!y > threshold, as.character(!!x), "Other")) %>%
+      dplyr::group_by(!!x) %>%
+      dplyr::summarise(!!y := sum(!!y)) %>%
+      dplyr::ungroup()
+  } else {
+    data %>%
+      dplyr::arrange(!!y) %>%
+      dplyr::filter(!!y > threshold)
+  }
 }
 
 create_highlight_colors <- function(x, highlight, color) {
