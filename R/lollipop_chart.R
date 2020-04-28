@@ -100,25 +100,26 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
     y <- sym("n")
   }
 
-  .geom_point <- quote(geom_point())
-  .geom_segment <- quote(
-    geom_segment(aes(y = 0, xend = !!x, yend = !!y), size = line_size)
+  gp_args <- list()
+  gs_args <- list(
+    mapping = aes(y = 0, xend = !!x, yend = !!y),
+    size = line_size
   )
 
   if (!"size" %in% dot_names) {
-    .geom_point$size <- quote(point_size)
+    gp_args$size <- point_size
   }
   if (!is.null(highlight)) {
-    .geom_segment[[2]]$color <- quote(.color)
-    .geom_point$mapping <- quote(aes(color = .color))
+    gs_args$mapping <- aes(y = 0, xend = !!x, yend = !!y, color = .color)
+    gp_args$mapping <- aes(color = .color)
   } else if (!"color" %in% dot_names) {
-    .geom_segment$color <- quote(line_color)
-    .geom_point$color <- quote(point_color)
+    gs_args$color <- line_color
+    gp_args$color <- point_color
   }
 
   p <- ggplot(data, aes(!!x, !!y, ...)) +
-    eval(.geom_segment) +
-    eval(.geom_point)
+    do.call(geom_segment, gs_args) +
+    do.call(geom_point, gp_args)
 
   post_process_plot(
     plot = p,
