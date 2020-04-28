@@ -97,17 +97,17 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
     y <- sym("n")
   }
 
-  .geom_col <- quote(geom_col(width = .75))
+  args <- list(width = .75)
   if (has_fill) {
-    .geom_col$position <- "dodge"
+    args$position <- "dodge"
   } else if (!is.null(highlight)) {
-    .geom_col$mapping <- quote(aes(fill = .color))
+    args$mapping <- aes(fill = .color)
   } else {
-    .geom_col$fill <- quote(bar_color)
+    args$fill <- bar_color
   }
 
   p <- ggplot(data, aes(!!x, !!y, ...)) +
-    eval(.geom_col)
+    do.call(geom_col, args)
 
   post_process_plot(
     plot = p,
