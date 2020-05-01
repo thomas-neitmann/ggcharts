@@ -4,15 +4,13 @@
 #'
 #' @param base_size \code{numeric}. Base font size in pt.
 #' @param base_family \code{character}. Base font family.
-#' @param axis_line \code{character}. Where to draw an axis line.
-#' @param grid_line \code{character}. Where to draw grid lines.
+#' @param axis \code{character}. Where to draw an axis line.
+#' @param ticks \code{character}. Where to draw axis ticks.
+#' @param grid \code{character}. Where to draw grid lines.
 #'
 #' @details
 #' \code{theme_ggcharts} is the default theme used when creating any plot with
 #' \code{ggcharts}.
-#' Accepted values for \code{axis_line} and \code{grid_line} are
-#' \code{c(NA, "X", "Y", "XY")}. When set to \code{NA}, the default, nothing is
-#' drawn.
 #'
 #' @author Thomas Neitmann
 #'
@@ -20,13 +18,15 @@
 #' @export
 theme_ggcharts <- function(base_size = 14,
                            base_family = "",
-                           axis_line = NA,
-                           grid_line = NA) {
+                           axis = "",
+                           ticks = "",
+                           grid = "") {
   new_ggcharts_theme(
     base_size = base_size,
     base_family = base_family,
-    axis_line = axis_line,
-    grid_line = grid_line,
+    axis = axis,
+    ticks = ticks,
+    grid = grid,
     background_color = "#E5E7EB",
     foreground_color = "black",
     grid_color = colorspace::darken("#E5E7EB"),
@@ -38,13 +38,15 @@ theme_ggcharts <- function(base_size = 14,
 #' @export
 theme_hermit <- function(base_size = 14,
                          base_family = "",
-                         axis_line = NA,
-                         grid_line = NA) {
+                         axis = "",
+                         ticks = "",
+                         grid = "") {
   new_ggcharts_theme(
     base_size = base_size,
     base_family = base_family,
-    axis_line = axis_line,
-    grid_line = grid_line,
+    axis = axis,
+    ticks = ticks,
+    grid = grid,
     background_color = "#494F5C",
     foreground_color = "#D6DDE1",
     grid_color = colorspace::lighten("#494F5C"),
@@ -58,24 +60,35 @@ new_ggcharts_theme <- function(base_size = 14,
                                background_color,
                                foreground_color,
                                grid_color,
-                               axis_line = NA,
-                               grid_line = NA) {
-  axis_line <- match.arg(toupper(axis_line), c(NA, "X", "Y", "XY"))
-  grid_line <- match.arg(toupper(grid_line), c(NA, "X", "Y", "XY"))
+                               axis = "",
+                               ticks = "",
+                               grid = "") {
+  if (axis != "") {
+    axis <- match.arg(axis, c("x", "y", "xy", "yx"))
+  }
+  if (ticks != "") {
+    ticks <- match.arg(ticks, c("x", "y", "xy", "yx"), )
+  }
+  if (grid != "") {
+    grid <- match.arg(grid, c("X", "Y", "XY", "YX"))
+  }
 
   blank <- element_blank()
   elm_grid_line <- element_line(color = grid_color, size = 0.2)
   elm_axis_line <- element_line(color = foreground_color, size = .7)
+  elm_tick_line <- element_line(color = foreground_color)
 
   theme_minimal(base_size = base_size, base_family = base_family) +
     theme(
-      axis.line.x = if (grepl("X", axis_line)) elm_axis_line else blank,
-      axis.line.y = if (grepl("Y", axis_line)) elm_axis_line else blank,
+      axis.line.x = if (grepl("x", axis)) elm_axis_line else blank,
+      axis.line.y = if (grepl("y", axis)) elm_axis_line else blank,
       axis.text.x = element_text(color = text_color),
       axis.text.y = element_text(color = text_color),
+      axis.ticks.x = if (grepl("x", ticks)) elm_tick_line else blank,
+      axis.ticks.y = if (grepl("y", ticks)) elm_tick_line else blank,
       panel.grid.minor = blank,
-      panel.grid.major.x = if (grepl("Y", grid_line)) elm_grid_line else blank,
-      panel.grid.major.y = if (grepl("X", grid_line)) elm_grid_line else blank,
+      panel.grid.major.x = if (grepl("Y", grid)) elm_grid_line else blank,
+      panel.grid.major.y = if (grepl("X", grid)) elm_grid_line else blank,
       plot.background = element_rect(fill = background_color, color = background_color),
       plot.title.position = "plot",
       strip.background = blank,
