@@ -233,12 +233,13 @@ new_ggcharts_theme <- function(base_size = 14,
   if (ticks != "") {
     ticks <- match.arg(ticks, c("x", "y", "xy", "yx"))
   }
-  if (grid != "") {
-    grid <- match.arg(grid, c("X", "Y", "XY", "YX"))
+  if (grid != "" && grepl("[^xyXY]", grid)) {
+      rlang::abort("`grid` must only contain combinations of 'x', 'y', 'X', 'Y'.")
   }
 
   blank <- element_blank()
-  elm_grid_line <- element_line(color = grid_color, size = 0.2)
+  elm_grid_major <- element_line(color = grid_color, size = 0.2)
+  elm_grid_minor <- element_line(color = grid_color, size = 0.01)
   elm_axis_line <- element_line(color = foreground_color, size = .7)
   elm_tick_line <- element_line(color = foreground_color)
 
@@ -250,9 +251,10 @@ new_ggcharts_theme <- function(base_size = 14,
       axis.text.y = element_text(color = text_color),
       axis.ticks.x = if (grepl("x", ticks)) elm_tick_line else blank,
       axis.ticks.y = if (grepl("y", ticks)) elm_tick_line else blank,
-      panel.grid.minor = blank,
-      panel.grid.major.x = if (grepl("Y", grid)) elm_grid_line else blank,
-      panel.grid.major.y = if (grepl("X", grid)) elm_grid_line else blank,
+      panel.grid.major.x = if (grepl("Y", grid)) elm_grid_major else blank,
+      panel.grid.major.y = if (grepl("X", grid)) elm_grid_major else blank,
+      panel.grid.minor.x = if (grepl("x", grid)) elm_grid_minor else blank,
+      panel.grid.minor.y = if (grepl("y", grid)) elm_grid_minor else blank,
       plot.background = element_rect(fill = background_color, color = background_color),
       plot.title.position = "plot",
       strip.background = blank,
