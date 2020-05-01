@@ -1,12 +1,12 @@
-#' Themes
+#' Theme ggcharts
 #'
-#' ggplot2 themes
+#' The default ggcharts theme
 #'
-#' @param base_size \code{numeric}. Base font size in pt.
-#' @param base_family \code{character}. Base font family.
-#' @param axis \code{character}. Where to draw an axis line.
-#' @param ticks \code{character}. Where to draw axis ticks.
-#' @param grid \code{character}. Where to draw grid lines.
+#' @param base_size \code{numeric}. Base font size in pt
+#' @param base_family \code{character}. Base font family
+#' @param axis \code{character}. Where to draw an axis line
+#' @param ticks \code{character}. Where to draw axis ticks
+#' @param grid \code{character}. Where to draw grid lines
 #'
 #' @details
 #' \code{theme_ggcharts} is the default theme used when creating any plot with
@@ -16,40 +16,30 @@
 #' library(ggplot2)
 #' library(dplyr)
 #'
-#' scatter1 <- ggplot(mtcars, aes(hp, mpg)) +
+#' scatter <- ggplot(mtcars, aes(hp, mpg)) +
 #'   geom_point(color = "steelblue")
 #'
-#' scatter1 + theme_ggcharts()
+#' scatter + theme_ggcharts()
 #'
-#' scatter1 + theme_ggcharts(grid = "XY")
+#' scatter + theme_ggcharts(grid = "XY")
 #'
-#' scatter1 + theme_ggcharts(axis = "xy")
+#' scatter + theme_ggcharts(axis = "xy", ticks = "xy")
 #'
-#' scatter2 <- ggplot(mtcars, aes(hp, mpg)) +
-#'   geom_point(color = "yellow")
+#' bar_chart(ggplot2::diamonds, cut) +
+#'   theme_ggcharts(axis = "y", grid = "Y")
 #'
-#' scatter2 + theme_hermit()
-#'
-#' scatter2 + theme_hermit(grid = "XY")
-#'
-#' scatter2 + theme_hermit(axis = "xy")
-#'
-#' bar_chart(ggplot2::diamonds, cut, bar_color = "orange") +
-#'   theme_hermit(axis = "y", grid = "Y")
-#'
-#' column_chart(ggplot2::diamonds, cut, bar_color = "steelblue") +
+#' column_chart(ggplot2::diamonds, cut) +
 #'   theme_ggcharts(axis = "x", grid = "X")
 #'
 #' ggcharts::biomedicalrevenue %>%
 #'   filter(company == "Roche") %>%
 #'   ggplot(aes(year, revenue)) +
-#'   geom_line(color = "yellow", size = 1) +
+#'   geom_line(color = "steelblue", size = 1) +
 #'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
-#'   theme_hermit(grid = "X", axis = "x")
+#'   theme_ggcharts(grid = "X", axis = "x", ticks = "x")
 #'
 #' @author Thomas Neitmann
 #'
-#' @rdname theme
 #' @export
 theme_ggcharts <- function(base_size = 14,
                            base_family = "",
@@ -69,7 +59,40 @@ theme_ggcharts <- function(base_size = 14,
   )
 }
 
-#' @rdname theme
+#' Theme Hermit
+#'
+#' A ggplot2 theme inspired by the 'hermit' Hugo theme
+#'
+#' @inheritParams theme_ggcharts
+#'
+#' @examples
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' scatter <- ggplot(mtcars, aes(hp, mpg)) +
+#'   geom_point(color = "yellow")
+#'
+#' scatter + theme_hermit()
+#'
+#' scatter + theme_hermit(grid = "XY")
+#'
+#' scatter + theme_hermit(axis = "xy", ticks = "xy")
+#'
+#' bar_chart(ggplot2::diamonds, cut, bar_color = "darkorange") +
+#'   theme_hermit(axis = "y", grid = "Y")
+#'
+#' column_chart(ggplot2::diamonds, cut, bar_color = "darkorange") +
+#'   theme_hermit(axis = "x", grid = "X")
+#'
+#' ggcharts::biomedicalrevenue %>%
+#'   filter(company == "Roche") %>%
+#'   ggplot(aes(year, revenue)) +
+#'   geom_line(color = "yellow", size = 1) +
+#'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
+#'   theme_hermit(grid = "X", axis = "x", ticks = "x")
+#'
+#' @author Thomas Neitmann
+#'
 #' @export
 theme_hermit <- function(base_size = 14,
                          base_family = "",
@@ -89,13 +112,46 @@ theme_hermit <- function(base_size = 14,
   )
 }
 
-#' @rdname theme
+#' Theme NG
+#'
+#' A ggplot2 theme inspired with the 'hello friend ng' Hugo theme
+#'
+#' @inheritParams theme_ggcharts
+#'
+#' @examples
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' scatter <- ggplot(mtcars, aes(hp, mpg)) +
+#'   geom_point(color = "yellow")
+#'
+#' scatter + theme_ng()
+#'
+#' scatter + theme_ng(grid = "XY")
+#'
+#' scatter + theme_ng(axis = "xy", ticks = "xy")
+#'
+#' bar_chart(ggplot2::diamonds, cut, bar_color = "darkorange") +
+#'   theme_ng(axis = "y", grid = "Y")
+#'
+#' column_chart(ggplot2::diamonds, cut, bar_color = "darkorange") +
+#'   theme_ng(axis = "x", grid = "X")
+#'
+#' ggcharts::biomedicalrevenue %>%
+#'   filter(company == "Roche") %>%
+#'   ggplot(aes(year, revenue)) +
+#'   geom_line(color = "yellow", size = 1) +
+#'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
+#'   theme_ng(grid = "X", axis = "x", ticks = "x")
+#'
+#' @author Thomas Neitmann
+#'
 #' @export
-theme_friend <- function(base_size = 14,
-                         base_family = "",
-                         axis = "",
-                         ticks = "",
-                         grid = "") {
+theme_ng <- function(base_size = 14,
+                     base_family = "",
+                     axis = "",
+                     ticks = "",
+                     grid = "") {
   new_ggcharts_theme(
     base_size = base_size,
     base_family = base_family,
@@ -109,7 +165,40 @@ theme_friend <- function(base_size = 14,
   )
 }
 
-#' @rdname theme
+#' Theme Nightblue
+#'
+#' A theme inspired by the RStudio nighblue editor theme
+#'
+#' @inheritParams theme_ggcharts
+#'
+#' @examples
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' scatter <- ggplot(mtcars, aes(hp, mpg)) +
+#'   geom_point(color = "#EBBBFF")
+#'
+#' scatter + theme_nightblue()
+#'
+#' scatter + theme_nightblue(grid = "XY")
+#'
+#' scatter + theme_nightblue(axis = "xy", ticks = "xy")
+#'
+#' bar_chart(ggplot2::diamonds, cut, bar_color = "darkorange") +
+#'   theme_nightblue(axis = "y", grid = "Y")
+#'
+#' column_chart(ggplot2::diamonds, cut, bar_color = "darkorange") +
+#'   theme_nightblue(axis = "x", grid = "X")
+#'
+#' ggcharts::biomedicalrevenue %>%
+#'   filter(company == "Roche") %>%
+#'   ggplot(aes(year, revenue)) +
+#'   geom_line(color = "yellow", size = 1) +
+#'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
+#'   theme_nightblue(grid = "X", axis = "x", ticks = "x")
+#'
+#' @author Thomas Neitmann
+#'
 #' @export
 theme_nightblue <- function(base_size = 14,
                             base_family = "",
