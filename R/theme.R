@@ -21,31 +21,31 @@
 #'
 #' scatter1 + theme_ggcharts()
 #'
-#' scatter1 + theme_ggcharts(grid_line = "XY")
+#' scatter1 + theme_ggcharts(grid = "XY")
 #'
-#' scatter1 + theme_ggcharts(axis_line = "XY")
+#' scatter1 + theme_ggcharts(axis = "xy")
 #'
 #' scatter2 <- ggplot(mtcars, aes(hp, mpg)) +
 #'   geom_point(color = "yellow")
 #'
 #' scatter2 + theme_hermit()
 #'
-#' scatter2 + theme_hermit(grid_line = "XY")
+#' scatter2 + theme_hermit(grid = "XY")
 #'
-#' scatter2 + theme_hermit(axis_line = "XY")
+#' scatter2 + theme_hermit(axis = "xy")
 #'
 #' bar_chart(ggplot2::diamonds, cut, bar_color = "orange") +
-#'   theme_hermit(axis_line = "Y", grid_line = "Y")
+#'   theme_hermit(axis = "y", grid = "Y")
 #'
 #' column_chart(ggplot2::diamonds, cut, bar_color = "steelblue") +
-#'   theme_ggcharts(axis_line = "X", grid_line = "X")
+#'   theme_ggcharts(axis = "x", grid = "X")
 #'
 #' ggcharts::biomedicalrevenue %>%
 #'   filter(company == "Roche") %>%
 #'   ggplot(aes(year, revenue)) +
 #'   geom_line(color = "yellow", size = 1) +
 #'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
-#'   theme_hermit(grid_line = "X", axis_line = "X")
+#'   theme_hermit(grid = "X", axis = "x")
 #'
 #' @author Thomas Neitmann
 #'
