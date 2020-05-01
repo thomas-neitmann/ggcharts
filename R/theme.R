@@ -64,7 +64,7 @@ theme_ggcharts <- function(base_size = 14,
     grid = grid,
     background_color = "#E5E7EB",
     foreground_color = "black",
-    grid_color = colorspace::darken("#E5E7EB"),
+    grid_color = "#CBCDD1",
     text_color = "black"
   )
 }
@@ -84,7 +84,7 @@ theme_hermit <- function(base_size = 14,
     grid = grid,
     background_color = "#494F5C",
     foreground_color = "#D6DDE1",
-    grid_color = colorspace::lighten("#494F5C"),
+    grid_color = "#595F6C",
     text_color = "#D6DDE1"
   )
 }
