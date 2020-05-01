@@ -89,6 +89,46 @@ theme_hermit <- function(base_size = 14,
   )
 }
 
+#' @rdname theme
+#' @export
+theme_friend <- function(base_size = 14,
+                         base_family = "",
+                         axis = "",
+                         ticks = "",
+                         grid = "") {
+  new_ggcharts_theme(
+    base_size = base_size,
+    base_family = base_family,
+    axis = axis,
+    ticks = ticks,
+    grid = grid,
+    background_color = "#292A2D",
+    foreground_color = "#A9A9B3",
+    grid_color = "#3B3C3F",
+    text_color = "#A9A9B3"
+  )
+}
+
+#' @rdname theme
+#' @export
+theme_nightblue <- function(base_size = 14,
+                            base_family = "",
+                            axis = "",
+                            ticks = "",
+                            grid = "") {
+  new_ggcharts_theme(
+    base_size = base_size,
+    base_family = base_family,
+    axis = axis,
+    ticks = ticks,
+    grid = grid,
+    background_color = "#002451",
+    foreground_color = "#F9FAFB",
+    grid_color = "#25375D",
+    text_color = "#F9FAFB"
+  )
+}
+
 new_ggcharts_theme <- function(base_size = 14,
                                base_family = "",
                                text_color,
