@@ -12,6 +12,41 @@
 #' \code{theme_ggcharts} is the default theme used when creating any plot with
 #' \code{ggcharts}.
 #'
+#' @examples
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' scatter1 <- ggplot(mtcars, aes(hp, mpg)) +
+#'   geom_point(color = "steelblue")
+#'
+#' scatter1 + theme_ggcharts()
+#'
+#' scatter1 + theme_ggcharts(grid_line = "XY")
+#'
+#' scatter1 + theme_ggcharts(axis_line = "XY")
+#'
+#' scatter2 <- ggplot(mtcars, aes(hp, mpg)) +
+#'   geom_point(color = "yellow")
+#'
+#' scatter2 + theme_hermit()
+#'
+#' scatter2 + theme_hermit(grid_line = "XY")
+#'
+#' scatter2 + theme_hermit(axis_line = "XY")
+#'
+#' bar_chart(ggplot2::diamonds, cut, bar_color = "orange") +
+#'   theme_hermit(axis_line = "Y", grid_line = "Y")
+#'
+#' column_chart(ggplot2::diamonds, cut, bar_color = "steelblue") +
+#'   theme_ggcharts(axis_line = "X", grid_line = "X")
+#'
+#' ggcharts::biomedicalrevenue %>%
+#'   filter(company == "Roche") %>%
+#'   ggplot(aes(year, revenue)) +
+#'   geom_line(color = "yellow", size = 1) +
+#'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
+#'   theme_hermit(grid_line = "X", axis_line = "X")
+#'
 #' @author Thomas Neitmann
 #'
 #' @rdname theme
@@ -67,7 +102,7 @@ new_ggcharts_theme <- function(base_size = 14,
     axis <- match.arg(axis, c("x", "y", "xy", "yx"))
   }
   if (ticks != "") {
-    ticks <- match.arg(ticks, c("x", "y", "xy", "yx"), )
+    ticks <- match.arg(ticks, c("x", "y", "xy", "yx"))
   }
   if (grid != "") {
     grid <- match.arg(grid, c("X", "Y", "XY", "YX"))
