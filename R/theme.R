@@ -22,32 +22,16 @@ theme_ggcharts <- function(base_size = 14,
                            base_family = "",
                            axis_line = NA,
                            grid_line = NA) {
-  axis_line <- match.arg(toupper(axis_line), c(NA, "X", "Y", "XY"))
-  grid_line <- match.arg(toupper(grid_line), c(NA, "X", "Y", "XY"))
-
-  blank <- element_blank()
-  elm_grid_line <- element_line(color = "#cccccc", size = 0.2)
-  elm_axis_line <- element_line(color = "black", size = .7)
-
-  theme_minimal(base_size = base_size, base_family = base_family) +
-    theme(
-      axis.line.x = if (grepl("X", axis_line)) elm_axis_line else blank,
-      axis.line.y = if (grepl("Y", axis_line)) elm_axis_line else blank,
-      axis.text.x = element_text(color = "black"),
-      axis.text.y = element_text(color = "black"),
-      panel.grid.minor = blank,
-      panel.grid.major.x = if (grepl("Y", grid_line)) elm_grid_line else blank,
-      panel.grid.major.y = if (grepl("X", grid_line)) elm_grid_line else blank,
-      plot.background = element_rect(fill = "#e5e7eb", color = "#e5e7eb"),
-      plot.title.position = "plot",
-      strip.background = blank,
-      strip.text = element_text(
-        margin = margin(1, 0, 1, 0, "mm"),
-        face = "bold",
-        hjust = 0
-      ),
-      text = element_text(color = "black")
-    )
+  new_ggcharts_theme(
+    base_size = base_size,
+    base_family = base_family,
+    axis_line = axis_line,
+    grid_line = grid_line,
+    background_color = "#E5E7EB",
+    foreground_color = "black",
+    grid_color = colorspace::darken("#E5E7EB"),
+    text_color = "black"
+  )
 }
 
 #' @rdname theme
@@ -56,13 +40,32 @@ theme_hermit <- function(base_size = 14,
                          base_family = "",
                          axis_line = NA,
                          grid_line = NA) {
+  new_ggcharts_theme(
+    base_size = base_size,
+    base_family = base_family,
+    axis_line = axis_line,
+    grid_line = grid_line,
+    background_color = "#494F5C",
+    foreground_color = "#D6DDE1",
+    grid_color = colorspace::lighten("#494F5C"),
+    text_color = "#D6DDE1"
+  )
+}
+
+new_ggcharts_theme <- function(base_size = 14,
+                               base_family = "",
+                               text_color,
+                               background_color,
+                               foreground_color,
+                               grid_color,
+                               axis_line = NA,
+                               grid_line = NA) {
   axis_line <- match.arg(toupper(axis_line), c(NA, "X", "Y", "XY"))
   grid_line <- match.arg(toupper(grid_line), c(NA, "X", "Y", "XY"))
 
   blank <- element_blank()
-  text_color <- "#D6DDE1"
-  elm_grid_line <- element_line(color = "#636b7e", size = 0.2)
-  elm_axis_line <- element_line(color = text_color, size = .7)
+  elm_grid_line <- element_line(color = grid_color, size = 0.2)
+  elm_axis_line <- element_line(color = foreground_color, size = .7)
 
   theme_minimal(base_size = base_size, base_family = base_family) +
     theme(
@@ -73,7 +76,7 @@ theme_hermit <- function(base_size = 14,
       panel.grid.minor = blank,
       panel.grid.major.x = if (grepl("Y", grid_line)) elm_grid_line else blank,
       panel.grid.major.y = if (grepl("X", grid_line)) elm_grid_line else blank,
-      plot.background = element_rect(fill = "#494F5C", color = "#494F5C"),
+      plot.background = element_rect(fill = background_color, color = background_color),
       plot.title.position = "plot",
       strip.background = blank,
       strip.text = element_text(
