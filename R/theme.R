@@ -228,10 +228,10 @@ new_ggcharts_theme <- function(base_size = 14,
                                ticks = "",
                                grid = "") {
   if (axis != "") {
-    axis <- match.arg(axis, c("x", "y", "xy", "yx"))
+    axis <- match.arg(tolower(axis), c("x", "y", "xy", "yx"))
   }
   if (ticks != "") {
-    ticks <- match.arg(ticks, c("x", "y", "xy", "yx"))
+    ticks <- match.arg(tolower(ticks), c("x", "y", "xy", "yx"))
   }
   if (grid != "" && grepl("[^xyXY]", grid)) {
       rlang::abort("`grid` must only contain combinations of 'x', 'y', 'X', 'Y'.")
