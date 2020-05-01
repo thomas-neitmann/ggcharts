@@ -43,5 +43,7 @@ popeurope <- gapminder::gapminder %>%
     values_from = pop,
     names_from = year,
     names_prefix = "pop"
-  )
+  ) %>%
+  dplyr::mutate(country = as.character(country)) %>%
+  as.data.frame()
 save(popeurope, file = "data/popeurope.rda")

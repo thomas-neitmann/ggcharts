@@ -8,8 +8,8 @@
 A data frame with 30 rows and 3 variables:
 \describe{
   \item{country}{Name of the country}
-  \item{pop1952}{Population in 1952}
-  \item{pop2007}{Population in 2007}
+  \item{pop1952}{Population in 1952 (in millions)}
+  \item{pop2007}{Population in 2007 (in millions)}
 }
 }
 \source{
