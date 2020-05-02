@@ -58,6 +58,10 @@ top \code{top_n} records will be displayed}
 \item{threshold}{\code{numeric}. If a value for threshold is provided only
 records with \code{y > threshold} will be displayed}
 
+\item{other}{\code{logical}. Should all \code{x} with \code{y < threshold} be
+summarized in a group called 'other' and be displayed at the bottom of
+the chart?}
+
 \item{limit}{Deprecated. use \code{top_n} instead.}
 }
 \value{
