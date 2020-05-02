@@ -1,0 +1,114 @@
+---
+title: "Themes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{themes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 6,
+  fig.height = 4
+)
+```
+
+```{r setup}
+library(ggcharts)
+library(dplyr)
+```
+
+`ggcharts` offers a couple of highly customizable `ggplot2` themes. When you don't specify any arguments all themes are very minimal in the sense that they don't have any axis lines, axis ticks and grid lines. This is intentional. Depending on the chart you create different combinations of these parameters work best and you should carefully choose them on your own rather than using some arbitrary default. Let's illustrate this with `theme_hermit()`.
+
+
+## Usage
+
+```{r}
+scatter <- ggplot(mtcars, aes(hp, mpg)) + geom_point(color = "darkorange")
+scatter + theme_hermit()
+```
+
+As promised, this is very minimal. If you like that look feel free to leave it like this otherwise customize it for your needs. For this scatter plot you might choose to have axis lines and ticks. This can easily be achieved.
+
+```{r}
+scatter + theme_hermit(axis = "xy", ticks = "xy")
+```
+
+Alternatively, you may want to use grid lines.
+
+```{r}
+scatter + theme_hermit(grid = "XY")
+```
+
+Notice that I used uppercase `"XY"` which will draw major grid lines. For minor grid lines use lowercase `"xy"` and for a combination use `"XYxy"`.
+
+Next, let's have a look at a bar chart example.
+
+```{r}
+bar <- column_chart(diamonds, cut)
+bar + theme_nightblue()
+```
+
+For this chart the minimal default doesn't look bad at all but you might want to add horizontal grid lines.
+
+```{r}
+bar + theme_nightblue(grid = "X")
+```
+
+Additionally you may want to add an x axis line and ticks.
+
+```{r}
+bar + theme_nightblue(grid = "X", axis = "x", ticks = "x")
+```
+
+
+## Gallery
+
+### `theme_ggcharts`
+
+This is the default theme of `ggcharts`.
+
+```{r}
+scatter + theme_ggcharts(axis = "xy")
+```
+
+```{r}
+bar + theme_ggcharts(axis = "x", grid = "X")
+```
+
+### `theme_ng`
+
+```{r}
+scatter + theme_ng(grid = "XYxy")
+```
+
+
+```{r}
+bar + theme_ng(axis = "xy", ticks = "y")
+```
+
+### `theme_hermit`
+
+```{r}
+biomedicalrevenue %>%
+  filter(year %in% c(2011, 2013, 2015, 2017)) %>%
+  lollipop_chart(company, revenue, facet = year, highlight = "Roche", line_color = "yellow", top_n = 5) +
+  theme_hermit(axis = "y", grid = "Y")
+```
+
+### `theme_nightblue`
+
+```{r}
+biomedicalrevenue %>%
+  filter(company == "Novartis") %>%
+  ggplot(aes(year, revenue)) +
+  geom_line(color = "darkorange", size = 1) +
+  theme_nightblue(axis = "x", ticks = "x", grid = "XY")
+```
+
