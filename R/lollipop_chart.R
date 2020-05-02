@@ -110,8 +110,8 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
     gp_args$size <- point_size
   }
   if (!is.null(highlight)) {
-    gs_args$mapping <- aes(y = 0, xend = !!x, yend = !!y, color = .color)
-    gp_args$mapping <- aes(color = .color)
+    gs_args$mapping <- aes(y = 0, xend = !!x, yend = !!y, color = .data$.color)
+    gp_args$mapping <- aes(color = .data$.color)
   } else if (!"color" %in% dot_names) {
     gs_args$color <- line_color
     gp_args$color <- point_color

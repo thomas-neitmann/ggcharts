@@ -101,7 +101,7 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
   if (has_fill) {
     args$position <- "dodge"
   } else if (!is.null(highlight)) {
-    args$mapping <- aes(fill = .color)
+    args$mapping <- aes(fill = .data$.color)
   } else {
     args$fill <- bar_color
   }
