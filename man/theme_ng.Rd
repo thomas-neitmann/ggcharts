@@ -17,6 +17,9 @@ theme_ng(base_size = 14, base_family = "", axis = "", ticks = "", grid = "")
 
 \item{grid}{\code{character}. Where to draw grid lines}
 }
+\value{
+An object of class \code{theme}
+}
 \description{
 A ggplot2 theme inspired with the 'hello friend ng' Hugo theme
 }
@@ -46,6 +49,10 @@ ggcharts::biomedicalrevenue \%>\%
   scale_y_continuous(expand = expand_scale(c(0, .05))) +
   theme_ng(grid = "X", axis = "x", ticks = "x")
 
+}
+\seealso{
+For more details see the 'theme' vignette:
+\code{vignette("theme", package = "ggcharts")}
 }
 \author{
 Thomas Neitmann

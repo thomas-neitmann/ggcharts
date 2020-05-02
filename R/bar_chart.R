@@ -2,8 +2,6 @@
 #'
 #' Easily create a bar chart
 #'
-#' @author Thomas Neitmann
-#'
 #' @param data Dataset to use for the bar chart
 #' @param x \code{character} or \code{factor} column of \code{data}
 #' @param y \code{numeric} column of \code{data} representing the bar length.
@@ -38,6 +36,13 @@
 #' \code{numeric}.
 #'
 #' @return An object of class \code{ggplot}
+#'
+#' @author Thomas Neitmann
+#'
+#' @seealso
+#' For more details have a look at these vignettes:
+#' \code{vignette("highlight", package = "ggcharts")}
+#' \code{vignette("customize", package = "ggcharts")}
 #'
 #' @examples
 #' data(biomedicalrevenue)

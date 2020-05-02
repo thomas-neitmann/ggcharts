@@ -23,6 +23,9 @@ theme_ggcharts(
 
 \item{grid}{\code{character}. Where to draw grid lines}
 }
+\value{
+An object of class \code{theme}
+}
 \description{
 The default ggcharts theme
 }
@@ -56,6 +59,10 @@ ggcharts::biomedicalrevenue \%>\%
   scale_y_continuous(expand = expand_scale(c(0, .05))) +
   theme_ggcharts(grid = "X", axis = "x", ticks = "x")
 
+}
+\seealso{
+For more details see the 'theme' vignette:
+\code{vignette("theme", package = "ggcharts")}
 }
 \author{
 Thomas Neitmann

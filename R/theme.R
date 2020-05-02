@@ -12,6 +12,14 @@
 #' \code{theme_ggcharts} is the default theme used when creating any plot with
 #' \code{ggcharts}.
 #'
+#' @return An object of class \code{theme}
+#'
+#' @author Thomas Neitmann
+#'
+#' @seealso
+#' For more details see the 'theme' vignette:
+#' \code{vignette("theme", package = "ggcharts")}
+#'
 #' @examples
 #' library(ggplot2)
 #' library(dplyr)
@@ -38,8 +46,6 @@
 #'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
 #'   theme_ggcharts(grid = "X", axis = "x", ticks = "x")
 #'
-#' @author Thomas Neitmann
-#'
 #' @export
 theme_ggcharts <- function(base_size = 14,
                            base_family = "",
@@ -64,6 +70,14 @@ theme_ggcharts <- function(base_size = 14,
 #' A ggplot2 theme inspired by the 'hermit' Hugo theme
 #'
 #' @inheritParams theme_ggcharts
+#'
+#' @return An object of class \code{theme}
+#'
+#' @author Thomas Neitmann
+#'
+#' @seealso
+#' For more details see the 'theme' vignette:
+#' \code{vignette("theme", package = "ggcharts")}
 #'
 #' @examples
 #' library(ggplot2)
@@ -91,8 +105,6 @@ theme_ggcharts <- function(base_size = 14,
 #'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
 #'   theme_hermit(grid = "X", axis = "x", ticks = "x")
 #'
-#' @author Thomas Neitmann
-#'
 #' @export
 theme_hermit <- function(base_size = 14,
                          base_family = "",
@@ -117,6 +129,14 @@ theme_hermit <- function(base_size = 14,
 #' A ggplot2 theme inspired with the 'hello friend ng' Hugo theme
 #'
 #' @inheritParams theme_ggcharts
+#'
+#' @return An object of class \code{theme}
+#'
+#' @author Thomas Neitmann
+#'
+#' @seealso
+#' For more details see the 'theme' vignette:
+#' \code{vignette("theme", package = "ggcharts")}
 #'
 #' @examples
 #' library(ggplot2)
@@ -144,8 +164,6 @@ theme_hermit <- function(base_size = 14,
 #'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
 #'   theme_ng(grid = "X", axis = "x", ticks = "x")
 #'
-#' @author Thomas Neitmann
-#'
 #' @export
 theme_ng <- function(base_size = 14,
                      base_family = "",
@@ -170,6 +188,14 @@ theme_ng <- function(base_size = 14,
 #' A theme inspired by the RStudio nighblue editor theme
 #'
 #' @inheritParams theme_ggcharts
+#'
+#' @return An object of class \code{theme}
+#'
+#' @author Thomas Neitmann
+#'
+#' @seealso
+#' For more details see the 'theme' vignette:
+#' \code{vignette("theme", package = "ggcharts")}
 #'
 #' @examples
 #' library(ggplot2)
@@ -196,8 +222,6 @@ theme_ng <- function(base_size = 14,
 #'   geom_line(color = "yellow", size = 1) +
 #'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
 #'   theme_nightblue(grid = "X", axis = "x", ticks = "x")
-#'
-#' @author Thomas Neitmann
 #'
 #' @export
 theme_nightblue <- function(base_size = 14,

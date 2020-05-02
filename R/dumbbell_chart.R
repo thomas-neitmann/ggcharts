@@ -2,8 +2,6 @@
 #'
 #' Easily create a dumbbell chart
 #'
-#' @author Thomas Neitmann
-#'
 #' @param data Dataset to use for the dumbbell chart
 #' @param x \code{character} or \code{factor} column of \code{data}
 #' @param y1 \code{numeric} column of \code{data} representing the dumbbell end
@@ -23,6 +21,12 @@
 #' @param limit Deprecated. use \code{top_n} instead.
 #'
 #' @return An object of class \code{ggplot}
+#'
+#' @author Thomas Neitmann
+#'
+#' @seealso
+#' To learn how to further customize this plot have a look at the 'customize' vignette:
+#' \code{vignette("customize", package = "ggcharts")}
 #'
 #' @examples
 #' data(popeurope)

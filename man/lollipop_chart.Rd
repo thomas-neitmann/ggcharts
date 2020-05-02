@@ -113,6 +113,11 @@ lollipop_chart(revenue2016, company, revenue, top_n = 15, highlight = "Roche")
 lollipop_chart(biomedicalrevenue, company, revenue, facet = year, top_n = 10)
 
 }
+\seealso{
+For more details have a look at these vignettes:
+\code{vignette("highlight", package = "ggcharts")}
+\code{vignette("customize", package = "ggcharts")}
+}
 \author{
 Thomas Neitmann
 }

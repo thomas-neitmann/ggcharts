@@ -121,6 +121,11 @@ bar_chart(revenue2018, company, revenue, top_n = 10, highlight = "Roche")
 bar_chart(biomedicalrevenue, company, revenue, facet = year, top_n = 10)
 
 }
+\seealso{
+For more details have a look at these vignettes:
+\code{vignette("highlight", package = "ggcharts")}
+\code{vignette("customize", package = "ggcharts")}
+}
 \author{
 Thomas Neitmann
 }

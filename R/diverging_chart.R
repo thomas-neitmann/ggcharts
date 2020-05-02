@@ -2,8 +2,6 @@
 #'
 #' Easily create a diverging bar chart
 #'
-#' @author Thomas Neitmann
-#'
 #' @param data Dataset to use for the diverging bar chart
 #' @param x \code{character} or \code{factor} column of \code{data}
 #' @param y \code{numeric} column of \code{data} representing the bar length
@@ -13,6 +11,12 @@
 #' @param text_size \code{numeric}. The size of the bar annotation text in pt
 #'
 #' @return An object of class \code{ggplot}
+#'
+#' @author Thomas Neitmann
+#'
+#' @seealso
+#' To learn how to further customize this plot have a look at the 'customize' vignette:
+#' \code{vignette("customize", package = "ggcharts")}
 #'
 #' @examples
 #' if (requireNamespace("tidyr")) {
@@ -72,8 +76,6 @@ diverging_bar_chart <- function(data, x, y,
 #'
 #' Easily create a diverging lollipop chart
 #'
-#' @author Thomas Neitmann
-#'
 #' @param data Dataset to use for the diverging lollipop chart
 #' @param x \code{character} or \code{factor} column of \code{data}
 #' @param y \code{numeric} column of \code{data} representing the lollipop length
@@ -85,6 +87,12 @@ diverging_bar_chart <- function(data, x, y,
 #' @param text_size \code{numeric} The size of the lollipop annotation text in pt
 #'
 #' @return An object of class \code{ggplot}
+#'
+#' @author Thomas Neitmann
+#'
+#' @seealso
+#' To learn how to further customize this plot have a look at the 'customize' vignette:
+#' \code{vignette("customize", package = "ggcharts")}
 #'
 #' @examples
 #' if (requireNamespace("tidyr")) {

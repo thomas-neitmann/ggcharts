@@ -73,6 +73,10 @@ diverging_lollipop_chart(mtcars_z, model, hpz, text_size = 14)
 diverging_lollipop_chart(mtcars_z, model, hpz, text_color = c("#1F77B4", "#FF7F0E"))
 
 }
+\seealso{
+To learn how to further customize this plot have a look at the 'customize' vignette:
+\code{vignette("customize", package = "ggcharts")}
+}
 \author{
 Thomas Neitmann
 }

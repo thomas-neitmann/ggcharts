@@ -2,8 +2,6 @@
 #'
 #' Easily create a pyramid chart
 #'
-#' @author Thomas Neitmann
-#'
 #' @param data Dataset to use for the pyramid chart
 #' @param x \code{character} or \code{factor} column of \code{data}
 #' @param y \code{numeric} column of \code{data}
@@ -14,6 +12,8 @@
 #' @param title \code{character}. Plot title. By default no title is displayed.
 #'
 #' @return An object of class \code{ggplot}
+#'
+#' @author Thomas Neitmann
 #'
 #' @examples
 #' data(popch)

@@ -80,6 +80,10 @@ dumbbell_chart(popeurope, country, pop1952, pop2007, top_n = 10,
                line_size = 2, point_size = 5)
 
 }
+\seealso{
+To learn how to further customize this plot have a look at the 'customize' vignette:
+\code{vignette("customize", package = "ggcharts")}
+}
 \author{
 Thomas Neitmann
 }
