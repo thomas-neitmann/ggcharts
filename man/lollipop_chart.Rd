@@ -19,6 +19,7 @@ lollipop_chart(
   horizontal = TRUE,
   top_n = NULL,
   threshold = NULL,
+  other = FALSE,
   limit = NULL
 )
 }
