@@ -1,3 +1,31 @@
+#' @export
+ggcharts_get_theme <- function() {
+  ggcharts_global$theme
+}
+
+#' @export
+ggcharts_set_theme <- function(theme) {
+  if (is.theme(theme)) {
+    theme <- deparse(substitute(theme)[[1]])
+  } else if (is.function(theme)) {
+    theme <- deparse(substitute(theme))
+  }
+  ggcharts_themes <- list_ggcharts_themes()
+
+  if (!theme %in% ggcharts_themes) {
+    err_msg <- paste0(
+      "`theme` must one of ",
+      paste(paste0("'", ggcharts_themes, "'"), collapse = ", "),
+      " but is '", theme, "'."
+    )
+    rlang::abort(err_msg)
+  }
+
+  old_theme <- ggcharts_global$theme
+  ggcharts_global$theme <- theme
+  invisible(old_theme)
+}
+
 #' Theme ggcharts
 #'
 #' The default ggcharts theme
