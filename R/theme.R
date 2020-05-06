@@ -292,8 +292,8 @@ new_ggcharts_theme <- function(base_size = 14,
   blank <- element_blank()
   elm_grid_major <- element_line(color = grid_color, size = 0.2)
   elm_grid_minor <- element_line(color = grid_color, size = 0.01)
-  elm_axis_line <- element_line(color = foreground_color, size = .7)
-  elm_tick_line <- element_line(color = foreground_color)
+  elm_axis_line <- element_line(color = foreground_color, size = .4)
+  elm_tick_line <- elm_axis_line
 
   theme_minimal(base_size = base_size, base_family = base_family) +
     theme(
