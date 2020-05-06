@@ -154,11 +154,15 @@ diverging_chart <- function(data, x, y,
                             colors = c("#1F77B4", "#FF7F0E"),
                             line_size = 0.75,
                             point_size = 3,
-                            text_color = "black",
+                            text_color = "auto",
                             text_size = 10) {
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   geom <- match.arg(geom)
+
+  if (text_color == "auto") {
+    text_color <- ggcharts_current_theme()$text$colour
+  }
 
   data <- dplyr::mutate(
     .data = data,
@@ -196,8 +200,12 @@ diverging_chart <- function(data, x, y,
       aes(label = !!x, y = 0, hjust = "left"),
       nudge_y = limit * .013
     ) +
-    geom_hline(yintercept = 0, color = "black", size = .7) +
+    geom_hline(
+      yintercept = 0,
+      color = ggcharts_current_theme()$text$colour,
+      size = .4
+    ) +
     ylim(-limit, limit) +
-    theme_ggcharts(grid = "Y") +
+    ggcharts_current_theme(grid = "Y") +
     theme(axis.text.y = element_blank())
 }

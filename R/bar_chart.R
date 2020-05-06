@@ -79,7 +79,7 @@
 #' @import ggplot2
 #' @importFrom magrittr %>%
 #' @export
-bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
+bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "auto",
                       highlight = NULL, sort = TRUE, horizontal = TRUE,
                       top_n = NULL, threshold = NULL, other = FALSE, limit = NULL) {
 
@@ -88,6 +88,10 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
   facet <- rlang::enquo(facet)
   dots <- rlang::enquos(...)
   has_fill <- "fill" %in% names(dots)
+
+  if (bar_color == "auto") {
+    bar_color <- get_default_color(ggcharts_get_theme())
+  }
 
   data <- pre_process_data(
     data = data, x = !!x, y = !!y,
@@ -130,7 +134,7 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
 
 #' @rdname bar_chart
 #' @export
-column_chart <- function(data, x, y, facet = NULL, ..., bar_color = "#1F77B4",
+column_chart <- function(data, x, y, facet = NULL, ..., bar_color = "auto",
                          highlight = NULL, sort = NULL, horizontal = FALSE,
                          top_n = NULL, threshold = NULL, limit = NULL) {
   if (is.null(sort)) {
