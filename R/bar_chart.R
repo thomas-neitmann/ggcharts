@@ -89,7 +89,7 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "auto",
   dots <- rlang::enquos(...)
   has_fill <- "fill" %in% names(dots)
 
-  if (bar_color == "auto") {
+  if (length(bar_color) == 1 && bar_color == "auto") {
     bar_color <- ggcharts_get_default_color(ggcharts_get_theme())
   }
 

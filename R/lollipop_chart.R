@@ -92,9 +92,9 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
   facet <- rlang::enquo(facet)
   dot_names <- names(rlang::enquos(...))
 
-  if (line_color == "auto") {
+  if (length(line_color) == 1 && line_color == "auto") {
     line_color <- ggcharts_get_default_color(ggcharts_get_theme())
-    if (point_color == "auto") {
+    if (length(point_color) == 1 && point_color == "auto") {
       point_color <- line_color
     }
   }

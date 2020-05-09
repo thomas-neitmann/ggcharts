@@ -160,7 +160,7 @@ diverging_chart <- function(data, x, y,
   y <- rlang::enquo(y)
   geom <- match.arg(geom)
 
-  if (text_color == "auto") {
+  if (length(text_color) == 1 && text_color == "auto") {
     text_color <- ggcharts_current_theme()$text$colour
   }
 
@@ -174,7 +174,6 @@ diverging_chart <- function(data, x, y,
   limit <- max(dplyr::pull(data, !!y)) * 1.05
   if (length(text_color) == 1) text_color <- rep(text_color, 2)
 
-  plot <-
   if (geom == "bar") {
     plot <- ggplot(data, aes(!!x, !!y, fill = .data$.color)) +
       geom_col() +
