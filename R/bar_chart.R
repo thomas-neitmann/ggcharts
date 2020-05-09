@@ -90,7 +90,7 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "auto",
   has_fill <- "fill" %in% names(dots)
 
   if (bar_color == "auto") {
-    bar_color <- get_default_color(ggcharts_get_theme())
+    bar_color <- ggcharts_get_default_color(ggcharts_get_theme())
   }
 
   data <- pre_process_data(

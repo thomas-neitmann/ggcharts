@@ -17,12 +17,34 @@ ggcharts_current_theme <- function(...) {
   do.call(ggcharts_get_theme(), list(...))
 }
 
-list_ggcharts_themes <- function() {
+ggcharts_list_themes <- function() {
   ggcharts_exports <- getNamespaceExports("ggcharts")
   ggplot2_exports <- getNamespaceExports("ggplot2")
   grep("^theme_", setdiff(ggcharts_exports, ggplot2_exports), value = TRUE)
 }
 
-get_default_color <- function(theme) {
+#' Get the Default Color for a ggcharts Theme
+#'
+#' Retrieve the color used by default for a given \code{ggcharts} theme
+#'
+#' @param theme \code{character}. The name of a \code{ggcharts} theme.
+#'
+#' @return The default color for the given theme as a \code{character}
+#'
+#' @author Thomas Neitmann
+#'
+#' @examples
+#' ggcharts_get_default_color("theme_hermit")
+#' ggcharts_get_default_color("theme_ng")
+#'
+#' @export
+ggcharts_get_default_color <- function(theme) {
+  if (!is.character(theme)) {
+    rlang::abort("`theme` must be a string.")
+  }
+  if (!theme %in% ggcharts_list_themes()) {
+    err_msg <- paste0("'", theme, "' is not a `ggcharts` theme.")
+    rlang::abort(err_msg)
+  }
   ggcharts_global$default_colors[theme]
 }
