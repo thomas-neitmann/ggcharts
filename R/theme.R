@@ -1,8 +1,42 @@
+#' Get and Set the Currently Active ggcharts Theme
+#'
+#' The current theme is automatically applied to any plot created with
+#' \code{ggcharts}. It does not affect plots created with \code{ggplot2}.
+#'
+#' @param theme \code{character}. The name of the theme, e.g. \code{"theme_hermit"}
+#'
+#' @return
+#' \code{ggchart_set_theme} invisibly returns the name of the previously active
+#' theme as a \code{character}. \code{ggchart_get_theme} returns the name of the
+#' currently active theme as a \code{character}.
+#'
+#' @author Thomas Neitmann
+#'
+#' @examples
+#' data("diamonds", package = "ggplot2")
+#'
+#' ## By default `theme_ggcharts()` is used
+#' ggcharts_get_theme()
+#' bar_chart(diamonds, cut)
+#'
+#' ggcharts_set_theme("theme_hermit")
+#' bar_chart(diamonds, cut)
+#'
+#' ggcharts_set_theme("theme_ng")
+#' bar_chart(diamonds, cut)
+#'
+#' ggcharts_set_theme("theme_nightblue")
+#' bar_chart(diamonds, cut)
+#'
+#' ## Restore the default
+#' ggcharts_set_theme("theme_ggcharts")
+#'
 #' @export
 ggcharts_get_theme <- function() {
   ggcharts_global$theme
 }
 
+#' @rdname ggcharts_get_theme
 #' @export
 ggcharts_set_theme <- function(theme) {
   if (is.theme(theme)) {
