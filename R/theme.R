@@ -41,7 +41,7 @@ ggcharts_get_theme <- function() {
 ggcharts_set_theme <- function(theme) {
   if (is_ggcharts_theme(theme)) {
     theme <- attr(theme, "name")
-  } else if (is.function(theme)) {
+  } else if (is.function(theme) || is.theme(theme)) {
     theme <- deparse(substitute(theme))
   }
   ggcharts_themes <- ggcharts_list_themes()
