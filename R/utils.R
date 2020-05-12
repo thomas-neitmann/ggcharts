@@ -13,13 +13,13 @@ reorder <- function(x, by, other = FALSE) {
   }
 }
 
-enumeration <- function(x) {
+enumeration <- function(x, quote = "`", last = "&") {
   n <- length(x)
-  quoted <- paste0("`", x, "`")
+  quoted <- paste0(quote, x, quote)
   if (n == 1) {
     return(quoted)
   }
-  paste(paste(quoted[-n], collapse = ", "), "&", quoted[n])
+  paste(paste(quoted[-n], collapse = ", "), last, quoted[n])
 }
 
 ggcharts_current_theme <- function(...) {

@@ -50,7 +50,7 @@ ggcharts_set_theme <- function(theme, ...) {
   if (!theme %in% ggcharts_themes) {
     err_msg <- paste0(
       "`theme` must one of ",
-      paste(paste0("'", ggcharts_themes, "'"), collapse = ", "),
+      enumeration(ggcharts_themes, "'", "or"),
       " but is '", theme, "'."
     )
     rlang::abort(err_msg)
