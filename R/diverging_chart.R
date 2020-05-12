@@ -57,7 +57,7 @@
 #' @export
 diverging_bar_chart <- function(data, x, y,
                                 bar_colors = c("#1F77B4", "#FF7F0E"),
-                                text_color = "black",
+                                text_color = "auto",
                                 text_size = 10) {
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
@@ -133,7 +133,7 @@ diverging_bar_chart <- function(data, x, y,
 diverging_lollipop_chart <- function(data, x, y,
                                      lollipop_colors = c("#1F77B4", "#FF7F0E"),
                                      line_size = 0.75, point_size = 3,
-                                     text_color = "black", text_size = 10) {
+                                     text_color = "auto", text_size = 10) {
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   diverging_chart(

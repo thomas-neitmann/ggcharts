@@ -7,10 +7,12 @@
 \usage{
 ggcharts_get_theme()
 
-ggcharts_set_theme(theme)
+ggcharts_set_theme(theme, ...)
 }
 \arguments{
 \item{theme}{\code{character}. The name of the theme, e.g. \code{"theme_hermit"}}
+
+\item{...}{Additional argument passed onto the specified \code{theme}}
 }
 \value{
 \code{ggchart_set_theme} invisibly returns the name of the previously active
@@ -34,7 +36,7 @@ bar_chart(diamonds, cut)
 ggcharts_set_theme("theme_ng")
 bar_chart(diamonds, cut)
 
-ggcharts_set_theme("theme_nightblue")
+ggcharts_set_theme("theme_nightblue", base_size = 16, base_family = "serif")
 bar_chart(diamonds, cut)
 
 ## Restore the default
