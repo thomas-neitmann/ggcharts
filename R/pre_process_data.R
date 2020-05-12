@@ -44,10 +44,12 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
   }
 
   if (!is.null(highlight)) {
+    if (!is_highlight_spec(highlight)) {
+      highlight <- highlight_spec(highlight)
+    }
     data$.color <- create_highlight_colors(
       dplyr::pull(data, !!x),
-      highlight,
-      highlight_color
+      highlight
     )
   }
 
@@ -93,19 +95,4 @@ apply_threshold <- function(data, x, y, threshold, other) {
       dplyr::arrange(!!y) %>%
       dplyr::filter(!!y > threshold)
   }
-}
-
-create_highlight_colors <- function(x, highlight, color) {
-  stopifnot(length(color) == 1L || length(color) == length(highlight))
-
-  if (length(color) == 1) {
-    color <- rep(color, length(highlight))
-  }
-
-  highlight_color <- rep("lightgray", length(x))
-  for (i in seq_along(highlight)) {
-    highlight_color[x == highlight[i]] <- color[i]
-  }
-
-  highlight_color
 }
