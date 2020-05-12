@@ -13,8 +13,17 @@ reorder <- function(x, by, other = FALSE) {
   }
 }
 
+enumeration <- function(x) {
+  n <- length(x)
+  quoted <- paste0("`", x, "`")
+  if (n == 1) {
+    return(quoted)
+  }
+  paste(paste(quoted[-n], collapse = ", "), "&", quoted[n])
+}
+
 ggcharts_current_theme <- function(...) {
-  do.call(ggcharts_get_theme(), list(...))
+  do.call(ggcharts_get_theme(), c(ggcharts_global$theme_args, list(...)))
 }
 
 ggcharts_list_themes <- function() {

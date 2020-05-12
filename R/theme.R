@@ -4,6 +4,7 @@
 #' \code{ggcharts}. It does not affect plots created with \code{ggplot2}.
 #'
 #' @param theme \code{character}. The name of the theme, e.g. \code{"theme_hermit"}
+#' @param ... Additional argument passed onto the specified \code{theme}
 #'
 #' @return
 #' \code{ggchart_set_theme} invisibly returns the name of the previously active
@@ -25,7 +26,7 @@
 #' ggcharts_set_theme("theme_ng")
 #' bar_chart(diamonds, cut)
 #'
-#' ggcharts_set_theme("theme_nightblue")
+#' ggcharts_set_theme("theme_nightblue", base_size = 16, base_family = "serif")
 #' bar_chart(diamonds, cut)
 #'
 #' ## Restore the default
@@ -38,7 +39,7 @@ ggcharts_get_theme <- function() {
 
 #' @rdname ggcharts_get_theme
 #' @export
-ggcharts_set_theme <- function(theme) {
+ggcharts_set_theme <- function(theme, ...) {
   if (is_ggcharts_theme(theme)) {
     theme <- attr(theme, "name")
   } else if (is.function(theme) || is.theme(theme)) {
@@ -55,8 +56,17 @@ ggcharts_set_theme <- function(theme) {
     rlang::abort(err_msg)
   }
 
+  ellipsis <- list(...)
+  args <- names(ellipsis)
+  supported_args <- c("base_size", "base_family")
+  if (length(args) && length(setdiff(args, supported_args))) {
+    err_msg <- paste0("Only ", enumeration(supported_args), " may be used in `...`.")
+    rlang::abort(err_msg)
+  }
+
   old_theme <- ggcharts_global$theme
   ggcharts_global$theme <- theme
+  ggcharts_global$theme_args <- ellipsis
   invisible(old_theme)
 }
 
