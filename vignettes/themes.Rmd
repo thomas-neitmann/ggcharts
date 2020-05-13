@@ -77,12 +77,12 @@ hist + theme_nightblue(grid = "X", axis = "x", ticks = "x")
 `ggcharts` uses `theme_ggcharts()` by default and sets the `axis`, `tick` and `grid` arguments automatically depending on the plot. You can change the theme by using `ggcharts_set_theme()`.
 
 ```{r}
-lollipop_chart(diamonds, cut)
-ggcharts_set_theme("theme_hermit")
-lollipop_chart(diamonds, cut)
+lollipop_chart(diamonds, cut, highlight = "Good")
+ggcharts_set_theme("theme_ng")
+lollipop_chart(diamonds, cut, highlight = "Good")
 ```
 
-The advantage of using `ggcharts_set_theme()` over adding the theme to a `ggcharts` plot is two-fold. First, as already mentioned the theme arguments are set automatically. In addition, the default color used for the geom is changed as can be seen above.
+The advantage of using `ggcharts_set_theme()` over adding the theme to a `ggcharts` plot is two-fold. First, as already mentioned the theme arguments are set automatically. Second, the default color used for the geom is changed. Finally, the color of the non-highlighted bars/lollipops is determined automatically from the theme background.
 
 
 ## Gallery
