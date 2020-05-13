@@ -70,7 +70,6 @@ vdiffr::expect_doppelganger(
     company,
     revenue,
     limit = 12,
-    highlight = c("Sanofi", "Novartis"),
-    bar_color = c("yellow", "darkorange")
+    highlight = highlight_spec(c("Sanofi", "Novartis"), c("yellow", "darkorange"))
   )
 )
