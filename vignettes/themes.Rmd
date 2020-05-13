@@ -24,7 +24,7 @@ library(ggcharts)
 library(dplyr)
 ```
 
-`ggcharts` offers a couple of highly customizable `ggplot2` themes. When you don't specify any arguments all themes are very minimal in the sense that they don't have any axis lines, axis ticks and grid lines. This is intentional. Depending on the chart you create different combinations of these parameters work best and you should carefully choose them on your own rather than using some arbitrary default. Let's illustrate this with `theme_hermit()`.
+`ggcharts` offers a couple of highly customizable `ggplot2` themes. When you don't specify any arguments all themes are very minimal. They don't have any axis lines, axis ticks and grid lines. This is intentional. Depending on the chart you create different combinations of these parameters work best. You should carefully choose them on your own rather than using some arbitrary default. Let's illustrate this with `theme_hermit()`.
 
 
 ## Usage
