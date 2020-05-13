@@ -27,7 +27,7 @@ theme_nightblue(
 An object of class \code{theme}
 }
 \description{
-A theme inspired by the RStudio nighblue editor theme
+A theme inspired by the RStudio nightblue editor theme
 }
 \examples{
 library(ggplot2)

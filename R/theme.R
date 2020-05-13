@@ -263,7 +263,7 @@ theme_ng <- function(base_size = 14,
 
 #' Theme Nightblue
 #'
-#' A theme inspired by the RStudio nighblue editor theme
+#' A theme inspired by the RStudio nightblue editor theme
 #'
 #' @inheritParams theme_ggcharts
 #'

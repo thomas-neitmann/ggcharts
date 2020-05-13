@@ -43,7 +43,7 @@ bar_chart(
 )
 ```
 
-The color for the highlighted and non-highlighted values are automatically determined from the currenty active `ggcharts` theme, i.e. `ggcharts_get_theme()`. Thus, changing the theme will change these colors.
+The color for the highlighted and non-highlighted values are automatically determined from the currently active `ggcharts` theme, i.e. `ggcharts_get_theme()`. Thus, changing the theme will change these colors.
 
 ```{r}
 ggcharts_set_theme("theme_ng")
