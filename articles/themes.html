@@ -112,6 +112,9 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
+<div id="with-ggplot2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#with-ggplot2" class="anchor"></a>With ggplot2</h3>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">scatter</span> <span class="kw">&lt;-</span> <span class="fu">ggplot</span>(<span class="no">mtcars</span>, <span class="fu">aes</span>(<span class="no">hp</span>, <span class="no">mpg</span>)) + <span class="fu">geom_point</span>(<span class="kw">color</span> <span class="kw">=</span> <span class="st">"darkorange"</span>)
 <span class="no">scatter</span> + <span class="fu"><a href="../reference/theme_hermit.html">theme_hermit</a></span>()</pre></body></html></div>
 <p><img src="themes_files/figure-html/unnamed-chunk-2-1.png" width="576"></p>
@@ -122,16 +125,30 @@
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">scatter</span> + <span class="fu"><a href="../reference/theme_hermit.html">theme_hermit</a></span>(<span class="kw">grid</span> <span class="kw">=</span> <span class="st">"XY"</span>)</pre></body></html></div>
 <p><img src="themes_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
 <p>Notice that I used uppercase <code>"XY"</code> which will draw major grid lines. For minor grid lines use lowercase <code>"xy"</code> and for a combination use <code>"XYxy"</code>.</p>
-<p>Next, let’s have a look at a bar chart example.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">bar</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/bar_chart.html">column_chart</a></span>(<span class="no">diamonds</span>, <span class="no">cut</span>)
-<span class="no">bar</span> + <span class="fu"><a href="../reference/theme_nightblue.html">theme_nightblue</a></span>()</pre></body></html></div>
+<p>Next, let’s have a look at a histogram example.</p>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">hist</span> <span class="kw">&lt;-</span> <span class="fu">ggplot</span>(<span class="no">diamonds</span>, <span class="fu">aes</span>(<span class="no">price</span>)) +
+  <span class="fu">geom_histogram</span>(<span class="kw">fill</span> <span class="kw">=</span> <span class="st">"darkorange"</span>, <span class="kw">color</span> <span class="kw">=</span> <span class="st">"white"</span>) +
+  <span class="fu">scale_y_continuous</span>(<span class="kw">expand</span> <span class="kw">=</span> <span class="fu">expand_scale</span>(<span class="kw">mult</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">.05</span>)))
+<span class="no">hist</span> + <span class="fu"><a href="../reference/theme_nightblue.html">theme_nightblue</a></span>()</pre></body></html></div>
 <p><img src="themes_files/figure-html/unnamed-chunk-5-1.png" width="576"></p>
-<p>For this chart the minimal default doesn’t look bad at all but you might want to add horizontal grid lines.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">bar</span> + <span class="fu"><a href="../reference/theme_nightblue.html">theme_nightblue</a></span>(<span class="kw">grid</span> <span class="kw">=</span> <span class="st">"X"</span>)</pre></body></html></div>
+<p>For this chart the minimal default doesn’t look too bad but you might want to add horizontal grid lines.</p>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">hist</span> + <span class="fu"><a href="../reference/theme_nightblue.html">theme_nightblue</a></span>(<span class="kw">grid</span> <span class="kw">=</span> <span class="st">"X"</span>)</pre></body></html></div>
 <p><img src="themes_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
 <p>Additionally you may want to add an x axis line and ticks.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">bar</span> + <span class="fu"><a href="../reference/theme_nightblue.html">theme_nightblue</a></span>(<span class="kw">grid</span> <span class="kw">=</span> <span class="st">"X"</span>, <span class="kw">axis</span> <span class="kw">=</span> <span class="st">"x"</span>, <span class="kw">ticks</span> <span class="kw">=</span> <span class="st">"x"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">hist</span> + <span class="fu"><a href="../reference/theme_nightblue.html">theme_nightblue</a></span>(<span class="kw">grid</span> <span class="kw">=</span> <span class="st">"X"</span>, <span class="kw">axis</span> <span class="kw">=</span> <span class="st">"x"</span>, <span class="kw">ticks</span> <span class="kw">=</span> <span class="st">"x"</span>)</pre></body></html></div>
 <p><img src="themes_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
+</div>
+<div id="with-ggcharts" class="section level3">
+<h3 class="hasAnchor">
+<a href="#with-ggcharts" class="anchor"></a>With ggcharts</h3>
+<p><code>ggcharts</code> uses <code><a href="../reference/theme_ggcharts.html">theme_ggcharts()</a></code> by default and sets the <code>axis</code>, <code>tick</code> and <code>grid</code> arguments automatically depending on the plot. You can change the theme by using <code><a href="../reference/ggcharts_get_theme.html">ggcharts_set_theme()</a></code>.</p>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="../reference/lollipop_chart.html">lollipop_chart</a></span>(<span class="no">diamonds</span>, <span class="no">cut</span>, <span class="kw">highlight</span> <span class="kw">=</span> <span class="st">"Good"</span>)</pre></body></html></div>
+<p><img src="themes_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../reference/ggcharts_get_theme.html">ggcharts_set_theme</a></span>(<span class="st">"theme_ng"</span>)
+<span class="fu"><a href="../reference/lollipop_chart.html">lollipop_chart</a></span>(<span class="no">diamonds</span>, <span class="no">cut</span>, <span class="kw">highlight</span> <span class="kw">=</span> <span class="st">"Good"</span>)</pre></body></html></div>
+<p><img src="themes_files/figure-html/unnamed-chunk-8-2.png" width="576"></p>
+<p>The advantage of using <code><a href="../reference/ggcharts_get_theme.html">ggcharts_set_theme()</a></code> over adding the theme to a <code>ggcharts</code> plot is two-fold. First, as already mentioned the theme arguments are set automatically. Second, the default color used for the geom is changed. Finally, the color of the non-highlighted bars/lollipops is determined automatically from the theme background.</p>
+</div>
 </div>
 <div id="gallery" class="section level2">
 <h2 class="hasAnchor">
@@ -141,40 +158,40 @@
 <a href="#theme_ggcharts" class="anchor"></a><code>theme_ggcharts</code>
 </h3>
 <p>This is the default theme of <code>ggcharts</code>.</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">scatter</span> + <span class="fu"><a href="../reference/theme_ggcharts.html">theme_ggcharts</a></span>(<span class="kw">axis</span> <span class="kw">=</span> <span class="st">"xy"</span>)</pre></body></html></div>
-<p><img src="themes_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">bar</span> + <span class="fu"><a href="../reference/theme_ggcharts.html">theme_ggcharts</a></span>(<span class="kw">axis</span> <span class="kw">=</span> <span class="st">"x"</span>, <span class="kw">grid</span> <span class="kw">=</span> <span class="st">"X"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">scatter</span> + <span class="fu"><a href="../reference/theme_ggcharts.html">theme_ggcharts</a></span>(<span class="kw">axis</span> <span class="kw">=</span> <span class="st">"xy"</span>)</pre></body></html></div>
 <p><img src="themes_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">hist</span> + <span class="fu"><a href="../reference/theme_ggcharts.html">theme_ggcharts</a></span>(<span class="kw">axis</span> <span class="kw">=</span> <span class="st">"x"</span>, <span class="kw">grid</span> <span class="kw">=</span> <span class="st">"X"</span>)</pre></body></html></div>
+<p><img src="themes_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
 </div>
 <div id="theme_ng" class="section level3">
 <h3 class="hasAnchor">
 <a href="#theme_ng" class="anchor"></a><code>theme_ng</code>
 </h3>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">scatter</span> + <span class="fu"><a href="../reference/theme_ng.html">theme_ng</a></span>(<span class="kw">grid</span> <span class="kw">=</span> <span class="st">"XYxy"</span>)</pre></body></html></div>
-<p><img src="themes_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">bar</span> + <span class="fu"><a href="../reference/theme_ng.html">theme_ng</a></span>(<span class="kw">axis</span> <span class="kw">=</span> <span class="st">"xy"</span>, <span class="kw">ticks</span> <span class="kw">=</span> <span class="st">"y"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">scatter</span> + <span class="fu"><a href="../reference/theme_ng.html">theme_ng</a></span>(<span class="kw">grid</span> <span class="kw">=</span> <span class="st">"XYxy"</span>)</pre></body></html></div>
 <p><img src="themes_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">hist</span> + <span class="fu"><a href="../reference/theme_ng.html">theme_ng</a></span>(<span class="kw">axis</span> <span class="kw">=</span> <span class="st">"xy"</span>, <span class="kw">ticks</span> <span class="kw">=</span> <span class="st">"y"</span>)</pre></body></html></div>
+<p><img src="themes_files/figure-html/unnamed-chunk-12-1.png" width="576"></p>
 </div>
 <div id="theme_hermit" class="section level3">
 <h3 class="hasAnchor">
 <a href="#theme_hermit" class="anchor"></a><code>theme_hermit</code>
 </h3>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">biomedicalrevenue</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">biomedicalrevenue</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">year</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">2011</span>, <span class="fl">2013</span>, <span class="fl">2015</span>, <span class="fl">2017</span>)) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/lollipop_chart.html">lollipop_chart</a></span>(<span class="no">company</span>, <span class="no">revenue</span>, <span class="kw">facet</span> <span class="kw">=</span> <span class="no">year</span>, <span class="kw">highlight</span> <span class="kw">=</span> <span class="st">"Roche"</span>, <span class="kw">line_color</span> <span class="kw">=</span> <span class="st">"yellow"</span>, <span class="kw">top_n</span> <span class="kw">=</span> <span class="fl">5</span>) +
   <span class="fu"><a href="../reference/theme_hermit.html">theme_hermit</a></span>(<span class="kw">axis</span> <span class="kw">=</span> <span class="st">"y"</span>, <span class="kw">grid</span> <span class="kw">=</span> <span class="st">"Y"</span>)</pre></body></html></div>
-<p><img src="themes_files/figure-html/unnamed-chunk-12-1.png" width="576"></p>
+<p><img src="themes_files/figure-html/unnamed-chunk-13-1.png" width="576"></p>
 </div>
 <div id="theme_nightblue" class="section level3">
 <h3 class="hasAnchor">
 <a href="#theme_nightblue" class="anchor"></a><code>theme_nightblue</code>
 </h3>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">biomedicalrevenue</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">biomedicalrevenue</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">company</span> <span class="kw">==</span> <span class="st">"Novartis"</span>) <span class="kw">%&gt;%</span>
   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="no">year</span>, <span class="no">revenue</span>)) +
   <span class="fu">geom_line</span>(<span class="kw">color</span> <span class="kw">=</span> <span class="st">"darkorange"</span>, <span class="kw">size</span> <span class="kw">=</span> <span class="fl">1</span>) +
   <span class="fu"><a href="../reference/theme_nightblue.html">theme_nightblue</a></span>(<span class="kw">axis</span> <span class="kw">=</span> <span class="st">"x"</span>, <span class="kw">ticks</span> <span class="kw">=</span> <span class="st">"x"</span>, <span class="kw">grid</span> <span class="kw">=</span> <span class="st">"XY"</span>)</pre></body></html></div>
-<p><img src="themes_files/figure-html/unnamed-chunk-13-1.png" width="576"></p>
+<p><img src="themes_files/figure-html/unnamed-chunk-14-1.png" width="576"></p>
 </div>
 </div>
   </div>

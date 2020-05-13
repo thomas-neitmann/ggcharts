@@ -105,7 +105,7 @@
 <div id="introduction" class="section level2">
 <h2 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>The <code>ggcharts</code> package currently offers two functions with a <code>highlight</code> parameter: <code><a href="../reference/bar_chart.html">bar_chart()</a></code> and <code><a href="../reference/lollipop_chart.html">lollipop_chart()</a></code>. Unless otherwise noted the usage is the same for both functions.</p>
+<p>The <code>ggcharts</code> package currently offers two functions with a <code>highlight</code> parameter: <code><a href="../reference/bar_chart.html">bar_chart()</a></code> and <code><a href="../reference/lollipop_chart.html">lollipop_chart()</a></code>. The usage is the same for both functions.</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggcharts</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"biomedicalrevenue"</span>)
@@ -120,55 +120,63 @@
   <span class="no">revenue2018</span>,
   <span class="no">company</span>,
   <span class="no">revenue</span>,
-  <span class="kw">limit</span> <span class="kw">=</span> <span class="fl">10</span>,
+  <span class="kw">top_n</span> <span class="kw">=</span> <span class="fl">10</span>,
   <span class="kw">highlight</span> <span class="kw">=</span> <span class="st">"Roche"</span>
 )</pre></body></html></div>
 <p><img src="highlight_files/figure-html/unnamed-chunk-2-1.png" width="528"></p>
-</div>
-<div id="changing-the-highlight-color" class="section level2">
-<h2 class="hasAnchor">
-<a href="#changing-the-highlight-color" class="anchor"></a>Changing the Highlight Color</h2>
-<p>Changing the <code>highlight</code> color is simple: just provide a color to the <code>bar_color</code> parameter.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/bar_chart.html">bar_chart</a></span>(
+<p>The color for the highlighted and non-highlighted values are automatically determined from the currenty active <code>ggcharts</code> theme, i.e. <code><a href="../reference/ggcharts_get_theme.html">ggcharts_get_theme()</a></code>. Thus, changing the theme will change these colors.</p>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/ggcharts_get_theme.html">ggcharts_set_theme</a></span>(<span class="st">"theme_ng"</span>)
+<span class="fu"><a href="../reference/bar_chart.html">bar_chart</a></span>(
   <span class="no">revenue2018</span>,
   <span class="no">company</span>,
   <span class="no">revenue</span>,
-  <span class="kw">limit</span> <span class="kw">=</span> <span class="fl">10</span>,
-  <span class="kw">highlight</span> <span class="kw">=</span> <span class="st">"Roche"</span>,
-  <span class="kw">bar_color</span> <span class="kw">=</span> <span class="st">"darkorange"</span>
+  <span class="kw">top_n</span> <span class="kw">=</span> <span class="fl">10</span>,
+  <span class="kw">highlight</span> <span class="kw">=</span> <span class="st">"Roche"</span>
 )</pre></body></html></div>
 <p><img src="highlight_files/figure-html/unnamed-chunk-3-1.png" width="528"></p>
-<p>To change the <code>highlight</code> color in <code><a href="../reference/lollipop_chart.html">lollipop_chart()</a></code> pass a color to <code>line_color</code>. Note that having a different color for the lollipop head and stick is not possible when passing a value to <code>highlight</code>. The <code>point_color</code> will simply be ignored.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/lollipop_chart.html">lollipop_chart</a></span>(
+</div>
+<div id="changing-the-non-highlight-color" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changing-the-non-highlight-color" class="anchor"></a>Changing the (Non-)Highlight Color</h2>
+<p>To set the highlight and non-highlight colors manually you will need to pass a <code><a href="../reference/highlight_spec.html">highlight_spec()</a></code> to the <code>highlight</code> argument.</p>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/ggcharts_get_theme.html">ggcharts_set_theme</a></span>(<span class="st">"theme_ggcharts"</span>)
+<span class="no">spec</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/highlight_spec.html">highlight_spec</a></span>(
+  <span class="kw">what</span> <span class="kw">=</span> <span class="st">"Roche"</span>,
+  <span class="kw">highlight_color</span> <span class="kw">=</span> <span class="st">"black"</span>,
+  <span class="kw">other_color</span> <span class="kw">=</span> <span class="st">"lightgray"</span>
+)
+<span class="fu"><a href="../reference/bar_chart.html">bar_chart</a></span>(
   <span class="no">revenue2018</span>,
   <span class="no">company</span>,
   <span class="no">revenue</span>,
-  <span class="kw">limit</span> <span class="kw">=</span> <span class="fl">10</span>,
-  <span class="kw">highlight</span> <span class="kw">=</span> <span class="st">"Roche"</span>,
-  <span class="kw">line_color</span> <span class="kw">=</span> <span class="st">"darkgreen"</span>
+  <span class="kw">top_n</span> <span class="kw">=</span> <span class="fl">10</span>,
+  <span class="kw">highlight</span> <span class="kw">=</span> <span class="no">spec</span>
 )</pre></body></html></div>
 <p><img src="highlight_files/figure-html/unnamed-chunk-4-1.png" width="528"></p>
 </div>
 <div id="highlighting-multiple-data-points" class="section level2">
 <h2 class="hasAnchor">
 <a href="#highlighting-multiple-data-points" class="anchor"></a>Highlighting Multiple Data Points</h2>
-<p>To highlight more than one bar pass a vector to <code>highlight</code>. Note the message that gets printed.</p>
+<p>To highlight more than one value pass a vector to <code>highlight</code>.</p>
 <div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/bar_chart.html">bar_chart</a></span>(
   <span class="no">revenue2018</span>,
   <span class="no">company</span>,
   <span class="no">revenue</span>,
-  <span class="kw">limit</span> <span class="kw">=</span> <span class="fl">10</span>,
+  <span class="kw">top_n</span> <span class="kw">=</span> <span class="fl">10</span>,
   <span class="kw">highlight</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Roche"</span>, <span class="st">"Novartis"</span>)
 )</pre></body></html></div>
 <p><img src="highlight_files/figure-html/unnamed-chunk-5-1.png" width="528"></p>
-<p>To highlight multiple bars in different colors pass a vector of colors to <code>bar_color</code> or <code>line_color</code> for <code><a href="../reference/bar_chart.html">bar_chart()</a></code> and <code><a href="../reference/lollipop_chart.html">lollipop_chart()</a></code>, respectively.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/lollipop_chart.html">lollipop_chart</a></span>(
+<p>To highlight multiple values in different colors you will need to use a <code><a href="../reference/highlight_spec.html">highlight_spec()</a></code> again.</p>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">spec</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/highlight_spec.html">highlight_spec</a></span>(
+  <span class="kw">what</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Roche"</span>, <span class="st">"Novartis"</span>),
+  <span class="kw">highlight_color</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"steelblue"</span>, <span class="st">"darkorange"</span>)
+)
+<span class="fu"><a href="../reference/lollipop_chart.html">lollipop_chart</a></span>(
   <span class="no">revenue2018</span>,
   <span class="no">company</span>,
   <span class="no">revenue</span>,
-  <span class="kw">limit</span> <span class="kw">=</span> <span class="fl">10</span>,
-  <span class="kw">highlight</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Roche"</span>, <span class="st">"Novartis"</span>),
-  <span class="kw">line_color</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"steelblue"</span>, <span class="st">"darkorange"</span>)
+  <span class="kw">top_n</span> <span class="kw">=</span> <span class="fl">10</span>,
+  <span class="kw">highlight</span> <span class="kw">=</span> <span class="no">spec</span>
 )</pre></body></html></div>
 <p><img src="highlight_files/figure-html/unnamed-chunk-6-1.png" width="528"></p>
 </div>
@@ -182,9 +190,8 @@
     <span class="no">company</span>,
     <span class="no">revenue</span>,
     <span class="kw">facet</span> <span class="kw">=</span> <span class="no">year</span>,
-    <span class="kw">limit</span> <span class="kw">=</span> <span class="fl">12</span>,
-    <span class="kw">highlight</span> <span class="kw">=</span> <span class="st">"Bayer"</span>,
-    <span class="kw">bar_color</span> <span class="kw">=</span> <span class="st">"darkgreen"</span>
+    <span class="kw">top_n</span> <span class="kw">=</span> <span class="fl">12</span>,
+    <span class="kw">highlight</span> <span class="kw">=</span> <span class="st">"Bayer"</span>
   )</pre></body></html></div>
 <p><img src="highlight_files/figure-html/unnamed-chunk-7-1.png" width="768"></p>
 </div>
