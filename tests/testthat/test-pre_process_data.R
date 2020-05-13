@@ -23,7 +23,7 @@ test_that("x is converted to factor with levels in order of y when sort = TRUE",
 
 test_that("limit works", {
   expect_equal(
-    pre_process_data(df, cat, val, limit = 1),
+    pre_process_data(df, cat, val, top_n = 1),
     dplyr::tibble(cat = factor("C"), val = 7)
   )
 })
