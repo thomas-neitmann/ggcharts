@@ -51,5 +51,5 @@ post_process_plot <- function(plot, is_sorted = TRUE, horizontal = TRUE,
 
   plot +
     scale_y_continuous(expand = expand_scale(mult = c(0, 0.05))) +
-    theme_ggcharts(axis = axis, grid = grid)
+    ggcharts_current_theme(axis = axis, grid = grid)
 }

@@ -29,6 +29,8 @@ library(dplyr)
 
 ## Usage
 
+### With ggplot2
+
 ```{r}
 scatter <- ggplot(mtcars, aes(hp, mpg)) + geom_point(color = "darkorange")
 scatter + theme_hermit()
@@ -48,24 +50,39 @@ scatter + theme_hermit(grid = "XY")
 
 Notice that I used uppercase `"XY"` which will draw major grid lines. For minor grid lines use lowercase `"xy"` and for a combination use `"XYxy"`.
 
-Next, let's have a look at a bar chart example.
+Next, let's have a look at a histogram example.
 
-```{r}
-bar <- column_chart(diamonds, cut)
-bar + theme_nightblue()
+```{r message=FALSE, warning=FALSE}
+hist <- ggplot(diamonds, aes(price)) +
+  geom_histogram(fill = "darkorange", color = "white") +
+  scale_y_continuous(expand = expand_scale(mult = c(0, .05)))
+hist + theme_nightblue()
 ```
 
-For this chart the minimal default doesn't look bad at all but you might want to add horizontal grid lines.
+For this chart the minimal default doesn't look too bad but you might want to add horizontal grid lines.
 
 ```{r}
-bar + theme_nightblue(grid = "X")
+hist + theme_nightblue(grid = "X")
 ```
 
 Additionally you may want to add an x axis line and ticks.
 
 ```{r}
-bar + theme_nightblue(grid = "X", axis = "x", ticks = "x")
+hist + theme_nightblue(grid = "X", axis = "x", ticks = "x")
 ```
+
+
+### With ggcharts
+
+`ggcharts` uses `theme_ggcharts()` by default and sets the `axis`, `tick` and `grid` arguments automatically depending on the plot. You can change the theme by using `ggcharts_set_theme()`.
+
+```{r}
+lollipop_chart(diamonds, cut, highlight = "Good")
+ggcharts_set_theme("theme_ng")
+lollipop_chart(diamonds, cut, highlight = "Good")
+```
+
+The advantage of using `ggcharts_set_theme()` over adding the theme to a `ggcharts` plot is two-fold. First, as already mentioned the theme arguments are set automatically. Second, the default color used for the geom is changed. Finally, the color of the non-highlighted bars/lollipops is determined automatically from the theme background.
 
 
 ## Gallery
@@ -79,8 +96,9 @@ scatter + theme_ggcharts(axis = "xy")
 ```
 
 ```{r}
-bar + theme_ggcharts(axis = "x", grid = "X")
+hist + theme_ggcharts(axis = "x", grid = "X")
 ```
+
 
 ### `theme_ng`
 
@@ -90,8 +108,9 @@ scatter + theme_ng(grid = "XYxy")
 
 
 ```{r}
-bar + theme_ng(axis = "xy", ticks = "y")
+hist + theme_ng(axis = "xy", ticks = "y")
 ```
+
 
 ### `theme_hermit`
 
@@ -101,6 +120,7 @@ biomedicalrevenue %>%
   lollipop_chart(company, revenue, facet = year, highlight = "Roche", line_color = "yellow", top_n = 5) +
   theme_hermit(axis = "y", grid = "Y")
 ```
+
 
 ### `theme_nightblue`
 

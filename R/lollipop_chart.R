@@ -82,7 +82,7 @@
 #' @importFrom magrittr %>%
 #' @export
 lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
-                           line_color = "#1F77B4", point_size = 4,
+                           line_color = "auto", point_size = 4,
                            point_color = line_color, highlight = NULL,
                            sort = TRUE, horizontal = TRUE, top_n = NULL,
                            threshold = NULL, other = FALSE, limit = NULL) {
@@ -91,6 +91,13 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
   y <- rlang::enquo(y)
   facet <- rlang::enquo(facet)
   dot_names <- names(rlang::enquos(...))
+
+  if (length(line_color) == 1 && line_color == "auto") {
+    line_color <- ggcharts_get_default_color(ggcharts_get_theme())
+    if (length(point_color) == 1 && point_color == "auto") {
+      point_color <- line_color
+    }
+  }
 
   data <- pre_process_data(
     data = data, x = !!x, y = !!y,

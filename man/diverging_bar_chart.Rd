@@ -9,7 +9,7 @@ diverging_bar_chart(
   x,
   y,
   bar_colors = c("#1F77B4", "#FF7F0E"),
-  text_color = "black",
+  text_color = "auto",
   text_size = 10
 )
 }

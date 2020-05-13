@@ -11,7 +11,7 @@ lollipop_chart(
   facet = NULL,
   ...,
   line_size = 0.75,
-  line_color = "#1F77B4",
+  line_color = "auto",
   point_size = 4,
   point_color = line_color,
   highlight = NULL,

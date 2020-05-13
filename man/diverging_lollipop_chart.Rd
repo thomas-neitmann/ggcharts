@@ -11,7 +11,7 @@ diverging_lollipop_chart(
   lollipop_colors = c("#1F77B4", "#FF7F0E"),
   line_size = 0.75,
   point_size = 3,
-  text_color = "black",
+  text_color = "auto",
   text_size = 10
 )
 }

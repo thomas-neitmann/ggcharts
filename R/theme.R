@@ -1,3 +1,75 @@
+#' Get and Set the Currently Active ggcharts Theme
+#'
+#' The current theme is automatically applied to any plot created with
+#' \code{ggcharts}. It does not affect plots created with \code{ggplot2}.
+#'
+#' @param theme \code{character}. The name of the theme, e.g. \code{"theme_hermit"}
+#' @param ... Additional argument passed onto the specified \code{theme}
+#'
+#' @return
+#' \code{ggchart_set_theme} invisibly returns the name of the previously active
+#' theme as a \code{character}. \code{ggchart_get_theme} returns the name of the
+#' currently active theme as a \code{character}.
+#'
+#' @author Thomas Neitmann
+#'
+#' @examples
+#' data("diamonds", package = "ggplot2")
+#'
+#' ## By default `theme_ggcharts()` is used
+#' ggcharts_get_theme()
+#' bar_chart(diamonds, cut)
+#'
+#' ggcharts_set_theme("theme_hermit")
+#' bar_chart(diamonds, cut)
+#'
+#' ggcharts_set_theme("theme_ng")
+#' bar_chart(diamonds, cut)
+#'
+#' ggcharts_set_theme("theme_nightblue", base_size = 16, base_family = "serif")
+#' bar_chart(diamonds, cut)
+#'
+#' ## Restore the default
+#' ggcharts_set_theme("theme_ggcharts")
+#'
+#' @export
+ggcharts_get_theme <- function() {
+  ggcharts_global$theme
+}
+
+#' @rdname ggcharts_get_theme
+#' @export
+ggcharts_set_theme <- function(theme, ...) {
+  if (is_ggcharts_theme(theme)) {
+    theme <- attr(theme, "name")
+  } else if (is.function(theme) || is.theme(theme)) {
+    theme <- deparse(substitute(theme))
+  }
+  ggcharts_themes <- ggcharts_list_themes()
+
+  if (!theme %in% ggcharts_themes) {
+    err_msg <- paste0(
+      "`theme` must one of ",
+      enumeration(ggcharts_themes, "'", "or"),
+      " but is '", theme, "'."
+    )
+    rlang::abort(err_msg)
+  }
+
+  ellipsis <- list(...)
+  args <- names(ellipsis)
+  supported_args <- c("base_size", "base_family")
+  if (length(args) && length(setdiff(args, supported_args))) {
+    err_msg <- paste0("Only ", enumeration(supported_args), " may be used in `...`.")
+    rlang::abort(err_msg)
+  }
+
+  old_theme <- ggcharts_global$theme
+  ggcharts_global$theme <- theme
+  ggcharts_global$theme_args <- ellipsis
+  invisible(old_theme)
+}
+
 #' Theme ggcharts
 #'
 #' The default ggcharts theme
@@ -53,15 +125,17 @@ theme_ggcharts <- function(base_size = 14,
                            ticks = "",
                            grid = "") {
   new_ggcharts_theme(
+    name = "theme_ggcharts",
+    type = "light",
     base_size = base_size,
     base_family = base_family,
     axis = axis,
     ticks = ticks,
     grid = grid,
     background_color = "#F4F7FC",
-    foreground_color = "#263B5E",
+    foreground_color = "#002451",
     grid_color = "#D5DCE6",
-    text_color = "#263B5E"
+    text_color = "#002451"
   )
 }
 
@@ -112,6 +186,8 @@ theme_hermit <- function(base_size = 14,
                          ticks = "",
                          grid = "") {
   new_ggcharts_theme(
+    name = "theme_hermit",
+    type = "dark",
     base_size = base_size,
     base_family = base_family,
     axis = axis,
@@ -171,6 +247,8 @@ theme_ng <- function(base_size = 14,
                      ticks = "",
                      grid = "") {
   new_ggcharts_theme(
+    name = "theme_ng",
+    type = "dark",
     base_size = base_size,
     base_family = base_family,
     axis = axis,
@@ -230,6 +308,8 @@ theme_nightblue <- function(base_size = 14,
                             ticks = "",
                             grid = "") {
   new_ggcharts_theme(
+    name = "theme_nightblue",
+    type = "dark",
     base_size = base_size,
     base_family = base_family,
     axis = axis,
@@ -242,7 +322,9 @@ theme_nightblue <- function(base_size = 14,
   )
 }
 
-new_ggcharts_theme <- function(base_size = 14,
+new_ggcharts_theme <- function(name,
+                               type,
+                               base_size = 14,
                                base_family = "",
                                text_color,
                                background_color,
@@ -251,6 +333,7 @@ new_ggcharts_theme <- function(base_size = 14,
                                axis = "",
                                ticks = "",
                                grid = "") {
+  type <- match.arg(type, c("dark", "light"))
   if (axis != "") {
     axis <- match.arg(tolower(axis), c("x", "y", "xy", "yx"))
   }
@@ -264,10 +347,10 @@ new_ggcharts_theme <- function(base_size = 14,
   blank <- element_blank()
   elm_grid_major <- element_line(color = grid_color, size = 0.2)
   elm_grid_minor <- element_line(color = grid_color, size = 0.01)
-  elm_axis_line <- element_line(color = foreground_color, size = .7)
-  elm_tick_line <- element_line(color = foreground_color)
+  elm_axis_line <- element_line(color = foreground_color, size = .4)
+  elm_tick_line <- elm_axis_line
 
-  theme_minimal(base_size = base_size, base_family = base_family) +
+  new_theme <- theme_minimal(base_size = base_size, base_family = base_family) +
     theme(
       axis.line.x = if (grepl("x", axis)) elm_axis_line else blank,
       axis.line.y = if (grepl("y", axis)) elm_axis_line else blank,
@@ -290,6 +373,16 @@ new_ggcharts_theme <- function(base_size = 14,
       ),
       text = element_text(color = text_color)
     )
+  structure(
+    new_theme,
+    class = c("ggcharts_theme", class(new_theme)),
+    name = name,
+    type = type
+  )
+}
+
+is_ggcharts_theme <- function(theme) {
+  inherits(theme, "ggcharts_theme")
 }
 
 pyramid_theme <- function(side = c("left", "right")) {
