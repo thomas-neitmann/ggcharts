@@ -1,7 +1,7 @@
 Package: ggcharts
 Type: Package
 Title: Shorten the Distance from Data Visualization Idea to Actual Plot
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person("Thomas", "Neitmann", , "th.neitmann@gmail.com", c("aut", "cre")),
     person("Julia", "Silge", role = c("ctb", "cph")),

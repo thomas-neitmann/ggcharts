@@ -8,7 +8,7 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
     suppressWarnings(fun_name <- rlang::ctxt_frame(n = 4)$fn_name)
     what <- paste0(fun_name, "(limit=)")
     with <- paste0(fun_name, "(top_n=)")
-    lifecycle::deprecate_warn("0.1.0.9000", what, with, env = parent.frame())
+    lifecycle::deprecate_warn("0.2.0", what, with, env = parent.frame())
     top_n <- limit
   }
 
