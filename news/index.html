@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>European Population — popeurope • ggcharts</title>
+<title>Changelog • ggcharts</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="European Population — popeurope" />
-<meta property="og:description" content="Population of European countries in 1952 and 2007" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -71,7 +70,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -141,37 +140,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>European Population</h1>
-    <small class="dont-index">Source: <a href='https://github.com/thomas-neitmann/ggcharts/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>popeurope.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/thomas-neitmann/ggcharts/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    <p>Population of European countries in 1952 and 2007</p>
-    </div>
-
-    <pre class="usage"><span class='no'>popeurope</span></pre>
-
-
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>A data frame with 30 rows and 3 variables:</p><dl>
-  <dt>country</dt><dd><p>Name of the country</p></dd>
-  <dt>pop1952</dt><dd><p>Population in 1952 (in millions)</p></dd>
-  <dt>pop2007</dt><dd><p>Population in 2007 (in millions)</p></dd>
-
-</dl>
-
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href='http://www.gapminder.org/data/'>http://www.gapminder.org/data/</a></p>
-
+    <div id="ggcharts-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#ggcharts-020" class="anchor"></a>ggcharts 0.2.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>Two new vignettes: <code>customize</code> (<a href='https://github.com/thomas-neitmann/ggcharts/issues/54'>#54</a>) and <code>themes</code> (<a href='https://github.com/thomas-neitmann/ggcharts/issues/69'>#69</a>)</li>
+<li>Two additional datasets: <code>popeurope</code> and <code>popch</code> (<a href='https://github.com/thomas-neitmann/ggcharts/issues/60'>#60</a>)</li>
+<li>The default theme has been tweaked and is now exported as <code><a href="../reference/theme_ggcharts.html">theme_ggcharts()</a></code>
+</li>
+<li>Additionally, three other new themes have been created: <code><a href="../reference/theme_ng.html">theme_ng()</a></code>, <code><a href="../reference/theme_nightblue.html">theme_nightblue()</a></code> and <code><a href="../reference/theme_hermit.html">theme_hermit()</a></code>
+</li>
+<li>The default <code>ggcharts</code> theme can be changed using <code><a href="../reference/ggcharts_get_theme.html">ggcharts_set_theme()</a></code>
+</li>
+<li>
+<code><a href="../reference/highlight_spec.html">highlight_spec()</a></code> has been introduced to enable full customization when highlighting</li>
+<li>The <code>limit</code> argument of <code><a href="../reference/bar_chart.html">bar_chart()</a></code>, <code><a href="../reference/lollipop_chart.html">lollipop_chart()</a></code> and <code><a href="../reference/dumbbell_chart.html">dumbbell_chart()</a></code> has been deprecated in favor of <code>top_n</code> (<a href='https://github.com/thomas-neitmann/ggcharts/issues/62'>#62</a>)</li>
+<li>
+<code><a href="../reference/lollipop_chart.html">lollipop_chart()</a></code> and <code><a href="../reference/bar_chart.html">bar_chart()</a></code> display the number of cases in each distinct value of <code>x</code> if the <code>y</code> argument is missing (<a href='https://github.com/thomas-neitmann/ggcharts/issues/48'>#48</a>)</li>
+<li>
+<code><a href="../reference/lollipop_chart.html">lollipop_chart()</a></code> and <code><a href="../reference/bar_chart.html">bar_chart()</a></code> gained an <code>other</code> argument. If a threshold is set and <code>other = TRUE</code> all categories with values less than the threshold are aggregated and displayed at the bottom of the chart (<a href='https://github.com/thomas-neitmann/ggcharts/issues/67'>#67</a>)</li>
+<li>Error messages are thrown using <code><a href="https://rlang.r-lib.org/reference/abort.html">rlang::abort()</a></code> rather than <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> (<a href='https://github.com/thomas-neitmann/ggcharts/issues/32'>#32</a>)</li>
+<li>A legend used to pop up when the theme of a chart with highlights was changed. This has been fixed in <a href='https://github.com/thomas-neitmann/ggcharts/issues/41'>#41</a></li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 
