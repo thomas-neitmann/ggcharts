@@ -63,8 +63,6 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
       data <- dplyr::top_n(data, top_n, !!y)
     } else if (!is.null(threshold)) {
       data <- apply_threshold(data, !!x, !!y, threshold, other)
-    } else {
-      data <- dplyr::arrange(data, !!y)
     }
 
     data <- dplyr::ungroup(data)
