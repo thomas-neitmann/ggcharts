@@ -2,3 +2,18 @@ template:
   params:
     bootswatch: slate
     ganalytics: UA-161676274-1
+reference:
+- title: Charts
+- contents:
+  - ends_with("chart")
+- title: Themes
+- contents:
+  - starts_with("theme_")
+- title: Datasets
+- contents:
+  - has_keyword("datasets")
+- title: Auxillary Function
+- contents:
+  - ggcharts_get_theme
+  - ggcharts_get_default_color
+  - highlight_spec
