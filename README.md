@@ -1,18 +1,43 @@
+ggcharts
+================
+
+[![R build status](https://github.com/thomas-neitmann/ggcharts/workflows/R-CMD-check/badge.svg)](https://github.com/thomas-neitmann/ggcharts/actions) [![CRAN Version](https://www.r-pkg.org/badges/version/ggcharts?color=green)](https://cran.r-project.org/package=ggcharts) [![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/ggcharts?color=green)](https://cran.r-project.org/package=ggcharts) [![Lifecycle Status](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+
+Overview
+--------
+
+`{ggcharts}` provides a high-level `{ggplot2}` interface for creating common charts. Its aim is both simple and ambitious: to get you from your data visualization idea to an actual plot faster. How so? By taking care of a lot of data preprocessing, obscure `{ggplot2}` details and plot styling for you. The resulting plots are `ggplot` objects and can be further customized using any `{ggplot2}` function.
 
 Installation
-============
+------------
+
+The package is available from CRAN.
+
+``` r
+install.packages("ggcharts")
+```
+
+Alternatively, you can install the latest development version from GitHub.
 
 ``` r
 if (!"remotes" %in% installed.packages()) {
   install.packages("remotes")
 }
-remotes::install_github("thomas-neitmann/ggcharts")
+remotes::install_github("thomas-neitmann/ggcharts", upgrade = "never")
 ```
 
-Why ggcharts?
-=============
+If you get an error when trying to install from GitHub, run this code and then try to install once again.
 
-Thanks to ggplot2 you can create beautiful plots in R. However, it can often take quite a bit of effort to get from a data visualization idea to an actual plot. As an example, let's say you want to create a faceted bar chart displaying the top 10 within each facet ordered from highest to lowest. What sounds simple is actually pretty hard to achieve. Have a look:
+``` r
+Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS = "true")
+```
+
+If the installation still fails please open an [issue](https://github.com/thomas-neitmann/ggcharts/issues).
+
+Why ggcharts?
+-------------
+
+Thanks to `{ggplot2}` you can create beautiful plots in `R`. However, it can often take quite a bit of effort to get from a data visualization idea to an actual plot. As an example, let's say you want to create a faceted bar chart displaying the top 10 within each facet ordered from highest to lowest. What sounds simple is actually pretty hard to achieve. Have a look:
 
 ``` r
 library(dplyr)
@@ -21,6 +46,7 @@ library(ggcharts)
 data("biomedicalrevenue")
 
 biomedicalrevenue %>%
+  filter(year %in% c(2012, 2015, 2018)) %>%
   group_by(year) %>%
   top_n(10, revenue) %>%
   ungroup() %>%
@@ -32,120 +58,34 @@ biomedicalrevenue %>%
   facet_wrap(vars(year), scales = "free_y")
 ```
 
-![](README_files/figure-markdown_github/motivation-1.png)
+<img src="man/figures/README-motivation-1.png" width="100%" />
 
-That's a lot of code! And you likely never heard of some of the functions involved. With ggcharts you can create the same plot (actually an even better looking one) in a single line of code.
-
-``` r
-bar_chart(biomedicalrevenue, company, revenue, facet = year, limit = 10)
-```
-
-![](README_files/figure-markdown_github/motivation_continued-1.png)
-
-That's the beauty of ggcharts: shortening the distance between data visualization idea and actual plot as much as possible.
-
-Usage
-=====
-
-Basics
-------
-
-Let's start off by loading some data for plotting. `ggcharts` comes with the `biomedicalrevenue` dataset which contains annual revenues (in billion USD) of top biomedical companies from 2011 to 2018.
-
-``` r
-head(biomedicalrevenue, 10)
-```
-
-    ##              company year revenue
-    ## 1  Johnson & Johnson 2018   81.60
-    ## 2  Johnson & Johnson 2017   76.50
-    ## 3  Johnson & Johnson 2016   71.89
-    ## 4  Johnson & Johnson 2015   70.10
-    ## 5  Johnson & Johnson 2014   74.30
-    ## 6  Johnson & Johnson 2013   71.31
-    ## 7  Johnson & Johnson 2012   67.20
-    ## 8  Johnson & Johnson 2011   65.00
-    ## 9              Roche 2018   56.86
-    ## 10             Roche 2017   57.37
-
-Now that we have our data let's create a basic `bar_chart()` and `lollipop_chart()`.
+That's a lot of code! And you likely never heard of some of the functions involved. With `{ggcharts}` you can create the same plot (actually an even better looking one) in almost a single line of code.
 
 ``` r
 biomedicalrevenue %>%
-  filter(year == 2017) %>%
-  bar_chart(company, revenue)
-
-biomedicalrevenue %>%
-  filter(year == 2018) %>%
-  lollipop_chart(company, revenue)
+  filter(year %in% c(2012, 2015, 2018)) %>%
+  bar_chart(company, revenue, facet = year, top_n = 10)
 ```
 
-<img src="README_files/figure-markdown_github/basics-1.png" width="50%" /><img src="README_files/figure-markdown_github/basics-2.png" width="50%" />
+<img src="man/figures/README-motivation_continued-1.png" width="100%" />
 
-From this little example you can already see some important features of `ggcharts`:
+Features
+--------
 
--   the data is sorted prior to plotting without you having to take care of that; if that is not desireable set `sort = FALSE`
--   the plot is horizontal by default; this can be changed by setting `horizontal = FALSE`
--   `ggcharts` uses `theme_minimal()`
+### Charts
 
-Using the limit argument
-------------------------
+-   `bar_chart()`
+-   `diverging_bar_chart()`
+-   `column_chart()`
+-   `lollipop_chart()`
+-   `diverging_lollipop_chart()`
+-   `dumbbell_chart()`
+-   `pyramid_chart()`
 
-The plots above contain data from all companies. What if you want to display only the top 10? That's easy, just set `limit = 10`.
+### Themes
 
-``` r
-biomedicalrevenue %>%
-  filter(year == 2017) %>%
-  bar_chart(company, revenue, limit = 10)
-
-biomedicalrevenue %>%
-  filter(year == 2018) %>%
-  lollipop_chart(company, revenue, limit = 10)
-```
-
-<img src="README_files/figure-markdown_github/limit-1.png" width="50%" /><img src="README_files/figure-markdown_github/limit-2.png" width="50%" />
-
-Changing colors
----------------
-
-``` r
-biomedicalrevenue %>%
-  filter(year == 2017) %>%
-  bar_chart(company, revenue, bar_color = "#b32134", limit = 10)
-
-biomedicalrevenue %>%
-  filter(year == 2018) %>%
-  lollipop_chart(
-    company, revenue, 
-    point_color = "darkgreen", line_color = "darkgray", 
-    limit = 10
-  )
-```
-
-<img src="README_files/figure-markdown_github/colors-1.png" width="50%" /><img src="README_files/figure-markdown_github/colors-2.png" width="50%" />
-
-Highlighting
-------------
-
-``` r
-biomedicalrevenue %>%
-  filter(year == 2015) %>%
-  lollipop_chart(company, revenue, highlight = "Novartis", limit = 15)
-
-biomedicalrevenue %>%
-  filter(year == 2015) %>%
-  bar_chart(company, revenue, highlight = "Roche", limit = 15)
-```
-
-<img src="README_files/figure-markdown_github/highlight-1.png" width="50%" /><img src="README_files/figure-markdown_github/highlight-2.png" width="50%" />
-
-Facetting
----------
-
-``` r
-biomedicalrevenue %>%
-  filter(year %in% c(2011, 2014, 2017)) %>%
-  bar_chart(company, revenue, facet = year, limit = 7)
-```
-
-![](README_files/figure-markdown_github/facet-1.png)
+-   `theme_ggcharts()`
+-   `theme_ng()`
+-   `theme_nightblue()`
+-   `theme_hermit()`

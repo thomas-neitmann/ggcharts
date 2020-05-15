@@ -2,53 +2,129 @@
 % Please edit documentation in R/bar_chart.R
 \name{bar_chart}
 \alias{bar_chart}
-\title{Easy Bar Charts}
+\alias{column_chart}
+\title{Bar Chart}
 \usage{
 bar_chart(
   data,
   x,
   y,
-  facet,
+  facet = NULL,
   ...,
-  bar_color = "#1F77B4",
+  bar_color = "auto",
   highlight = NULL,
   sort = TRUE,
   horizontal = TRUE,
+  top_n = NULL,
+  threshold = NULL,
+  other = FALSE,
+  limit = NULL
+)
+
+column_chart(
+  data,
+  x,
+  y,
+  facet = NULL,
+  ...,
+  bar_color = "auto",
+  highlight = NULL,
+  sort = NULL,
+  horizontal = FALSE,
+  top_n = NULL,
+  threshold = NULL,
   limit = NULL
 )
 }
 \arguments{
 \item{data}{Dataset to use for the bar chart}
 
-\item{x}{The x variable}
+\item{x}{\code{character} or \code{factor} column of \code{data}}
 
-\item{y}{numeric. If y is missing then it will be assigned the number of records in each group of y}
+\item{y}{\code{numeric} column of \code{data} representing the bar length.
+If missing, the bar length will be proportional to the count of each
+value in \code{x}.}
 
-\item{facet}{A variable defining the faceting groups}
+\item{facet}{\code{character} or \code{factor} column of \code{data} defining
+the faceting groups}
 
-\item{...}{Additional arguments passed to aes()}
+\item{...}{Additional arguments passed to \code{aes()}}
 
-\item{bar_color}{character. The color of the bars.}
+\item{bar_color}{\code{character}. The color of the bars}
 
-\item{highlight}{A value of \code{x} that should be highlighted in the plot}
+\item{highlight}{\code{character}. One or more value(s) of \code{x} that
+should be highlighted in the plot}
 
-\item{sort}{logical. Should the data be sorted before plotting?}
+\item{sort}{\code{logical}. Should the data be sorted before plotting?}
 
-\item{horizontal}{logical. Should coord_flip() be added to the plot}
+\item{horizontal}{\code{logical}. Should the plot be oriented horizontally?}
 
-\item{limit}{integer. If a value for limit is provided only the first limit records will be displayed}
+\item{top_n}{\code{numeric}. If a value for \code{top_n} is provided only the
+top \code{top_n} records will be displayed}
+
+\item{threshold}{\code{numeric}. If a value for threshold is provided only
+records with \code{y > threshold} will be displayed}
+
+\item{other}{\code{logical}. Should all \code{x} with \code{y < threshold} be
+summarized in a group called 'other' and be displayed at the bottom of
+the chart?}
+
+\item{limit}{Deprecated. use \code{top_n} instead.}
+}
+\value{
+An object of class \code{ggplot}
 }
 \description{
 Easily create a bar chart
 }
+\details{
+Both \code{top_n} and \code{threshold} only work when \code{sort = TRUE}.
+Attempting to use them when \code{sort = FALSE} will result in an error.
+Furthermore, only \code{top_n} or \code{threshold} can be used at a time.
+Providing a value for both \code{top_n} and \code{threshold} will result in
+an error as well.
+
+\code{column_chart()} is a shortcut for \code{bar_chart()} with
+\code{horizontal = FALSE} and \code{sort = FALSE} if \code{x} is
+\code{numeric}.
+}
 \examples{
-
-library(dplyr)
 data(biomedicalrevenue)
-biomedicalrevenue \%>\%
-  filter(year == 2018) \%>\%
-  bar_chart(company, year, limit = 10)
+revenue2018 <- biomedicalrevenue[biomedicalrevenue$year == 2018, ]
+revenue_roche <- biomedicalrevenue[biomedicalrevenue$company == "Roche", ]
 
+## By default bar_chart() creates a horizontal and sorted plot
+bar_chart(revenue2018, company, revenue)
+
+## If the `y` argument is missing the count of each value in `x` is displayed
+bar_chart(mtcars, cyl)
+
+## Create a vertical, non-sorted bar chart
+bar_chart(revenue_roche, year, revenue, horizontal = FALSE, sort = FALSE)
+
+## column_chart() is a shortcut for the above
+column_chart(revenue_roche, year, revenue)
+
+## Limit the number of bars to the top 10
+bar_chart(revenue2018, company, revenue, top_n = 10)
+
+## Display only companies with revenue > 40B.
+bar_chart(revenue2018, company, revenue, threshold = 40)
+
+## Change the bar color
+bar_chart(revenue2018, company, revenue, bar_color = "purple")
+
+## Highlight a single bar
+bar_chart(revenue2018, company, revenue, top_n = 10, highlight = "Roche")
+
+## Use facets to show the top 10 companies over the years
+bar_chart(biomedicalrevenue, company, revenue, facet = year, top_n = 10)
+
+}
+\seealso{
+For more details have a look at these vignettes:
+\code{vignette("highlight", package = "ggcharts")}
+\code{vignette("customize", package = "ggcharts")}
 }
 \author{
 Thomas Neitmann

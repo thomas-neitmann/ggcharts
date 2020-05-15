@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 720.00 576.00'>
+<defs>
+  <style type='text/css'><![CDATA[
+    line, polyline, polygon, path, rect, circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 1.36; stroke: #F4F7FC; fill: #F4F7FC;' />
+<defs>
+  <clipPath id='cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk='>
+    <rect x='190.69' y='28.99' width='522.34' height='507.71' />
+  </clipPath>
+</defs>
+<polyline points='190.69,536.70 190.69,28.99 ' style='stroke-width: 0.43; stroke: #D5DCE6; stroke-linecap: butt;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<polyline points='312.62,536.70 312.62,28.99 ' style='stroke-width: 0.43; stroke: #D5DCE6; stroke-linecap: butt;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<polyline points='434.54,536.70 434.54,28.99 ' style='stroke-width: 0.43; stroke: #D5DCE6; stroke-linecap: butt;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<polyline points='556.47,536.70 556.47,28.99 ' style='stroke-width: 0.43; stroke: #D5DCE6; stroke-linecap: butt;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<polyline points='678.40,536.70 678.40,28.99 ' style='stroke-width: 0.43; stroke: #D5DCE6; stroke-linecap: butt;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='33.05' width='497.46' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='51.05' width='346.64' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='69.05' width='326.76' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='87.06' width='316.40' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='105.06' width='274.70' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='123.06' width='263.00' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='141.07' width='257.88' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='159.07' width='238.18' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='177.08' width='199.66' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='195.08' width='186.55' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='213.08' width='149.73' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='231.09' width='144.48' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='249.09' width='137.53' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='267.09' width='134.91' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='285.10' width='134.67' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='357.11' width='115.22' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='321.11' width='118.76' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='339.11' width='116.44' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='393.12' width='100.47' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='375.12' width='103.58' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='411.12' width='96.20' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='303.10' width='121.26' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='429.13' width='93.15' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='447.13' width='82.00' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='465.14' width='74.80' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='501.14' width='69.07' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='519.15' width='67.85' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<rect x='190.69' y='483.14' width='69.68' height='13.50' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #1F77B4;' clip-path='url(#cpMTkwLjY5fDcxMy4wM3w1MzYuNzB8MjguOTk=)' />
+<defs>
+  <clipPath id='cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA='>
+    <rect x='0.00' y='0.00' width='720.00' height='576.00' />
+  </clipPath>
+</defs>
+<polyline points='190.69,536.70 190.69,28.99 ' style='stroke-width: 0.85; stroke: #002451; stroke-linecap: butt;' clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)' />
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='87.43' y='529.75' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='96.98px' lengthAdjust='spacingAndGlyphs'>Baxter International</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='144.01' y='511.75' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='40.41px' lengthAdjust='spacingAndGlyphs'>Labcorp</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='154.59' y='493.74' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='29.83px' lengthAdjust='spacingAndGlyphs'>Mylan</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='102.98' y='475.74' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='81.44px' lengthAdjust='spacingAndGlyphs'>Astellas Pharma</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='149.59' y='457.73' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='34.83px' lengthAdjust='spacingAndGlyphs'>Biogen</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='142.76' y='439.73' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='41.66px' lengthAdjust='spacingAndGlyphs'>Celgene</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='125.98' y='421.73' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='58.44px' lengthAdjust='spacingAndGlyphs'>Allergan plc</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='119.79' y='403.72' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='64.62px' lengthAdjust='spacingAndGlyphs'>Merck Group</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='117.29' y='385.72' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='67.12px' lengthAdjust='spacingAndGlyphs'>Novo Nordisk</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='22.99' y='367.72' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='161.42px' lengthAdjust='spacingAndGlyphs'>/ Teva Pharmaceutical Industries</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='68.16' y='349.71' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='116.25px' lengthAdjust='spacingAndGlyphs'>Takeda Pharmaceutical</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='78.12' y='331.71' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='106.30px' lengthAdjust='spacingAndGlyphs'>Boehringer Ingelheim</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='79.99' y='313.70' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='104.42px' lengthAdjust='spacingAndGlyphs'>Danaher Corporation</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='121.01' y='295.70' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='63.41px' lengthAdjust='spacingAndGlyphs'>AstraZeneca</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='103.59' y='277.70' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='80.83px' lengthAdjust='spacingAndGlyphs'>Gilead Sciences</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='81.24' y='259.69' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='103.17px' lengthAdjust='spacingAndGlyphs'>Bristol-Myers Squibb</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='148.98' y='241.69' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='35.44px' lengthAdjust='spacingAndGlyphs'>Amgen</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='121.62' y='223.69' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='62.80px' lengthAdjust='spacingAndGlyphs'>Eli Lilly &amp; Co</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='86.80' y='205.68' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='97.61px' lengthAdjust='spacingAndGlyphs'>Abbott Laboratories</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='148.54' y='187.68' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='35.88px' lengthAdjust='spacingAndGlyphs'>AbbVie</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='152.70' y='169.67' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='31.72px' lengthAdjust='spacingAndGlyphs'>Sanofi</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='122.88' y='151.67' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='61.53px' lengthAdjust='spacingAndGlyphs'>Merck &amp; Co.</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='101.73' y='133.67' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='82.69px' lengthAdjust='spacingAndGlyphs'>GlaxoSmithKline</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='155.20' y='115.66' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='29.22px' lengthAdjust='spacingAndGlyphs'>Bayer</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='143.40' y='97.66' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='41.02px' lengthAdjust='spacingAndGlyphs'>Novartis</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='155.82' y='79.66' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='28.59px' lengthAdjust='spacingAndGlyphs'>Pfizer</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='152.09' y='61.65' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='32.33px' lengthAdjust='spacingAndGlyphs'>Roche</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='86.16' y='43.65' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='98.25px' lengthAdjust='spacingAndGlyphs'>Johnson &amp; Johnson</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='187.58' y='550.68' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='6.22px' lengthAdjust='spacingAndGlyphs'>0</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='306.40' y='550.68' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='12.44px' lengthAdjust='spacingAndGlyphs'>20</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='428.33' y='550.68' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='12.44px' lengthAdjust='spacingAndGlyphs'>40</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='550.25' y='550.68' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='12.44px' lengthAdjust='spacingAndGlyphs'>60</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='672.18' y='550.68' style='font-size: 11.20px; fill: #002451; font-family: Liberation Sans;' textLength='12.44px' lengthAdjust='spacingAndGlyphs'>80</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='426.58' y='566.12' style='font-size: 14.00px; fill: #002451; font-family: Liberation Sans;' textLength='50.56px' lengthAdjust='spacingAndGlyphs'>revenue</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text transform='translate(16.60,311.24) rotate(-90)' style='font-size: 14.00px; fill: #002451; font-family: Liberation Sans;' textLength='56.78px' lengthAdjust='spacingAndGlyphs'>company</text></g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA=)'><text x='6.97' y='18.54' style='font-size: 16.80px; fill: #002451; font-family: Liberation Sans;' textLength='206.38px' lengthAdjust='spacingAndGlyphs'>Horizontal Sorted Bar Chart</text></g>
+</svg>

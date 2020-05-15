@@ -1,0 +1,127 @@
+---
+title: "Make Your Plots Stand Out with Highlights"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{highlight}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  warning = FALSE,
+  fig.width = 5.5,
+  fig.height = 5.5
+)
+```
+
+The `ggcharts` package currently offers two functions with a `highlight` parameter: `bar_chart()` and `lollipop_chart()`. The usage is the same for both functions.
+
+```{r setup, message=FALSE, warning=FALSE}
+library(ggcharts)
+library(dplyr)
+data("biomedicalrevenue")
+revenue2018 <- biomedicalrevenue %>%
+  filter(year == 2018)
+```
+
+
+## Basic Usage
+
+In its most simple form the `highlight` feature can be used to highlight a single bar or lollipop. 
+
+```{r, warning=FALSE}
+bar_chart(
+  revenue2018,
+  company,
+  revenue,
+  top_n = 10,
+  highlight = "Roche"
+)
+```
+
+The color for the highlighted and non-highlighted values are automatically determined from the currently active `ggcharts` theme, i.e. `ggcharts_get_theme()`. Thus, changing the theme will change these colors.
+
+```{r}
+ggcharts_set_theme("theme_ng")
+bar_chart(
+  revenue2018,
+  company,
+  revenue,
+  top_n = 10,
+  highlight = "Roche"
+)
+```
+
+
+## Changing the (Non-)Highlight Color
+
+To set the highlight and non-highlight colors manually you will need to pass a `highlight_spec()` to the `highlight` argument.
+
+```{r}
+ggcharts_set_theme("theme_ggcharts")
+spec <- highlight_spec(
+  what = "Roche",
+  highlight_color = "black",
+  other_color = "lightgray"
+)
+bar_chart(
+  revenue2018,
+  company,
+  revenue,
+  top_n = 10,
+  highlight = spec
+)
+```
+
+
+## Highlighting Multiple Data Points
+
+To highlight more than one value pass a vector to `highlight`.
+
+```{r}
+bar_chart(
+  revenue2018,
+  company,
+  revenue,
+  top_n = 10,
+  highlight = c("Roche", "Novartis")
+)
+```
+
+To highlight multiple values in different colors you will need to use a `highlight_spec()` again.
+
+```{r}
+spec <- highlight_spec(
+  what = c("Roche", "Novartis"),
+  highlight_color = c("steelblue", "darkorange")
+)
+lollipop_chart(
+  revenue2018,
+  company,
+  revenue,
+  top_n = 10,
+  highlight = spec
+)
+```
+
+
+## Highlight + Facet
+
+The highlight feature is particularly useful when used in conjunction with the `facet` feature.
+
+```{r, fig.width=8, fig.height=8}
+biomedicalrevenue %>%
+  filter(year %in% c(2012, 2014, 2016, 2018)) %>%
+  bar_chart(
+    company,
+    revenue,
+    facet = year,
+    top_n = 12,
+    highlight = "Bayer"
+  )
+```
+
