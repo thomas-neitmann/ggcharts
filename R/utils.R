@@ -13,6 +13,10 @@ reorder <- function(x, by, other = FALSE) {
   }
 }
 
+auto_color <- function() {
+  ggcharts_get_default_color(ggcharts_get_theme())
+}
+
 enumeration <- function(x, quote = "`", last = "&") {
   n <- length(x)
   quoted <- paste0(quote, x, quote)

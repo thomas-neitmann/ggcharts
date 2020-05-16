@@ -12,7 +12,7 @@ line_chart <- function(data, x, y, group, line_color = "auto", line_size = 1) {
   }
 
   if (line_color == "auto") {
-    line_color <- ggcharts_get_default_color(ggcharts_get_theme())
+    line_color <- auto_color()
   }
 
   if (rlang::is_symbol(group) || (rlang::is_quosure(group) && !rlang::quo_is_missing(group))) {
