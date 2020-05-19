@@ -45,11 +45,7 @@ post_process_plot <- function(plot, is_sorted = TRUE, horizontal = TRUE,
 
   }
 
-  if (utils::packageVersion("ggplot2") >= "3.3.0") {
-    expand_scale <- get("expansion", "package:ggplo2")
-  }
-
   plot +
-    scale_y_continuous(expand = expand_scale(mult = c(0, 0.05))) +
+    scale_y_continuous(expand = c(0, 0, .05, 0)) +
     ggcharts_current_theme(axis = axis, grid = grid)
 }
