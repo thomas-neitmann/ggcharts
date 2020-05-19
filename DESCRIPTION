@@ -1,7 +1,7 @@
 Package: ggcharts
 Type: Package
 Title: Shorten the Distance from Data Visualization Idea to Actual Plot
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person("Thomas", "Neitmann", , "th.neitmann@gmail.com", c("aut", "cre")),
     person("Julia", "Silge", role = c("ctb", "cph")),
@@ -11,8 +11,8 @@ Description: Streamline the creation of common charts by taking care of a lot of
     data preprocessing and plot customization for the user. Provides a
     high-level interface to create plots using 'ggplot2'.
 Depends:
-    R (>= 2.10),
-    ggplot2  
+    R (>= 3.5.0),
+    ggplot2 (>= 3.0.0)
 Imports:
     colorspace,
     dplyr,

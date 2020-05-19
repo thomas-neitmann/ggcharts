@@ -46,7 +46,7 @@ post_process_plot <- function(plot, is_sorted = TRUE, horizontal = TRUE,
   }
 
   if (utils::packageVersion("ggplot2") >= "3.3.0") {
-    expand_scale <- expansion
+    expand_scale <- get("expansion", "package:ggplo2")
   }
 
   plot +

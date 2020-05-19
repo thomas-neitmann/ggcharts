@@ -1,3 +1,7 @@
+# ggcharts 0.2.1
+
+- The themes only set the `plot.title.position` element if a version of `{ggplot2}` >= 3.3.0 is installed. This fixes #75.
+
 # ggcharts 0.2.0
 
 - Two new vignettes: `customize` (#54) and `themes` (#69)
