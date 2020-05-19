@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ggcharts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -142,7 +142,7 @@
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">chart</span> <span class="kw">&lt;-</span> <span class="no">chart</span> +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(
     <span class="kw">labels</span> <span class="kw">=</span> <span class="kw pkg">scales</span><span class="kw ns">::</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent_format</a></span>(<span class="kw">scale</span> <span class="kw">=</span> <span class="fl">1</span>),
-    <span class="kw">expand</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html">expansion</a></span>(<span class="kw">mult</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">.05</span>)),
+    <span class="kw">expand</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html">expand_scale</a></span>(<span class="kw">mult</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">.05</span>)),
     <span class="kw">limits</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">80</span>)
   )
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">chart</span>)</pre></body></html></div>
