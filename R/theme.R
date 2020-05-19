@@ -363,7 +363,6 @@ new_ggcharts_theme <- function(name,
       panel.grid.minor.x = if (grepl("x", grid)) elm_grid_minor else blank,
       panel.grid.minor.y = if (grepl("y", grid)) elm_grid_minor else blank,
       plot.background = element_rect(fill = background_color, color = background_color),
-      plot.title.position = "plot",
       strip.background = blank,
       strip.text = element_text(
         margin = margin(1, 0, 1, 0, "mm"),
@@ -373,6 +372,13 @@ new_ggcharts_theme <- function(name,
       ),
       text = element_text(color = text_color)
     )
+
+  # The `plot.title.position` theme element is not available in versions
+  # prior to 3.3.0
+  if (utils::packageVersion("ggplot2") >= "3.3.0") {
+    new_theme <- new_theme + theme(plot.title.position = "plot")
+  }
+
   structure(
     new_theme,
     class = c("ggcharts_theme", class(new_theme)),
@@ -412,7 +418,6 @@ pyramid_theme <- function(side = c("left", "right")) {
       panel.grid = element_blank(),
       plot.title = element_text(hjust = plot_title_hjust, margin = margin()),
       axis.ticks = element_line(color = "darkgray"),
-      axis.line.x = element_line(color = "darkgray"),
-      axis.ticks.length.x = unit(1.5, "mm")
+      axis.line.x = element_line(color = "darkgray")
     )
 }
