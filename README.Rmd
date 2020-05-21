@@ -6,9 +6,8 @@ title: "ggcharts"
 ```{r, include=FALSE}
 knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
-  fig.height = 3,
-  fig.width = 8,
-  out.width = "100%"
+  message = FALSE,
+  warnings = FALSE
 )
 ```
 
@@ -53,7 +52,7 @@ If the installation still fails please open an [issue](https://github.com/thomas
 
 Thanks to `{ggplot2}` you can create beautiful plots in `R`. However, it can often take quite a bit of effort to get from a data visualization idea to an actual plot. As an example, let's say you want to create a faceted bar chart displaying the top 10 within each facet ordered from highest to lowest. What sounds simple is actually pretty hard to achieve. Have a look:
 
-```{r motivation, message=FALSE, warning=FALSE}
+```{r motivation, fig.height = 3, fig.width = 8, out.width = "100%"}
 library(dplyr)
 library(ggplot2)
 library(ggcharts)
@@ -74,28 +73,100 @@ biomedicalrevenue %>%
 
 That's a lot of code! And you likely never heard of some of the functions involved. With `{ggcharts}` you can create the same plot (actually an even better looking one) in almost a single line of code.
 
-```{r motivation_continued}
+```{r motivation_continued, fig.height = 3, fig.width = 8, out.width = "100%"}
 biomedicalrevenue %>%
   filter(year %in% c(2012, 2015, 2018)) %>%
-  bar_chart(company, revenue, facet = year, top_n = 10)
+  bar_chart(x = company, y = revenue, facet = year, top_n = 10)
 ```
 
 
-## Features
+## Gallery
 
 ### Charts
 
-- `bar_chart()`
-- `diverging_bar_chart()`
-- `column_chart()`
-- `lollipop_chart()`
-- `diverging_lollipop_chart()`
-- `dumbbell_chart()`
-- `pyramid_chart()`
+```{r ggcharts_line_chart}
+data("revenue_wide")
+line_chart(data = revenue_wide, x = year, y = Roche:Bayer) +
+  labs(x = "Year", y = "Revenue (Billion USD)")
+```
+
+
+```{r ggcharts_lollipop_chart}
+biomedicalrevenue %>%
+  filter(year == 2018) %>%
+  lollipop_chart(x = company, y = revenue, threshold = 30) +
+  labs(
+    x = NULL,
+    y = "Revenue",
+    title = "Biomedical Companies with Revenue > $30Bn."
+  ) +
+  scale_y_continuous(
+    labels = function(x) paste0("$", x, "Bn."),
+    expand = expansion(mult = c(0, .05))
+  )
+```
+
+```{r ggcharts_dumbbell_chart}
+data("popeurope")
+dumbbell_chart(
+  data = popeurope,
+  x = country,
+  y1 = pop1952,
+  y2 = pop2007,
+  top_n = 10,
+  point_colors = c("lightgray", "#494F5C")
+) +
+  labs(
+    x = NULL,
+    y = "Population",
+    title = "Europe's Largest Countries by Population in 2007"
+  ) +
+  scale_y_continuous(
+    limits = c(0, NA),
+    labels = function(x) paste(x, "Mn.")
+  )
+```
+
+```{r ggcharts_diverging_bar_chart}
+data(mtcars)
+mtcars_z <- dplyr::transmute(
+  .data = mtcars,
+  model = row.names(mtcars),
+  hpz = scale(hp)
+)
+
+diverging_bar_chart(data = mtcars_z, x = model, y = hpz)
+```
+
+```{r ggcharts_diverging_lollipop_chart}
+diverging_lollipop_chart(
+  data = mtcars_z,
+  x = model,
+  y = hpz,
+  lollipop_colors = c("#006400", "#b32134"),
+  text_color = c("#006400", "#b32134")
+)
+```
+
+```{r}
+data("popch")
+pyramid_chart(data = popch, x = age, y = pop, group = sex)
+```
+
 
 ### Themes
 
-- `theme_ggcharts()`
-- `theme_ng()`
-- `theme_nightblue()`
-- `theme_hermit()`
+```{r ggcharts_theme_hermit}
+ggcharts_set_theme("theme_hermit")
+bar_chart(data = diamonds, x = cut)
+```
+
+```{r ggcharts_theme_ng}
+ggcharts_set_theme("theme_ng")
+bar_chart(data = diamonds, x = cut)
+```
+
+```{r ggcharts_theme_nightblue}
+ggcharts_set_theme("theme_nightblue")
+bar_chart(data = diamonds, x = cut)
+```

@@ -65,27 +65,123 @@ That's a lot of code! And you likely never heard of some of the functions involv
 ``` r
 biomedicalrevenue %>%
   filter(year %in% c(2012, 2015, 2018)) %>%
-  bar_chart(company, revenue, facet = year, top_n = 10)
+  bar_chart(x = company, y = revenue, facet = year, top_n = 10)
 ```
 
 <img src="man/figures/README-motivation_continued-1.png" width="100%" />
 
-Features
---------
+Gallery
+-------
 
 ### Charts
 
--   `bar_chart()`
--   `diverging_bar_chart()`
--   `column_chart()`
--   `lollipop_chart()`
--   `diverging_lollipop_chart()`
--   `dumbbell_chart()`
--   `pyramid_chart()`
+``` r
+data("revenue_wide")
+line_chart(data = revenue_wide, x = year, y = Roche:Bayer) +
+  labs(x = "Year", y = "Revenue (Billion USD)")
+```
+
+![](man/figures/README-ggcharts_line_chart-1.png)
+
+``` r
+biomedicalrevenue %>%
+  filter(year == 2018) %>%
+  lollipop_chart(x = company, y = revenue, threshold = 30) +
+  labs(
+    x = NULL,
+    y = "Revenue",
+    title = "Biomedical Companies with Revenue > $30Bn."
+  ) +
+  scale_y_continuous(
+    labels = function(x) paste0("$", x, "Bn."),
+    expand = expansion(mult = c(0, .05))
+  )
+```
+
+![](man/figures/README-ggcharts_lollipop_chart-1.png)
+
+``` r
+data("popeurope")
+dumbbell_chart(
+  data = popeurope,
+  x = country,
+  y1 = pop1952,
+  y2 = pop2007,
+  top_n = 10,
+  point_colors = c("lightgray", "#494F5C")
+) +
+  labs(
+    x = NULL,
+    y = "Population",
+    title = "Europe's Largest Countries by Population in 2007"
+  ) +
+  scale_y_continuous(
+    limits = c(0, NA),
+    labels = function(x) paste(x, "Mn.")
+  )
+```
+
+![](man/figures/README-ggcharts_dumbbell_chart-1.png)
+
+``` r
+data(mtcars)
+mtcars_z <- dplyr::transmute(
+  .data = mtcars,
+  model = row.names(mtcars),
+  hpz = scale(hp)
+)
+
+diverging_bar_chart(data = mtcars_z, x = model, y = hpz)
+```
+
+![](man/figures/README-ggcharts_diverging_bar_chart-1.png)
+
+``` r
+diverging_lollipop_chart(
+  data = mtcars_z,
+  x = model,
+  y = hpz,
+  lollipop_colors = c("#006400", "#b32134"),
+  text_color = c("#006400", "#b32134")
+)
+```
+
+![](man/figures/README-ggcharts_diverging_lollipop_chart-1.png)
+
+``` r
+data("popch")
+pyramid_chart(data = popch, x = age, y = pop, group = sex)
+```
+
+    ## Warning: `expand_scale()` is deprecated; use `expansion()` instead.
+
+    ## Warning: `expand_scale()` is deprecated; use `expansion()` instead.
+
+    ## Warning: `expand_scale()` is deprecated; use `expansion()` instead.
+
+    ## Warning: `expand_scale()` is deprecated; use `expansion()` instead.
+
+![](man/figures/README-unnamed-chunk-2-1.png)
 
 ### Themes
 
--   `theme_ggcharts()`
--   `theme_ng()`
--   `theme_nightblue()`
--   `theme_hermit()`
+``` r
+ggcharts_set_theme("theme_hermit")
+bar_chart(data = diamonds, x = cut)
+```
+
+![](man/figures/README-ggcharts_theme_hermit-1.png)
+
+``` r
+ggcharts_set_theme("theme_ng")
+bar_chart(data = diamonds, x = cut)
+```
+
+![](man/figures/README-ggcharts_theme_ng-1.png)
+
+``` r
+ggcharts_set_theme("theme_nightblue")
+bar_chart(data = diamonds, x = cut)
+```
+
+![](man/figures/README-ggcharts_theme_nightblue-1.png)
