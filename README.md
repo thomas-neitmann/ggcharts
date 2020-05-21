@@ -153,14 +153,6 @@ data("popch")
 pyramid_chart(data = popch, x = age, y = pop, group = sex)
 ```
 
-    ## Warning: `expand_scale()` is deprecated; use `expansion()` instead.
-
-    ## Warning: `expand_scale()` is deprecated; use `expansion()` instead.
-
-    ## Warning: `expand_scale()` is deprecated; use `expansion()` instead.
-
-    ## Warning: `expand_scale()` is deprecated; use `expansion()` instead.
-
 ![](man/figures/README-unnamed-chunk-2-1.png)
 
 ### Themes
