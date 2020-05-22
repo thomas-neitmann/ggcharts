@@ -1,3 +1,7 @@
+# ggcharts 0.2.1.9000
+
+- The background color of `theme_ggcharts()` has been changed from #F4F7FC to #EFEFEF. In addition, the foreground color has been changed from #002451 to #433E3F.
+
 # ggcharts 0.2.1
 
 - The themes only set the `plot.title.position` element if a version of `{ggplot2}` >= 3.3.0 is installed. This fixes #75.
