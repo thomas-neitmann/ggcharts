@@ -6,6 +6,6 @@ ggcharts_global$theme_args <- list()
 ggcharts_global$default_colors <- c(
   "theme_ggcharts" = "#1F77B4",
   "theme_hermit" = "#94C1E0",
-  "theme_nightblue" = "#FF7AFD",
+  "theme_nightblue" = "#D81E5B",
   "theme_ng" = "darkorange"
 )
