@@ -4,12 +4,21 @@
 \alias{theme_ng}
 \title{Theme NG}
 \usage{
-theme_ng(base_size = 14, base_family = "", axis = "", ticks = "", grid = "")
+theme_ng(
+  base_size = 14,
+  base_family = "Open Sans",
+  header_family = "IBM Plex Sans",
+  axis = "",
+  ticks = "",
+  grid = ""
+)
 }
 \arguments{
 \item{base_size}{\code{numeric}. Base font size in pt}
 
 \item{base_family}{\code{character}. Base font family}
+
+\item{header_family}{\code{character}. Font family for title and subtitle}
 
 \item{axis}{\code{character}. Where to draw an axis line}
 
