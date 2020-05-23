@@ -1,7 +1,7 @@
 # ggcharts 0.2.1.9000
 
 - The default color of `theme_nightblue()` has been changed from #FF7AFD to #D81E5B
-- The background color of `theme_ggcharts()` has been changed from #F4F7FC to #EFEFEF. In addition, the foreground color has been changed from #002451 to #433E3F.
+- The background color of `theme_ggcharts()` has been changed from #F4F7FC to #C7C7C7. In addition, the foreground color has been changed from #002451 to #080708.
 
 # ggcharts 0.2.1
 
