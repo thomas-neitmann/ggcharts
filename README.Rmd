@@ -7,7 +7,8 @@ title: "ggcharts"
 knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   message = FALSE,
-  warning = FALSE
+  warning = FALSE,
+  dev.args = list(type = "cairo")
 )
 ```
 
