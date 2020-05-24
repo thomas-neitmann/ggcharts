@@ -75,7 +75,7 @@ biomedicalrevenue %>%
   facet_wrap(vars(year), scales = "free_y")
 ```
 
-<img src="man/figures/README-motivation-1.png" width="100%" />
+<img src="man/figures/README-motivation-1.svg" width="100%" />
 
 That’s a lot of code\! And you likely never heard of some of the
 functions involved. With `{ggcharts}` you can create the same plot
@@ -87,7 +87,7 @@ biomedicalrevenue %>%
   bar_chart(x = company, y = revenue, facet = year, top_n = 10)
 ```
 
-<img src="man/figures/README-motivation_continued-1.png" width="100%" />
+<img src="man/figures/README-motivation_continued-1.svg" width="100%" />
 
 ## Gallery
 
@@ -99,7 +99,7 @@ line_chart(data = revenue_wide, x = year, y = Roche:Bayer) +
   labs(x = "Year", y = "Revenue (Billion USD)")
 ```
 
-![](man/figures/README-ggcharts_line_chart-1.png)<!-- -->
+![](man/figures/README-ggcharts_line_chart-1.svg)<!-- -->
 
 ``` r
 biomedicalrevenue %>%
@@ -116,7 +116,7 @@ biomedicalrevenue %>%
   )
 ```
 
-![](man/figures/README-ggcharts_lollipop_chart-1.png)<!-- -->
+![](man/figures/README-ggcharts_lollipop_chart-1.svg)<!-- -->
 
 ``` r
 data("popeurope")
@@ -139,7 +139,7 @@ dumbbell_chart(
   )
 ```
 
-![](man/figures/README-ggcharts_dumbbell_chart-1.png)<!-- -->
+![](man/figures/README-ggcharts_dumbbell_chart-1.svg)<!-- -->
 
 ``` r
 data(mtcars)
@@ -152,7 +152,7 @@ mtcars_z <- dplyr::transmute(
 diverging_bar_chart(data = mtcars_z, x = model, y = hpz)
 ```
 
-![](man/figures/README-ggcharts_diverging_bar_chart-1.png)<!-- -->
+![](man/figures/README-ggcharts_diverging_bar_chart-1.svg)<!-- -->
 
 ``` r
 diverging_lollipop_chart(
@@ -164,14 +164,14 @@ diverging_lollipop_chart(
 )
 ```
 
-![](man/figures/README-ggcharts_diverging_lollipop_chart-1.png)<!-- -->
+![](man/figures/README-ggcharts_diverging_lollipop_chart-1.svg)<!-- -->
 
 ``` r
 data("popch")
 pyramid_chart(data = popch, x = age, y = pop, group = sex)
 ```
 
-![](man/figures/README-unnamed-chunk-2-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-2-1.svg)<!-- -->
 
 ### Themes
 
@@ -180,18 +180,18 @@ ggcharts_set_theme("theme_hermit")
 bar_chart(data = diamonds, x = cut)
 ```
 
-![](man/figures/README-ggcharts_theme_hermit-1.png)<!-- -->
+![](man/figures/README-ggcharts_theme_hermit-1.svg)<!-- -->
 
 ``` r
 ggcharts_set_theme("theme_ng")
 bar_chart(data = diamonds, x = cut)
 ```
 
-![](man/figures/README-ggcharts_theme_ng-1.png)<!-- -->
+![](man/figures/README-ggcharts_theme_ng-1.svg)<!-- -->
 
 ``` r
 ggcharts_set_theme("theme_nightblue")
 bar_chart(data = diamonds, x = cut)
 ```
 
-![](man/figures/README-ggcharts_theme_nightblue-1.png)<!-- -->
+![](man/figures/README-ggcharts_theme_nightblue-1.svg)<!-- -->

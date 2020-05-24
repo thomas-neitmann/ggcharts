@@ -6,7 +6,9 @@ output: github_document
 knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   message = FALSE,
-  warning = FALSE
+  warning = FALSE,
+  dev = "svglite",
+  fig.showtext = TRUE
 )
 ```
 
