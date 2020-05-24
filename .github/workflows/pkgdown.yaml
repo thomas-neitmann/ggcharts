@@ -28,7 +28,8 @@ jobs:
         shell: Rscript {0}
 
       - name: Install package
-        run: remotes::install()
+        run: |
+          remotes::install()
         shell: Rscript{0}
 
       - name: Deploy package
