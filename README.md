@@ -1,5 +1,5 @@
 
-# ggcharts <img src="man/figures/ggcharts_hex.png" align="right" width="150"/>
+# ggcharts <img src="man/figures/ggcharts_hex.png" align="right" width="200"/>
 
 [![R build
 status](https://github.com/thomas-neitmann/ggcharts/workflows/R-CMD-check/badge.svg)](https://github.com/thomas-neitmann/ggcharts/actions)
