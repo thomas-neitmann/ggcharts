@@ -99,7 +99,7 @@ line_chart(data = revenue_wide, x = year, y = Roche:Bayer) +
   labs(x = "Year", y = "Revenue (Billion USD)")
 ```
 
-![](man/figures/README-ggcharts_line_chart-1.svg)<!-- -->
+<img src="man/figures/README-ggcharts_line_chart-1.svg" width="80%" />
 
 ``` r
 biomedicalrevenue %>%
@@ -116,7 +116,7 @@ biomedicalrevenue %>%
   )
 ```
 
-![](man/figures/README-ggcharts_lollipop_chart-1.svg)<!-- -->
+<img src="man/figures/README-ggcharts_lollipop_chart-1.svg" width="80%" />
 
 ``` r
 data("popeurope")
@@ -139,7 +139,7 @@ dumbbell_chart(
   )
 ```
 
-![](man/figures/README-ggcharts_dumbbell_chart-1.svg)<!-- -->
+<img src="man/figures/README-ggcharts_dumbbell_chart-1.svg" width="80%" />
 
 ``` r
 data(mtcars)
@@ -152,7 +152,7 @@ mtcars_z <- dplyr::transmute(
 diverging_bar_chart(data = mtcars_z, x = model, y = hpz)
 ```
 
-![](man/figures/README-ggcharts_diverging_bar_chart-1.svg)<!-- -->
+<img src="man/figures/README-ggcharts_diverging_bar_chart-1.svg" width="80%" />
 
 ``` r
 diverging_lollipop_chart(
@@ -164,14 +164,14 @@ diverging_lollipop_chart(
 )
 ```
 
-![](man/figures/README-ggcharts_diverging_lollipop_chart-1.svg)<!-- -->
+<img src="man/figures/README-ggcharts_diverging_lollipop_chart-1.svg" width="80%" />
 
 ``` r
 data("popch")
 pyramid_chart(data = popch, x = age, y = pop, group = sex)
 ```
 
-![](man/figures/README-unnamed-chunk-2-1.svg)<!-- -->
+<img src="man/figures/README-unnamed-chunk-2-1.svg" width="80%" />
 
 ### Themes
 
@@ -180,18 +180,18 @@ ggcharts_set_theme("theme_hermit")
 bar_chart(data = diamonds, x = cut)
 ```
 
-![](man/figures/README-ggcharts_theme_hermit-1.svg)<!-- -->
+<img src="man/figures/README-ggcharts_theme_hermit-1.svg" width="80%" />
 
 ``` r
 ggcharts_set_theme("theme_ng")
 bar_chart(data = diamonds, x = cut)
 ```
 
-![](man/figures/README-ggcharts_theme_ng-1.svg)<!-- -->
+<img src="man/figures/README-ggcharts_theme_ng-1.svg" width="80%" />
 
 ``` r
 ggcharts_set_theme("theme_nightblue")
 bar_chart(data = diamonds, x = cut)
 ```
 
-![](man/figures/README-ggcharts_theme_nightblue-1.svg)<!-- -->
+<img src="man/figures/README-ggcharts_theme_nightblue-1.svg" width="80%" />
