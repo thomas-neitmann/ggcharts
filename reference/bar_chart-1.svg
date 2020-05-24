@@ -9,7 +9,8 @@
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
-  ]]>@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+  ]]>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 </style>
 </defs>
 <rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
