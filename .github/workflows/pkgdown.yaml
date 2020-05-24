@@ -25,7 +25,7 @@ jobs:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
           Rscript -e "remotes::install_github('r-hub/sysreqs', repos = 'https://cran.rstudio.com/')"
-          sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
+          sysreqs=$(Rscript -e "r = getOption("repos"); r["CRAN"] = "https://cran.rstudio.com/"; options(repos = r); cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
 
       - name: Install dependencies
