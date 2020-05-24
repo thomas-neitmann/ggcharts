@@ -96,9 +96,10 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="ggcharts" class="section level1">
+<div id="ggcharts-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#ggcharts" class="anchor"></a>ggcharts</h1></div>
+<a href="#ggcharts-" class="anchor"></a>ggcharts <img src="reference/figures/ggcharts_hex.png" align="right" width="200">
+</h1></div>
 
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
@@ -139,12 +140,12 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
   <span class="kw pkg">tidytext</span><span class="kw ns">::</span><span class="fu">scale_x_reordered</span>() +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(<span class="no">year</span>), <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>)</pre></div>
-<p><img src="reference/figures/README-motivation-1.png" width="100%"></p>
+<p><img src="reference/figures/README-motivation-1.svg" width="100%"></p>
 <p>That’s a lot of code! And you likely never heard of some of the functions involved. With <code>{ggcharts}</code> you can create the same plot (actually an even better looking one) in almost a single line of code.</p>
 <div class="sourceCode" id="cb5"><pre class="r"><span class="no">biomedicalrevenue</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">year</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">2012</span>, <span class="fl">2015</span>, <span class="fl">2018</span>)) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="reference/bar_chart.html">bar_chart</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">company</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">revenue</span>, <span class="kw">facet</span> <span class="kw">=</span> <span class="no">year</span>, <span class="kw">top_n</span> <span class="kw">=</span> <span class="fl">10</span>)</pre></div>
-<p><img src="reference/figures/README-motivation_continued-1.png" width="100%"></p>
+<p><img src="reference/figures/README-motivation_continued-1.svg" width="100%"></p>
 </div>
 <div id="gallery" class="section level2">
 <h2 class="hasAnchor">
@@ -155,7 +156,7 @@
 <div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"revenue_wide"</span>)
 <span class="fu"><a href="reference/line_chart.html">line_chart</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">revenue_wide</span>, <span class="kw">x</span> <span class="kw">=</span> <span class="no">year</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">Roche</span>:<span class="no">Bayer</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="st">"Year"</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="st">"Revenue (Billion USD)"</span>)</pre></div>
-<p><img src="reference/figures/README-ggcharts_line_chart-1.png"></p>
+<p><img src="reference/figures/README-ggcharts_line_chart-1.svg" width="80%"></p>
 <div class="sourceCode" id="cb7"><pre class="r"><span class="no">biomedicalrevenue</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">year</span> <span class="kw">==</span> <span class="fl">2018</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="reference/lollipop_chart.html">lollipop_chart</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">company</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">revenue</span>, <span class="kw">threshold</span> <span class="kw">=</span> <span class="fl">30</span>) +
@@ -168,7 +169,7 @@
     <span class="kw">labels</span> <span class="kw">=</span> <span class="kw">function</span>(<span class="no">x</span>) <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"$"</span>, <span class="no">x</span>, <span class="st">"Bn."</span>),
     <span class="kw">expand</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html">expansion</a></span>(<span class="kw">mult</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">.05</span>))
   )</pre></div>
-<p><img src="reference/figures/README-ggcharts_lollipop_chart-1.png"></p>
+<p><img src="reference/figures/README-ggcharts_lollipop_chart-1.svg" width="80%"></p>
 <div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"popeurope"</span>)
 <span class="fu"><a href="reference/dumbbell_chart.html">dumbbell_chart</a></span>(
   <span class="kw">data</span> <span class="kw">=</span> <span class="no">popeurope</span>,
@@ -187,7 +188,7 @@
     <span class="kw">limits</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">NA</span>),
     <span class="kw">labels</span> <span class="kw">=</span> <span class="kw">function</span>(<span class="no">x</span>) <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="no">x</span>, <span class="st">"Mn."</span>)
   )</pre></div>
-<p><img src="reference/figures/README-ggcharts_dumbbell_chart-1.png"></p>
+<p><img src="reference/figures/README-ggcharts_dumbbell_chart-1.svg" width="80%"></p>
 <div class="sourceCode" id="cb9"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">mtcars</span>)
 <span class="no">mtcars_z</span> <span class="kw">&lt;-</span> <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(
   <span class="kw">.data</span> <span class="kw">=</span> <span class="no">mtcars</span>,
@@ -196,7 +197,7 @@
 )
 
 <span class="fu"><a href="reference/diverging_bar_chart.html">diverging_bar_chart</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">mtcars_z</span>, <span class="kw">x</span> <span class="kw">=</span> <span class="no">model</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">hpz</span>)</pre></div>
-<p><img src="reference/figures/README-ggcharts_diverging_bar_chart-1.png"></p>
+<p><img src="reference/figures/README-ggcharts_diverging_bar_chart-1.svg" width="80%"></p>
 <div class="sourceCode" id="cb10"><pre class="r"><span class="fu"><a href="reference/diverging_lollipop_chart.html">diverging_lollipop_chart</a></span>(
   <span class="kw">data</span> <span class="kw">=</span> <span class="no">mtcars_z</span>,
   <span class="kw">x</span> <span class="kw">=</span> <span class="no">model</span>,
@@ -204,23 +205,23 @@
   <span class="kw">lollipop_colors</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"#006400"</span>, <span class="st">"#b32134"</span>),
   <span class="kw">text_color</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"#006400"</span>, <span class="st">"#b32134"</span>)
 )</pre></div>
-<p><img src="reference/figures/README-ggcharts_diverging_lollipop_chart-1.png"></p>
+<p><img src="reference/figures/README-ggcharts_diverging_lollipop_chart-1.svg" width="80%"></p>
 <div class="sourceCode" id="cb11"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"popch"</span>)
 <span class="fu"><a href="reference/pyramid_chart.html">pyramid_chart</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">popch</span>, <span class="kw">x</span> <span class="kw">=</span> <span class="no">age</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">pop</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="no">sex</span>)</pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-2-1.png"></p>
+<p><img src="reference/figures/README-unnamed-chunk-2-1.svg" width="80%"></p>
 </div>
 <div id="themes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#themes" class="anchor"></a>Themes</h3>
 <div class="sourceCode" id="cb12"><pre class="r"><span class="fu"><a href="reference/ggcharts_get_theme.html">ggcharts_set_theme</a></span>(<span class="st">"theme_hermit"</span>)
 <span class="fu"><a href="reference/bar_chart.html">bar_chart</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">diamonds</span>, <span class="kw">x</span> <span class="kw">=</span> <span class="no">cut</span>)</pre></div>
-<p><img src="reference/figures/README-ggcharts_theme_hermit-1.png"></p>
+<p><img src="reference/figures/README-ggcharts_theme_hermit-1.svg" width="80%"></p>
 <div class="sourceCode" id="cb13"><pre class="r"><span class="fu"><a href="reference/ggcharts_get_theme.html">ggcharts_set_theme</a></span>(<span class="st">"theme_ng"</span>)
 <span class="fu"><a href="reference/bar_chart.html">bar_chart</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">diamonds</span>, <span class="kw">x</span> <span class="kw">=</span> <span class="no">cut</span>)</pre></div>
-<p><img src="reference/figures/README-ggcharts_theme_ng-1.png"></p>
+<p><img src="reference/figures/README-ggcharts_theme_ng-1.svg" width="80%"></p>
 <div class="sourceCode" id="cb14"><pre class="r"><span class="fu"><a href="reference/ggcharts_get_theme.html">ggcharts_set_theme</a></span>(<span class="st">"theme_nightblue"</span>)
 <span class="fu"><a href="reference/bar_chart.html">bar_chart</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">diamonds</span>, <span class="kw">x</span> <span class="kw">=</span> <span class="no">cut</span>)</pre></div>
-<p><img src="reference/figures/README-ggcharts_theme_nightblue-1.png"></p>
+<p><img src="reference/figures/README-ggcharts_theme_nightblue-1.svg" width="80%"></p>
 </div>
 </div>
 </div>
