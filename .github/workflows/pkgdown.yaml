@@ -6,7 +6,7 @@ name: pkgdown
 
 jobs:
   pkgdown:
-    runs-on: ubuntu-16.04
+    runs-on: windows-16.04
     steps:
       - uses: actions/checkout@v2
 
@@ -20,14 +20,6 @@ jobs:
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
         shell: Rscript {0}
 
-      - name: Install system dependencies
-        env:
-          RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
-        run: |
-          Rscript -e "remotes::install_github('r-hub/sysreqs', repos = 'https://cran.rstudio.com/')"
-          sysreqs=$(Rscript -e "r = getOption("repos"); r["CRAN"] = "https://cran.rstudio.com/"; options(repos = r); cat(sysreqs::sysreq_commands('DESCRIPTION'))")
-          sudo -s eval "$sysreqs"
-
       - name: Install dependencies
         run: |
           install.packages("remotes", repos = 'https://cran.rstudio.com/')
@@ -36,7 +28,8 @@ jobs:
         shell: Rscript {0}
 
       - name: Install package
-        run: R CMD INSTALL .
+        run: remotes::install()
+        shell: Rscript{0}
 
       - name: Deploy package
         run: pkgdown::deploy_to_branch(new_process = FALSE)
