@@ -1,12 +1,12 @@
 on:
   push:
-    branches: master
+    branches: test
 
 name: pkgdown
 
 jobs:
   pkgdown:
-    runs-on: macOS-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
 
