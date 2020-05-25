@@ -132,3 +132,6 @@ biomedicalrevenue %>%
   theme_nightblue(axis = "x", ticks = "x", grid = "XY")
 ```
 
+```{r cleanup, include=FALSE}
+ggcharts_set_theme("theme_ggcharts")
+```
