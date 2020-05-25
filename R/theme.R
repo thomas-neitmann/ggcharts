@@ -331,6 +331,75 @@ theme_nightblue <- function(base_size = 14,
   )
 }
 
+#' Theme Coffee
+#'
+#' A theme inspired by coffee
+#'
+#' @inheritParams theme_ggcharts
+#'
+#' @return An object of class \code{theme}
+#'
+#' @author Thomas Neitmann
+#'
+#' @seealso
+#' For more details see the 'theme' vignette:
+#' \code{vignette("theme", package = "ggcharts")}
+#'
+#' @examples
+#' library(ggplot2)
+#' library(dplyr)
+#'
+#' scatter <- ggplot(mtcars, aes(hp, mpg)) +
+#'   geom_point(color = "#F4C95D")
+#'
+#' scatter + theme_coffee()
+#'
+#' scatter + theme_coffee(grid = "XY")
+#'
+#' scatter + theme_coffee(axis = "xy", ticks = "xy")
+#'
+#' bar_chart(ggplot2::diamonds, cut, bar_color = "#F4C95D") +
+#'   theme_coffee(axis = "y", grid = "Y")
+#'
+#' column_chart(ggplot2::diamonds, cut, bar_color = "#F4C95D") +
+#'   theme_coffee(axis = "x", grid = "X")
+#'
+#' ggcharts::biomedicalrevenue %>%
+#'   filter(company == "Roche") %>%
+#'   ggplot(aes(year, revenue)) +
+#'   geom_line(color = "#F4C95D", size = 1) +
+#'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
+#'   theme_coffee(grid = "X", axis = "x", ticks = "x")
+#'
+#' @export
+theme_coffee <- function(name,
+                         type,
+                         base_size = 14,
+                         base_family = "",
+                         header_family = "",
+                         text_color,
+                         background_color,
+                         foreground_color,
+                         grid_color,
+                         axis = "",
+                         ticks = "",
+                         grid = "") {
+  new_ggcharts_theme(
+    name = "theme_coffee",
+    type = "dark",
+    base_size = base_size,
+    base_family = base_family,
+    header_family = header_family,
+    axis = axis,
+    ticks = ticks,
+    grid = grid,
+    background_color = "#483D3F",
+    foreground_color = "#C4BBAF",
+    grid_color = "#6A6061",
+    text_color = "#C4BBAF"
+  )
+}
+
 new_ggcharts_theme <- function(name,
                                type,
                                base_size = 14,
