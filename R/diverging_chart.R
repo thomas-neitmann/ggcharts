@@ -204,6 +204,7 @@ diverging_chart <- function(data, x, y,
       color = ggcharts_current_theme()$text$colour,
       size = .4
     ) +
+    labs(x = NULL) +
     ylim(-limit, limit) +
     ggcharts_current_theme(grid = "Y") +
     theme(axis.text.y = element_blank())
