@@ -135,10 +135,10 @@ theme_ggcharts <- function(base_size = 14,
     axis = axis,
     ticks = ticks,
     grid = grid,
-    background_color = "#EFEFEF",
-    foreground_color = "#080708",
-    grid_color = "#C7C7C7",
-    text_color = "#080708"
+    background_color = "#F0F0F0",
+    foreground_color = "#2C3539",
+    grid_color = "#B4B6AF",
+    text_color = "#2C3539"
   )
 }
 
