@@ -1,6 +1,5 @@
 ---
 output: github_document
-title: "ggcharts"
 ---
 
 ```{r, include=FALSE}
@@ -8,10 +7,13 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   message = FALSE,
   warning = FALSE,
-  dev.args = list(type = "cairo")
+  dev = "svglite",
+  fig.showtext = TRUE,
+  out.width = "80%"
 )
 ```
 
+# ggcharts <img src="man/figures/ggcharts_hex.png" align="right" width="200"/>
 
 [![R build status](https://github.com/thomas-neitmann/ggcharts/workflows/R-CMD-check/badge.svg)](https://github.com/thomas-neitmann/ggcharts/actions)
 [![CRAN Version](https://www.r-pkg.org/badges/version/ggcharts?color=green)](https://cran.r-project.org/package=ggcharts)

@@ -20,7 +20,7 @@
 #' @author Thomas Neitmann
 #'
 #' @examples
-#' library(dplyr)
+#' library(dplyr, warn.conflicts = FALSE)
 #' data("biomedicalrevenue")
 #' data("revenue_wide")
 #'
@@ -74,6 +74,6 @@ line_chart <- function(data, x, y, group, line_color = "auto", line_size = 1) {
 
   ggplot(data, mapping) +
     line +
-    scale_color_brewer(palette = "Set2") +
+    scale_color_brewer(palette = "Set2", name = NULL) +
     ggcharts_current_theme(grid = "XY")
 }

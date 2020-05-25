@@ -3,7 +3,7 @@
 \docType{data}
 \name{biomedicalrevenue}
 \alias{biomedicalrevenue}
-\title{Top Biomedical Companies Revenues.}
+\title{Top Biomedical Companies Revenues}
 \format{
 A data frame with 224 rows and 3 variables:
 \describe{
@@ -19,6 +19,6 @@ A data frame with 224 rows and 3 variables:
 biomedicalrevenue
 }
 \description{
-Annual revenues of top biomedical companies from 2011 to 2018.
+Annual revenues of top biomedical companies from 2011 to 2018
 }
 \keyword{datasets}

@@ -1,15 +1,25 @@
-ggcharts
-================
 
-[![R build status](https://github.com/thomas-neitmann/ggcharts/workflows/R-CMD-check/badge.svg)](https://github.com/thomas-neitmann/ggcharts/actions) [![CRAN Version](https://www.r-pkg.org/badges/version/ggcharts?color=green)](https://cran.r-project.org/package=ggcharts) [![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/ggcharts?color=green)](https://cran.r-project.org/package=ggcharts) [![Lifecycle Status](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+# ggcharts <img src="man/figures/ggcharts_hex.png" align="right" width="200"/>
 
-Overview
---------
+[![R build
+status](https://github.com/thomas-neitmann/ggcharts/workflows/R-CMD-check/badge.svg)](https://github.com/thomas-neitmann/ggcharts/actions)
+[![CRAN
+Version](https://www.r-pkg.org/badges/version/ggcharts?color=green)](https://cran.r-project.org/package=ggcharts)
+[![Total
+Downloads](http://cranlogs.r-pkg.org/badges/grand-total/ggcharts?color=green)](https://cran.r-project.org/package=ggcharts)
+[![Lifecycle
+Status](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-`{ggcharts}` provides a high-level `{ggplot2}` interface for creating common charts. Its aim is both simple and ambitious: to get you from your data visualization idea to an actual plot faster. How so? By taking care of a lot of data preprocessing, obscure `{ggplot2}` details and plot styling for you. The resulting plots are `ggplot` objects and can be further customized using any `{ggplot2}` function.
+## Overview
 
-Installation
-------------
+`{ggcharts}` provides a high-level `{ggplot2}` interface for creating
+common charts. Its aim is both simple and ambitious: to get you from
+your data visualization idea to an actual plot faster. How so? By taking
+care of a lot of data preprocessing, obscure `{ggplot2}` details and
+plot styling for you. The resulting plots are `ggplot` objects and can
+be further customized using any `{ggplot2}` function.
+
+## Installation
 
 The package is available from CRAN.
 
@@ -17,7 +27,8 @@ The package is available from CRAN.
 install.packages("ggcharts")
 ```
 
-Alternatively, you can install the latest development version from GitHub.
+Alternatively, you can install the latest development version from
+GitHub.
 
 ``` r
 if (!"remotes" %in% installed.packages()) {
@@ -26,18 +37,24 @@ if (!"remotes" %in% installed.packages()) {
 remotes::install_github("thomas-neitmann/ggcharts", upgrade = "never")
 ```
 
-If you get an error when trying to install from GitHub, run this code and then try to install once again.
+If you get an error when trying to install from GitHub, run this code
+and then try to install once again.
 
 ``` r
 Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS = "true")
 ```
 
-If the installation still fails please open an [issue](https://github.com/thomas-neitmann/ggcharts/issues).
+If the installation still fails please open an
+[issue](https://github.com/thomas-neitmann/ggcharts/issues).
 
-Why ggcharts?
--------------
+## Why ggcharts?
 
-Thanks to `{ggplot2}` you can create beautiful plots in `R`. However, it can often take quite a bit of effort to get from a data visualization idea to an actual plot. As an example, let's say you want to create a faceted bar chart displaying the top 10 within each facet ordered from highest to lowest. What sounds simple is actually pretty hard to achieve. Have a look:
+Thanks to `{ggplot2}` you can create beautiful plots in `R`. However, it
+can often take quite a bit of effort to get from a data visualization
+idea to an actual plot. As an example, let’s say you want to create a
+faceted bar chart displaying the top 10 within each facet ordered from
+highest to lowest. What sounds simple is actually pretty hard to
+achieve. Have a look:
 
 ``` r
 library(dplyr)
@@ -58,9 +75,11 @@ biomedicalrevenue %>%
   facet_wrap(vars(year), scales = "free_y")
 ```
 
-<img src="man/figures/README-motivation-1.png" width="100%" />
+<img src="man/figures/README-motivation-1.svg" width="100%" />
 
-That's a lot of code! And you likely never heard of some of the functions involved. With `{ggcharts}` you can create the same plot (actually an even better looking one) in almost a single line of code.
+That’s a lot of code\! And you likely never heard of some of the
+functions involved. With `{ggcharts}` you can create the same plot
+(actually an even better looking one) in almost a single line of code.
 
 ``` r
 biomedicalrevenue %>%
@@ -68,10 +87,9 @@ biomedicalrevenue %>%
   bar_chart(x = company, y = revenue, facet = year, top_n = 10)
 ```
 
-<img src="man/figures/README-motivation_continued-1.png" width="100%" />
+<img src="man/figures/README-motivation_continued-1.svg" width="100%" />
 
-Gallery
--------
+## Gallery
 
 ### Charts
 
@@ -81,7 +99,7 @@ line_chart(data = revenue_wide, x = year, y = Roche:Bayer) +
   labs(x = "Year", y = "Revenue (Billion USD)")
 ```
 
-![](man/figures/README-ggcharts_line_chart-1.png)
+<img src="man/figures/README-ggcharts_line_chart-1.svg" width="80%" />
 
 ``` r
 biomedicalrevenue %>%
@@ -98,7 +116,7 @@ biomedicalrevenue %>%
   )
 ```
 
-![](man/figures/README-ggcharts_lollipop_chart-1.png)
+<img src="man/figures/README-ggcharts_lollipop_chart-1.svg" width="80%" />
 
 ``` r
 data("popeurope")
@@ -121,7 +139,7 @@ dumbbell_chart(
   )
 ```
 
-![](man/figures/README-ggcharts_dumbbell_chart-1.png)
+<img src="man/figures/README-ggcharts_dumbbell_chart-1.svg" width="80%" />
 
 ``` r
 data(mtcars)
@@ -134,7 +152,7 @@ mtcars_z <- dplyr::transmute(
 diverging_bar_chart(data = mtcars_z, x = model, y = hpz)
 ```
 
-![](man/figures/README-ggcharts_diverging_bar_chart-1.png)
+<img src="man/figures/README-ggcharts_diverging_bar_chart-1.svg" width="80%" />
 
 ``` r
 diverging_lollipop_chart(
@@ -146,14 +164,14 @@ diverging_lollipop_chart(
 )
 ```
 
-![](man/figures/README-ggcharts_diverging_lollipop_chart-1.png)
+<img src="man/figures/README-ggcharts_diverging_lollipop_chart-1.svg" width="80%" />
 
 ``` r
 data("popch")
 pyramid_chart(data = popch, x = age, y = pop, group = sex)
 ```
 
-![](man/figures/README-unnamed-chunk-2-1.png)
+<img src="man/figures/README-unnamed-chunk-2-1.svg" width="80%" />
 
 ### Themes
 
@@ -162,18 +180,18 @@ ggcharts_set_theme("theme_hermit")
 bar_chart(data = diamonds, x = cut)
 ```
 
-![](man/figures/README-ggcharts_theme_hermit-1.png)
+<img src="man/figures/README-ggcharts_theme_hermit-1.svg" width="80%" />
 
 ``` r
 ggcharts_set_theme("theme_ng")
 bar_chart(data = diamonds, x = cut)
 ```
 
-![](man/figures/README-ggcharts_theme_ng-1.png)
+<img src="man/figures/README-ggcharts_theme_ng-1.svg" width="80%" />
 
 ``` r
 ggcharts_set_theme("theme_nightblue")
 bar_chart(data = diamonds, x = cut)
 ```
 
-![](man/figures/README-ggcharts_theme_nightblue-1.png)
+<img src="man/figures/README-ggcharts_theme_nightblue-1.svg" width="80%" />

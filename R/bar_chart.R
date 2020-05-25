@@ -73,8 +73,8 @@
 #' ## Highlight a single bar
 #' bar_chart(revenue2018, company, revenue, top_n = 10, highlight = "Roche")
 #'
-#' ## Use facets to show the top 10 companies over the years
-#' bar_chart(biomedicalrevenue, company, revenue, facet = year, top_n = 10)
+#' ## Use facets to show the top 5 companies over the years
+#' bar_chart(biomedicalrevenue, company, revenue, facet = year, top_n = 5)
 #'
 #' @import ggplot2
 #' @importFrom magrittr %>%

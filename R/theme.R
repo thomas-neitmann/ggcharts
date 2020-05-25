@@ -26,7 +26,7 @@
 #' ggcharts_set_theme("theme_ng")
 #' bar_chart(diamonds, cut)
 #'
-#' ggcharts_set_theme("theme_nightblue", base_size = 16, base_family = "serif")
+#' ggcharts_set_theme("theme_nightblue", base_size = 18, base_family = "serif")
 #' bar_chart(diamonds, cut)
 #'
 #' ## Restore the default
@@ -76,6 +76,7 @@ ggcharts_set_theme <- function(theme, ...) {
 #'
 #' @param base_size \code{numeric}. Base font size in pt
 #' @param base_family \code{character}. Base font family
+#' @param header_family \code{character}. Font family for title and subtitle
 #' @param axis \code{character}. Where to draw an axis line
 #' @param ticks \code{character}. Where to draw axis ticks
 #' @param grid \code{character}. Where to draw grid lines
@@ -121,6 +122,7 @@ ggcharts_set_theme <- function(theme, ...) {
 #' @export
 theme_ggcharts <- function(base_size = 14,
                            base_family = "",
+                           header_family = "",
                            axis = "",
                            ticks = "",
                            grid = "") {
@@ -129,6 +131,7 @@ theme_ggcharts <- function(base_size = 14,
     type = "light",
     base_size = base_size,
     base_family = base_family,
+    header_family = header_family,
     axis = axis,
     ticks = ticks,
     grid = grid,
@@ -182,6 +185,7 @@ theme_ggcharts <- function(base_size = 14,
 #' @export
 theme_hermit <- function(base_size = 14,
                          base_family = "",
+                         header_family = "",
                          axis = "",
                          ticks = "",
                          grid = "") {
@@ -190,6 +194,7 @@ theme_hermit <- function(base_size = 14,
     type = "dark",
     base_size = base_size,
     base_family = base_family,
+    header_family = header_family,
     axis = axis,
     ticks = ticks,
     grid = grid,
@@ -243,6 +248,7 @@ theme_hermit <- function(base_size = 14,
 #' @export
 theme_ng <- function(base_size = 14,
                      base_family = "",
+                     header_family = "",
                      axis = "",
                      ticks = "",
                      grid = "") {
@@ -251,6 +257,7 @@ theme_ng <- function(base_size = 14,
     type = "dark",
     base_size = base_size,
     base_family = base_family,
+    header_family = header_family,
     axis = axis,
     ticks = ticks,
     grid = grid,
@@ -263,7 +270,7 @@ theme_ng <- function(base_size = 14,
 
 #' Theme Nightblue
 #'
-#' A theme inspired by the RStudio nightblue editor theme
+#' A theme inspired by the RStudio 'Tomorrow Night Blue' editor theme
 #'
 #' @inheritParams theme_ggcharts
 #'
@@ -304,6 +311,7 @@ theme_ng <- function(base_size = 14,
 #' @export
 theme_nightblue <- function(base_size = 14,
                             base_family = "",
+                            header_family = "",
                             axis = "",
                             ticks = "",
                             grid = "") {
@@ -312,6 +320,7 @@ theme_nightblue <- function(base_size = 14,
     type = "dark",
     base_size = base_size,
     base_family = base_family,
+    header_family = header_family,
     axis = axis,
     ticks = ticks,
     grid = grid,
@@ -326,6 +335,7 @@ new_ggcharts_theme <- function(name,
                                type,
                                base_size = 14,
                                base_family = "",
+                               header_family = "",
                                text_color,
                                background_color,
                                foreground_color,
@@ -363,6 +373,8 @@ new_ggcharts_theme <- function(name,
       panel.grid.minor.x = if (grepl("x", grid)) elm_grid_minor else blank,
       panel.grid.minor.y = if (grepl("y", grid)) elm_grid_minor else blank,
       plot.background = element_rect(fill = background_color, color = background_color),
+      plot.subtitle = element_text(family = header_family),
+      plot.title = element_text(family = header_family),
       strip.background = blank,
       strip.text = element_text(
         margin = margin(1, 0, 1, 0, "mm"),

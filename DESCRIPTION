@@ -5,7 +5,9 @@ Version: 0.2.1
 Authors@R: c(
     person("Thomas", "Neitmann", , "th.neitmann@gmail.com", c("aut", "cre")),
     person("Julia", "Silge", role = c("ctb", "cph")),
-    person("David", "Robinson", role = c("ctb", "cph"))
+    person("David", "Robinson", role = c("ctb", "cph")),
+    person("IBM", role = "cph", comment = "IBM Plex Sans"),
+    person("Google", role = "cph", comment = "Open Sans")
     )
 Description: Streamline the creation of common charts by taking care of a lot of
     data preprocessing and plot customization for the user. Provides a
@@ -19,7 +21,9 @@ Imports:
     lifecycle,
     magrittr,
     patchwork,
-    rlang
+    rlang,
+    showtext,
+    sysfonts,
 Suggests:
     gapminder,
     knitr,

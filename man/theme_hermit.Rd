@@ -7,6 +7,7 @@
 theme_hermit(
   base_size = 14,
   base_family = "",
+  header_family = "",
   axis = "",
   ticks = "",
   grid = ""
@@ -16,6 +17,8 @@ theme_hermit(
 \item{base_size}{\code{numeric}. Base font size in pt}
 
 \item{base_family}{\code{character}. Base font family}
+
+\item{header_family}{\code{character}. Font family for title and subtitle}
 
 \item{axis}{\code{character}. Where to draw an axis line}
 

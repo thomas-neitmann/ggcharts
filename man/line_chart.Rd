@@ -32,7 +32,7 @@ to the \code{group} argument. If the data is in wide format pass a selection of 
 to the \code{y} argument.
 }
 \examples{
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 data("biomedicalrevenue")
 data("revenue_wide")
 

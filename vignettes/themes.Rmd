@@ -115,9 +115,10 @@ hist + theme_ng(axis = "xy", ticks = "y")
 ### `theme_hermit`
 
 ```{r}
+spec <- highlight_spec("Roche", "yellow", "#7A7A7A")
 biomedicalrevenue %>%
   filter(year %in% c(2011, 2013, 2015, 2017)) %>%
-  lollipop_chart(company, revenue, facet = year, highlight = "Roche", line_color = "yellow", top_n = 5) +
+  lollipop_chart(company, revenue, facet = year, highlight = spec, top_n = 5) +
   theme_hermit(axis = "y", grid = "Y")
 ```
 
@@ -132,3 +133,6 @@ biomedicalrevenue %>%
   theme_nightblue(axis = "x", ticks = "x", grid = "XY")
 ```
 
+```{r cleanup, include=FALSE}
+ggcharts_set_theme("theme_ggcharts")
+```
