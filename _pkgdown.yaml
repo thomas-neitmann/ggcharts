@@ -4,6 +4,7 @@ template:
     ganalytics: UA-161676274-1
 figures:
   dev: svglite::svglite
+  fig.showtext: TRUE
 reference:
 - title: Charts
 - contents:
