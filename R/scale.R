@@ -6,21 +6,23 @@ get_palette_ggcharts <- function(n) {
 }
 
 #' @export
-scale_color_ggcharts <- function(...) {
+scale_color_ggcharts <- function(name = NULL, ...) {
   discrete_scale(
     aesthetics = "colour",
     scale_name = "ggcharts",
     palette = get_palette_ggcharts,
+    name = name,
     ...
   )
 }
 
 #' @export
-scale_fill_ggcharts <- function(...) {
+scale_fill_ggcharts <- function(name = NULL, ...) {
   discrete_scale(
     aesthetics = "fill",
     scale_name = "ggcharts",
     palette = get_palette_ggcharts,
+    name = name,
     ...
   )
 }
@@ -34,21 +36,23 @@ get_palette_hermit <- function(n) {
 }
 
 #' @export
-scale_color_hermit <- function(...) {
+scale_color_hermit <- function(name = NULL, ...) {
   discrete_scale(
     aesthetics = "colour",
     scale_name = "hermit",
     palette = get_palette_hermit,
+    name = name,
     ...
   )
 }
 
 #' @export
-scale_fill_hermit <- function(...) {
+scale_fill_hermit <- function(name = NULL, ...) {
   discrete_scale(
     aesthetics = "fill",
     scale_name = "hermit",
     palette = get_palette_hermit,
+    name = name,
     ...
   )
 }
@@ -62,21 +66,23 @@ get_palette_nightblue <- function(n) {
 }
 
 #' @export
-scale_color_nightblue <- function(...) {
+scale_color_nightblue <- function(name = NULL, ...) {
   discrete_scale(
     aesthetics = "colour",
     scale_name = "nightblue",
     palette = get_palette_nightblue,
+    name = name,
     ...
   )
 }
 
 #' @export
-scale_fill_nightblue <- function(...) {
+scale_fill_nightblue <- function(name = NULL, ...) {
   discrete_scale(
     aesthetics = "fill",
     scale_name = "nightblue",
     palette = get_palette_nightblue,
+    name = name,
     ...
   )
 }
@@ -90,21 +96,23 @@ get_palette_ng <- function(n) {
 }
 
 #' @export
-scale_color_ng <- function(...) {
+scale_color_ng <- function(name = NULL, ...) {
   discrete_scale(
     aesthetics = "colour",
     scale_name = "ng",
     palette = get_palette_ng,
+    name = name,
     ...
   )
 }
 
 #' @export
-scale_fill_ng <- function(...) {
+scale_fill_ng <- function(name = NULL, ...) {
   discrete_scale(
     aesthetics = "fill",
     scale_name = "ng",
     palette = get_palette_ng,
+    name = name,
     ...
   )
 }
