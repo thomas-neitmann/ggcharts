@@ -20,7 +20,7 @@
 #' @author Thomas Neitmann
 #'
 #' @examples
-#' library(dplyr)
+#' library(dplyr, warn.conflicts = FALSE)
 #' data("biomedicalrevenue")
 #' data("revenue_wide")
 #'

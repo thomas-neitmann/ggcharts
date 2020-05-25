@@ -26,7 +26,7 @@
 #' ggcharts_set_theme("theme_ng")
 #' bar_chart(diamonds, cut)
 #'
-#' ggcharts_set_theme("theme_nightblue", base_size = 16, base_family = "serif")
+#' ggcharts_set_theme("theme_nightblue", base_size = 18, base_family = "serif")
 #' bar_chart(diamonds, cut)
 #'
 #' ## Restore the default

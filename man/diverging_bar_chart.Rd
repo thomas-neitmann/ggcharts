@@ -60,8 +60,8 @@ diverging_bar_chart(mtcars_z, model, hpz)
 ## Change the colors
 diverging_bar_chart(mtcars_z, model, hpz, bar_color = c("darkgreen", "darkred"))
 
-## Increase the axis label font size
-diverging_bar_chart(mtcars_z, model, hpz, text_size = 14)
+## Decrease the axis label font size
+diverging_bar_chart(mtcars_z, model, hpz, text_size = 8)
 
 ## Display the axis label text in the same color as the bars
 diverging_bar_chart(mtcars_z, model, hpz, text_color = c("#1F77B4", "#FF7F0E"))

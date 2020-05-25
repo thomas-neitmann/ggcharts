@@ -6,8 +6,8 @@
 \usage{
 theme_ng(
   base_size = 14,
-  base_family = "Open Sans",
-  header_family = "IBM Plex Sans",
+  base_family = "",
+  header_family = "",
   axis = "",
   ticks = "",
   grid = ""
