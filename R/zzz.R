@@ -19,7 +19,7 @@
     bolditalic = "OpenSans-SemiBoldItalic.ttf"
   )
 
-  if (Sys.getenv("IN_PKGDOWN") != "") {
+  if (pkgdown::in_pkgdown()) {
     showtext::showtext_opts(dpi = 192)
     message("Running in pkgdown.")
     trace(
@@ -27,6 +27,8 @@
       exit = showtext::showtext_begin,
       print = FALSE
     )
+  } else {
+    message("Not running in pkgdown.")
   }
 
   showtext::showtext_auto(TRUE)
