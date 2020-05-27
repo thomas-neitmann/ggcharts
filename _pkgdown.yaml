@@ -2,9 +2,6 @@ template:
   params:
     bootswatch: slate
     ganalytics: UA-161676274-1
-figures:
-  dev: svglite::svglite
-  fig.ext: svg
 reference:
 - title: Charts
 - contents:
