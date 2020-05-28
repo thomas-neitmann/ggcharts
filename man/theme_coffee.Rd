@@ -5,15 +5,9 @@
 \title{Theme Coffee}
 \usage{
 theme_coffee(
-  name,
-  type,
   base_size = 14,
-  base_family = "",
-  header_family = "",
-  text_color,
-  background_color,
-  foreground_color,
-  grid_color,
+  base_family = "Cooper Hewitt",
+  header_family = "Cooper Hewitt",
   axis = "",
   ticks = "",
   grid = ""

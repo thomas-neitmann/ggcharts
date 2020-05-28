@@ -372,15 +372,9 @@ theme_nightblue <- function(base_size = 14,
 #'   theme_coffee(grid = "X", axis = "x", ticks = "x")
 #'
 #' @export
-theme_coffee <- function(name,
-                         type,
-                         base_size = 14,
-                         base_family = "",
-                         header_family = "",
-                         text_color,
-                         background_color,
-                         foreground_color,
-                         grid_color,
+theme_coffee <- function(base_size = 14,
+                         base_family = "Cooper Hewitt",
+                         header_family = "Cooper Hewitt",
                          axis = "",
                          ticks = "",
                          grid = "") {
