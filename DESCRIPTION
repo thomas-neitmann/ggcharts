@@ -1,17 +1,17 @@
 Package: ggcharts
 Type: Package
-Title: Shorten the Distance from Data Visualization Idea to Actual Plot
+Title: Get You to Your Desired Plot Faster
 Version: 0.2.1
 Authors@R: c(
-    person("Thomas", "Neitmann", , "th.neitmann@gmail.com", c("aut", "cre")),
+    person("Thomas", "Neitmann", , "th.neitmann@gmail.com", c("aut", "cre", "cph")),
     person("Julia", "Silge", role = c("ctb", "cph")),
     person("David", "Robinson", role = c("ctb", "cph")),
     person("IBM", role = "cph", comment = "IBM Plex Sans"),
     person("Google", role = "cph", comment = "Open Sans")
     )
-Description: Streamline the creation of common charts by taking care of a lot of
+Description: Streamlines the creation of common charts by taking care of a lot of
     data preprocessing and plot customization for the user. Provides a
-    high-level interface to create plots using 'ggplot2'.
+    high-level interface for creating plots using 'ggplot2'.
 Depends:
     R (>= 3.5.0),
     ggplot2 (>= 3.0.0)
@@ -23,7 +23,7 @@ Imports:
     patchwork,
     rlang,
     showtext,
-    sysfonts,
+    sysfonts
 Suggests:
     gapminder,
     knitr,
@@ -33,10 +33,9 @@ Suggests:
     spelling,
     tibble,
     tidyr,
-    testthat (>= 2.1.0),
-    vdiffr
+    testthat (>= 2.1.0)
 License: MIT + file LICENSE
-URL: https://github.com/thomas-neitmann/ggcharts
+URL: https://thomas-neitmann.github.io/ggcharts/index.html, https://github.com/thomas-neitmann/ggcharts
 BugReports: https://github.com/thomas-neitmann/ggcharts/issues
 Encoding: UTF-8
 LazyData: true
