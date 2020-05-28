@@ -2,6 +2,7 @@
   font_dir <- system.file("fonts", package = "ggcharts")
   sysfonts::font_paths(file.path(font_dir, "IBMPlexSans"))
   sysfonts::font_paths(file.path(font_dir, "OpenSans"))
+  sysfonts::font_paths(file.path(font_dir, "CooperHewitt"))
 
   sysfonts::font_add(
     family = "IBM Plex Sans",
@@ -17,6 +18,14 @@
     bold = "OpenSans-SemiBold.ttf",
     italic = "OpenSans-Italic.ttf",
     bolditalic = "OpenSans-SemiBoldItalic.ttf"
+  )
+
+  sysfonts::font_add(
+    family = "Cooper Hewitt",
+    regular = "CooperHewitt-Medium.otf",
+    bold = "CooperHewitt-Semibold.otf",
+    italic = "CooperHewitt-MediumItalic.otf",
+    bolditalic = "CooperHewitt-SemiboldItalic.otf"
   )
 
   if (Sys.getenv("IN_PKGDOWN") == "true") {
