@@ -179,9 +179,10 @@
 <h3 class="hasAnchor">
 <a href="#theme_hermit" class="anchor"></a><code>theme_hermit</code>
 </h3>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">biomedicalrevenue</span> <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">spec</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/highlight_spec.html">highlight_spec</a></span>(<span class="st">"Roche"</span>, <span class="st">"yellow"</span>, <span class="st">"#7A7A7A"</span>)
+<span class="no">biomedicalrevenue</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">year</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">2011</span>, <span class="fl">2013</span>, <span class="fl">2015</span>, <span class="fl">2017</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/lollipop_chart.html">lollipop_chart</a></span>(<span class="no">company</span>, <span class="no">revenue</span>, <span class="kw">facet</span> <span class="kw">=</span> <span class="no">year</span>, <span class="kw">highlight</span> <span class="kw">=</span> <span class="st">"Roche"</span>, <span class="kw">line_color</span> <span class="kw">=</span> <span class="st">"yellow"</span>, <span class="kw">top_n</span> <span class="kw">=</span> <span class="fl">5</span>) +
+  <span class="fu"><a href="../reference/lollipop_chart.html">lollipop_chart</a></span>(<span class="no">company</span>, <span class="no">revenue</span>, <span class="kw">facet</span> <span class="kw">=</span> <span class="no">year</span>, <span class="kw">highlight</span> <span class="kw">=</span> <span class="no">spec</span>, <span class="kw">top_n</span> <span class="kw">=</span> <span class="fl">5</span>) +
   <span class="fu"><a href="../reference/theme_hermit.html">theme_hermit</a></span>(<span class="kw">axis</span> <span class="kw">=</span> <span class="st">"y"</span>, <span class="kw">grid</span> <span class="kw">=</span> <span class="st">"Y"</span>)</pre></body></html></div>
 <p><img src="themes_files/figure-html/unnamed-chunk-13-1.png" width="576"></p>
 </div>

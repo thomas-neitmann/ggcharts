@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Theme Nightblue — theme_nightblue • ggcharts</title>
+<title>Theme Coffee — theme_coffee • ggcharts</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Theme Nightblue — theme_nightblue" />
-<meta property="og:description" content="A theme inspired by the RStudio 'Tomorrow Night Blue' editor theme" />
+<meta property="og:title" content="Theme Coffee — theme_coffee" />
+<meta property="og:description" content="A theme inspired by coffee" />
 
 
 
@@ -141,16 +141,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Theme Nightblue</h1>
+    <h1>Theme Coffee</h1>
     <small class="dont-index">Source: <a href='https://github.com/thomas-neitmann/ggcharts/blob/master/R/theme.R'><code>R/theme.R</code></a></small>
-    <div class="hidden name"><code>theme_nightblue.Rd</code></div>
+    <div class="hidden name"><code>theme_coffee.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A theme inspired by the RStudio 'Tomorrow Night Blue' editor theme</p>
+    <p>A theme inspired by coffee</p>
     </div>
 
-    <pre class="usage"><span class='fu'>theme_nightblue</span>(
+    <pre class="usage"><span class='fu'>theme_coffee</span>(
   <span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14</span>,
   <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>"Cooper Hewitt"</span>,
   <span class='kw'>header_family</span> <span class='kw'>=</span> <span class='st'>"Cooper Hewitt"</span>,
@@ -201,21 +201,21 @@
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 
 <span class='no'>scatter</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mtcars</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>hp</span>, <span class='no'>mpg</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#EBBBFF"</span>)
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#F4C95D"</span>)
 
-<span class='no'>scatter</span> + <span class='fu'>theme_nightblue</span>()</div><div class='img'><img src='theme_nightblue-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='no'>scatter</span> + <span class='fu'>theme_nightblue</span>(<span class='kw'>grid</span> <span class='kw'>=</span> <span class='st'>"XY"</span>)</div><div class='img'><img src='theme_nightblue-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='no'>scatter</span> + <span class='fu'>theme_nightblue</span>(<span class='kw'>axis</span> <span class='kw'>=</span> <span class='st'>"xy"</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='st'>"xy"</span>)</div><div class='img'><img src='theme_nightblue-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'><a href='bar_chart.html'>bar_chart</a></span>(<span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>, <span class='no'>cut</span>, <span class='kw'>bar_color</span> <span class='kw'>=</span> <span class='st'>"darkorange"</span>) +
-  <span class='fu'>theme_nightblue</span>(<span class='kw'>axis</span> <span class='kw'>=</span> <span class='st'>"y"</span>, <span class='kw'>grid</span> <span class='kw'>=</span> <span class='st'>"Y"</span>)</div><div class='img'><img src='theme_nightblue-4.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'><a href='bar_chart.html'>column_chart</a></span>(<span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>, <span class='no'>cut</span>, <span class='kw'>bar_color</span> <span class='kw'>=</span> <span class='st'>"darkorange"</span>) +
-  <span class='fu'>theme_nightblue</span>(<span class='kw'>axis</span> <span class='kw'>=</span> <span class='st'>"x"</span>, <span class='kw'>grid</span> <span class='kw'>=</span> <span class='st'>"X"</span>)</div><div class='img'><img src='theme_nightblue-5.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='no'>scatter</span> + <span class='fu'>theme_coffee</span>()</div><div class='img'><img src='theme_coffee-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='no'>scatter</span> + <span class='fu'>theme_coffee</span>(<span class='kw'>grid</span> <span class='kw'>=</span> <span class='st'>"XY"</span>)</div><div class='img'><img src='theme_coffee-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='no'>scatter</span> + <span class='fu'>theme_coffee</span>(<span class='kw'>axis</span> <span class='kw'>=</span> <span class='st'>"xy"</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='st'>"xy"</span>)</div><div class='img'><img src='theme_coffee-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='bar_chart.html'>bar_chart</a></span>(<span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>, <span class='no'>cut</span>, <span class='kw'>bar_color</span> <span class='kw'>=</span> <span class='st'>"#F4C95D"</span>) +
+  <span class='fu'>theme_coffee</span>(<span class='kw'>axis</span> <span class='kw'>=</span> <span class='st'>"y"</span>, <span class='kw'>grid</span> <span class='kw'>=</span> <span class='st'>"Y"</span>)</div><div class='img'><img src='theme_coffee-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='bar_chart.html'>column_chart</a></span>(<span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>, <span class='no'>cut</span>, <span class='kw'>bar_color</span> <span class='kw'>=</span> <span class='st'>"#F4C95D"</span>) +
+  <span class='fu'>theme_coffee</span>(<span class='kw'>axis</span> <span class='kw'>=</span> <span class='st'>"x"</span>, <span class='kw'>grid</span> <span class='kw'>=</span> <span class='st'>"X"</span>)</div><div class='img'><img src='theme_coffee-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='kw pkg'>ggcharts</span><span class='kw ns'>::</span><span class='no'><a href='biomedicalrevenue.html'>biomedicalrevenue</a></span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>company</span> <span class='kw'>==</span> <span class='st'>"Roche"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>year</span>, <span class='no'>revenue</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span>(<span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"yellow"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span>(<span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"#F4C95D"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span>(<span class='kw'>expand</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/expansion.html'>expand_scale</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>.05</span>))) +
-  <span class='fu'>theme_nightblue</span>(<span class='kw'>grid</span> <span class='kw'>=</span> <span class='st'>"X"</span>, <span class='kw'>axis</span> <span class='kw'>=</span> <span class='st'>"x"</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='st'>"x"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `expand_scale()` is deprecated; use `expansion()` instead.</span></div><div class='img'><img src='theme_nightblue-6.png' alt='' width='700' height='433' /></div><div class='input'>
+  <span class='fu'>theme_coffee</span>(<span class='kw'>grid</span> <span class='kw'>=</span> <span class='st'>"X"</span>, <span class='kw'>axis</span> <span class='kw'>=</span> <span class='st'>"x"</span>, <span class='kw'>ticks</span> <span class='kw'>=</span> <span class='st'>"x"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `expand_scale()` is deprecated; use `expansion()` instead.</span></div><div class='img'><img src='theme_coffee-6.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
