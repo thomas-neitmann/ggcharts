@@ -121,8 +121,8 @@ ggcharts_set_theme <- function(theme, ...) {
 #'
 #' @export
 theme_ggcharts <- function(base_size = 14,
-                           base_family = "",
-                           header_family = "",
+                           base_family = "Cooper Hewitt",
+                           header_family = "Cooper Hewitt",
                            axis = "",
                            ticks = "",
                            grid = "") {
@@ -184,8 +184,8 @@ theme_ggcharts <- function(base_size = 14,
 #'
 #' @export
 theme_hermit <- function(base_size = 14,
-                         base_family = "",
-                         header_family = "",
+                         base_family = "Cooper Hewitt",
+                         header_family = "Cooper Hewitt",
                          axis = "",
                          ticks = "",
                          grid = "") {
@@ -247,8 +247,8 @@ theme_hermit <- function(base_size = 14,
 #'
 #' @export
 theme_ng <- function(base_size = 14,
-                     base_family = "",
-                     header_family = "",
+                     base_family = "Cooper Hewitt",
+                     header_family = "Cooper Hewitt",
                      axis = "",
                      ticks = "",
                      grid = "") {
@@ -310,8 +310,8 @@ theme_ng <- function(base_size = 14,
 #'
 #' @export
 theme_nightblue <- function(base_size = 14,
-                            base_family = "",
-                            header_family = "",
+                            base_family = "Cooper Hewitt",
+                            header_family = "Cooper Hewitt",
                             axis = "",
                             ticks = "",
                             grid = "") {

@@ -6,8 +6,8 @@
 \usage{
 theme_nightblue(
   base_size = 14,
-  base_family = "",
-  header_family = "",
+  base_family = "Cooper Hewitt",
+  header_family = "Cooper Hewitt",
   axis = "",
   ticks = "",
   grid = ""
