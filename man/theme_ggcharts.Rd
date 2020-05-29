@@ -5,7 +5,7 @@
 \title{Theme ggcharts}
 \usage{
 theme_ggcharts(
-  base_size = 14,
+  base_size = 13,
   base_family = "Cooper Hewitt",
   header_family = "Cooper Hewitt",
   axis = "",
