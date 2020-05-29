@@ -120,7 +120,7 @@ ggcharts_set_theme <- function(theme, ...) {
 #'   theme_ggcharts(grid = "X", axis = "x", ticks = "x")
 #'
 #' @export
-theme_ggcharts <- function(base_size = 14,
+theme_ggcharts <- function(base_size = 13,
                            base_family = "Cooper Hewitt",
                            header_family = "Cooper Hewitt",
                            axis = "",
@@ -183,7 +183,7 @@ theme_ggcharts <- function(base_size = 14,
 #'   theme_hermit(grid = "X", axis = "x", ticks = "x")
 #'
 #' @export
-theme_hermit <- function(base_size = 14,
+theme_hermit <- function(base_size = 13,
                          base_family = "Cooper Hewitt",
                          header_family = "Cooper Hewitt",
                          axis = "",
@@ -246,7 +246,7 @@ theme_hermit <- function(base_size = 14,
 #'   theme_ng(grid = "X", axis = "x", ticks = "x")
 #'
 #' @export
-theme_ng <- function(base_size = 14,
+theme_ng <- function(base_size = 13,
                      base_family = "Cooper Hewitt",
                      header_family = "Cooper Hewitt",
                      axis = "",
@@ -309,7 +309,7 @@ theme_ng <- function(base_size = 14,
 #'   theme_nightblue(grid = "X", axis = "x", ticks = "x")
 #'
 #' @export
-theme_nightblue <- function(base_size = 14,
+theme_nightblue <- function(base_size = 13,
                             base_family = "Cooper Hewitt",
                             header_family = "Cooper Hewitt",
                             axis = "",
@@ -372,7 +372,7 @@ theme_nightblue <- function(base_size = 14,
 #'   theme_coffee(grid = "X", axis = "x", ticks = "x")
 #'
 #' @export
-theme_coffee <- function(base_size = 14,
+theme_coffee <- function(base_size = 13,
                          base_family = "Cooper Hewitt",
                          header_family = "Cooper Hewitt",
                          axis = "",
@@ -396,7 +396,7 @@ theme_coffee <- function(base_size = 14,
 
 new_ggcharts_theme <- function(name,
                                type,
-                               base_size = 14,
+                               base_size = 13,
                                base_family = "",
                                header_family = "",
                                text_color,
@@ -423,7 +423,10 @@ new_ggcharts_theme <- function(name,
   elm_axis_line <- element_line(color = foreground_color, size = .4)
   elm_tick_line <- elm_axis_line
 
-  new_theme <- theme_minimal(base_size = base_size, base_family = base_family) +
+  new_theme <- theme_minimal(
+    base_size = base_size,
+    base_family = base_family
+  ) +
     theme(
       axis.line.x = if (grepl("x", axis)) elm_axis_line else blank,
       axis.line.y = if (grepl("y", axis)) elm_axis_line else blank,
@@ -436,12 +439,13 @@ new_ggcharts_theme <- function(name,
       panel.grid.minor.x = if (grepl("x", grid)) elm_grid_minor else blank,
       panel.grid.minor.y = if (grepl("y", grid)) elm_grid_minor else blank,
       plot.background = element_rect(fill = background_color, color = background_color),
-      plot.subtitle = element_text(family = header_family),
-      plot.title = element_text(family = header_family),
+      plot.caption = element_text(size = rel(0.7)),
+      plot.subtitle = element_text(family = header_family, size = rel(1.1)),
+      plot.title = element_text(family = header_family, face = "bold"),
       strip.background = blank,
       strip.text = element_text(
         margin = margin(1, 0, 1, 0, "mm"),
-        face = "bold",
+        size = rel(0.9),
         hjust = 0,
         color = text_color
       ),
