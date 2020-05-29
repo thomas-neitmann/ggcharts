@@ -22,9 +22,9 @@
 
   sysfonts::font_add(
     family = "Cooper Hewitt",
-    regular = "CooperHewitt-Medium.otf",
+    regular = "CooperHewitt-Book.otf",
     bold = "CooperHewitt-Semibold.otf",
-    italic = "CooperHewitt-MediumItalic.otf",
+    italic = "CooperHewitt-BookItalic.otf",
     bolditalic = "CooperHewitt-SemiboldItalic.otf"
   )
 
