@@ -155,7 +155,7 @@ diverging_chart <- function(data, x, y,
                             line_size = 0.75,
                             point_size = 3,
                             text_color = "auto",
-                            text_size = 10) {
+                            text_size = "auto") {
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   geom <- match.arg(geom)
@@ -170,7 +170,6 @@ diverging_chart <- function(data, x, y,
     .color = ifelse(!!y >= 0, colors[1], colors[2])
   )
 
-  text_size <- pt2mm(text_size)
   limit <- max(dplyr::pull(data, !!y)) * 1.05
   if (length(text_color) == 1) text_color <- rep(text_color, 2)
 
@@ -189,13 +188,15 @@ diverging_chart <- function(data, x, y,
     coord_flip() +
     geom_text(
       data = dplyr::filter(data, !!y >= 0),
-      color = text_color[1], size = text_size,
+      color = text_color[1],
+      size = text_size,
       aes(label = !!x, y = 0, hjust = "right"),
       nudge_y = -limit * .01
     ) +
     geom_text(
       data = dplyr::filter(data, !!y < 0),
-      color = text_color[2], size = text_size,
+      color = text_color[2],
+      size = text_size,
       aes(label = !!x, y = 0, hjust = "left"),
       nudge_y = limit * .013
     ) +

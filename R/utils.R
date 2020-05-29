@@ -2,6 +2,17 @@ pt2mm <- function(x) {
   x / 2.835
 }
 
+geom_text <- function(...,
+                      size = "auto",
+                      family = ggcharts_current_theme()$text$family) {
+  if (size == "auto") {
+    size <- pt2mm(ggcharts_current_theme()$text$size)
+  } else {
+    size <- pt2mm(size)
+  }
+  ggplot2::geom_text(..., size = size, family = family)
+}
+
 reorder <- function(x, by, other = FALSE) {
   if (other) {
     x2 <- x[x != "Other"]
