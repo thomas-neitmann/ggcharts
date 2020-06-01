@@ -208,5 +208,5 @@ diverging_chart <- function(data, x, y,
     labs(x = NULL) +
     ylim(-limit, limit) +
     ggcharts_current_theme(grid = "Y") +
-    theme(axis.text.y = element_blank())
+    guides(y = guide_none())
 }
