@@ -128,7 +128,9 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "auto",
     facet = !!facet,
     fill = has_fill,
     highlight = highlight,
-    color = bar_color
+    color = bar_color,
+    other = other,
+    threshold = threshold
   )
 }
 
