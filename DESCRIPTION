@@ -9,7 +9,7 @@ Authors@R: c(
     person("IBM", role = "cph", comment = "IBM Plex Sans"),
     person("Google", role = "cph", comment = "Open Sans"),
     person("Cooper Hewitt Smithsonian Design Museum", role = "cph", comment = "Cooper Hewitt"),
-    person("Silva", "Rafael", role = "ctb")
+    person("Rafael", "Silva", role = "ctb")
     )
 Description: Streamlines the creation of common charts by taking care of a lot of
     data preprocessing and plot customization for the user. Provides a
