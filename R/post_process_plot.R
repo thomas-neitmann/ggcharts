@@ -46,9 +46,7 @@ post_process_plot <- function(plot, is_sorted = TRUE, horizontal = TRUE,
   }
 
   if (other & !is.null(threshold)) {
-    caption <-  paste(
-      "'Other' contains all categories with a value less than or equal to",
-      threshold, ".")
+    caption <-  paste0("'Other' contains all categories with a value less than or equal to", threshold, ".")
     plot <- plot + labs(caption = caption)
   }
 
