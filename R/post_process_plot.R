@@ -1,7 +1,7 @@
 #' @import ggplot2
 post_process_plot <- function(plot, is_sorted = TRUE, horizontal = TRUE,
                               facet = NULL, highlight = NULL, fill = FALSE,
-                              color = NULL) {
+                              color = NULL, other = FALSE, threshold = NULL) {
   facet <- rlang::enquo(facet)
 
   if (horizontal) {
@@ -43,6 +43,11 @@ post_process_plot <- function(plot, is_sorted = TRUE, horizontal = TRUE,
       plot <- plot + scale_x_reordered()
     }
 
+  }
+
+  if (other & !is.null(threshold)) {
+    caption <-  paste0("'Other' contains all categories with a value less than or equal to ", threshold, ".")
+    plot <- plot + labs(caption = caption)
   }
 
   plot +

@@ -143,6 +143,8 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
     facet = !!facet,
     fill = FALSE,
     highlight = highlight,
-    color = line_color
+    color = line_color,
+    other = other,
+    threshold = threshold
   )
 }
