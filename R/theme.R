@@ -31,7 +31,6 @@
 #'
 #' ## Restore the default
 #' ggcharts_set_theme("theme_ggcharts")
-#'
 #' @export
 ggcharts_get_theme <- function() {
   ggcharts_global$theme
@@ -118,7 +117,6 @@ ggcharts_set_theme <- function(theme, ...) {
 #'   geom_line(color = "steelblue", size = 1) +
 #'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
 #'   theme_ggcharts(grid = "X", axis = "x", ticks = "x")
-#'
 #' @export
 theme_ggcharts <- function(base_size = 13,
                            base_family = "Cooper Hewitt",
@@ -181,7 +179,6 @@ theme_ggcharts <- function(base_size = 13,
 #'   geom_line(color = "yellow", size = 1) +
 #'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
 #'   theme_hermit(grid = "X", axis = "x", ticks = "x")
-#'
 #' @export
 theme_hermit <- function(base_size = 13,
                          base_family = "Cooper Hewitt",
@@ -244,7 +241,6 @@ theme_hermit <- function(base_size = 13,
 #'   geom_line(color = "yellow", size = 1) +
 #'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
 #'   theme_ng(grid = "X", axis = "x", ticks = "x")
-#'
 #' @export
 theme_ng <- function(base_size = 13,
                      base_family = "Cooper Hewitt",
@@ -307,7 +303,6 @@ theme_ng <- function(base_size = 13,
 #'   geom_line(color = "yellow", size = 1) +
 #'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
 #'   theme_nightblue(grid = "X", axis = "x", ticks = "x")
-#'
 #' @export
 theme_nightblue <- function(base_size = 13,
                             base_family = "Cooper Hewitt",
@@ -370,7 +365,6 @@ theme_nightblue <- function(base_size = 13,
 #'   geom_line(color = "#F4C95D", size = 1) +
 #'   scale_y_continuous(expand = expand_scale(c(0, .05))) +
 #'   theme_coffee(grid = "X", axis = "x", ticks = "x")
-#'
 #' @export
 theme_coffee <- function(base_size = 13,
                          base_family = "Cooper Hewitt",
@@ -414,7 +408,7 @@ new_ggcharts_theme <- function(name,
     ticks <- match.arg(tolower(ticks), c("x", "y", "xy", "yx"))
   }
   if (grid != "" && grepl("[^xyXY]", grid)) {
-      rlang::abort("`grid` must only contain combinations of 'x', 'y', 'X', 'Y'.")
+    rlang::abort("`grid` must only contain combinations of 'x', 'y', 'X', 'Y'.")
   }
 
   blank <- element_blank()

@@ -75,14 +75,12 @@
 #'
 #' ## Use facets to show the top 5 companies over the years
 #' bar_chart(biomedicalrevenue, company, revenue, facet = year, top_n = 5)
-#'
 #' @import ggplot2
 #' @importFrom magrittr %>%
 #' @export
 bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "auto",
                       highlight = NULL, sort = TRUE, horizontal = TRUE,
                       top_n = NULL, threshold = NULL, other = FALSE, limit = NULL) {
-
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   facet <- rlang::enquo(facet)
@@ -90,7 +88,7 @@ bar_chart <- function(data, x, y, facet = NULL, ..., bar_color = "auto",
   has_fill <- "fill" %in% names(dots)
 
   if (length(bar_color) == 1 && bar_color == "auto") {
-    bar_color <-  auto_color()
+    bar_color <- auto_color()
   }
 
   data <- pre_process_data(
@@ -140,14 +138,14 @@ column_chart <- function(data, x, y, facet = NULL, ..., bar_color = "auto",
                          highlight = NULL, sort = NULL, horizontal = FALSE,
                          top_n = NULL, threshold = NULL, limit = NULL) {
   if (is.null(sort)) {
-    sort <- !is.numeric(dplyr::pull(data, {{x}}))
+    sort <- !is.numeric(dplyr::pull(data, {{ x }}))
   }
 
   bar_chart(
     data = data,
-    x = {{x}},
-    y = {{y}},
-    facet = {{facet}},
+    x = {{ x }},
+    y = {{ y }},
+    facet = {{ facet }},
     ...,
     bar_color = bar_color,
     highlight = highlight,

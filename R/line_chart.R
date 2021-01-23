@@ -44,7 +44,6 @@
 #'
 #' ## Select all columns starting with "B"
 #' line_chart(revenue_wide, year, starts_with("B"))
-#'
 #' @md
 #' @export
 line_chart <- function(data, x, y, group, line_color = "auto", line_size = 1) {

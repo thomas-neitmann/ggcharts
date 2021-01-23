@@ -23,14 +23,14 @@
 #'   library(magrittr)
 #'   data(biomedicalrevenue)
 #'   biomedicalrevenue %>%
-#'   dplyr::filter(year > 2016) %>%
-#'   tidyr::pivot_wider(
-#'     values_from = revenue,
-#'     names_from = year,
-#'     names_prefix = "revenue_"
-#'   ) %>%
-#'   dplyr::mutate(diff = revenue_2018 - revenue_2017) %>%
-#'   diverging_bar_chart(company, diff)
+#'     dplyr::filter(year > 2016) %>%
+#'     tidyr::pivot_wider(
+#'       values_from = revenue,
+#'       names_from = year,
+#'       names_prefix = "revenue_"
+#'     ) %>%
+#'     dplyr::mutate(diff = revenue_2018 - revenue_2017) %>%
+#'     diverging_bar_chart(company, diff)
 #' }
 #'
 #' data(mtcars)
@@ -50,7 +50,6 @@
 #'
 #' ## Display the axis label text in the same color as the bars
 #' diverging_bar_chart(mtcars_z, model, hpz, text_color = c("#1F77B4", "#FF7F0E"))
-#'
 #' @import ggplot2
 #' @importFrom rlang .data
 #' @export
@@ -69,7 +68,7 @@ diverging_bar_chart <- function(data, x, y,
     colors = bar_colors,
     text_color = text_color,
     text_size = text_size
- )
+  )
 }
 
 #' Diverging Lollipop Chart
@@ -99,14 +98,14 @@ diverging_bar_chart <- function(data, x, y,
 #'   library(magrittr)
 #'   data(biomedicalrevenue)
 #'   biomedicalrevenue %>%
-#'   dplyr::filter(year > 2016) %>%
-#'   tidyr::pivot_wider(
-#'     values_from = revenue,
-#'     names_from = year,
-#'     names_prefix = "revenue_"
-#'   ) %>%
-#'   dplyr::mutate(diff = revenue_2018 - revenue_2017) %>%
-#'   diverging_lollipop_chart(company, diff)
+#'     dplyr::filter(year > 2016) %>%
+#'     tidyr::pivot_wider(
+#'       values_from = revenue,
+#'       names_from = year,
+#'       names_prefix = "revenue_"
+#'     ) %>%
+#'     dplyr::mutate(diff = revenue_2018 - revenue_2017) %>%
+#'     diverging_lollipop_chart(company, diff)
 #' }
 #'
 #' data(mtcars)
@@ -126,7 +125,6 @@ diverging_bar_chart <- function(data, x, y,
 #'
 #' ## Display the axis label text in the same color as the bars
 #' diverging_lollipop_chart(mtcars_z, model, hpz, text_color = c("#1F77B4", "#FF7F0E"))
-#'
 #' @import ggplot2
 #' @importFrom rlang .data
 #' @export

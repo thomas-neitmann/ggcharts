@@ -37,17 +37,22 @@
 #' dumbbell_chart(popeurope, country, pop1952, pop2007, top_n = 10)
 #'
 #' # Change line and point color
-#' dumbbell_chart(popeurope, country, pop1952, pop2007, top_n = 10,
-#'                line_color = "lightgray", point_color = c("lightgray", "black"))
+#' dumbbell_chart(popeurope, country, pop1952, pop2007,
+#'   top_n = 10,
+#'   line_color = "lightgray", point_color = c("lightgray", "black")
+#' )
 #'
 #' # Add custom legend labels
-#' dumbbell_chart(popeurope, country, pop1952, pop2007, top_n = 10,
-#'                legend_labels = c("1952", "2007"))
+#' dumbbell_chart(popeurope, country, pop1952, pop2007,
+#'   top_n = 10,
+#'   legend_labels = c("1952", "2007")
+#' )
 #'
 #' # Increase line width and point size
-#' dumbbell_chart(popeurope, country, pop1952, pop2007, top_n = 10,
-#'                line_size = 2, point_size = 5)
-#'
+#' dumbbell_chart(popeurope, country, pop1952, pop2007,
+#'   top_n = 10,
+#'   line_size = 2, point_size = 5
+#' )
 #' @import ggplot2
 #' @export
 dumbbell_chart <- function(data, x, y1, y2, line_size = 1.5, line_color = "lightgray",
