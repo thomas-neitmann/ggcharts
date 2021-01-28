@@ -77,7 +77,6 @@
 #'
 #' ## Use facets to show the top 10 companies over the years
 #' lollipop_chart(biomedicalrevenue, company, revenue, facet = year, top_n = 10)
-#'
 #' @import ggplot2
 #' @importFrom magrittr %>%
 #' @export
@@ -86,7 +85,6 @@ lollipop_chart <- function(data, x, y, facet = NULL, ..., line_size = 0.75,
                            point_color = line_color, highlight = NULL,
                            sort = TRUE, horizontal = TRUE, top_n = NULL,
                            threshold = NULL, other = FALSE, limit = NULL) {
-
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   facet <- rlang::enquo(facet)

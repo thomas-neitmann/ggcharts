@@ -25,7 +25,6 @@
 #'
 #' ## Change x axis label and add title
 #' pyramid_chart(popch, age, pop, sex, xlab = "Population", title = "Switzerland 2020")
-#'
 #' @import ggplot2
 #' @import patchwork
 #' @export
@@ -36,7 +35,9 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
   y <- rlang::enquo(y)
   group <- rlang::enquo(group)
 
-  groups <- data %>% dplyr::pull(!!group) %>% unique()
+  groups <- data %>%
+    dplyr::pull(!!group) %>%
+    unique()
   if (length(groups) != 2) {
     err_msg <- paste0(
       "There must be 2 unique values in `group`, not ",
@@ -58,11 +59,13 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
   }
 
 
-  limit <- data %>% dplyr::pull(!!y) %>% abs() %>% max()
+  limit <- data %>%
+    dplyr::pull(!!y) %>%
+    abs() %>%
+    max()
   sides <- c("left", "right")
   plots <- vector("list", 2L)
   for (i in 1:2) {
-
     if (i == 1L) {
       y_scale <- scale_y_reverse(
         limits = c(limit, 0),
@@ -85,7 +88,6 @@ pyramid_chart <- function(data, x, y, group, bar_colors = c("#1F77B4", "#FF7F0E"
       coord_flip() +
       pyramid_theme(sides[i]) +
       ggtitle(groups[i])
-
   }
 
   x_label <- if (is.null(xlab)) rlang::as_name(y) else xlab

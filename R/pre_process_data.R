@@ -3,7 +3,6 @@
 pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
                              highlight_color = NULL, sort = TRUE, top_n = NULL,
                              threshold = NULL, other = FALSE, limit = NULL) {
-
   if (!is.null(limit)) {
     suppressWarnings(fun_name <- rlang::ctxt_frame(n = 4)$fn_name)
     what <- paste0(fun_name, "(limit=)")
@@ -58,7 +57,6 @@ pre_process_data <- function(data, x, y, facet = NULL, highlight = NULL,
   }
 
   if (sort) {
-
     if (!is.null(top_n)) {
       data <- dplyr::top_n(data, top_n, !!y)
     } else if (!is.null(threshold)) {

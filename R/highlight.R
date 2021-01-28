@@ -39,7 +39,6 @@
 #' ggcharts_set_theme("theme_ng")
 #' spec <- highlight_spec("Novartis")
 #' lollipop_chart(revenue2018, company, revenue, highlight = spec)
-#'
 #' @md
 #' @export
 highlight_spec <- function(what, highlight_color = NULL, other_color = NULL) {

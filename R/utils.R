@@ -60,7 +60,6 @@ ggcharts_list_themes <- function() {
 #' @examples
 #' ggcharts_get_default_color("theme_hermit")
 #' ggcharts_get_default_color("theme_ng")
-#'
 #' @export
 ggcharts_get_default_color <- function(theme) {
   if (!is.character(theme)) {
