@@ -3,7 +3,7 @@ Type: Package
 Title: Get You to Your Desired Plot Faster
 Version: 0.2.1
 Authors@R: c(
-    person("Thomas", "Neitmann", , "th.neitmann@gmail.com", c("aut", "cre", "cph")),
+    person("Thomas", "Neitmann", , "r-pkgs@thomasadventure.blog", c("aut", "cre", "cph")),
     person("Julia", "Silge", role = c("ctb", "cph")),
     person("David", "Robinson", role = c("ctb", "cph")),
     person("Rafael", "Silva", role = "ctb"),
