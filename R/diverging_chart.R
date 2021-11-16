@@ -37,7 +37,7 @@
 #' mtcars_z <- dplyr::transmute(
 #'   .data = mtcars,
 #'   model = row.names(mtcars),
-#'   hpz = scale(hp)
+#'   hpz = scale(hp)[, 1]
 #' )
 #'
 #' diverging_bar_chart(mtcars_z, model, hpz)
@@ -112,7 +112,7 @@ diverging_bar_chart <- function(data, x, y,
 #' mtcars_z <- dplyr::transmute(
 #'   .data = mtcars,
 #'   model = row.names(mtcars),
-#'   hpz = scale(hp)
+#'   hpz = scale(hp)[, 1]
 #' )
 #'
 #' diverging_lollipop_chart(mtcars_z, model, hpz)

@@ -38,21 +38,21 @@ if (requireNamespace("tidyr")) {
   library(magrittr)
   data(biomedicalrevenue)
   biomedicalrevenue \%>\%
-  dplyr::filter(year > 2016) \%>\%
-  tidyr::pivot_wider(
-    values_from = revenue,
-    names_from = year,
-    names_prefix = "revenue_"
-  ) \%>\%
-  dplyr::mutate(diff = revenue_2018 - revenue_2017) \%>\%
-  diverging_bar_chart(company, diff)
+    dplyr::filter(year > 2016) \%>\%
+    tidyr::pivot_wider(
+      values_from = revenue,
+      names_from = year,
+      names_prefix = "revenue_"
+    ) \%>\%
+    dplyr::mutate(diff = revenue_2018 - revenue_2017) \%>\%
+    diverging_bar_chart(company, diff)
 }
 
 data(mtcars)
 mtcars_z <- dplyr::transmute(
   .data = mtcars,
   model = row.names(mtcars),
-  hpz = scale(hp)
+  hpz = scale(hp)[, 1]
 )
 
 diverging_bar_chart(mtcars_z, model, hpz)
@@ -65,7 +65,6 @@ diverging_bar_chart(mtcars_z, model, hpz, text_size = 8)
 
 ## Display the axis label text in the same color as the bars
 diverging_bar_chart(mtcars_z, model, hpz, text_color = c("#1F77B4", "#FF7F0E"))
-
 }
 \seealso{
 To learn how to further customize this plot have a look at the 'customize' vignette:
